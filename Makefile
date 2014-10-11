@@ -50,7 +50,7 @@ check-reqs:
 	@echo "$(PROMPT) Requirements check done."
 
 show-silos:
-	@echo $(PROMPT) $(shell find $(ROOT) -type d -d 1)
+	@echo $(PROMPT) $(shell find $(ROOT) -type d -d 1 2> /dev/null || echo "None yet!")
 
 link: require-silo
 	@echo "$(PROMPT) Linking silo $(silo)"
