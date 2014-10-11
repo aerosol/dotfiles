@@ -1,0 +1,6 @@
+.PHONY = link-{{silo}}
+
+all: link-{{silo}}
+
+link-{{silo}}:
+	@echo "[$@] Stowing {{silo}}"

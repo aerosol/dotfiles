@@ -1,0 +1,5 @@
+#!/bin/sh
+
+D="[silo: $0]"
+command -v $1 >/dev/null 2>&1 || { echo >&2 "$D FAILED requirement: $1.  Consider installing it."; exit 1; }
+echo "$D Available: $1"
