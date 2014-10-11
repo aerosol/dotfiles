@@ -14,9 +14,7 @@ endif
 
 -include $(DOTFILES_DIR)/Makefile
 
-SILOS = $(patsubst %/,%,$(sort $(dir $(wildcard $(ROOT)/*/*))))
-
-.PHONY: all require-silo $(SILOS)
+.PHONY: all require-silo
 
 all: show-silos
 	@echo "$(PROMPT) Make bootstrap to start!"
@@ -52,10 +50,7 @@ check-reqs:
 	@echo "$(PROMPT) Requirements check done."
 
 show-silos:
-	@echo "$(PROMPT) Silos directory: $(ROOT)"
-	@if [ -z "$(SILOS)" ]; then \
-	    echo "$(PROMPT) No silos yet."; \
-	    else echo "$(PROMPT) Current silos: $(SILOS)"; fi
+	@echo $(PROMPT) $(shell find $(ROOT) -type d -d 1)
 
 link: require-silo
 	@echo "$(PROMPT) Linking silo $(silo)"
