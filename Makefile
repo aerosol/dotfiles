@@ -1,4 +1,4 @@
-PROMPT="[silo: $@]"
+PROMPT=[silo.$@]
 DOTFILES_DIR = silos
 TPL_DIR = templates
 ifndef EDITOR
