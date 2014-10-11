@@ -30,7 +30,7 @@ $(DOTFILES_DIR)/$(silo): require-silo
 	@mkdir -p $(DOTFILES_DIR)/$(silo)
 	@cp $(TPL_DIR)/Makefile $(DOTFILES_DIR)
 	@cp $(TPL_DIR)/requirements.silo $(DOTFILES_DIR)
-	@sed 's/{{silo}}/$(silo)/g' $(TPL_DIR)/Silofile >> $(DOTFILES_DIR)/$(silo)/Silofile.mk
+	@sed 's/{{silo}}/$(silo)/g' $(TPL_DIR)/Silofile >> $(DOTFILES_DIR)/Silofile-$(silo).mk
 
 require-silo:
 	@if [ -z "$(silo)" ]; then \

@@ -1,1 +1,1 @@
--include $(wildcard */*.mk)
+-include $(wildcard *.mk)
