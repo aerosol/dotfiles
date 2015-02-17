@@ -2,7 +2,7 @@
     email = hq@mtod.org
     name = Adam Rutkowski
 [core]
-	excludesfile = /Users/hq1/.gitignore_global
+    excludesfile = /Users/hq1/.gitignore_global
 [color]
     ui = true
 [alias]
@@ -19,24 +19,13 @@
     fix = commit --amend --no-edit
     ci = commit
     unpushed = cherry -v
-    ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
 [github]
     user = aerosol
 [help]
     autocorrect = 1
 [pull]
     rebase = true
-[diff]
-    tool = diffmerge
-[difftool "diffmerge"]
-    cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
     tool = vimdiff
     conflictstyle = diff3
     prompt = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
