@@ -1,6 +1,12 @@
-.PHONY = link-{{silo}}
+.PHONY = deploy-{{silo}}
 
-all: link-{{silo}}
+all: deloy-{{silo}}
+	@echo $(MAKEFILE_LIST)
 
-link-{{silo}}:
-	@echo "[$@] Stowing {{silo}}"
+deploy-{{silo}}:
+	@cd $(CURDIR); stow $(STOW_OPTS) {{silo}}
+
+purge-{{silo}}:
+	@cd $(CURDIR); stow $(STOW_OPTS) -D {{silo}}
+
+

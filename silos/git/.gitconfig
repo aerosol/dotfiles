@@ -1,0 +1,42 @@
+[user]
+    email = hq@mtod.org
+    name = Adam Rutkowski
+[core]
+	excludesfile = /Users/hq1/.gitignore_global
+[color]
+    ui = true
+[alias]
+    st = status -bs
+    br = branch -avv
+    last = diff --cached HEAD^
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgg = log --stat --abbrev-commit -p
+    ll = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    df = diff --color-words
+    dh = diff --color-words HEAD
+    ds = diff --stat -r
+    amend = commit --amend
+    fix = commit --amend --no-edit
+    ci = commit
+    unpushed = cherry -v
+    ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+[github]
+    user = aerosol
+[help]
+    autocorrect = 1
+[pull]
+    rebase = true
+[diff]
+    tool = diffmerge
+[difftool "diffmerge"]
+    cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+    prompt = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

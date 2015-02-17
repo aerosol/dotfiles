@@ -1,0 +1,342 @@
+snippet     gen_server
+options     head
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module(${1}).
+        -author('$2').
+
+        -behaviour(gen_server).
+
+        -export([start_link/0]).
+        ${5}
+
+        %% gen_server callbacks
+        -export([init/1,
+                 handle_call/3,
+                 handle_cast/2,
+                 handle_info/2,
+                 terminate/2,
+                 code_change/3]).
+
+        -record(state, {}).
+
+        %%%===================================================================
+        %%% API
+        %%%===================================================================
+
+        start_link() ->
+            gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
+
+        %%%===================================================================
+        %%% gen_server callbacks
+        %%%===================================================================
+
+        init([]) ->
+            {ok, #state{}}.
+
+        handle_call(_Request, _From, State) ->
+            {reply, ignored, State}.
+
+        handle_cast(_Msg, State) ->
+            {noreply, State}.
+
+        handle_info(_Info, State) ->
+            {noreply, State}.
+
+        terminate(_Reason, _State) ->
+            ok.
+
+        code_change(_OldVsn, State, _Extra) ->
+            {ok, State}.
+
+        %%%===================================================================
+        %%% Internal functions
+        %%%===================================================================
+
+snippet     gen_fsm
+options     head
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module(${1}).
+        -author('$2').
+
+        -behaviour(gen_fsm).
+
+        %% API
+        -export([start_link/0]).
+
+        %% gen_fsm callbacks
+        -export([init/1,
+                 ${5:state_name}/2,
+                 $5/3,
+                 handle_event/3,
+                 handle_sync_event/4,
+                 handle_info/3,
+                 terminate/3,
+                 code_change/4]).
+        ${6}
+
+        -define(SERVER, ?MODULE).
+
+        -record(state, {}).
+
+        %%%===================================================================
+        %%% API
+        %%%===================================================================
+
+        start_link() ->
+                gen_fsm:start_link({local, ?SERVER}, ?MODULE, [], []).
+
+        %%%===================================================================
+        %%% gen_fsm callbacks
+        %%%===================================================================
+
+        init([]) ->
+                {ok, $5, #state{}}.
+
+        $5(_Event, State) ->
+                {next_state, $5, State}.
+
+        $5(_Event, _From, State) ->
+                Reply = ok,
+                {reply, Reply, $5, State}.
+
+        handle_event(_Event, StateName, State) ->
+                {next_state, StateName, State}.
+
+        handle_sync_event(_Event, _From, StateName, State) ->
+                Reply = ok,
+                {reply, Reply, StateName, State}.
+
+        handle_info(_Info, StateName, State) ->
+                {next_state, StateName, State}.
+
+        terminate(_Reason, _StateName, _State) ->
+                ok.
+
+        code_change(_OldVsn, StateName, State, _Extra) ->
+                {ok, StateName, State}.
+
+        %%%===================================================================
+        %%% Internal functions
+        %%%===================================================================
+
+snippet     gen_event
+options     head
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module(${1}).
+        -author('$2').
+
+        -behaviour(gen_event).
+
+        %% API
+        -export([start_link/0, add_handler/0]).
+        ${5}
+
+        %% gen_event callbacks
+        -export([init/1, handle_event/2, handle_call/2,
+                         handle_info/2, terminate/2, code_change/3]).
+
+        -define(SERVER, ?MODULE).
+
+        -record(state, {}).
+
+        %%%===================================================================
+        %%% API
+        %%%===================================================================
+
+        %%%===================================================================
+        %%% gen_event callbacks
+        %%%===================================================================
+
+        start_link() ->
+                gen_event:start_link({local, ?SERVER}).
+
+        add_handler() ->
+                gen_event:add_handler(?SERVER, ?MODULE, []).
+
+        %%%===================================================================
+        %%% gen_event callbacks
+        %%%===================================================================
+
+        init([]) ->
+                {ok, #state{}}.
+
+        handle_event(_Event, State) ->
+                {ok, State}.
+
+        handle_call(_Request, State) ->
+                Reply = ok,
+                {ok, Reply, State}.
+
+        handle_info(_Info, State) ->
+                {ok, State}.
+
+        terminate(_Reason, _State) ->
+                ok.
+
+        code_change(_OldVsn, State, _Extra) ->
+                {ok, State}.
+
+        %%%===================================================================
+        %%% Internal functions
+        %%%===================================================================
+
+snippet     application
+options     head
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module(${1}).
+
+        -behaviour(application).
+
+        %% Application callbacks
+        -export([start/2, stop/1]).
+
+        %%%===================================================================
+        %%% Application callbacks
+        %%%===================================================================
+
+        start(_StartType, _StartArgs) ->
+                case 'TopSupervisor':start_link() of
+                        {ok, Pid} ->
+                                {ok, Pid};
+                        Error ->
+                                Error
+                end.
+
+        stop(_State) ->
+                ok.
+
+        %%%===================================================================
+        %%% Internal functions
+        %%%===================================================================
+
+snippet     supervisor
+options     head
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module(${1}_sup).
+
+        -behaviour(supervisor).
+
+        %% API
+        -export([start_link/0]).
+
+        %% Supervisor callbacks
+        -export([init/1]).
+
+        %% Helper macro for declaring children of supervisor
+        -define(CHILD(I, Type), 
+                {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
+
+        %% ===================================================================
+        %% API functions
+        %% ===================================================================
+
+        start_link() ->
+            supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+        %% ===================================================================
+        %% Supervisor callbacks
+        %% ===================================================================
+
+        init([]) ->
+            {ok, { {one_for_one, 5, 10}, []} }.
+
+snippet     ct
+options     head
+
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module(${1}_SUITE).
+        -compile([export_all]).
+
+
+        -include_lib("proper/include/proper.hrl").
+        -include_lib("common_test/include/ct.hrl").
+
+        -define(PROPTEST(M,F), true = proper:quickcheck(M:F())).
+
+        all() ->
+            [
+             %% TODO: Group names here e.g. {group, crud}
+            ].
+
+        suite() ->
+            [{ct_hooks,[cth_surefire]}, {timetrap, {seconds, 30}}].
+
+        groups() ->
+            [
+                %% TODO: group definitions here e.g.
+                %% {crud, [], [
+                %%          t_create_resource,
+                %%          t_read_resource,
+                %%          t_update_resource,
+                %%          t_delete_resource
+                %%         ]}
+
+            ].
+
+        %%%===================================================================
+        %%% Overall setup/teardown
+        %%%===================================================================
+        init_per_suite(Config) ->
+            Config.
+
+        end_per_suite(_Config) ->
+            ok.
+
+
+        %%%===================================================================
+        %%% Group specific setup/teardown
+        %%%===================================================================
+        group(_Groupname) ->
+            [].
+
+        init_per_group(_Groupname, Config) ->
+            Config.
+
+        end_per_group(_Groupname, _Config) ->
+
+            ok.
+
+
+        %%%===================================================================
+        %%% Testcase specific setup/teardown
+        %%%===================================================================
+        init_per_testcase(_TestCase, Config) ->
+            Config.
+
+        end_per_testcase(_TestCase, _Config) ->
+            ok.
+
+        %%%===================================================================
+        %%% Individual Test Cases (from groups() definition)
+        %%%===================================================================
+

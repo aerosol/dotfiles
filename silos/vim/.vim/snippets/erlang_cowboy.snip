@@ -1,0 +1,34 @@
+snippet     ws_handler
+options     head
+        %%%-------------------------------------------------------------------
+        %%% @author ${2:`g:author`}
+        %%% @copyright (C) 2013 ${3}
+        %%% @doc ${4}
+        %%% @end
+        %%%-------------------------------------------------------------------
+        -module({$1}).
+        -behaviour(cowboy_websocket_handler).
+
+        -export([init/3]).
+        -export([websocket_init/3]).
+        -export([websocket_handle/3]).
+        -export([websocket_info/3]).
+        -export([websocket_terminate/3]).
+        ${5}
+
+        init({tcp, http}, Req, Opts) ->
+            {upgrade, protocol, cowboy_websocket}.
+
+        websocket_init(_TransportName, Req, _Opts) ->
+            {ok, Req, undefined_state}.
+
+        websocket_handle(_Data, Req, State) ->
+            {ok, Req, State}.
+
+        websocket_info(_Info, Req, State) ->
+            {ok, Req, State}.
+
+        websocket_terminate(_Reason, _Req, _State) ->
+            ok.
+
+

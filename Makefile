@@ -52,10 +52,18 @@ check-reqs:
 show-silos:
 	@echo $(PROMPT) $(shell find $(ROOT) -type d -d 1 2> /dev/null || echo "None yet!")
 
-link: require-silo
-	@echo "$(PROMPT) Linking silo $(silo)"
-	@${MAKE} -C $(DOTFILES_DIR) link-$(silo)
+deploy: require-silo
+	@echo "$(PROMPT) Deploying silo $(silo)"
+	@${MAKE} -C $(DOTFILES_DIR) deploy-$(silo)
 
-link-all: show-silos
-	@echo "$(PROMPT) Linking all silos..."
+deploy-all: show-silos
+	@echo "$(PROMPT) Deploying all silos..."
 	@${MAKE} -C $(DOTFILES_DIR)
+
+purge: require-silo
+	@echo "$(PROMPT) Purging silo $(silo)"
+	@${MAKE} -C $(DOTFILES_DIR) purge-$(silo)
+
+purge-all: show-silos
+	@echo "$(PROMPT) Purging all silos..."
+	@${MAKE} -C $(DOTFILES_DIR) purge-all

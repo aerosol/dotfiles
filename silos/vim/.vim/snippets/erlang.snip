@@ -1,0 +1,31 @@
+snippet     mod
+options     head
+        -module(${1}).
+        ${0}
+
+snippet     exp
+options     head
+        -export([${1:function}/${2:0}]).
+        ${0}
+
+snippet     spec
+options     head
+        -spec ${1:fun}(${2:in}) ->
+        ${3:out}.
+        ${0}
+
+snippet     fun
+options     word
+        fun(${1:#:args}) ${2:#:guards}->
+        ${4}
+        end${3:.}
+
+snippet     marker
+options     head
+        %%%===================================================================
+        %%% ${1}
+        %%%===================================================================
+
+        ${0}
+
+
