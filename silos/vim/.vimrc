@@ -50,13 +50,18 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'gcmt/wildfire.vim'
-"Plug 'venantius/vim-eastwood', {'for': 'clojure'}
+Plug 'venantius/vim-cljfmt', {'for': 'clojure'}
 Plug 'whatyouhide/vim-gotham'
+Plug 'wellle/tmux-complete.vim'
+Plug 'xuhdev/vim-latex-live-preview'
+Plug 'elixir-lang/vim-elixir'
+
+let g:livepreview_previewer = 'open -a Preview'
 
 call plug#end()
 
 set background=dark
-colorscheme mac_classic
+colorscheme gotham
 
 let mapleader=","
 set shell=/bin/zsh
@@ -226,12 +231,13 @@ let g:airline_section_y = '%{ShortCwd()}'
 let g:airline_theme='raven'
 
 set list
-set listchars=
-set lcs+=tab:>-
+set listchars=          
+set lcs+=tab:▸\ 
+set lcs+=trail:▫
 set lcs+=extends:›
 set lcs+=precedes:‹
 set lcs+=nbsp:·
-set lcs+=trail:·
+
 
 set sua+=.erl
 set sua+=.hrl
@@ -366,7 +372,7 @@ augroup END
 augroup clj
     autocmd!
     autocmd FileType clojure setlocal shiftwidth=2
-    autocmd FileType clojure nnoremap <C-c><C-r> :Require!<CR>
+    autocmd FileType clojure nnoremap <C-c><C-r> :Require<CR>
     autocmd FileType clojure nnoremap <C-c><C-e> :Eval<CR>
     autocmd FileType clojure nnoremap <C-c><C-p> :Eval!<CR>
 
