@@ -38,6 +38,7 @@ Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
 Plug 'thinca/vim-ref', {'for': ['erlang', 'elixir']}
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise', {'for': 'elixir'}
@@ -54,7 +55,6 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
 
@@ -88,7 +88,6 @@ nnoremap k gk
 nnoremap <leader>: :Unite command function -default-action=edit<CR>
 vnoremap <leader>: :Unite command function -default-action=edit<CR>
 
-"set cryptmethod=blowfish
 set relativenumber
 
 set backspace=indent,eol,start
