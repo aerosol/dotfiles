@@ -1,0 +1,27 @@
+[user]
+    email = hq@mtod.org
+    name = Adam Rutkowski
+[color]
+    ui = true
+[alias]
+    st = status -bs
+    br = branch -avv
+    last = diff --cached HEAD^
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgg = log --stat --abbrev-commit -p
+    ll = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    df = diff --color-words
+    dh = diff --color-words HEAD
+    ds = diff --stat -r
+    amend = commit --amend
+    unpushed = cherry -v
+[github]
+    user = aerosol
+[help]
+    autocorrect = 1
+[pull]
+    rebase = true
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
