@@ -28,7 +28,7 @@ Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'kmnk/vim-unite-giti'
-Plug 'lambdatoast/elm.vim', {'for': 'elm'}
+Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -47,7 +47,7 @@ Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat', {'for': 'clojure'}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
-Plug 'tpope/vim-surround', {'for': 'clojure'}
+Plug 'tpope/vim-surround'
 Plug 'venantius/vim-cljfmt', {'for': 'clojure'}
 Plug 'vim-erlang/erlang-motions.vim', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
@@ -56,6 +56,8 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 let mapleader=" "
@@ -133,7 +135,8 @@ set ofu=syntaxcomplete#Complete
 set fillchars=vert:\ ,fold:\ ,diff:\ ,
 
 set wildmenu
-set wildmode=full
+set wildignorecase
+set wildmode=list:full
 set wildignore+=.hg,.git,.svn,rel
 set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
@@ -261,7 +264,10 @@ endfunction
 let g:unite_source_rec_async_command =
             \ ['ag', '--follow', '--nocolor', '--nogroup',
             \  '--hidden', '-g', '']
-nnoremap <Tab> :<C-u>Unite buffer file_rec/neovim -no-split -hide-source-names<CR>
+"nnoremap <Tab> :<C-u>Unite buffer file_rec/async -no-split -hide-source-names<CR>
+let g:ctrlp_map = '<tab>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
 
 nnoremap <leader>o <C-o>
 nnoremap <leader>i <C-i>
@@ -408,6 +414,26 @@ augroup elixir
     autocmd BufWritePost *.ex Neomake
     autocmd BufWritePost *.exs Neomake
 
+augroup END
+
+augroup ruby
+    autocmd!
+    autocmd BufWritePost *.rb Neomake
+augroup END
+
+augroup elm
+    au FileType elm nmap <leader>em <Plug>(elm-make)
+    au FileType elm nmap <leader>eM <Plug>(elm-make-main)
+    au FileType elm nmap <leader>et <Plug>(elm-test)
+    au FileType elm nmap <leader>er <Plug>(elm-repl)
+    au FileType elm nmap <leader>ee <Plug>(elm-error-detail)
+    au FileType elm nmap <leader>ed <Plug>(elm-show-docs)
+    au FileType elm nmap <leader>ebd <Plug>(elm-browse-docs)
+    let g:elm_jump_to_error = 1
+    let g:elm_make_output_file = "elm.js"
+    let g:elm_make_show_warnings = 0
+    let g:elm_browser_command = ""
+    let g:elm_detailed_complete = 0
 augroup END
 
 augroup autoroot
