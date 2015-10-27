@@ -206,11 +206,12 @@ bindkey '^N' down-line-or-search
 ### }}}
 export PATH=$PATH:/Users/hq1/bin
 export PATH=/usr/local/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 load-local-conf() {
      if [[ -f .env && -r .env ]]; then
        source .env
      fi
 }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source /Users/hq1/.rvm/scripts/rvm
