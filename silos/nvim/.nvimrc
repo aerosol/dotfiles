@@ -378,6 +378,7 @@ augroup ruby
 augroup END
 
 augroup elm
+    autocmd!
     au FileType elm nmap <leader>em <Plug>(elm-make)
     au FileType elm nmap <leader>eM <Plug>(elm-make-main)
     au FileType elm nmap <leader>et <Plug>(elm-test)
@@ -398,16 +399,18 @@ augroup autoroot
 augroup END
 
 augroup vagrant
-    au!
+    autocmd!
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
 augroup html
+    autocmd!
     autocmd FileType html setlocal textwidth=0
     autocmd FileType html setlocal wrapmargin=0
 augroup END
 
 augroup python
+    autocmd!
     let g:syntastic_python_checkers=['pep8', 'pyflakes', 'python']
 augroup END
 
