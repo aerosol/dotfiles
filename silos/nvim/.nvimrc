@@ -10,11 +10,11 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc', {'do': 'make -f make_mac.mak'}
 Plug 'airblade/vim-rooter'
+Plug 'aliou/moriarty.vim'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
@@ -29,6 +29,8 @@ Plug 'godlygeek/tabular'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf.vim'
 Plug 'kmnk/vim-unite-giti'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
@@ -57,9 +59,6 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'aliou/moriarty.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
-Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let mapleader=" "
