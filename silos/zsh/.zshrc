@@ -18,7 +18,7 @@ export GREP_OPTIONS='--color=auto'
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export PAGER=less
 export HOMEBREW_VERBOSE=1
-export EDITOR=vim
+export EDITOR=nvim
 
 ### }}}
 ### aliases {{{
@@ -28,8 +28,9 @@ alias ll='ls -lh'
 alias o='open'
 alias get='wget -t0 -c'
 
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+alias vim='nvim'
 
 p() { passy "$*" | pbcopy; }
 
@@ -215,3 +216,19 @@ load-local-conf() {
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source /Users/hq1/.rvm/scripts/rvm
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS="-e --reverse"
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+fo() {
+  local out file key
+  out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+  fi
+}
