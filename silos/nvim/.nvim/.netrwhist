@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/hq1/dev/clubbase/web/models'
+let g:netrw_dirhist_2='/Users/hq1/dev/clubbase/web'
+let g:netrw_dirhist_3='/Users/hq1/dev/clubbase'
+let g:netrw_dirhist_4='/Users/hq1/dev/clubbase/web'
+let g:netrw_dirhist_5='/Users/hq1/dev/clubbase/web/controllers'
+let g:netrw_dirhist_6='/Users/hq1/dev/clubbase'

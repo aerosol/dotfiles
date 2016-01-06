@@ -9,7 +9,7 @@ if !isdirectory($TMP)
 endif
 
 call plug#begin($BUNDLES)
-Plug 'Shougo/junkfile.vim'
+Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/unite.vim'
@@ -20,15 +20,16 @@ Plug 'bling/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 Plug 'ervandew/supertab'
+Plug 'exu/pgsql.vim'
 Plug 'fishcakez/vim-mix', {'for': 'elixir'}
 Plug 'flazz/vim-colorschemes'
+Plug 'floobits/floobits-neovim'
 Plug 'gcmt/wildfire.vim'
 Plug 'godlygeek/tabular'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'kmnk/vim-unite-giti'
-Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -41,7 +42,7 @@ Plug 'thinca/vim-ref', {'for': ['erlang', 'elixir']}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise', {'for': 'elixir'}
+Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
@@ -56,19 +57,20 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'aliou/moriarty.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let mapleader=" "
-nnoremap <leader><space> :
+nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme moriarty
 " https://github.com/neovim/neovim/issues/2140
 " https://github.com/neovim/neovim/issues/793
-au VimEnter * :colorscheme Tomorrow-Night
+au VimEnter * :colorscheme moriarty
 
 syntax on
 syntax sync minlines=256
@@ -265,9 +267,6 @@ let g:unite_source_rec_async_command =
             \ ['ag', '--follow', '--nocolor', '--nogroup',
             \  '--hidden', '-g', '']
 "nnoremap <Tab> :<C-u>Unite buffer file_rec/async -no-split -hide-source-names<CR>
-let g:ctrlp_map = '<tab>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'ra'
 
 nnoremap <leader>o <C-o>
 nnoremap <leader>i <C-i>
@@ -401,6 +400,9 @@ augroup elixir
     autocmd FileType elixir nnoremap <leader>ms :Dispatch iex -S mix<CR>
     autocmd FileType elixir setlocal tags+=/Users/hq1/dev/elixir/tags
 
+    autocmd FileType eelixir setlocal textwidth=0
+    autocmd FileType eelixir setlocal wrapmargin=0
+
     let g:neomake_serialize = 1
     let g:neomake_serialize_abort_on_error = 1
     let g:neomake_elixir_enabled_makers = ['mix']
@@ -419,6 +421,8 @@ augroup END
 augroup ruby
     autocmd!
     autocmd BufWritePost *.rb Neomake
+    let g:syntastic_eruby_ruby_quiet_messages =
+        \ {'regex': 'possibly useless use of a variable in void context'}
 augroup END
 
 augroup elm
@@ -446,6 +450,11 @@ augroup vagrant
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
+augroup html
+    autocmd FileType html setlocal textwidth=0
+    autocmd FileType html setlocal wrapmargin=0
+augroup END
+
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checkers=['pep8', 'pyflakes', 'python']
 let g:syntastic_erlang_checkers=['']
@@ -461,3 +470,12 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 au FocusLost * :silent! wall
 
 let g:goldenview__enable_default_mapping = 0
+
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <leader>pf :FZF<CR>
+nnoremap <leader>pt :Tags<CR>
+nnoremap <leader>bc :BCommits<CR>
