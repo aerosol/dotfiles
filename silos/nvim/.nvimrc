@@ -10,9 +10,7 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc', {'do': 'make -f make_mac.mak'}
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'aliou/moriarty.vim'
 Plug 'benekastah/neomake'
@@ -25,13 +23,15 @@ Plug 'fishcakez/vim-mix', {'for': 'elixir'}
 Plug 'flazz/vim-colorschemes'
 Plug 'floobits/floobits-neovim'
 Plug 'gcmt/wildfire.vim'
-Plug 'godlygeek/tabular'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
+Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim'
-Plug 'kmnk/vim-unite-giti'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-journal'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -88,9 +88,6 @@ nnore< <<
 nnoremap j gj
 nnoremap k gk
 
-nnoremap <leader>: :Unite command function -default-action=edit<CR>
-vnoremap <leader>: :Unite command function -default-action=edit<CR>
-
 set relativenumber
 
 set backspace=indent,eol,start
@@ -133,7 +130,7 @@ set ttimeoutlen=10
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-set fillchars=vert:\ ,fold:\ ,diff:\ ,
+set fillchars=vert:\ ,fold:\ ,diff:\ ,stl:\ 
 
 set wildmenu
 set wildignorecase
@@ -247,51 +244,12 @@ set lcs+=precedes:‹
 set lcs+=nbsp:·
 set lcs+=eol:¬
 
-let g:unite_enable_start_insert = 1
-let g:unite_winheight = 10
-let g:unite_split_rule = 'botright'
-
-function! s:unite_settings()
-    imap <buffer> jj <Plug>(unite_insert_leave)
-    imap <buffer> jk <Plug>(unite_insert_leave)
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-    nnoremap <buffer> <C-j> <C-w>j
-    nnoremap <buffer> <C-k> <C-w>k
-    imap <buffer> <C-j> <Esc><C-w>j
-    imap <buffer> <C-k> <Esc><C-w>k
-endfunction
-
-" Using ag as recursive command.
-let g:unite_source_rec_async_command =
-            \ ['ag', '--follow', '--nocolor', '--nogroup',
-            \  '--hidden', '-g', '']
-"nnoremap <Tab> :<C-u>Unite buffer file_rec/async -no-split -hide-source-names<CR>
-
 nnoremap <leader>o <C-o>
 nnoremap <leader>i <C-i>
-
-nnoremap <leader>a :<C-u>Unite grep -default-action=persist_open
-            \ -no-start-insert -no-empty -truncate -auto-resize<CR>
-nnoremap <leader>A :<C-u>execute
-            \ 'Unite grep:.::' . expand("<cword>") . '
-            \ -default-action=above -auto-preview'<CR>
-
-call unite#custom#profile('default', 'context', {
-            \   'prompt_direction': 'top'
-            \ })
 
 let g:ref_use_vimproc = 1
 let g:ref_open = 'split'
 let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
-nno <leader>K :<C-u>Unite ref/erlang
-            \ -vertical -default-action=split<CR>
-let g:neosnippet#snippets_directory = expand($VIM . 'snippets')
-let g:neosnippet#disable_runtime_snippets = {
-            \   'erlang' : 1
-            \ }
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 nnoremap <leader>gs :Gstatus<CR>
 
@@ -300,8 +258,6 @@ let g:erlang_tags_ignore = '_rel'
 nnoremap <leader>gr :!git rebase -i --autosquash HEAD~
 nnoremap <leader>gfx :Gcommit %<CR>ifixup!<space>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gl :Unite giti/log -default-action=diff<CR>
-nnoremap <leader>gb :Unite giti/branch_all<CR>
 
 let g:gist_post_private = 1
 let g:gist_detect_filetype = 1
@@ -329,13 +285,9 @@ augroup make
     autocmd FileType make set modelines=0
 augroup END
 
-augroup unite
-    autocmd!
-    autocmd FileType unite call s:unite_settings()
-augroup END
-
 augroup erlang
     autocmd!
+    let g:syntastic_erlang_checkers=['']
     function! s:erlang_settings()
         set sua+=.erl
         set sua+=.hrl
@@ -389,6 +341,7 @@ augroup END
 
 augroup elixir
     autocmd!
+    let g:syntastic_enable_elixir_checker = 0
     autocmd FileType elixir
                 \ if &omnifunc != '' |
                 \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
@@ -454,10 +407,11 @@ augroup html
     autocmd FileType html setlocal wrapmargin=0
 augroup END
 
+augroup python
+    let g:syntastic_python_checkers=['pep8', 'pyflakes', 'python']
+augroup END
+
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers=['pep8', 'pyflakes', 'python']
-let g:syntastic_erlang_checkers=['']
-let g:syntastic_enable_elixir_checker = 0
 
 let g:tslime_ensure_trailing_newlines=2
 set mouse=a
@@ -478,3 +432,11 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+let g:UltiSnipsJumpForwardTrigger='<tab>'
