@@ -16,7 +16,7 @@ Plug 'aliou/moriarty.vim'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
+Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
 Plug 'fishcakez/vim-mix', {'for': 'elixir'}
