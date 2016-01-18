@@ -23,7 +23,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'floobits/floobits-neovim'
 Plug 'gcmt/wildfire.vim'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
-Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
