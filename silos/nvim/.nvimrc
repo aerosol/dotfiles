@@ -12,7 +12,6 @@ call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
-Plug 'aliou/moriarty.vim'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
@@ -27,12 +26,9 @@ Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jeetsukumaran/vim-filebeagle'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-journal'
-Plug 'junegunn/vim-peekaboo'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -41,7 +37,7 @@ Plug 'scrooloose/syntastic'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
-Plug 'thinca/vim-ref', {'for': ['erlang', 'elixir']}
+Plug 'thinca/vim-ref'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-dispatch'
@@ -60,6 +56,7 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'janko-m/vim-test'
 call plug#end()
 
 let mapleader=" "
@@ -67,10 +64,10 @@ nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
 set background=dark
-colorscheme moriarty
+colorscheme Tomorrow\-Night
 " https://github.com/neovim/neovim/issues/2140
 " https://github.com/neovim/neovim/issues/793
-au VimEnter * :colorscheme moriarty
+au VimEnter * :colorscheme Tomorrow\-Night
 
 syntax on
 syntax sync minlines=256
@@ -131,7 +128,7 @@ set ttimeoutlen=10
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-set fillchars=vert:\ ,fold:\ ,diff:\ ,stl:\ 
+set fillchars=vert:\ ,fold:\ ,diff:\ ,stl:\
 
 set wildmenu
 set wildignorecase
@@ -234,11 +231,10 @@ set laststatus=2
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_y = '%{ShortCwd()}'
-"let g:airline_theme='compot'
 
 set list
 set listchars=
-set lcs+=tab:▸\ 
+set lcs+=tab:▸\
 set lcs+=trail:▫
 set lcs+=extends:›
 set lcs+=precedes:‹
@@ -342,6 +338,7 @@ augroup END
 
 augroup elixir
     autocmd!
+    let g:UltiSnipsJumpForwardTrigger='<tab>'
     let g:syntastic_enable_elixir_checker = 0
     autocmd FileType elixir
                 \ if &omnifunc != '' |
@@ -358,7 +355,7 @@ augroup elixir
 
     let g:neomake_serialize = 1
     let g:neomake_serialize_abort_on_error = 1
-    let g:neomake_elixir_enabled_makers = ['mix']
+    let g:neomake_elixir_enabled_makers = ['mix', 'test']
     let g:neomake_elixir_mix_maker = {
                 \ 'args': ['compile'],
                 \ 'errorformat':
@@ -368,6 +365,25 @@ augroup elixir
 
     autocmd BufWritePost *.ex Neomake
     autocmd BufWritePost *.exs Neomake
+
+    let g:neomake_elixir_test_maker = {
+            \ 'exe': 'mix',
+            \ 'args': ['test'],
+            \ 'errorformat':
+                \ '%Z       %f:%l,' .
+                \ '%C     ** %m,' .
+                \ '%C     %[%^:]%#:%.%#,' .
+                \ '%C     %m,' .
+                \ '%E  %n)%.%#'
+            \ }
+
+    let test#strategy = 'tslime'
+
+    function! AsyncDispatchStrategy(cmd)
+        execute 'Dispatch! '.a:cmd
+    endfunction
+
+    nnoremap <F9> :TestFile<CR>
 
 augroup END
 
@@ -443,4 +459,3 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-let g:UltiSnipsJumpForwardTrigger='<tab>'
