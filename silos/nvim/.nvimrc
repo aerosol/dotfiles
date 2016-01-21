@@ -10,7 +10,7 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', {'for': 'elixir'}
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
@@ -18,15 +18,16 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
-Plug 'fishcakez/vim-mix', {'for': 'elixir'}
 Plug 'flazz/vim-colorschemes'
 Plug 'floobits/floobits-neovim'
 Plug 'gcmt/wildfire.vim'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
@@ -55,7 +56,6 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'janko-m/vim-test'
 call plug#end()
 
 let mapleader=" "
@@ -344,9 +344,6 @@ augroup elixir
                 \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
                 \   call SuperTabChain(&omnifunc, "<c-n>") |
                 \ endif
-    autocmd FileType elixir nnoremap <leader>mc :Mix compile<CR>
-    autocmd FileType elixir nnoremap <leader>mt :Mix test<CR>
-    autocmd FileType elixir nnoremap <leader>ms :Dispatch iex -S mix<CR>
     autocmd FileType elixir setlocal tags+=/Users/hq1/dev/elixir/tags
 
     autocmd FileType eelixir setlocal textwidth=0
@@ -377,12 +374,7 @@ augroup elixir
             \ }
 
     let test#strategy = 'tslime'
-
-    function! AsyncDispatchStrategy(cmd)
-        execute 'Dispatch! '.a:cmd
-    endfunction
-
-    nnoremap <F9> :TestFile<CR>
+    nnoremap <C-t> :TestFile<CR>
 
 augroup END
 
@@ -432,7 +424,7 @@ augroup END
 
 let g:syntastic_auto_loc_list = 1
 
-let g:tslime_ensure_trailing_newlines=2
+let g:tslime_ensure_trailing_newlines = 1
 set mouse=a
 
 let g:SuperTabDefaultCompletionType = "context"
@@ -457,4 +449,3 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
