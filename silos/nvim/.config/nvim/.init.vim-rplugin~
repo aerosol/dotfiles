@@ -1,0 +1,39 @@
+" python3 plugins
+call remote#host#RegisterPlugin('python3', '/Users/hq1/.config/nvim/bundle/deoplete.nvim/rplugin/python3/deoplete.py', [
+      \ {'sync': 1, 'name': '_deoplete', 'type': 'function', 'opts': {}},
+     \ ])
+
+
+" python plugins
+call remote#host#RegisterPlugin('python', '/Users/hq1/.config/nvim/bundle/floobits-neovim/rplugin/python/floobits.py', [
+      \ {'sync': 0, 'name': 'FlooAddBuf', 'type': 'command', 'opts': {'complete': 'file', 'nargs': 1}},
+      \ {'sync': 0, 'name': 'BufEnter', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 1, 'name': 'BufReadPost', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 1, 'name': 'BufWinEnter', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 1, 'name': 'FlooJoinWorkspace', 'type': 'command', 'opts': {'nargs': 1}},
+      \ {'sync': 0, 'name': 'FlooClearHighlights', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'FlooCompleteSignup', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'CursorMoved', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 0, 'name': 'CursorMovedI', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 0, 'name': 'FlooDeleteBuf', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'FileChangedShellPost', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 0, 'name': 'FlooToggleFollowMode', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'FlooFollowUser', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'FlooInfo', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'InsertEnter', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 1, 'name': 'FlooListMessages', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'BufWritePost', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 0, 'name': 'FlooOpenInBrowser', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'FlooLeaveWorkspace', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'QuickFixCmdPost', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 1, 'name': 'FlooSaySomething', 'type': 'command', 'opts': {}},
+      \ {'sync': 1, 'name': 'FlooShareDirPrivate', 'type': 'command', 'opts': {'complete': 'dir', 'nargs': 1}},
+      \ {'sync': 1, 'name': 'FlooShareDirPublic', 'type': 'command', 'opts': {'complete': 'dir', 'nargs': 1}},
+      \ {'sync': 0, 'name': 'FlooSummon', 'type': 'command', 'opts': {}},
+      \ {'sync': 0, 'name': 'TextChanged', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 0, 'name': 'TextChangedI', 'type': 'autocmd', 'opts': {'pattern': '*'}},
+      \ {'sync': 0, 'name': 'FlooToggleHighlights', 'type': 'command', 'opts': {}},
+      \ {'sync': 1, 'name': 'FlooUsersInWorkspace', 'type': 'command', 'opts': {}},
+     \ ])
+
+

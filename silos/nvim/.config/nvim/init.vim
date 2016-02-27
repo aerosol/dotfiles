@@ -1,4 +1,4 @@
-let $VIM        = expand('~/.nvim/')
+let $VIM        = expand('~/.config/nvim/')
 let $TMP        = expand($VIM . 'tmp/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
@@ -10,7 +10,9 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'SirVer/ultisnips', {'for': 'elixir'}
+Plug 'Floobits/floobits-neovim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
@@ -19,7 +21,6 @@ Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'floobits/floobits-neovim'
 Plug 'gcmt/wildfire.vim'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
@@ -35,6 +36,7 @@ Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/tslime.vim'
+Plug 'stephpy/vim-yaml'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
 Plug 'thinca/vim-ref'
@@ -63,10 +65,10 @@ nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
 set background=dark
-colorscheme Tomorrow\-Night
+colorscheme Tomorrow\-Night\-Bright
 " https://github.com/neovim/neovim/issues/2140
 " https://github.com/neovim/neovim/issues/793
-au VimEnter * :colorscheme Tomorrow\-Night
+au VimEnter * :colorscheme Tomorrow\-Night\-Bright
 
 syntax on
 syntax sync minlines=256
@@ -127,7 +129,7 @@ set ttimeoutlen=10
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-set fillchars=vert:\ ,fold:\ ,diff:\ ,stl:\
+set fillchars=vert:\ ,fold:\ ,diff:\ 
 
 set wildmenu
 set wildignorecase
@@ -230,6 +232,7 @@ set laststatus=2
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_y = '%{ShortCwd()}'
+let g:airline_theme='monotonia'
 
 set list
 set listchars=
@@ -339,11 +342,6 @@ augroup elixir
     autocmd!
     let g:UltiSnipsJumpForwardTrigger='<tab>'
     let g:syntastic_enable_elixir_checker = 0
-    autocmd FileType elixir
-                \ if &omnifunc != '' |
-                \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-                \   call SuperTabChain(&omnifunc, "<c-n>") |
-                \ endif
     autocmd FileType elixir setlocal tags+=/Users/hq1/dev/elixir/tags
 
     autocmd FileType eelixir setlocal textwidth=0
@@ -351,13 +349,13 @@ augroup elixir
 
     let g:neomake_serialize = 1
     let g:neomake_serialize_abort_on_error = 1
-    let g:neomake_elixir_enabled_makers = ['mix', 'test']
-    let g:neomake_elixir_mix_maker = {
-                \ 'args': ['compile'],
-                \ 'errorformat':
-                \ '** %s %f:%l: %m,' .
-                \ '%f:%l: warning: %m'
-                \ }
+    "let g:neomake_elixir_enabled_makers = ['mix', 'test']
+    "let g:neomake_elixir_mix_maker = {
+                "\ 'args': ['compile'],
+                "\ 'errorformat':
+                "\ '** %s %f:%l: %m,' .
+                "\ '%f:%l: warning: %m'
+                "\ }
 
     autocmd BufWritePost *.ex Neomake
     autocmd BufWritePost *.exs Neomake
@@ -374,7 +372,9 @@ augroup elixir
             \ }
 
     let test#strategy = 'tslime'
-    nnoremap <C-t> :TestFile<CR>
+    nnoremap <leader>tf :TestFile<CR>
+    nnoremap <leader>tt :TestNearest<CR>
+    nnoremap <leader>tl :TestLast<CR>
 
 augroup END
 
@@ -449,3 +449,5 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+let g:deoplete#enable_at_startup = 1
