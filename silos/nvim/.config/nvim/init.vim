@@ -57,6 +57,7 @@ Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 "let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
