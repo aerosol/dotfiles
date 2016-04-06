@@ -9,9 +9,8 @@ if !isdirectory($TMP)
 endif
 
 call plug#begin($BUNDLES)
-Plug 'janko-m/vim-test'
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'Floobits/floobits-neovim'
+Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
@@ -22,21 +21,24 @@ Plug 'exu/pgsql.vim'
 Plug 'gcmt/wildfire.vim'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/tslime.vim'
+Plug 'slashmili/alchemist.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
-"Plug 'thinca/vim-ref'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
@@ -52,19 +54,35 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
+Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
-
-Plug 'junegunn/gv.vim'
-
-Plug 'slashmili/alchemist.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'w0ng/vim-hybrid'
-
-Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
-let vimple_init_vn = 0
+"let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
+"let g:ref_open = 'split'
+"let g:ref_use_vimproc = 1
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:SuperTabCrMapping = 1
+let g:SuperTabDefaultCompletionType = "context"
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_at_startup = 1
+let g:erlang_tags_ignore = '_rel'
+let g:filebeagle_show_hidden=1
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_post_private = 1
+let g:goldenview__enable_default_mapping = 0
+let g:signify_line_highlight = 0
+let g:signify_mapping_next_hunk = ']c'
+let g:signify_mapping_prev_hunk = '[c'
+let g:signify_skip_filetype = { 'vim': 1, 'diff': 1 }
+let g:signify_update_on_focusgained = 1
+let g:sql_type_default = 'pgsql'
+let g:syntastic_auto_loc_list = 1
+let g:tslime_ensure_trailing_newlines = 1
+let g:vim_markdown_folding_disabled = 1
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -140,15 +158,12 @@ set statusline +=\ \ ↳\ \ %<%t%* " full path
 set statusline +=%m%*     " modified flag
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=%=%*     " separator
-set statusline +=%3v\ %*    " virtual column number
+set statusline +=%3v\ %*  " virtual column number
 set statusline +=%{fugitive#head()}
-set statusline +=\ %y%*     " file type
+set statusline +=\ %y%*   " file type
 
-"recalculate the trailing whitespace warning when idle, and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 
-"return '[\s]' if trailing white space is detected
-"return '' otherwise
 function! StatuslineTrailingSpaceWarning()
   if !exists("b:statusline_trailing_space_warning")
     if search('\s\+$', 'nw') != 0
@@ -226,7 +241,6 @@ nnoremap ? :echo
 
 nnoremap <leader>? :echo expand("%")<CR>
 
-let g:filebeagle_show_hidden=1
 
 nnoremap gcd :cd %:p:h<CR>:pwd<CR>
 
@@ -250,9 +264,6 @@ set undodir=$TMP
 set undofile
 set undolevels=5000
 
-silent! execute '!find '. $TMP .' -type f -mtime +60 -exec rm {} \;'
-silent! execute '!mkdir '. $TMP .'> /dev/null 2>&1'
-
 set laststatus=2
 
 set list
@@ -267,28 +278,11 @@ set lcs+=eol:¬
 nnoremap <leader>o <C-o>
 nnoremap <leader>i <C-i>
 
-let g:ref_use_vimproc = 1
-let g:ref_open = 'split'
-let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
-
 nnoremap <leader>gs :Gstatus<CR>
-
-let g:erlang_tags_ignore = '_rel'
 
 nnoremap <leader>gr :!git rebase -i --autosquash HEAD~
 nnoremap <leader>gfx :Gcommit %<CR>ifixup!<space>
 nnoremap <leader>gd :Gdiff<CR>
-
-let g:gist_post_private = 1
-let g:gist_detect_filetype = 1
-let g:gist_clip_command = 'pbcopy'
-let g:gist_open_browser_after_post = 1
-
-let g:signify_skip_filetype = { 'vim': 1, 'diff': 1 }
-let g:signify_mapping_next_hunk = ']c'
-let g:signify_mapping_prev_hunk = '[c'
-let g:signify_update_on_focusgained = 1
-let g:signify_line_highlight = 0
 
 augroup defaults
     autocmd!
@@ -390,8 +384,6 @@ augroup elixir
     nnoremap <leader>tt :TestNearest<CR>
     nnoremap <leader>tl :TestLast<CR>
     nnoremap <leader>tv :TestVisit<CR>
-
-    let g:SuperTabDefaultCompletionType = "context"
 augroup END
 
 augroup ruby
@@ -438,18 +430,9 @@ augroup python
     let g:syntastic_python_checkers=['pep8', 'pyflakes', 'python']
 augroup END
 
-let g:syntastic_auto_loc_list = 1
-
-let g:tslime_ensure_trailing_newlines = 1
 set mouse=a
 
-let g:SuperTabDefaultCompletionType = "context"
-
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 au FocusLost * :silent! wall
-
-let g:goldenview__enable_default_mapping = 0
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -466,13 +449,4 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-let g:deoplete#enable_at_startup = 1
-
 nnoremap <C-P> @:
-
-let g:vim_markdown_folding_disabled = 1
-let g:SuperTabCrMapping = 1
-let g:sql_type_default = 'pgsql'
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
