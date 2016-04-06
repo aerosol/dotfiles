@@ -5,26 +5,23 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 let g:author = 'Adam Rutkowski <hq@mtod.org>'
 
 if !isdirectory($TMP)
-    call mkdir($TMP, "p")
+  call mkdir($TMP, "p")
 endif
 
 call plug#begin($BUNDLES)
+Plug 'janko-m/vim-test'
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'Floobits/floobits-neovim'
-Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
-Plug 'bling/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'gcmt/wildfire.vim'
 Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -39,10 +36,9 @@ Plug 'sjl/tslime.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
-Plug 'thinca/vim-ref'
+"Plug 'thinca/vim-ref'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
@@ -58,17 +54,24 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
+
+Plug 'junegunn/gv.vim'
+
+Plug 'slashmili/alchemist.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'w0ng/vim-hybrid'
+
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
+
+let vimple_init_vn = 0
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
 set background=dark
-colorscheme Tomorrow\-Night\-Bright
-" https://github.com/neovim/neovim/issues/2140
-" https://github.com/neovim/neovim/issues/793
-au VimEnter * :colorscheme Tomorrow\-Night\-Bright
+colorscheme hybrid
 
 syntax on
 syntax sync minlines=256
@@ -87,6 +90,7 @@ nnore< <<
 nnoremap j gj
 nnoremap k gk
 
+set number
 set relativenumber
 
 set backspace=indent,eol,start
@@ -98,9 +102,9 @@ set gdefault
 set splitright
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=8
+set shiftwidth=2
+set softtabstop=2
+set tabstop=4
 
 set textwidth=79
 set nowrap
@@ -129,7 +133,32 @@ set ttimeoutlen=10
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-set fillchars=vert:\ ,fold:\ ,diff:\ 
+set fillchars=stl:\ ,stlnc:۰,vert:\ ,fold:\ ,diff:\ 
+
+set statusline=
+set statusline +=\ \ ↳\ \ %<%t%* " full path
+set statusline +=%m%*     " modified flag
+set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
+set statusline +=%=%*     " separator
+set statusline +=%3v\ %*    " virtual column number
+set statusline +=%{fugitive#head()}
+set statusline +=\ %y%*     " file type
+
+"recalculate the trailing whitespace warning when idle, and after saving
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+
+"return '[\s]' if trailing white space is detected
+"return '' otherwise
+function! StatuslineTrailingSpaceWarning()
+  if !exists("b:statusline_trailing_space_warning")
+    if search('\s\+$', 'nw') != 0
+      let b:statusline_trailing_space_warning = '😡 '
+    else
+      let b:statusline_trailing_space_warning = ''
+    endif
+  endif
+  return b:statusline_trailing_space_warning
+endfunction
 
 set wildmenu
 set wildignorecase
@@ -224,15 +253,7 @@ set undolevels=5000
 silent! execute '!find '. $TMP .' -type f -mtime +60 -exec rm {} \;'
 silent! execute '!mkdir '. $TMP .'> /dev/null 2>&1'
 
-function! ShortCwd()
-    return substitute(getcwd(), $HOME, "~", "")
-endfunction
-
 set laststatus=2
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_y = '%{ShortCwd()}'
-let g:airline_theme='monotonia'
 
 set list
 set listchars=
@@ -349,13 +370,6 @@ augroup elixir
 
     let g:neomake_serialize = 1
     let g:neomake_serialize_abort_on_error = 1
-    "let g:neomake_elixir_enabled_makers = ['mix', 'test']
-    "let g:neomake_elixir_mix_maker = {
-                "\ 'args': ['compile'],
-                "\ 'errorformat':
-                "\ '** %s %f:%l: %m,' .
-                "\ '%f:%l: warning: %m'
-                "\ }
 
     autocmd BufWritePost *.ex Neomake
     autocmd BufWritePost *.exs Neomake
@@ -375,7 +389,9 @@ augroup elixir
     nnoremap <leader>tf :TestFile<CR>
     nnoremap <leader>tt :TestNearest<CR>
     nnoremap <leader>tl :TestLast<CR>
+    nnoremap <leader>tv :TestVisit<CR>
 
+    let g:SuperTabDefaultCompletionType = "context"
 augroup END
 
 augroup ruby
@@ -451,3 +467,12 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 let g:deoplete#enable_at_startup = 1
+
+nnoremap <C-P> @:
+
+let g:vim_markdown_folding_disabled = 1
+let g:SuperTabCrMapping = 1
+let g:sql_type_default = 'pgsql'
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 1
