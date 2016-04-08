@@ -160,7 +160,7 @@ set statusline +=%m%*     " modified flag
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=%=%*     " separator
 set statusline +=%3v\ %*  " virtual column number
-set statusline +=%{fugitive#head()}
+set statusline +=%#search#%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
 
 autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
@@ -451,3 +451,5 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 nnoremap <C-P> @:
+
+set diffopt+=foldcolumn:0
