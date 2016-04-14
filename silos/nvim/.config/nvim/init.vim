@@ -58,6 +58,9 @@ Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'tmux-plugins/vim-tmux'
+
+Plug 'jreybert/vimagit', {'branch': 'next'}
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 "let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
@@ -443,6 +446,10 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
+
+nnoremap <leader>grd :terminal git rebase -i develop<CR>
+nnoremap <leader>grm :terminal git rebase -i master<CR>
+nnoremap <leader>M :MagitOnly<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
