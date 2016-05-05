@@ -23,6 +23,7 @@ Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'jreybert/vimagit', {'branch': 'master'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -39,6 +40,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
@@ -57,9 +59,6 @@ Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'tmux-plugins/vim-tmux'
-
-Plug 'jreybert/vimagit', {'branch': 'next'}
 call plug#end()
 
 "let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
