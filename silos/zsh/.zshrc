@@ -255,3 +255,4 @@ fshow() {
   done
 }
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+export HOMEBREW_NO_ANALYTICS=1
