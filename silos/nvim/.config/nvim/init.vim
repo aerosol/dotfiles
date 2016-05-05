@@ -60,7 +60,6 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'tmux-plugins/vim-tmux'
 
 Plug 'jreybert/vimagit', {'branch': 'next'}
-Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 "let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
@@ -84,7 +83,7 @@ let g:signify_mapping_prev_hunk = '[c'
 let g:signify_skip_filetype = { 'vim': 1, 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:tslime_ensure_trailing_newlines = 1
 let g:vim_markdown_folding_disabled = 1
 
@@ -332,8 +331,6 @@ augroup git
     autocmd FileType gitrebase nnoremap <buffer> <leader>r ^cwreword<ESC>
     autocmd FileType gitrebase nnoremap <buffer> <leader>s ^cwsquash<ESC>
     autocmd FileType gitrebase nnoremap <buffer> <leader>f ^cwfixup<ESC>
-    autocmd FileType gitcommit nmap <buffer> j <C-n>
-    autocmd FileType gitcommit nmap <buffer> k <C-p>
 augroup END
 
 augroup clj
