@@ -34,9 +34,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'sjl/tslime.vim'
-Plug 'slashmili/alchemist.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
@@ -82,9 +80,10 @@ let g:signify_mapping_prev_hunk = '[c'
 let g:signify_skip_filetype = { 'vim': 1, 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
-let g:syntastic_auto_loc_list = 0
 let g:tslime_ensure_trailing_newlines = 1
 let g:vim_markdown_folding_disabled = 1
+let g:rooter_patterns = ['mix.exs', '.git/']
+
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -277,6 +276,8 @@ set lcs+=precedes:‹
 set lcs+=nbsp:·
 set lcs+=eol:¬
 
+set showbreak=↪\ 
+
 nnoremap <leader>o <C-o>
 nnoremap <leader>i <C-i>
 
@@ -303,7 +304,6 @@ augroup END
 
 augroup erlang
     autocmd!
-    let g:syntastic_erlang_checkers=['']
     function! s:erlang_settings()
         set sua+=.erl
         set sua+=.hrl
@@ -356,7 +356,6 @@ augroup END
 augroup elixir
     autocmd!
     let g:UltiSnipsJumpForwardTrigger='<tab>'
-    let g:syntastic_enable_elixir_checker = 0
     autocmd FileType elixir setlocal tags+=/Users/hq1/dev/elixir/tags
 
     autocmd FileType eelixir setlocal textwidth=0
@@ -384,13 +383,64 @@ augroup elixir
     nnoremap <leader>tt :TestNearest<CR>
     nnoremap <leader>tl :TestLast<CR>
     nnoremap <leader>tv :TestVisit<CR>
+    nnoremap K :call Exdoc()<CR>
+
+    " bits stolen from alchemist-vim and slightly modified 
+    function! Exdoc(...) 
+      let query = ''
+      if empty(a:000)
+          let query = Lookup_name_under_cursor()
+      else
+          let query = a:000[0]
+      endif
+      silent! execute 'botright new'
+      execute ':terminal elixir -e "require IEx.Helpers; IEx.Helpers.h '.query. '" | less'
+    endfunction
+
+    function! Lookup_name_under_cursor()
+        "looking for full function/module string
+        "ex. OptionParse.parse
+        "ex. GenServer
+        "ex. List.Chars.Atom
+        "ex. {:ok, Map.new}
+        "ex. Enum.map(&Guard.execute(&1))
+        "ex. Enum.all?(&(&1.valid?))
+        let module_func_match = '[A-Za-z0-9\._?!]\+'
+        let before_cursor = strpart(getline('.'), 0, col('.'))
+        let after_cursor = strpart(getline('.'), col('.'))
+        let elixir_erlang_module_func_match = ':\?' . module_func_match
+        let before_match = matchlist(before_cursor, elixir_erlang_module_func_match . '$')
+        let after_match = matchlist(after_cursor, '^' . module_func_match)
+        let query = ''
+        let before = ''
+        if len(before_match) > 0
+            let before = before_match[0]
+        endif
+        let after = ''
+        if len(after_match) > 0
+            let after = after_match[0]
+        endif
+        if before =~ '\.$'
+            "case before = List.Chars. after = to_char_list
+            let query = substitute(before, '[.]$', '', '')
+        elseif after =~ '^\.'
+            "case before = List.Chars  after = .to_char_list
+            let query = before
+        elseif after =~ '.*\.'
+            "case before = OptionParse after = r.parse
+            "case before = Mix.Shel    after = l.IO.cmd
+            let up_to_dot = matchlist(after, '\([A-Za-z0-9_]\+\)\.')
+            let query = before . up_to_dot[1]
+        else
+            let query = before . after
+        endif
+        return query
+    endfunction
 augroup END
 
 augroup ruby
     autocmd!
     autocmd BufWritePost *.rb Neomake
-    let g:syntastic_eruby_ruby_quiet_messages =
-        \ {'regex': 'possibly useless use of a variable in void context'}
 augroup END
 
 augroup elm
@@ -409,11 +459,6 @@ augroup elm
     let g:elm_detailed_complete = 0
 augroup END
 
-augroup autoroot
-    autocmd!
-    autocmd BufEnter *.py,*.erl,*.hrl,*.js,*.json,*.clj :Rooter
-augroup END
-
 augroup vagrant
     autocmd!
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -423,11 +468,6 @@ augroup html
     autocmd!
     autocmd FileType html setlocal textwidth=0
     autocmd FileType html setlocal wrapmargin=0
-augroup END
-
-augroup python
-    autocmd!
-    let g:syntastic_python_checkers=['pep8', 'pyflakes', 'python']
 augroup END
 
 set mouse=a
@@ -451,8 +491,19 @@ nnoremap <leader>M :MagitOnly<CR>
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)a
 
 nnoremap <C-P> @:
 
 set diffopt+=foldcolumn:0
+
+vnoremap @ :norm@
+
+augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+augroup END
+
+nmap n nzz
+nmap N Nzz
