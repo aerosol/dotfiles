@@ -394,7 +394,8 @@ augroup elixir
           let query = a:000[0]
       endif
       silent! execute 'botright new'
-      execute ':terminal elixir -e "require IEx.Helpers; IEx.Helpers.h '.query. '" | less'
+      call termopen('elixir -e "Application.put_env(:elixir, :ansi_enabled, true); require IEx.Helpers; IEx.Helpers.h '.query.'"')
+      execute 'nnoremap <buffer> q :bd!<cr>'
     endfunction
 
     function! Lookup_name_under_cursor()
@@ -480,6 +481,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <leader>pf :FZF<CR>
+nnoremap <leader>pb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
 
