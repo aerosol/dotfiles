@@ -394,7 +394,7 @@ augroup elixir
           let query = a:000[0]
       endif
       silent! execute 'botright new'
-      call termopen('elixir -e "Application.put_env(:elixir, :ansi_enabled, true); require IEx.Helpers; IEx.Helpers.h '.query.'"')
+      call termopen('elixir -e "require IEx.Helpers; IEx.Helpers.h '.query.'"')
       execute 'nnoremap <buffer> q :bd!<cr>'
     endfunction
 
