@@ -40,6 +40,7 @@ Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
@@ -364,19 +365,29 @@ augroup elixir
     let g:neomake_serialize = 1
     let g:neomake_serialize_abort_on_error = 1
 
+    let g:neomake_elixir_mix_maker = {
+          \ 'exe': 'mix',
+          \ 'args': ['compile', '%:p', '--warnings-as-errors'],
+          \ 'errorformat':
+          \ '** %s %f:%l: %m,' .
+          \ '%f:%l: warning: %m'
+          \ }
+
+    let g:neomake_elixir_lint_maker = {
+          \ 'exe': 'mix',
+          \ 'args': ['credo', 'list', '%:p', '--one-line', '-i', 'readability'],
+          \ 'errorformat': '[%t] %. %f:%l:%c %m'
+          \ }
+
+    let g:neomake_elixir_enabled_makers = ['mix', 'lint']
+    let g:neomake_open_list = 2
+    let g:neomake_list_height = 4
+    let g:neomake_serialize = 1
+    let g:neomake_serialize_abort_on_error = 1
+    let g:neomake_verbose = 2
+
     autocmd BufWritePost *.ex Neomake
     autocmd BufWritePost *.exs Neomake
-
-    let g:neomake_elixir_test_maker = {
-            \ 'exe': 'mix',
-            \ 'args': ['test'],
-            \ 'errorformat':
-                \ '%Z       %f:%l,' .
-                \ '%C     ** %m,' .
-                \ '%C     %[%^:]%#:%.%#,' .
-                \ '%C     %m,' .
-                \ '%E  %n)%.%#'
-            \ }
 
     let test#strategy = 'tslime'
     nnoremap <leader>tf :TestFile<CR>
@@ -509,3 +520,5 @@ augroup END
 
 nmap n nzz
 nmap N Nzz
+
+set showcmd
