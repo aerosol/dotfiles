@@ -209,8 +209,10 @@ export PATH=$PATH:/Users/hq1/bin
 export PATH=/usr/local/bin:$PATH
 
 load-local-conf() {
-     if [[ -f .env && -r .env ]]; then
+     if [[ -f .env && -f .autosource && -r .env ]]; then
        source .env
+       echo "\e[32mLocal environment sourced:"
+       echo "$(<.env | tr '=' ' ' | awk '{print $2}' | tr '\n' ' ')"
      fi
 }
 
@@ -220,7 +222,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_OPTS="-e --reverse"
+export FZF_DEFAULT_OPTS="-e --reverse --ansi"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 fo() {
@@ -256,3 +258,9 @@ fshow() {
 }
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 export HOMEBREW_NO_ANALYTICS=1
+
+# added by travis gem
+[ -f /Users/hq1/.travis/travis.sh ] && source /Users/hq1/.travis/travis.sh
+
+test -s "./.env" && load-local-conf
+add-zsh-hook chpwd load-local-conf
