@@ -9,8 +9,6 @@ if !isdirectory($TMP)
 endif
 
 call plug#begin($BUNDLES)
-Plug 'wlangstroth/vim-racket'
-Plug 'kien/rainbow_parentheses.vim', {'for': ['clojure', 'racket']}
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
@@ -21,9 +19,11 @@ Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
 Plug 'gcmt/wildfire.vim'
+Plug 'google/vim-searchindex'
 Plug 'guns/vim-sexp', {'for': ['clojure', 'racket']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'janko-m/vim-test'
+Plug 'jaxbot/semantic-highlight.vim'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'jreybert/vimagit', {'branch': 'master'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -31,6 +31,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kien/rainbow_parentheses.vim', {'for': ['clojure', 'racket']}
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -38,6 +39,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'stephpy/vim-yaml'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
 Plug 'tmux-plugins/vim-tmux'
@@ -57,11 +59,8 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
+Plug 'wlangstroth/vim-racket'
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'google/vim-searchindex'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'jaxbot/semantic-highlight.vim'
 call plug#end()
 
 set termguicolors
