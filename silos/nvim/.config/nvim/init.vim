@@ -9,6 +9,8 @@ if !isdirectory($TMP)
 endif
 
 call plug#begin($BUNDLES)
+Plug 'wlangstroth/vim-racket'
+Plug 'kien/rainbow_parentheses.vim', {'for': ['clojure', 'racket']}
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
@@ -19,7 +21,7 @@ Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
 Plug 'gcmt/wildfire.vim'
-Plug 'guns/vim-sexp', {'for': 'clojure'}
+Plug 'guns/vim-sexp', {'for': ['clojure', 'racket']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
@@ -40,17 +42,15 @@ Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat', {'for': 'clojure'}
-Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
+Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'racket']}
 Plug 'tpope/vim-surround'
 Plug 'venantius/vim-cljfmt', {'for': 'clojure'}
-Plug 'vim-erlang/erlang-motions.vim', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
@@ -58,8 +58,15 @@ Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'google/vim-searchindex'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'jaxbot/semantic-highlight.vim'
 call plug#end()
 
+set termguicolors
+
+let g:sexp_filetypes = 'clojure,scheme,lisp,racket'
 "let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
 "let g:ref_open = 'split'
 "let g:ref_use_vimproc = 1
@@ -68,6 +75,7 @@ let g:SuperTabCrMapping = 1
 let g:SuperTabDefaultCompletionType = "context"
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
 let g:erlang_tags_ignore = '_rel'
 let g:filebeagle_show_hidden=1
 let g:gist_clip_command = 'pbcopy'
@@ -85,7 +93,6 @@ let g:tslime_ensure_trailing_newlines = 1
 let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['mix.exs', '.git/']
 
-
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
@@ -93,10 +100,7 @@ set shell=/bin/zsh
 set background=dark
 colorscheme hybrid
 
-syntax on
 syntax sync minlines=256
-filetype plugin indent on
-filetype on
 
 inoremap jk <Esc>
 
@@ -153,7 +157,7 @@ set ttimeoutlen=10
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-set fillchars=stl:\ ,stlnc:۰,vert:\ ,fold:\ ,diff:\ 
+set fillchars=stl:\ ,stlnc:۰,vert:\ ,fold:\ ,diff:\
 
 set statusline=
 set statusline +=\ \ ↳\ \ %<%t%* " full path
@@ -234,12 +238,12 @@ nnoremap <leader>qa :qa<CR>
 nnoremap <leader>qA :qa!<CR>
 
 nnoremap ? :echo
-            \ "hi<" . synIDattr(synID(line("."),col("."),1),"name")
-            \ . '> trans<'
-            \ . synIDattr(synID(line("."),col("."),0),"name")
-            \ . "> lo<"
-            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
-            \ . ">"<CR>
+      \ "hi<" . synIDattr(synID(line("."),col("."),1),"name")
+      \ . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name")
+      \ . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
+      \ . ">"<CR>
 
 nnoremap <leader>? :echo expand("%")<CR>
 
@@ -247,12 +251,12 @@ nnoremap <leader>? :echo expand("%")<CR>
 nnoremap gcd :cd %:p:h<CR>:pwd<CR>
 
 function! Preserve(command)
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    execute a:command
-    let @/=_s
-    call cursor(l, c)
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  execute a:command
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
 nmap <leader>i :call Preserve("normal gg=G")<CR>
@@ -277,7 +281,7 @@ set lcs+=precedes:‹
 set lcs+=nbsp:·
 set lcs+=eol:¬
 
-set showbreak=↪\ 
+set showbreak=↪\
 
 nnoremap <leader>o <C-o>
 nnoremap <leader>i <C-i>
@@ -289,197 +293,31 @@ nnoremap <leader>gfx :Gcommit %<CR>ifixup!<space>
 nnoremap <leader>gd :Gdiff<CR>
 
 augroup defaults
-    autocmd!
-    autocmd VimResized * :wincmd =
+  autocmd!
+  autocmd VimResized * :wincmd =
 
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal g`\"" |
-                \ endif
-augroup END
-
-augroup make
-    autocmd!
-    autocmd FileType make set modelines=0
-augroup END
-
-augroup erlang
-    autocmd!
-    function! s:erlang_settings()
-        set sua+=.erl
-        set sua+=.hrl
-        let erlp=substitute(system("command -v erl"), "/bin/erl", "/lib/**/src/", "")
-        exe ":set path+="."src/,deps/**/src/,apps/**/src/,**/include/," . erlp
-    endfunction
-    autocmd FileType erlang call s:erlang_settings()
-    autocmd BufNewFile,BufRead *.app.src,rebar.config,sys.config setl filetype=erlang
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 augroup END
 
 augroup spell
-    autocmd!
-    autocmd FileType gitcommit setlocal spell
-    autocmd FileType markdown setlocal spell
+  autocmd!
+  autocmd FileType gitcommit setlocal spell
+  autocmd FileType markdown setlocal spell
 augroup END
 
 augroup git
-    autocmd!
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd BufReadPost fugitive://*
-                \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-                \   nnoremap <buffer> .. :edit %:h<CR> |
-                \ endif
-    autocmd FileType gitrebase nnoremap <buffer> <leader>r ^cwreword<ESC>
-    autocmd FileType gitrebase nnoremap <buffer> <leader>s ^cwsquash<ESC>
-    autocmd FileType gitrebase nnoremap <buffer> <leader>f ^cwfixup<ESC>
-augroup END
-
-augroup clj
-    autocmd!
-    autocmd FileType clojure setlocal shiftwidth=2
-    autocmd FileType clojure nnoremap <C-c><C-r> :Require<CR>
-    autocmd FileType clojure nnoremap <C-c><C-e> :Eval<CR>
-    autocmd FileType clojure nnoremap <C-c><C-p> :Eval!<CR>
-
-    let g:wildfire_objects = ["i'", "a'", 'i"', 'a"', "i)", "a)", "i]", "a]", "i}", "ip", "it"]
-
-    function! ClojureContext()
-        let curline = getline('.')
-        let cnum = col('.')
-        let synname = synIDattr(synID(line('.'), cnum - 1, 1), 'name')
-        if curline =~ '(\S\+\%' . cnum . 'c' && synname !~ '\(String\|Comment\)'
-            return "\<c-x>\<c-o>"
-        endif
-    endfunction
-
-    autocmd FileType clojure let b:SuperTabCompletionContexts = ['ClojureContext']
-augroup END
-
-augroup elixir
-    autocmd!
-    let g:UltiSnipsJumpForwardTrigger='<tab>'
-    autocmd FileType elixir setlocal tags+=/Users/hq1/dev/elixir/tags
-
-    autocmd FileType eelixir setlocal textwidth=0
-    autocmd FileType eelixir setlocal wrapmargin=0
-
-    let g:neomake_serialize = 1
-    let g:neomake_serialize_abort_on_error = 1
-
-    let g:neomake_elixir_mix_maker = {
-          \ 'exe': 'mix',
-          \ 'args': ['compile', '%:p', '--warnings-as-errors'],
-          \ 'errorformat':
-          \ '** %s %f:%l: %m,' .
-          \ '%f:%l: warning: %m'
-          \ }
-
-    let g:neomake_elixir_lint_maker = {
-          \ 'exe': 'mix',
-          \ 'args': ['credo', 'list', '%:p', '--one-line', '-i', 'readability'],
-          \ 'errorformat': '[%t] %. %f:%l:%c %m'
-          \ }
-
-    let g:neomake_elixir_enabled_makers = ['mix', 'lint']
-    let g:neomake_open_list = 2
-    let g:neomake_list_height = 4
-    let g:neomake_serialize = 1
-    let g:neomake_serialize_abort_on_error = 1
-    let g:neomake_verbose = 2
-
-    autocmd BufWritePost *.ex Neomake
-    autocmd BufWritePost *.exs Neomake
-
-    let test#strategy = 'tslime'
-    nnoremap <leader>tf :TestFile<CR>
-    nnoremap <leader>tt :TestNearest<CR>
-    nnoremap <leader>tl :TestLast<CR>
-    nnoremap <leader>tv :TestVisit<CR>
-    nnoremap K :call Exdoc()<CR>
-
-    " bits stolen from alchemist-vim and slightly modified 
-    function! Exdoc(...) 
-      let query = ''
-      if empty(a:000)
-          let query = Lookup_name_under_cursor()
-      else
-          let query = a:000[0]
-      endif
-      silent! execute 'botright new'
-      call termopen('elixir -e "require IEx.Helpers; IEx.Helpers.h '.query.'"')
-      execute 'nnoremap <buffer> q :bd!<cr>'
-    endfunction
-
-    function! Lookup_name_under_cursor()
-        "looking for full function/module string
-        "ex. OptionParse.parse
-        "ex. GenServer
-        "ex. List.Chars.Atom
-        "ex. {:ok, Map.new}
-        "ex. Enum.map(&Guard.execute(&1))
-        "ex. Enum.all?(&(&1.valid?))
-        let module_func_match = '[A-Za-z0-9\._?!]\+'
-        let before_cursor = strpart(getline('.'), 0, col('.'))
-        let after_cursor = strpart(getline('.'), col('.'))
-        let elixir_erlang_module_func_match = ':\?' . module_func_match
-        let before_match = matchlist(before_cursor, elixir_erlang_module_func_match . '$')
-        let after_match = matchlist(after_cursor, '^' . module_func_match)
-        let query = ''
-        let before = ''
-        if len(before_match) > 0
-            let before = before_match[0]
-        endif
-        let after = ''
-        if len(after_match) > 0
-            let after = after_match[0]
-        endif
-        if before =~ '\.$'
-            "case before = List.Chars. after = to_char_list
-            let query = substitute(before, '[.]$', '', '')
-        elseif after =~ '^\.'
-            "case before = List.Chars  after = .to_char_list
-            let query = before
-        elseif after =~ '.*\.'
-            "case before = OptionParse after = r.parse
-            "case before = Mix.Shel    after = l.IO.cmd
-            let up_to_dot = matchlist(after, '\([A-Za-z0-9_]\+\)\.')
-            let query = before . up_to_dot[1]
-        else
-            let query = before . after
-        endif
-        return query
-    endfunction
-augroup END
-
-augroup ruby
-    autocmd!
-    autocmd BufWritePost *.rb Neomake
-augroup END
-
-augroup elm
-    autocmd!
-    au FileType elm nmap <leader>em <Plug>(elm-make)
-    au FileType elm nmap <leader>eM <Plug>(elm-make-main)
-    au FileType elm nmap <leader>et <Plug>(elm-test)
-    au FileType elm nmap <leader>er <Plug>(elm-repl)
-    au FileType elm nmap <leader>ee <Plug>(elm-error-detail)
-    au FileType elm nmap <leader>ed <Plug>(elm-show-docs)
-    au FileType elm nmap <leader>ebd <Plug>(elm-browse-docs)
-    let g:elm_jump_to_error = 1
-    let g:elm_make_output_file = "elm.js"
-    let g:elm_make_show_warnings = 0
-    let g:elm_browser_command = ""
-    let g:elm_detailed_complete = 0
-augroup END
-
-augroup vagrant
-    autocmd!
-    au BufRead,BufNewFile Vagrantfile set filetype=ruby
-augroup END
-
-augroup html
-    autocmd!
-    autocmd FileType html setlocal textwidth=0
-    autocmd FileType html setlocal wrapmargin=0
+  autocmd!
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd BufReadPost fugitive://*
+        \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+        \   nnoremap <buffer> .. :edit %:h<CR> |
+        \ endif
+  autocmd FileType gitrebase nnoremap <buffer> <leader>r ^cwreword<ESC>
+  autocmd FileType gitrebase nnoremap <buffer> <leader>s ^cwsquash<ESC>
+  autocmd FileType gitrebase nnoremap <buffer> <leader>f ^cwfixup<ESC>
 augroup END
 
 set mouse=a
@@ -513,9 +351,9 @@ set diffopt+=foldcolumn:0
 vnoremap @ :norm@
 
 augroup cline
-    au!
-    au WinLeave,InsertEnter * set nocursorline
-    au WinEnter,InsertLeave * set cursorline
+  au!
+  au WinLeave,InsertEnter * set nocursorline
+  au WinEnter,InsertLeave * set cursorline
 augroup END
 
 nmap n nzz
