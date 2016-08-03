@@ -25,3 +25,5 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[core]
+	excludesfile = /Users/hq1/.gitignore_global
