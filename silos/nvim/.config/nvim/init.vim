@@ -61,6 +61,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'wellle/tmux-complete.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'fntlnz/atags.vim'
 call plug#end()
 
 set termguicolors
@@ -359,3 +360,7 @@ nmap n nzz
 nmap N Nzz
 
 set showcmd
+
+map <Leader>tg :call atags#generate()<cr>
+
+

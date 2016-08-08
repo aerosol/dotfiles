@@ -84,9 +84,11 @@
       "case before = OptionParse after = r.parse
       "case before = Mix.Shel    after = l.IO.cmd
       let up_to_dot = matchlist(after, '\([A-Za-z0-9_]\+\)\.')
-      let query = before . up_to_dot[1]
+      let query = before . up_to_dot[2]
     else
       let query = before . after
     endif
     return query
   endfunction
+
+nnoremap <buffer> <C-]> :Tags <c-r>=Lookup_name_under_cursor()<CR><CR>
