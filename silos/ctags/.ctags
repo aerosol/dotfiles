@@ -21,9 +21,7 @@
 --exclude=*images*
 --exclude=*.DS_Store*
 --exclude=*log*
---exclude=*.min.js
 --exclude=*.min.css
---exclude=*.pack.js
 --exclude=*.log
 --exclude=*bin*
 --exclude=*vender*
