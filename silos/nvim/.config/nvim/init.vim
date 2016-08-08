@@ -18,6 +18,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
+Plug 'fntlnz/atags.vim'
 Plug 'gcmt/wildfire.vim'
 Plug 'google/vim-searchindex'
 Plug 'guns/vim-sexp', {'for': ['clojure', 'racket']}
@@ -58,10 +59,10 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'w0ng/vim-hybrid'
+Plug 'wellle/targets.vim'
 Plug 'wellle/tmux-complete.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'fntlnz/atags.vim'
 call plug#end()
 
 set termguicolors
@@ -250,6 +251,8 @@ nnoremap <leader>? :echo expand("%")<CR>
 
 nnoremap gcd :cd %:p:h<CR>:pwd<CR>
 
+nnoremap <Leader>tg :call atags#generate()<cr>
+
 function! Preserve(command)
   let _s=@/
   let l = line(".")
@@ -360,7 +363,3 @@ nmap n nzz
 nmap N Nzz
 
 set showcmd
-
-map <Leader>tg :call atags#generate()<cr>
-
-
