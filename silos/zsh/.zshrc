@@ -23,8 +23,7 @@ export EDITOR=nvim
 ### }}}
 ### aliases {{{
 
-alias ls="ls -G"
-alias ll='ls -lh'
+alias ls="ls -Galh"
 alias o='open'
 alias get='wget -t0 -c'
 
