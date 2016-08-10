@@ -83,5 +83,10 @@ function! GetTagQuery()
   return Uncamel(Lookup_name_under_cursor())
 endfunction
 
-nnoremap <buffer> <C-]> :call fzf#vim#tags(GetTagQuery(),
-      \ {'down': '15%', 'options': '--reverse --ansi -e -1'})<CR>
+command! ElixirTag 
+      \ call fzf#vim#tags(
+      \ GetTagQuery(), 
+      \ {'down': '21%', 'options': '--reverse --ansi -e -1'}
+      \ )
+
+nnoremap <buffer> <C-]> :ElixirTag<CR>
