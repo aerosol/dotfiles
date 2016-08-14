@@ -36,6 +36,7 @@ Plug 'kien/rainbow_parentheses.vim', {'for': ['clojure', 'racket']}
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
+Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
@@ -52,6 +53,7 @@ Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat', {'for': 'clojure'}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'racket']}
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'venantius/vim-cljfmt', {'for': 'clojure'}
 Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
