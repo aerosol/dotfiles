@@ -261,5 +261,7 @@ export HOMEBREW_NO_ANALYTICS=1
 # added by travis gem
 [ -f /Users/hq1/.travis/travis.sh ] && source /Users/hq1/.travis/travis.sh
 
+export MANPAGER="col -b | nvim -c 'setf man ts=4 nomod nolist noma' -"
+
 test -s "./.env" && load-local-conf
 add-zsh-hook chpwd load-local-conf
