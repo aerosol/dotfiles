@@ -265,3 +265,4 @@ export MANPAGER="col -b | nvim -c 'setf man ts=4 nomod nolist noma' -"
 
 test -s "./.env" && load-local-conf
 add-zsh-hook chpwd load-local-conf
+. /Users/hq1/dev/erlang/17_5/activate
