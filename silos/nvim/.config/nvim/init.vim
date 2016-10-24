@@ -65,6 +65,8 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/tmux-complete.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'whatyouhide/vim-gotham'
+Plug 'kenvifire/vim-hdl'
 call plug#end()
 
 set termguicolors
@@ -79,7 +81,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
-let g:erlang_tags_ignore = '_rel'
+let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
@@ -101,7 +103,7 @@ nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
 set background=dark
-colorscheme hybrid
+colorscheme gotham256
 
 syntax sync minlines=256
 

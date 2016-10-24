@@ -5,4 +5,4 @@ function! s:erlang_settings()
   exe ":set path+="."src/,deps/**/src/,apps/**/src/,**/include/," . erlp
 endfunction
 autocmd FileType erlang call s:erlang_settings()
-autocmd BufNewFile,BufRead *.app.src,rebar.config,sys.config setl filetype=erlang
+"autocmd BufNewFile,BufRead *.app.src,rebar.config,sys.config setl filetype=erlang
