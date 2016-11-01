@@ -10,27 +10,20 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'Shougo/deoplete.nvim'
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
-Plug 'ervandew/supertab'
 Plug 'exu/pgsql.vim'
-Plug 'fntlnz/atags.vim'
 Plug 'gcmt/wildfire.vim'
 Plug 'google/vim-searchindex'
 Plug 'guns/vim-sexp', {'for': ['clojure', 'racket']}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'janko-m/vim-test'
-Plug 'jaxbot/semantic-highlight.vim'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'jreybert/vimagit', {'branch': 'master'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/rainbow_parentheses.vim', {'for': ['clojure', 'racket']}
 Plug 'mattn/gist-vim'
@@ -41,6 +34,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'stephpy/vim-yaml'
+Plug 'chase/vim-ansible-yaml'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
@@ -75,12 +69,10 @@ let g:sexp_filetypes = 'clojure,scheme,lisp,racket'
 "let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
 "let g:ref_open = 'split'
 "let g:ref_use_vimproc = 1
+let g:mucomplete#enable_auto_at_startup = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:SuperTabCrMapping = 1
 let g:SuperTabDefaultCompletionType = "context"
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
 let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
 let g:gist_clip_command = 'pbcopy'
