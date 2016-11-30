@@ -263,6 +263,10 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export MANPAGER="col -b | nvim -c 'setf man ts=4 nomod nolist noma' -"
 
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 test -s "./.env" && load-local-conf
 add-zsh-hook chpwd load-local-conf
 . /Users/hq1/dev/erlang/17_5/activate
