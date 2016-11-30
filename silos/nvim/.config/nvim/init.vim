@@ -61,7 +61,11 @@ Plug 'wlangstroth/vim-racket'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'kenvifire/vim-hdl'
+Plug 'skwp/greplace.vim'
 call plug#end()
+
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 set termguicolors
 
@@ -83,19 +87,20 @@ let g:goldenview__enable_default_mapping = 0
 let g:signify_line_highlight = 0
 let g:signify_mapping_next_hunk = ']c'
 let g:signify_mapping_prev_hunk = '[c'
-let g:signify_skip_filetype = { 'vim': 1, 'diff': 1 }
+let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
 let g:tslime_ensure_trailing_newlines = 1
 let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['mix.exs', '.git/']
+let g:rooter_use_lcd = 1
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
 set background=dark
-colorscheme gotham256
+colorscheme hybrid
 
 syntax sync minlines=256
 
@@ -328,10 +333,23 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-nnoremap <leader>pf :FZF<CR>
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+function! s:root_ag()
+  execute 'lcd ' s:find_git_root()
+  execute 'Ag'
+endfunction
+
+command! ProjectFiles execute 'FZF' s:find_git_root()
+command! ProjectAg call s:root_ag()
+
+nnoremap <leader>pf :ProjectFiles<CR>
 nnoremap <leader>pb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
+nnoremap <leader>ag :ProjectAg<CR>
 
 nnoremap <leader>grd :terminal git rebase -i develop<CR>
 nnoremap <leader>grm :terminal git rebase -i master<CR>
