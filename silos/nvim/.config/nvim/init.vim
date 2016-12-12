@@ -98,8 +98,8 @@ let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
-set background=dark
-colorscheme hybrid
+set background=light
+colorscheme dumbo
 
 syntax sync minlines=256
 
@@ -166,7 +166,7 @@ set statusline +=%m%*     " modified flag
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=%=%*     " separator
 set statusline +=%3v\ %*  " virtual column number
-set statusline +=%#search#%{fugitive#head()}%*
+set statusline +=%#diffchange#%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
 
 autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
@@ -174,7 +174,7 @@ autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 function! StatuslineTrailingSpaceWarning()
   if !exists("b:statusline_trailing_space_warning")
     if search('\s\+$', 'nw') != 0
-      let b:statusline_trailing_space_warning = '😡 '
+      let b:statusline_trailing_space_warning = '♦️   '
     else
       let b:statusline_trailing_space_warning = ''
     endif
