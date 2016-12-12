@@ -90,10 +90,9 @@ let g:signify_mapping_prev_hunk = '[c'
 let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
-let g:tslime_ensure_trailing_newlines = 1
+let g:tslime_ensure_trailing_newlines = 2
 let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['mix.exs', '.git/']
-let g:rooter_use_lcd = 1
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -338,7 +337,7 @@ function! s:find_git_root()
 endfunction
 
 function! s:root_ag()
-  execute 'lcd ' s:find_git_root()
+  execute 'cd ' s:find_git_root()
   execute 'Ag'
 endfunction
 
