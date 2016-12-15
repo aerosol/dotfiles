@@ -3,39 +3,39 @@ syntax reset
 let g:colors_name = "dumbo"
 if &background == "light"
     hi Boolean gui=NONE guifg=#707070 guibg=NONE
-    hi ColorColumn gui=NONE guifg=NONE guibg=#f5f5f5
-    hi Comment gui=NONE guifg=#6177ae guibg=NONE
+    hi ColorColumn gui=NONE guifg=NONE guibg=#f2efe3
+    hi Comment gui=NONE guifg=#aaa1a5 guibg=NONE
     hi Conceal gui=NONE guifg=#707070 guibg=NONE
     hi Conditional gui=NONE guifg=#4a4a4a guibg=NONE
     hi Constant gui=NONE guifg=#707070 guibg=NONE
-    hi Cursor gui=NONE guifg=#eefcef guibg=#ff1d1a
-    hi CursorColumn gui=NONE guifg=NONE guibg=#f5f5f5
-    hi CursorLine gui=NONE guifg=NONE guibg=#f5f5f5
+    hi Cursor gui=reverse guifg=#fa0015 guibg=#fcfbe9
+    hi CursorColumn gui=NONE guifg=NONE guibg=#f2efe3
+    hi CursorLine gui=NONE guifg=NONE guibg=#f2efe3
     hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
-    hi DiffAdd gui=NONE guifg=NONE guibg=#bafaa3
-    hi DiffChange gui=NONE guifg=NONE guibg=#c6f6e7
-    hi DiffDelete gui=NONE guifg=NONE guibg=#ffad99
-    hi DiffText gui=NONE guifg=NONE guibg=#a9e5de
+    hi DiffAdd gui=NONE guifg=#4a734c guibg=#62e47e
+    hi DiffChange gui=NONE guifg=NONE guibg=#a5d9df
+    hi DiffDelete gui=NONE guifg=NONE guibg=#fca8a6
+    hi DiffText gui=NONE guifg=NONE guibg=#b9f1f9
     hi Directory gui=NONE guifg=#4a4a4a guibg=NONE
-    hi Error gui=undercurl guisp=NONE guifg=#f40642 guibg=#ffffff
-    hi ErrorMsg gui=NONE guifg=NONE guibg=#fff0f0
+    hi Error gui=NONE guifg=NONE guibg=#fca8a6
+    hi ErrorMsg gui=NONE guifg=NONE guibg=#fc7c78
     hi FoldColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Folded gui=NONE guifg=#969696 guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
-    hi IncSearch gui=NONE guifg=NONE guibg=#c2e4aa
-    hi LineNr gui=NONE guifg=#d9d9d9 guibg=NONE
-    hi MatchParen gui=underline guifg=NONE guibg=#cffbbc
+    hi IncSearch gui=NONE guifg=NONE guibg=#9fd6a0
+    hi LineNr gui=NONE guifg=#c2c2c2 guibg=NONE
+    hi MatchParen gui=NONE guifg=NONE guibg=#a6f2a1
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
     hi MoreMsg gui=NONE guifg=NONE guibg=NONE
-    hi NonText gui=NONE guifg=#c2c2c2 guibg=NONE
-    hi Normal gui=NONE guifg=#242424 guibg=#ffffff
+    hi NonText gui=NONE guifg=#c2c2c2 guibg=#f5f1e5
+    hi Normal gui=NONE guifg=#000000 guibg=#efebe1
     hi Number gui=NONE guifg=#707070 guibg=NONE
     hi Pmenu gui=NONE guifg=NONE guibg=#f5f5f5
     hi PmenuSbar gui=NONE guifg=NONE guibg=#ededed
     hi PmenuSel gui=NONE guifg=NONE guibg=#e3e3e3
     hi PmenuThumb gui=NONE guifg=NONE guibg=#dbdbdb
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#c2e4aa
+    hi Search gui=NONE guifg=NONE guibg=#9fd6a0
     hi SignColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Special gui=NONE guifg=#707070 guibg=NONE
     hi SpecialKey gui=NONE guifg=#c2c2c2 guibg=NONE
@@ -44,21 +44,21 @@ if &background == "light"
     hi SpellLocal gui=undercurl guisp=NONE guifg=NONE guibg=#f0fff0
     hi SpellRare gui=undercurl guisp=NONE guifg=NONE guibg=#ededed
     hi Statement gui=NONE guifg=#4a4a4a guibg=NONE
-    hi StatusLine gui=NONE guifg=#262626 guibg=#ededed
-    hi StatusLineNC gui=NONE guifg=#969696 guibg=#ededed
+    hi StatusLine gui=NONE guifg=#fcfbe9 guibg=#b9b8ac
+    hi StatusLineNC gui=NONE guifg=#969696 guibg=#e6e6d5
     hi StorageClass gui=NONE guifg=#4a4a4a guibg=NONE
     hi String gui=NONE guifg=#707070 guibg=NONE
-    hi TabLine gui=NONE guifg=#969696 guibg=#ededed
-    hi TabLineFill gui=NONE guifg=NONE guibg=#ededed
-    hi TabLineSel gui=NONE guifg=#262626 guibg=#ededed
-    hi Title gui=undercurl guisp=NONE guifg=#707070 guibg=NONE
-    hi Todo gui=bold guifg=#733bf7 guibg=NONE
+    hi TabLine gui=NONE guifg=#b5b5b5 guibg=#fcfbe9
+    hi TabLineFill gui=NONE guifg=NONE guibg=#fcfbe9
+    hi TabLineSel gui=NONE guifg=#6e686b guibg=#efebe1
+    hi Title gui=NONE guifg=#707070 guibg=NONE
+    hi Todo gui=standout guifg=#fcfbe9 guibg=#867e82
     hi Type gui=NONE guifg=#4a4a4a guibg=NONE
     hi Underlined gui=NONE guifg=NONE guibg=NONE
     hi VertSplit gui=NONE guifg=#e3e3e3 guibg=NONE
-    hi Visual gui=NONE guifg=#2b2b2b guibg=#e5fff7
+    hi Visual gui=NONE guifg=NONE guibg=#fcfbe9
     hi VisualNOS gui=NONE guifg=NONE guibg=NONE
-    hi WarningMsg gui=NONE guifg=NONE guibg=#fff0f0
+    hi WarningMsg gui=NONE guifg=NONE guibg=#fca8a6
     hi WildMenu gui=NONE guifg=NONE guibg=#d1d1d1
     hi lCursor gui=NONE guifg=NONE guibg=NONE
     hi Identifier gui=NONE guifg=NONE guibg=NONE

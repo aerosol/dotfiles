@@ -62,6 +62,7 @@ Plug 'zhaocai/GoldenView.Vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'kenvifire/vim-hdl'
 Plug 'skwp/greplace.vim'
+Plug 'slashmili/alchemist.vim'
 call plug#end()
 
 set grepprg=ag
@@ -70,9 +71,6 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 set termguicolors
 
 let g:sexp_filetypes = 'clojure,scheme,lisp,racket'
-"let g:ref_cache_dir = expand($TMP . '/vim_ref_cache/')
-"let g:ref_open = 'split'
-"let g:ref_use_vimproc = 1
 let g:mucomplete#enable_auto_at_startup = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:SuperTabCrMapping = 1
