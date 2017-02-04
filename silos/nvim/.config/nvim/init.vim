@@ -9,6 +9,7 @@ if !isdirectory($TMP)
 endif
 
 call plug#begin($BUNDLES)
+Plug 'mrtazz/simplenote.vim'
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
@@ -25,7 +26,6 @@ Plug 'jreybert/vimagit', {'branch': 'master'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'kien/rainbow_parentheses.vim', {'for': ['clojure', 'racket']}
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -57,12 +57,12 @@ Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'w0ng/vim-hybrid'
 Plug 'wellle/targets.vim'
 Plug 'wellle/tmux-complete.vim'
-Plug 'wlangstroth/vim-racket'
+Plug 'wlangstroth/vim-racket', {'for': ['racket']}
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'whatyouhide/vim-gotham'
 Plug 'kenvifire/vim-hdl'
 Plug 'skwp/greplace.vim'
 Plug 'slashmili/alchemist.vim'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 set grepprg=ag
@@ -96,7 +96,7 @@ let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
-set background=light
+set background=dark
 colorscheme dumbo
 
 syntax sync minlines=256

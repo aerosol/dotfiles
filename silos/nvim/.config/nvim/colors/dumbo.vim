@@ -125,4 +125,6 @@ elseif &background == "dark"
     hi lCursor gui=NONE guifg=NONE guibg=NONE
     hi Identifier gui=NONE guifg=NONE guibg=NONE
     hi PreProc gui=NONE guifg=NONE guibg=NONE
+    "hi rainbowParensShell1 gui=NONE guifg=#3300f0 guibg=NONE
+    "hi rainbowParensShell2 gui=NONE guifg=#6622aa guibg=NONE
 endif
