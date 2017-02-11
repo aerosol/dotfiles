@@ -1,6 +1,24 @@
 hi clear
 syntax reset
 let g:colors_name = "dumbo"
+
+hi! link NeomakeErrorDefault Error
+hi! link NeomakeMessageSignDefault Error
+hi! link NeomakeMessageSign Error
+hi! link NeomakeWarningSignDefault Error
+hi! link NeomakeWarningSign Error
+hi! link NeomakeErrorSignDefault Error
+hi! link NeomakeErrorSign Error
+hi! link NeomakeInfoSignDefault Error
+hi! link NeomakeInfoSign Error
+hi! link NeomakeError Error
+hi! link NeomakeInfoDefault Error
+hi! link NeomakeInfo Error
+hi! link NeomakeMessageDefault Error
+hi! link NeomakeMessage Error
+hi! link NeomakeWarningDefault Error
+hi! link NeomakeWarning Error
+
 if &background == "light"
     hi Boolean gui=NONE guifg=#707070 guibg=NONE
     hi ColorColumn gui=NONE guifg=NONE guibg=#f2efe3
@@ -125,6 +143,4 @@ elseif &background == "dark"
     hi lCursor gui=NONE guifg=NONE guibg=NONE
     hi Identifier gui=NONE guifg=NONE guibg=NONE
     hi PreProc gui=NONE guifg=NONE guibg=NONE
-    "hi rainbowParensShell1 gui=NONE guifg=#3300f0 guibg=NONE
-    "hi rainbowParensShell2 gui=NONE guifg=#6622aa guibg=NONE
 endif
