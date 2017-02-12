@@ -15,13 +15,6 @@ let g:neomake_open_list = 0
 let g:neomake_list_height = 0
 let g:neomake_highlight_lines = 1
 
-function! NeomakeTests()
-  "let s:old_mix_env = $MIX_ENV
-  let $MIX_ENV = "test"
-  exe "Neomake"
-  "let $MIX_ENV = s:old_mix_env
-endfunction
-
 augroup ElixirMake
   autocmd BufWritePost *.ex Neomake
   autocmd BufWritePost *.exs Neomake
