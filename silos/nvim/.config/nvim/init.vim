@@ -9,7 +9,6 @@ if !isdirectory($TMP)
 endif
 
 call plug#begin($BUNDLES)
-Plug 'mrtazz/simplenote.vim'
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
@@ -90,7 +89,7 @@ let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
 let g:tslime_ensure_trailing_newlines = 2
 let g:vim_markdown_folding_disabled = 1
-let g:rooter_patterns = ['mix.exs', '.git/']
+let g:rooter_patterns = ['.git/']
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -334,19 +333,11 @@ function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-function! s:root_ag()
-  execute 'cd ' s:find_git_root()
-  execute 'Ag'
-endfunction
-
-command! ProjectFiles execute 'FZF' s:find_git_root()
-command! ProjectAg call s:root_ag()
-
-nnoremap <leader>pf :ProjectFiles<CR>
+nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>pb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
-nnoremap <leader>ag :ProjectAg<CR>
+nnoremap <leader>ag :Ag<CR>
 
 nnoremap <leader>grd :terminal git rebase -i develop<CR>
 nnoremap <leader>grm :terminal git rebase -i master<CR>

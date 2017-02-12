@@ -10,19 +10,37 @@ let g:neomake_elixir_mix_maker = {
       \ 'remove_invalid_entries': 1
       \ }
 
-let g:neomake_elixir_enabled_makers = ['mix']
+let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 let g:neomake_open_list = 0
-let g:neomake_list_height = 4
-let g:neomake_verbose = 3
+let g:neomake_list_height = 0
 let g:neomake_highlight_lines = 1
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
 
-autocmd BufWritePost *.ex Neomake
-autocmd BufWritePost *.exs Neomake
+function! NeomakeTests()
+  "let s:old_mix_env = $MIX_ENV
+  let $MIX_ENV = "test"
+  exe "Neomake"
+  "let $MIX_ENV = s:old_mix_env
+endfunction
+
+augroup ElixirMake
+  autocmd BufWritePost *.ex Neomake
+  autocmd BufWritePost *.exs Neomake
+augroup END
 
 let test#strategy = 'tslime'
 nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tv :TestVisit<CR>
+
+" xoxo Wojtek Mach
+function! ElixirUmbrellaTransform(cmd) abort
+  if match(a:cmd, 'apps/') != -1
+    return substitute(a:cmd, 'mix test apps/\([^/]*/\)', 'cd apps/\1 \&\& mix test ', '')
+  else
+    return a:cmd
+  end
+endfunction
+
+let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+let g:test#transformation = 'elixir_umbrella'

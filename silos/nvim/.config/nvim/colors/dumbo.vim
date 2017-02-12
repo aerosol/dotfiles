@@ -5,19 +5,19 @@ let g:colors_name = "dumbo"
 hi! link NeomakeErrorDefault Error
 hi! link NeomakeMessageSignDefault Error
 hi! link NeomakeMessageSign Error
-hi! link NeomakeWarningSignDefault Error
-hi! link NeomakeWarningSign Error
+hi! link NeomakeWarningSignDefault WarningMsg
+hi! link NeomakeWarningSign WarningMsg
 hi! link NeomakeErrorSignDefault Error
 hi! link NeomakeErrorSign Error
-hi! link NeomakeInfoSignDefault Error
-hi! link NeomakeInfoSign Error
+hi! link NeomakeInfoSignDefault Comment
+hi! link NeomakeInfoSign Comment
 hi! link NeomakeError Error
-hi! link NeomakeInfoDefault Error
-hi! link NeomakeInfo Error
+hi! link NeomakeInfoDefault Comment
+hi! link NeomakeInfo Comment
 hi! link NeomakeMessageDefault Error
 hi! link NeomakeMessage Error
-hi! link NeomakeWarningDefault Error
-hi! link NeomakeWarning Error
+hi! link NeomakeWarningDefault WarningMsg
+hi! link NeomakeWarning WarningMsg
 
 if &background == "light"
     hi Boolean gui=NONE guifg=#707070 guibg=NONE
@@ -97,8 +97,8 @@ elseif &background == "dark"
     hi DiffDelete gui=NONE guifg=NONE guibg=#260808
     hi DiffText gui=NONE guifg=NONE guibg=#333333
     hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
-    hi Error gui=NONE guifg=NONE guibg=#260808
-    hi ErrorMsg gui=NONE guifg=NONE guibg=#260808
+    hi Error gui=NONE guifg=#ff0000 guibg=NONE
+    hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
     hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
     hi Folded gui=NONE guifg=#707070 guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
