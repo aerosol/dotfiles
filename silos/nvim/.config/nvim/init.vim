@@ -10,8 +10,10 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
+Plug 'FooSoft/vim-argwrap'
 Plug 'airblade/vim-rooter'
 Plug 'benekastah/neomake'
+Plug 'chase/vim-ansible-yaml'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'exu/pgsql.vim'
@@ -25,15 +27,16 @@ Plug 'jreybert/vimagit', {'branch': 'master'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kenvifire/vim-hdl'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
-Plug 'morhetz/gruvbox'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
+Plug 'skwp/greplace.vim'
+Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
 Plug 'stephpy/vim-yaml'
-Plug 'chase/vim-ansible-yaml'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'thinca/vim-qfreplace'
@@ -53,15 +56,11 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'w0ng/vim-hybrid'
 Plug 'wellle/targets.vim'
 Plug 'wellle/tmux-complete.vim'
-Plug 'wlangstroth/vim-racket', {'for': ['racket']}
-Plug 'zhaocai/GoldenView.Vim'
-Plug 'kenvifire/vim-hdl'
-Plug 'skwp/greplace.vim'
-Plug 'slashmili/alchemist.vim'
+Plug 'wlangstroth/vim-racket', {'for': 'racket'}
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
 
 set grepprg=ag
@@ -70,10 +69,7 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 set termguicolors
 
 let g:sexp_filetypes = 'clojure,scheme,lisp,racket'
-let g:mucomplete#enable_auto_at_startup = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-let g:SuperTabCrMapping = 1
-let g:SuperTabDefaultCompletionType = "context"
 let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
 let g:gist_clip_command = 'pbcopy'
@@ -159,10 +155,10 @@ set fillchars=stl:\ ,stlnc:۰,vert:\ ,fold:\ ,diff:\
 
 set statusline=
 set statusline +=\ \ ↳\ \ %<%t%* " full path
-set statusline +=%m%*     " modified flag
-set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
+set statusline +=%#error#%m%*     " modified flag
+set statusline +=\ %#error#%{StatuslineTrailingSpaceWarning()}%*
+set statusline +=\ %#error#%{LocListCountSevere()}%*
 set statusline +=%=%*     " separator
-set statusline +=%3v\ %*  " virtual column number
 set statusline +=%#diffchange#%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
 
@@ -171,12 +167,26 @@ autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 function! StatuslineTrailingSpaceWarning()
   if !exists("b:statusline_trailing_space_warning")
     if search('\s\+$', 'nw') != 0
-      let b:statusline_trailing_space_warning = '♦️   '
+      let b:statusline_trailing_space_warning = 'TWS'
     else
       let b:statusline_trailing_space_warning = ''
     endif
   endif
   return b:statusline_trailing_space_warning
+endfunction
+
+function! LocListCountSevere()
+  let ll_count = 0
+  for entry in getloclist(0)
+    if entry.type == "E" || entry.type == "W" || entry.type == ""
+      let ll_count = ll_count + 1
+    endif
+  endfor
+  if ll_count > 0
+    return "[LL: " . ll_count . "]"
+  else
+    return ""
+  endif
 endfunction
 
 set wildmenu
