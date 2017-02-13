@@ -1,4 +1,5 @@
 log
+*.log
 logs
 deps
 tags
@@ -7,3 +8,7 @@ docs
 doc
 ebin
 rel
+*.csv
+*.json
+*.adoc
+erl_crash.dump
