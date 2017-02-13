@@ -85,7 +85,7 @@ let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
 let g:tslime_ensure_trailing_newlines = 2
 let g:vim_markdown_folding_disabled = 1
-let g:rooter_patterns = ['.git/']
+let g:rooter_patterns = ['mix.exs', '.git/']
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -175,7 +175,7 @@ function! StatuslineTrailingSpaceWarning()
   return b:statusline_trailing_space_warning
 endfunction
 
-function! LocListCountSevere()
+function! LocListCountSevere()   
   let ll_count = 0
   for entry in getloclist(0)
     if entry.type == "E" || entry.type == "W" || entry.type == ""
@@ -228,6 +228,8 @@ nnoremap <silent> <C-l> <C-w>l
 nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>bD :call delete(expand('%'))<CR>:bdelete!<CR>
 
+nnoremap <leader>ll :lopen<CR>
+
 nnoremap <silent> <C-w>\| <C-W>v
 nnoremap <silent> <C-w>- <C-W>s
 
@@ -253,9 +255,7 @@ nnoremap ? :echo
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
       \ . ">"<CR>
 
-nnoremap <leader>? :echo expand("%")<CR>
-
-
+nnoremap <leader>? :echo expand("%:p")<CR>
 nnoremap gcd :cd %:p:h<CR>:pwd<CR>
 
 nnoremap <Leader>tg :call atags#generate()<cr>
@@ -334,20 +334,39 @@ set mouse=a
 
 au FocusLost * :silent! wall
 
+let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
+let g:fzf_buffers_jump = 1
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('right:50%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+" need this as an addition to vim-rooter to make sure :Ag or :Files
+" are started in git root, not an buffer root (e.g. elixir umbrella apps)
+function! s:git_root()
+  let root = systemlist('git rev-parse --show-toplevel')[0]
+  if v:shell_error
+    echo 'Not in git repo'
+  else
+    execute 'lcd' root
+    echo 'Changed directory to: '.root
+  endif
 endfunction
+command! GitRoot call s:git_root()
 
-nnoremap <leader>pf :FZF<CR>
+nnoremap <leader>pf :GitRoot<CR>:Files<CR>
 nnoremap <leader>pb :Buffers<CR>
-nnoremap <leader>pt :Tags<CR>
+nnoremap <leader>pt :GitRoot<CR>:Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
-nnoremap <leader>ag :Ag<CR>
+nnoremap <leader>ag :GitRoot<CR>:Ag!<CR>
+nnoremap <leader>ch :History:<CR>
 
 nnoremap <leader>grd :terminal git rebase -i develop<CR>
 nnoremap <leader>grm :terminal git rebase -i master<CR>
