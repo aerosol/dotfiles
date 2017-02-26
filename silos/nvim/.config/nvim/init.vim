@@ -108,6 +108,9 @@ nnore< <<
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>W
+
 set number
 set relativenumber
 
@@ -175,7 +178,7 @@ function! StatuslineTrailingSpaceWarning()
   return b:statusline_trailing_space_warning
 endfunction
 
-function! LocListCountSevere()   
+function! LocListCountSevere()
   let ll_count = 0
   for entry in getloclist(0)
     if entry.type == "E" || entry.type == "W" || entry.type == ""
@@ -256,7 +259,7 @@ nnoremap ? :echo
       \ . ">"<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
-nnoremap gcd :cd %:p:h<CR>:pwd<CR>
+nnoremap gcd :lcd %:p:h<CR>:pwd<CR>
 
 nnoremap <Leader>tg :call atags#generate()<cr>
 
@@ -337,35 +340,33 @@ au FocusLost * :silent! wall
 let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
 let g:fzf_buffers_jump = 1
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('right:50%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" need this as an addition to vim-rooter to make sure :Ag or :Files
-" are started in git root, not an buffer root (e.g. elixir umbrella apps)
-function! s:git_root()
-  let root = systemlist('git rev-parse --show-toplevel')[0]
-  if v:shell_error
-    echo 'Not in git repo'
-  else
-    execute 'lcd' root
-    echo 'Changed directory to: '.root
-  endif
-endfunction
-command! GitRoot call s:git_root()
+command! ProjectFiles exe "Files " . systemlist('git rev-parse --show-toplevel')[0]
 
-nnoremap <leader>pf :GitRoot<CR>:Files<CR>
+function! s:chdir_git_root()
+  let git_root = systemlist('git rev-parse --show-toplevel')[0]
+  exe "cd" git_root
+  exe "lcd" git_root
+  echomsg "(GitRoot) " . git_root
+endfunction
+command! GitRoot call s:chdir_git_root()
+
+nnoremap <leader>pf :ProjectFiles<CR>
 nnoremap <leader>pb :Buffers<CR>
-nnoremap <leader>pt :GitRoot<CR>:Tags<CR>
+nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
-nnoremap <leader>ag :GitRoot<CR>:Ag!<CR>
+nnoremap <leader>ag :GitRoot<CR>:Rg!<CR>
 nnoremap <leader>ch :History:<CR>
 
 nnoremap <leader>grd :terminal git rebase -i develop<CR>
@@ -394,3 +395,4 @@ nmap n nzz
 nmap N Nzz
 
 set showcmd
+

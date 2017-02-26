@@ -10,7 +10,7 @@ let g:neomake_elixir_mix_maker = {
       \ 'remove_invalid_entries': 1
       \ }
 
-let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+let g:neomake_elixir_enabled_makers = ['mix']
 let g:neomake_open_list = 0
 let g:neomake_list_height = 0
 let g:neomake_highlight_lines = 1
