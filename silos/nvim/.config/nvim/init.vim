@@ -108,9 +108,6 @@ nnore< <<
 nnoremap j gj
 nnoremap k gk
 
-nnoremap <tab>   <c-w>w
-nnoremap <S-tab> <c-w>W
-
 set number
 set relativenumber
 
@@ -154,7 +151,7 @@ set ttimeoutlen=10
 set completeopt=longest,menuone
 set ofu=syntaxcomplete#Complete
 
-set fillchars=stl:\ ,stlnc:۰,vert:\ ,fold:\ ,diff:\
+set fillchars=stl:\ ,stlnc:۰,vert:\|,fold:\ ,diff:\
 
 set statusline=
 set statusline +=\ \ ↳\ \ %<%t%* " full path
@@ -342,7 +339,7 @@ let g:fzf_buffers_jump = 1
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=auto '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -395,4 +392,3 @@ nmap n nzz
 nmap N Nzz
 
 set showcmd
-
