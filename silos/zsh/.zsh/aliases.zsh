@@ -2,6 +2,7 @@ alias ls="ls -Galh"
 alias o='open'
 alias get='wget -t0 -c'
 alias vim='nvim'
+alias mps='iex -S mix phoenix.server'
 
 alias rest-get="curl -i -H \"Accept: application/json\""
 alias rest-post="curl -i -H \"Accept: application/json\" \
