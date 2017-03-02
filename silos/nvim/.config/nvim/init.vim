@@ -392,3 +392,5 @@ nmap n nzz
 nmap N Nzz
 
 set showcmd
+
+set icm=split
