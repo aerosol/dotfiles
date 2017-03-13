@@ -1,7 +1,7 @@
 load-local-conf() {
-  if [[ -f .env && -f .autosource && -r .env ]]; then
-    source .env
+  if [[ -f .envrc && -f .autosource && -r .envrc ]]; then
+    source .envrc
     echo "\e[32mLocal environment sourced:"
-    echo "$(<.env | tr '=' ' ' | awk '{print $2}' | tr '\n' ' ')"
+    echo "$(<.envrc | grep "^export" | tr '=' ' ' | awk '{print $2}' | tr '\n' ' ')"
   fi
 }

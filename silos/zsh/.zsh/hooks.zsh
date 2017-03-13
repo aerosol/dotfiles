@@ -1,2 +1,2 @@
-test -s "./.env" && load-local-conf
+test -s "./.envrc" && load-local-conf
 add-zsh-hook chpwd load-local-conf
