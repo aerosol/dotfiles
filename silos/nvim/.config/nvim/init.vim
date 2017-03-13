@@ -85,7 +85,7 @@ let g:signify_update_on_focusgained = 1
 let g:sql_type_default = 'pgsql'
 let g:tslime_ensure_trailing_newlines = 2
 let g:vim_markdown_folding_disabled = 1
-let g:rooter_patterns = ['mix.exs', '.git/']
+let g:rooter_patterns = ['.git/']
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -359,11 +359,11 @@ function! s:chdir_git_root()
 endfunction
 command! GitRoot call s:chdir_git_root()
 
-nnoremap <leader>pf :ProjectFiles<CR>
+nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>pb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
-nnoremap <leader>ag :GitRoot<CR>:Rg!<CR>
+nnoremap <leader>ag :Rg!<CR>
 nnoremap <leader>ch :History:<CR>
 
 nnoremap <leader>grd :terminal git rebase -i develop<CR>
