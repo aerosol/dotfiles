@@ -184,22 +184,6 @@ function! LocListCountSevere()
   endif
 endfunction
 
-"set wildmenu
-"set wildignorecase
-"set wildmode=list:full
-"set wildignore+=.hg,.git,.svn,rel
-"set wildignore+=*.aux,*.out,*.toc
-"set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-"set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
-"set wildignore+=*.spl
-"set wildignore+=*.DS_Store
-"set wildignore+=*.luac
-"set wildignore+=migrations
-"set wildignore+=*.pyc
-"set wildignore+=*.beam
-"set wildignore+=_build
-"set wildignore+=deps
-
 set colorcolumn=80
 
 nnoremap H gT
