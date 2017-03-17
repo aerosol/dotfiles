@@ -2,8 +2,6 @@ let $VIM        = expand('~/.config/nvim/')
 let $TMP        = expand($VIM . 'tmp/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
-let g:author = 'Adam Rutkowski <hq@mtod.org>'
-
 if !isdirectory($TMP)
   call mkdir($TMP, "p")
 endif
@@ -62,9 +60,6 @@ Plug 'wlangstroth/vim-racket', {'for': 'racket'}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
-
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
 
 set termguicolors
 
@@ -189,21 +184,21 @@ function! LocListCountSevere()
   endif
 endfunction
 
-set wildmenu
-set wildignorecase
-set wildmode=list:full
-set wildignore+=.hg,.git,.svn,rel
-set wildignore+=*.aux,*.out,*.toc
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
-set wildignore+=*.spl
-set wildignore+=*.DS_Store
-set wildignore+=*.luac
-set wildignore+=migrations
-set wildignore+=*.pyc
-set wildignore+=*.beam
-set wildignore+=_build
-set wildignore+=deps
+"set wildmenu
+"set wildignorecase
+"set wildmode=list:full
+"set wildignore+=.hg,.git,.svn,rel
+"set wildignore+=*.aux,*.out,*.toc
+"set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+"set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
+"set wildignore+=*.spl
+"set wildignore+=*.DS_Store
+"set wildignore+=*.luac
+"set wildignore+=migrations
+"set wildignore+=*.pyc
+"set wildignore+=*.beam
+"set wildignore+=_build
+"set wildignore+=deps
 
 set colorcolumn=80
 
@@ -244,9 +239,6 @@ nnoremap <silent> // :nohlsearch<CR>
 nnoremap <leader>fed :e $MYVIMRC<CR>
 nnoremap <leader>feR :source %<CR>
 
-nnoremap <leader>qa :qa<CR>
-nnoremap <leader>qA :qa!<CR>
-
 nnoremap ? :echo
       \ "hi<" . synIDattr(synID(line("."),col("."),1),"name")
       \ . '> trans<'
@@ -257,8 +249,6 @@ nnoremap ? :echo
 
 nnoremap <leader>? :echo expand("%:p")<CR>
 nnoremap gcd :lcd %:p:h<CR>:pwd<CR>
-
-nnoremap <Leader>tg :call atags#generate()<cr>
 
 function! Preserve(command)
   let _s=@/
@@ -320,11 +310,6 @@ augroup END
 
 augroup git
   autocmd!
-  autocmd BufReadPost fugitive://* set bufhidden=delete
-  autocmd BufReadPost fugitive://*
-        \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-        \   nnoremap <buffer> .. :edit %:h<CR> |
-        \ endif
   autocmd FileType gitrebase nnoremap <buffer> <leader>r ^cwreword<ESC>
   autocmd FileType gitrebase nnoremap <buffer> <leader>s ^cwsquash<ESC>
   autocmd FileType gitrebase nnoremap <buffer> <leader>f ^cwfixup<ESC>
@@ -349,16 +334,6 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-command! ProjectFiles exe "Files " . systemlist('git rev-parse --show-toplevel')[0]
-
-function! s:chdir_git_root()
-  let git_root = systemlist('git rev-parse --show-toplevel')[0]
-  exe "cd" git_root
-  exe "lcd" git_root
-  echomsg "(GitRoot) " . git_root
-endfunction
-command! GitRoot call s:chdir_git_root()
-
 nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>pb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
@@ -370,10 +345,7 @@ nnoremap <leader>grd :terminal git rebase -i develop<CR>
 nnoremap <leader>grm :terminal git rebase -i master<CR>
 nnoremap <leader>M :MagitOnly<CR>
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)a
 
 nnoremap <C-P> @:

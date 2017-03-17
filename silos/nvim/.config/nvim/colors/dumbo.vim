@@ -93,9 +93,9 @@ elseif &background == "dark"
     hi CursorLine gui=NONE guifg=NONE guibg=#1a1a1a
     hi CursorLineNr gui=NONE guifg=#707070 guibg=NONE
     hi DiffAdd gui=NONE guifg=NONE guibg=#082608
-    hi DiffChange gui=NONE guifg=NONE guibg=#1a1a1a
+    hi DiffChange gui=NONE guifg=NONE guibg=#2e3830
     hi DiffDelete gui=NONE guifg=NONE guibg=#260808
-    hi DiffText gui=NONE guifg=NONE guibg=#333333
+    hi DiffText gui=NONE guifg=#ffffff guibg=#08661a
     hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
     hi Error gui=NONE guifg=#ff0000 guibg=NONE
     hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
