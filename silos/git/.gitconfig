@@ -20,10 +20,12 @@
     branch-name = rev-parse --abbrev-ref HEAD
     pub = !git push -u origin $(git branch-name)
     standup = !git log --since yesterday --author $(git config user.email) --pretty=short
-    review-pr = "!sh -c 'git fetch origin pull/$0/head:pr/$0 && git checkout pr/$0 && git lg origin/develop..HEAD && git diff --oneline --stat origin/develop..HEAD'"
+    review-pr = "!sh -c 'git fetch origin pull/$0/head:pr/$0 && git checkout pr/$0 && git lg origin/develop..HEAD && git files'"
+    files = diff --oneline --stat origin/develop..HEAD
     br = "!git checkout `git branch | fzf`"
     brv = branch -avv
     dd = diff origin/develop..HEAD
+    co = checkout
 
 [github]
     user = aerosol
