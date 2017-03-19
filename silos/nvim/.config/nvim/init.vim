@@ -32,12 +32,11 @@ Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
-Plug 'skwp/greplace.vim'
 Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
 Plug 'stephpy/vim-yaml'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
-Plug 'thinca/vim-qfreplace'
+Plug 'Olical/vim-enmasse'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
@@ -349,4 +348,4 @@ nmap N Nzz
 
 set showcmd
 
-set icm=split
+set icm=nosplit
