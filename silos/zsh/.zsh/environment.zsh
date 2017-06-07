@@ -14,4 +14,4 @@ export PATH=/Users/hq1/bin:/usr/local/bin:$PATH
 export ZSH_CACHE="$HOME/.zsh_cache"
 mkdir -p $ZSH_CACHE
 
-
+source $HOME/.asdf/asdf.sh

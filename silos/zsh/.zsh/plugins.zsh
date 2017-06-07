@@ -5,4 +5,4 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-. /Users/hq1/dev/erlang/18_3/activate
+#. /Users/hq1/dev/erlang/18_3/activate
