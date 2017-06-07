@@ -87,6 +87,21 @@ colorscheme dumbo
 syntax sync minlines=256
 
 inoremap jk <Esc>
+inoremap 55 <Esc>a%
+inoremap [[ <Esc>a{
+inoremap ]] <Esc>a}
+inoremap 99 <Esc>a(
+inoremap 00 <Esc>a)
+inoremap 1k <Esc>a1000
+inoremap 2k <Esc>a2000
+inoremap 3k <Esc>a3000
+inoremap 4k <Esc>a4000
+inoremap 5k <Esc>a5000
+inoremap 6k <Esc>a6000
+inoremap 7k <Esc>a7000
+inoremap 8k <Esc>a8000
+inoremap 9k <Esc>a9000
+inoremap 10k <Esc>a10000
 
 set clipboard=unnamed
 
