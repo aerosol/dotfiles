@@ -27,8 +27,8 @@ if &background == "light"
     hi Conditional gui=NONE guifg=#4a4a4a guibg=NONE
     hi Constant gui=NONE guifg=#707070 guibg=NONE
     hi Cursor gui=reverse guifg=#fa0015 guibg=#fcfbe9
-    hi CursorColumn gui=NONE guifg=NONE guibg=#f2efe3
-    hi CursorLine gui=NONE guifg=NONE guibg=#f2efe3
+    hi CursorColumn gui=NONE guifg=NONE guibg=#fcfaf4
+    hi CursorLine gui=NONE guifg=NONE guibg=#fcfaf4
     hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
     hi DiffAdd gui=NONE guifg=#4a734c guibg=#62e47e
     hi DiffChange gui=NONE guifg=NONE guibg=#a5d9df
@@ -45,15 +45,15 @@ if &background == "light"
     hi MatchParen gui=NONE guifg=NONE guibg=#a6f2a1
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
     hi MoreMsg gui=NONE guifg=NONE guibg=NONE
-    hi NonText gui=NONE guifg=#c2c2c2 guibg=#f5f1e5
-    hi Normal gui=NONE guifg=#000000 guibg=#efebe1
+    hi NonText gui=NONE guifg=#c2c2c2 guibg=#fffaf5
+    hi Normal gui=NONE guifg=#000000 guibg=#ffffff
     hi Number gui=NONE guifg=#707070 guibg=NONE
     hi Pmenu gui=NONE guifg=NONE guibg=#f5f5f5
     hi PmenuSbar gui=NONE guifg=NONE guibg=#ededed
     hi PmenuSel gui=NONE guifg=NONE guibg=#e3e3e3
     hi PmenuThumb gui=NONE guifg=NONE guibg=#dbdbdb
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#9fd6a0
+    hi Search gui=NONE guifg=NONE guibg=#ededed
     hi SignColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Special gui=NONE guifg=#707070 guibg=NONE
     hi SpecialKey gui=NONE guifg=#c2c2c2 guibg=NONE

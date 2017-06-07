@@ -8,24 +8,19 @@ endif
 
 call plug#begin($BUNDLES)
 Plug 'ElmCast/elm-vim', {'for': 'elm'}
-Plug 'FooSoft/vim-argwrap'
 Plug 'airblade/vim-rooter'
+Plug 'thinca/vim-qfreplace'
 Plug 'benekastah/neomake'
-Plug 'chase/vim-ansible-yaml'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
-Plug 'exu/pgsql.vim'
 Plug 'gcmt/wildfire.vim'
-Plug 'google/vim-searchindex'
 Plug 'guns/vim-sexp', {'for': ['clojure', 'racket']}
-Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+"Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
-Plug 'jreybert/vimagit', {'branch': 'master'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'kenvifire/vim-hdl'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
@@ -33,10 +28,7 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
-Plug 'stephpy/vim-yaml'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
-Plug 'Olical/vim-enmasse'
+"Plug 'thinca/vim-ft-clojure', {'for': 'clojure'}
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-classpath', {'for': 'clojure'}
@@ -44,6 +36,7 @@ Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace', {'for': 'clojure'}
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat', {'for': 'clojure'}
 Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': ['clojure', 'racket']}
 Plug 'tpope/vim-sleuth'
@@ -53,8 +46,6 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'wellle/targets.vim'
-Plug 'wellle/tmux-complete.vim'
 Plug 'wlangstroth/vim-racket', {'for': 'racket'}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
@@ -85,7 +76,12 @@ let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 set shell=/bin/zsh
 
-set background=dark
+if $ITERM_PROFILE == 'light'
+  set background=light
+else
+  set background=dark
+endif
+
 colorscheme dumbo
 
 syntax sync minlines=256
