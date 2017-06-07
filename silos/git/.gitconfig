@@ -23,9 +23,13 @@
     review-pr = "!sh -c 'git fetch origin pull/$0/head:pr/$0 && git checkout pr/$0 && git lg origin/develop..HEAD && git files'"
     files = diff --oneline --stat origin/develop..HEAD
     br = "!git checkout `git branch | fzf`"
+    brr = "!git checkout `git recent | fzf`"
     brv = branch -avv
     dd = diff origin/develop..HEAD
     co = checkout
+    recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+    clogp = -c core.pager='less -p^commit.*$' log -p
+
 
 [github]
     user = aerosol
@@ -37,5 +41,13 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[diff]
+    indentHeuristic = on
 [core]
 	excludesfile = /Users/hq1/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/hq1/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
