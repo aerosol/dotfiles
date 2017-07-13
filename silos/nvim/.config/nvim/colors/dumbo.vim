@@ -40,7 +40,7 @@ if &background == "light"
     hi FoldColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Folded gui=NONE guifg=#969696 guibg=NONE
     hi Ignore gui=NONE guifg=NONE guibg=NONE
-    hi IncSearch gui=NONE guifg=NONE guibg=#9fd6a0
+    hi IncSearch gui=NONE guifg=#ffffff guibg=#f91894
     hi LineNr gui=NONE guifg=#c2c2c2 guibg=NONE
     hi MatchParen gui=NONE guifg=NONE guibg=#a6f2a1
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
@@ -53,7 +53,7 @@ if &background == "light"
     hi PmenuSel gui=NONE guifg=NONE guibg=#e3e3e3
     hi PmenuThumb gui=NONE guifg=NONE guibg=#dbdbdb
     hi Question gui=NONE guifg=NONE guibg=NONE
-    hi Search gui=NONE guifg=NONE guibg=#ededed
+    hi Search gui=NONE guifg=#ffffff guibg=#f91894
     hi SignColumn gui=NONE guifg=#c2c2c2 guibg=NONE
     hi Special gui=NONE guifg=#707070 guibg=NONE
     hi SpecialKey gui=NONE guifg=#c2c2c2 guibg=NONE
