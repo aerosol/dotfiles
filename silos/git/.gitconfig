@@ -27,7 +27,7 @@
     brv = branch -avv
     dd = diff origin/develop..HEAD
     co = checkout
-    recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+    recent = for-each-ref --count=16 --sort=-committerdate refs/heads/ --format="%(refname:short)"
     clogp = -c core.pager='less -p^commit.*$' log -p
 
 
