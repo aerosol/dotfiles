@@ -136,7 +136,7 @@ elseif &background == "dark"
     hi Type gui=NONE guifg=#8f8f8f guibg=NONE
     hi Underlined gui=NONE guifg=NONE guibg=NONE
     hi VertSplit gui=NONE guifg=#333333 guibg=NONE
-    hi Visual gui=NONE guifg=NONE guibg=#333333
+    hi Visual gui=NONE guifg=NONE guibg=#541492
     hi VisualNOS gui=NONE guifg=NONE guibg=NONE
     hi WarningMsg gui=NONE guifg=NONE guibg=#260808
     hi WildMenu gui=NONE guifg=NONE guibg=#525252
