@@ -53,7 +53,6 @@ let g:rooter_patterns = ['.git/']
 let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
 let g:fzf_buffers_jump = 1
 
-
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
@@ -131,33 +130,32 @@ nnoremap <leader>ch :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 
+set cmdheight=3
+set colorcolumn=80
+set cpoptions+=$
+set expandtab
+set hidden
+set icm=nosplit
+set matchtime=5
+set nosol
+set noswapfile
+set notimeout
+set nowrap
 set number
 set relativenumber
-
-set splitright
-
-set expandtab
+set scrolloff=3
 set shiftwidth=2
+set showbreak=↪\
+set showmatch
+set sidescrolloff=3
 set softtabstop=2
+set splitright
 set tabstop=4
 set textwidth=79
-set nowrap
-
-set cmdheight=3
-set hidden
-set nosol
-
-set scrolloff=3
-set sidescrolloff=3
-
-set cpoptions+=$
-
-set showmatch
-set matchtime=5
-
-set notimeout
 set ttimeout
 set ttimeoutlen=10
+set undofile
+set undolevels=5000
 
 set statusline=
 set statusline +=\ \ ↳\ \ %<%t%* " full path
@@ -168,10 +166,6 @@ set statusline +=%=%*     " separator
 set statusline +=%#diffchange#%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
 
-set colorcolumn=80
-
-set noswapfile
-
 set list
 set listchars=
 set lcs+=tab:▸\
@@ -180,13 +174,6 @@ set lcs+=extends:›
 set lcs+=precedes:‹
 set lcs+=nbsp:·
 set lcs+=eol:¬
-
-set showbreak=↪\
-
-set icm=nosplit
-
-set undofile
-set undolevels=5000
 
 augroup defaults
   autocmd!
