@@ -31,7 +31,6 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
-
 call plug#end()
 
 set termguicolors
@@ -51,6 +50,9 @@ let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
 let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['.git/']
+let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
+let g:fzf_buffers_jump = 1
+
 
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
@@ -64,8 +66,8 @@ endif
 colorscheme dumbo
 
 inoremap jk <Esc>
-"set clipboard=unnamed
-"
+set clipboard=unnamed
+
 vmap > >gv
 vmap < <gv
 nnore> >>
@@ -106,14 +108,26 @@ nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
 
-function! Preserve(command)
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  execute a:command
-  let @/=_s
-  call cursor(l, c)
-endfunction
+nnoremap <C-P> @:
+
+vnoremap @ :norm@
+
+nmap n nzz
+nmap N Nzz
+
+nnoremap <leader>gs :Gstatus<CR>
+
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <leader>pf :FZF<CR>
+nnoremap <leader>pb :Buffers<CR>
+nnoremap <leader>pt :Tags<CR>
+nnoremap <leader>bc :BCommits<CR>
+nnoremap <leader>ag :Rg!<CR>
+nnoremap <leader>ch :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 
@@ -154,6 +168,65 @@ set statusline +=%=%*     " separator
 set statusline +=%#diffchange#%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
 
+set colorcolumn=80
+
+set noswapfile
+
+set list
+set listchars=
+set lcs+=tab:▸\
+set lcs+=trail:▫
+set lcs+=extends:›
+set lcs+=precedes:‹
+set lcs+=nbsp:·
+set lcs+=eol:¬
+
+set showbreak=↪\
+
+set icm=nosplit
+
+set undofile
+set undolevels=5000
+
+augroup defaults
+  autocmd!
+  autocmd VimResized * :wincmd =
+
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+augroup END
+
+augroup spell
+  autocmd!
+  autocmd FileType gitcommit setlocal spell
+  autocmd FileType markdown setlocal spell
+augroup END
+
+augroup git
+  autocmd!
+  autocmd FileType gitrebase nnoremap <buffer> <leader>r ^cwreword<ESC>
+  autocmd FileType gitrebase nnoremap <buffer> <leader>s ^cwsquash<ESC>
+  autocmd FileType gitrebase nnoremap <buffer> <leader>f ^cwfixup<ESC>
+augroup END
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=auto '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+function! Preserve(command)
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  execute a:command
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 
 function! StatuslineTrailingSpaceWarning()
@@ -180,74 +253,3 @@ function! LocListCountSevere()
     return ""
   endif
 endfunction
-
-set colorcolumn=80
-
-set noswapfile
-
-set list
-set listchars=
-set lcs+=tab:▸\
-set lcs+=trail:▫
-set lcs+=extends:›
-set lcs+=precedes:‹
-set lcs+=nbsp:·
-set lcs+=eol:¬
-
-set showbreak=↪\
-
-nnoremap <leader>gs :Gstatus<CR>
-
-augroup defaults
-  autocmd!
-  autocmd VimResized * :wincmd =
-
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
-augroup END
-
-augroup spell
-  autocmd!
-  autocmd FileType gitcommit setlocal spell
-  autocmd FileType markdown setlocal spell
-augroup END
-
-augroup git
-  autocmd!
-  autocmd FileType gitrebase nnoremap <buffer> <leader>r ^cwreword<ESC>
-  autocmd FileType gitrebase nnoremap <buffer> <leader>s ^cwsquash<ESC>
-  autocmd FileType gitrebase nnoremap <buffer> <leader>f ^cwfixup<ESC>
-augroup END
-
-let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
-let g:fzf_buffers_jump = 1
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=auto '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-nnoremap <leader>pf :FZF<CR>
-nnoremap <leader>pb :Buffers<CR>
-nnoremap <leader>pt :Tags<CR>
-nnoremap <leader>bc :BCommits<CR>
-nnoremap <leader>ag :Rg!<CR>
-nnoremap <leader>ch :History:<CR>
-
-nnoremap <C-P> @:
-
-vnoremap @ :norm@
-
-nmap n nzz
-nmap N Nzz
-
-set icm=nosplit
