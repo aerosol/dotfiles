@@ -3,7 +3,6 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
 Plug 'airblade/vim-rooter'
-Plug 'thinca/vim-qfreplace'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
@@ -19,6 +18,7 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
+Plug 'thinca/vim-qfreplace'
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
