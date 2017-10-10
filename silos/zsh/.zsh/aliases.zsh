@@ -4,6 +4,7 @@ alias get='wget -t0 -c'
 alias vim='nvim'
 alias mps='iex -S mix phoenix.server'
 alias ii='iex -S mix'
+alias kab='killall beam.smp'
 
 alias rest-get="curl -i -H \"Accept: application/json\""
 alias rest-post="curl -i -H \"Accept: application/json\" \
