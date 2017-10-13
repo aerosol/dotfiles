@@ -28,7 +28,7 @@ if &background == "light"
     hi Constant gui=NONE guifg=#707070 guibg=NONE
     hi Cursor gui=reverse guifg=#fa0015 guibg=#fcfbe9
     hi CursorColumn gui=NONE guifg=NONE guibg=#fcfaf4
-    hi CursorLine gui=NONE guifg=NONE guibg=#fcfaf4
+    hi CursorLine gui=NONE guifg=NONE guibg=#eeeeee
     hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
     hi DiffAdd gui=NONE guifg=#4a734c guibg=#62e47e
     hi DiffChange gui=NONE guifg=NONE guibg=#a5d9df

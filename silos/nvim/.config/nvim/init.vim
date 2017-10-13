@@ -58,8 +58,10 @@ nnoremap <leader><space> :Commands<CR>
 
 if $ITERM_PROFILE == 'light'
   set background=light
+  set cursorline
 else
   set background=dark
+  set nocursorline
 endif
 
 colorscheme dumbo
@@ -103,6 +105,7 @@ nnoremap <Backspace> <C-^>
 nnoremap <silent> // :nohlsearch<CR>
 
 nnoremap <leader>fed :e $MYVIMRC<CR>
+nnoremap <leader>fez :e ~/.zshrc<CR>
 nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
