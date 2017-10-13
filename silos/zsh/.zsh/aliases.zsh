@@ -5,6 +5,8 @@ alias vim='nvim'
 alias mps='iex -S mix phoenix.server'
 alias ii='iex -S mix'
 alias kab='killall beam.smp'
+alias kat='killall tmux'
+alias g='git'
 
 alias rest-get="curl -i -H \"Accept: application/json\""
 alias rest-post="curl -i -H \"Accept: application/json\" \
