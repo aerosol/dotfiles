@@ -3,6 +3,7 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
 Plug 'airblade/vim-rooter'
+Plug 'andymass/matchup.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
@@ -50,7 +51,6 @@ let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
 let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['.git/']
-let g:fzf_files_options = '--preview "head -'.&lines.' {}"'
 let g:fzf_buffers_jump = 1
 
 let mapleader=" "
@@ -116,6 +116,8 @@ vnoremap @ :norm@
 
 nmap n nzz
 nmap N Nzz
+
+nmap <leader>hi :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 nnoremap <leader>gs :Gstatus<CR>
 

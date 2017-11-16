@@ -96,6 +96,11 @@ elseif &background == "dark"
     hi DiffChange gui=NONE guifg=NONE guibg=#2e3830
     hi DiffDelete gui=NONE guifg=NONE guibg=#260808
     hi DiffText gui=NONE guifg=#ffffff guibg=#08661a
+    hi diffRemoved gui=NONE guifg=#ff0000 guibg=NONE
+    hi diffAdded gui=NONE guifg=#00ff00 guibg=NONE
+    hi diffFile gui=bold guifg=#333333 guibg=NONE
+    hi diffIndexLine gui=NONE guifg=#333333 guibg=NONE
+    hi diffLine gui=NONE guifg=#333333 guibg=NONE
     hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
     hi Error gui=NONE guifg=#ff0000 guibg=NONE
     hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
@@ -104,10 +109,10 @@ elseif &background == "dark"
     hi Ignore gui=NONE guifg=NONE guibg=NONE
     hi IncSearch gui=NONE guifg=#ffffff guibg=#f91894
     hi LineNr gui=NONE guifg=#616161 guibg=NONE
-    hi MatchParen gui=NONE guifg=NONE guibg=#333333
+    hi MatchParen gui=NONE guifg=#00aa00 guibg=#333333
     hi ModeMsg gui=NONE guifg=NONE guibg=NONE
     hi MoreMsg gui=NONE guifg=NONE guibg=NONE
-    hi NonText gui=NONE guifg=#616161 guibg=NONE
+    hi NonText gui=NONE guifg=#211111 guibg=NONE
     hi Normal gui=NONE guifg=#b0b0b0 guibg=#0a0a0a
     hi Number gui=NONE guifg=#808080 guibg=NONE
     hi Pmenu gui=NONE guifg=NONE guibg=#1a1a1a
