@@ -1,6 +1,6 @@
 # dotfiles (silos) :factory: 
 
-![](https://cloud.githubusercontent.com/assets/173738/24065408/fe301ec2-0b6a-11e7-90e1-9ef41d0f0f11.png)
+![](https://user-images.githubusercontent.com/173738/33239280-9555ef52-d29e-11e7-9892-f16c353f9cc1.png)
 
 Every silo is make-driven stow package, contains deployable set of dotfiles per program (zsh, vim, etc.)
 
