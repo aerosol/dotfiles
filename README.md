@@ -4,10 +4,6 @@
 
 Every silo is make-driven stow package, contains deployable set of dotfiles per program (zsh, vim, etc.)
 
-![](http://i.giphy.com/3o6MbhkWd6he1symgU.gif)
-
-Don't use mine, make your own. Here's how:
-
 ## Prerequisites
 
  - GNU Make
@@ -41,3 +37,5 @@ $ make unload silo=nvim
 ```
 $ make withdraw silo=nvim
 ```
+
+![](http://i.giphy.com/3o6MbhkWd6he1symgU.gif)
