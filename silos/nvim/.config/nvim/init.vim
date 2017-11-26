@@ -3,7 +3,6 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
 Plug 'airblade/vim-rooter'
-Plug 'andymass/matchup.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
@@ -30,11 +29,8 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
-
-set termguicolors
 
 let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
@@ -56,15 +52,9 @@ let g:fzf_buffers_jump = 1
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
-if $ITERM_PROFILE == 'light'
-  set background=light
-  set cursorline
-else
-  set background=dark
-  set nocursorline
-endif
+set background=light
 
-colorscheme dumbo
+colorscheme pure
 
 inoremap jk <Esc>
 set clipboard=unnamed
@@ -117,7 +107,9 @@ vnoremap @ :norm@
 nmap n nzz
 nmap N Nzz
 
-nmap <leader>hi :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nnoremap <leader>gs :Gstatus<CR>
 
@@ -163,17 +155,18 @@ set undofile
 set undolevels=5000
 
 set statusline=
-set statusline +=\ \ ↳\ \ %<%t%* " full path
-set statusline +=%#error#%m%*     " modified flag
-set statusline +=\ %#error#%{StatuslineTrailingSpaceWarning()}%*
+set statusline +=\ ↳\ \ %<%t%* " tail
+set statusline +=\ @%P%*   " percentage
+set statusline +=\ %#error#%m%*     " modified flag
+set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%{LocListCountSevere()}%*
 set statusline +=%=%*     " separator
-set statusline +=%#diffchange#%{fugitive#head()}%*
+set statusline +=%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
 
 set list
 set listchars=
-set lcs+=tab:▸\
+set lcs+=tab:▸\ 
 set lcs+=trail:▫
 set lcs+=extends:›
 set lcs+=precedes:‹
@@ -224,7 +217,7 @@ autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 function! StatuslineTrailingSpaceWarning()
   if !exists("b:statusline_trailing_space_warning")
     if search('\s\+$', 'nw') != 0
-      let b:statusline_trailing_space_warning = 'TWS'
+      let b:statusline_trailing_space_warning = '👽'
     else
       let b:statusline_trailing_space_warning = ''
     endif
