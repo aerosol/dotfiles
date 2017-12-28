@@ -6,8 +6,9 @@
 [alias]
     st = status -bs
     last = diff --cached HEAD^
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    lgg = log --stat --abbrev-commit -p
+    ;lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lolsob = !git log | sed 's/([fF])ix/\\1uck/g'
+    ;lgg = log --stat --abbrev-commit -p
     ll = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     df = diff --color-words
     dh = diff --color-words HEAD
@@ -29,7 +30,9 @@
     co = checkout
     recent = for-each-ref --count=16 --sort=-committerdate refs/heads/ --format="%(refname:short)"
     clogp = -c core.pager='less -p^commit.*$' log -p
-
+    search = "!f() { \
+      git log --oneline -S\"$1\" | fzf; \
+    }; f"
 
 [github]
     user = aerosol
@@ -45,9 +48,12 @@
     indentHeuristic = on
 [core]
 	excludesfile = /Users/hq1/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Users/hq1/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[ghi]
+	token = !security find-internet-password -a aerosol -s github.com -l 'ghi token' -w
