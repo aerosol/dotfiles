@@ -2,6 +2,9 @@ let $VIM        = expand('~/.config/nvim/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
+Plug 'ajgrf/parchment'
+Plug 'w0rp/ale', {'for': ['rust']}
+Plug 'rust-lang/rust.vim/', {'for': ['rust']}
 Plug 'airblade/vim-rooter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
@@ -52,9 +55,9 @@ let g:fzf_buffers_jump = 1
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
-set background=light
-
-colorscheme pure
+set background=dark
+set termguicolors
+colorscheme dumbo
 
 inoremap jk <Esc>
 set clipboard=unnamed
@@ -127,7 +130,7 @@ nnoremap <leader>ch :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 
-set cmdheight=3
+set cmdheight=2
 set colorcolumn=80
 set cpoptions+=$
 set expandtab
@@ -140,7 +143,7 @@ set notimeout
 set nowrap
 set number
 set relativenumber
-set scrolloff=3
+set scrolloff=2
 set shiftwidth=2
 set showbreak=↪\
 set showmatch

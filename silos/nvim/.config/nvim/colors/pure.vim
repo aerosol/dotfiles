@@ -1,5 +1,4 @@
 set background=light
-
 highlight clear
 if exists("syntax_on")
     syntax reset
@@ -7,11 +6,11 @@ endif
 let g:colors_name="pure"
 
 " Editor settings
-hi Normal          ctermfg=Black    ctermbg=none    cterm=none
-hi Cursor          ctermfg=Red      ctermbg=none    cterm=none
-hi CursorLine      ctermfg=none      ctermbg=White    cterm=none
-hi LineNr          ctermfg=Grey     ctermbg=none    cterm=none
-hi CursorLineNR    ctermfg=Black    ctermbg=none    cterm=none
+hi Normal          ctermfg=Black  ctermbg=none    cterm=none
+hi Cursor          ctermfg=Red    ctermbg=none    cterm=none
+hi CursorLine      ctermfg=none   ctermbg=White    cterm=none
+hi LineNr          ctermfg=Grey   ctermbg=none    cterm=none
+hi CursorLineNR    ctermfg=Black  ctermbg=none    cterm=none
 
 " - Number column -
 hi CursorColumn    ctermfg=none    ctermbg=White    cterm=none
@@ -28,8 +27,8 @@ hi TabLineSel      ctermfg=Black    ctermbg=White    cterm=bold
 
 " - File Navigation / Searching -
 hi Directory       ctermfg=Black    ctermbg=none    cterm=bold
-hi Search          ctermfg=none    ctermbg=Grey    cterm=none
-hi IncSearch       ctermfg=none    ctermbg=Grey    cterm=none
+hi Search          ctermfg=Black    ctermbg=Yellow    cterm=none
+hi IncSearch       ctermfg=Black    ctermbg=Yellow    cterm=none
 
 " - Prompt/Status -
 hi StatusLine      ctermfg=White    ctermbg=Black    cterm=bold
@@ -55,7 +54,7 @@ hi SpecialKey      ctermfg=Black    ctermbg=none    cterm=none
 
 " Variable types
 hi Constant        ctermfg=DarkGrey    ctermbg=none    cterm=none
-hi String          ctermfg=Brown    ctermbg=none    cterm=bold
+hi String          ctermfg=DarkGrey    ctermbg=none    cterm=none
 hi Character       ctermfg=Black    ctermbg=none    cterm=none
 hi Number          ctermfg=Black    ctermbg=none    cterm=bold
 hi Boolean         ctermfg=Black    ctermbg=none    cterm=bold
