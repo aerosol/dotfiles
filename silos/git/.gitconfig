@@ -1,12 +1,13 @@
 [user]
     email = hq@mtod.org
     name = Adam Rutkowski
+    signingkey = 91730B7DB2EA841C
 [color]
     ui = true
 [alias]
     st = status -bs
     last = diff --cached HEAD^
-    ;lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg = -c core.pager='less' log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     lolsob = !git log | sed 's/([fF])ix/\\1uck/g'
     ;lgg = log --stat --abbrev-commit -p
     ll = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
@@ -57,3 +58,5 @@
 	trustExitCode = true
 [ghi]
 	token = !security find-internet-password -a aerosol -s github.com -l 'ghi token' -w
+[commit]
+	gpgsign = true
