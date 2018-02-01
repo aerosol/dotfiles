@@ -3,8 +3,6 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
 Plug 'ajgrf/parchment'
-Plug 'w0rp/ale', {'for': ['rust']}
-Plug 'rust-lang/rust.vim/', {'for': ['rust']}
 Plug 'airblade/vim-rooter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
@@ -33,6 +31,13 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'zhaocai/GoldenView.Vim'
+
+Plug 'fsharp/vim-fsharp', {'for': 'fsharp', 'do':  'make fsautocomplete'}
+Plug 'vim-syntastic/syntastic', { 'for': 'fsharp' }
+
+Plug 'w0rp/ale', {'for': ['rust']}
+Plug 'rust-lang/rust.vim/', {'for': ['rust']}
+
 call plug#end()
 
 let g:erlang_tags_ignore = '_build'
@@ -226,18 +231,4 @@ function! StatuslineTrailingSpaceWarning()
     endif
   endif
   return b:statusline_trailing_space_warning
-endfunction
-
-function! LocListCountSevere()
-  let ll_count = 0
-  for entry in getloclist(0)
-    if entry.type == "E" || entry.type == "W" || entry.type == ""
-      let ll_count = ll_count + 1
-    endif
-  endfor
-  if ll_count > 0
-    return "[LL: " . ll_count . "]"
-  else
-    return ""
-  endif
 endfunction
