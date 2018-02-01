@@ -167,7 +167,6 @@ set statusline +=\ ↳\ \ %<%t%* " tail
 set statusline +=\ @%P%*   " percentage
 set statusline +=\ %#error#%m%*     " modified flag
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
-set statusline +=\ %#error#%{LocListCountSevere()}%*
 set statusline +=%=%*     " separator
 set statusline +=%{fugitive#head()}%*
 set statusline +=\ %y%*   " file type
