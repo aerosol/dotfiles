@@ -7,10 +7,10 @@ nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tv :TestVisit<CR>
 
-" xoxo Wojtek Mach
+ "xoxo Wojtek Mach
 function! ElixirUmbrellaTransform(cmd) abort
   if match(a:cmd, 'apps/') != -1
-    return substitute(a:cmd, 'mix test apps/\([^/]*/\)', 'cd apps/\1 \&\& mix test ', '')
+    return '(' . substitute(a:cmd, 'mix test apps/\([^/]*/\)', '\cd apps/\1 \&\& mix test \2', '') . ')'
   else
     return a:cmd
   end
