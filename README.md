@@ -17,7 +17,7 @@ Every silo is make-driven stow package, contains deployable set of dotfiles per 
 #### fill: Pull existing sources and build a silo
 
 ```
-$ make fill what=~/.config/nvim into=nvim
+$ make fill what=~/.config/nvim into=nvim/.config
 ```
 
 #### save: Commit changes after hacking on a silo
