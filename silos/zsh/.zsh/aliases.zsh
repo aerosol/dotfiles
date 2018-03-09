@@ -1,5 +1,5 @@
 alias ls="ls -Galh"
-alias o='open'
+alias o='xdg-open'
 alias get='wget -t0 -c'
 alias mps='iex -S mix phoenix.server'
 alias ii='iex -S mix'
@@ -7,6 +7,7 @@ alias kab='killall beam.smp'
 alias kat='killall tmux'
 alias g='git'
 alias ag='rg'
+alias vim='nvim'
 
 alias rest-get="curl -i -H \"Accept: application/json\""
 alias rest-post="curl -i -H \"Accept: application/json\" \
