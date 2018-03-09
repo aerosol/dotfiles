@@ -16,7 +16,8 @@ foreground = #000
 foreground-alt = #555
 primary = #000
 secondary = #222
-alert = #2495b7
+alert = #d7eaf2
+underline-urgent = #f50a4d
 
 [bar/example]
 monitor = "DisplayPort-0"
@@ -43,7 +44,7 @@ module-margin-right = 2
 
 font-0 = "'System San Francisco Display Bold':truetype:size=18"
 font-1 = "'System San Francisco Display Bold':truetype:size=18"
-font-2 = "'System San Francisco Display Bold':truetype:size=18"
+font-2 = "'Font Awesome 5 Free Regular':truetype:size=18"
 
 modules-left = i3
 ;modules-center = mpd
@@ -109,6 +110,7 @@ label-occupied-padding = 2
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
+label-urgent-underline = ${colors.underline-urgent}
 label-urgent-padding = 2
 
 label-empty = %index%
@@ -129,25 +131,26 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name% (!)
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent-underline = ${module/bspwm.label-urgent-underline}
 
 [module/mpd]
 type = internal/mpd
