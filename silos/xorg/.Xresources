@@ -1,0 +1,27 @@
+Xft.dpi: 192
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+rofi.location:          0
+rofi.color-enabled:     true
+!                       'background', 'border'
+rofi.color-window:      argb:dcffffff, argb:dcffffff
+! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
+rofi.color-normal:      argb:44ffffff, #222222, argb:44ffffff, #34b0c9, argb:ffffffff
+rofi.color-urgent:      argb:44ffffff, #222222, argb:44ffffff, #eeeeee, argb:ff000000
+rofi.color-active:      argb:44ffffff, #222222, argb:44ffffff, #eeeeee, argb:ff000000
+rofi.separator-style:   none
+rofi.fullscreen:        true
+rofi.padding:           700
+rofi.hide-scrollbar:    true
+rofi.line-margin:       0
+rofi.fake-transparency: false
+rofi.yoffset:           0
+rofi.xoffset:           0
+rofi.width:             400
+rofi.opacity:           90
+rofi.font:              "System San Francisco Display" 30
