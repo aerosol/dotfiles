@@ -103,6 +103,8 @@ nnoremap <Backspace> <C-^>
 nnoremap <silent> // :nohlsearch<CR>
 
 nnoremap <leader>fed :e $MYVIMRC<CR>
+nnoremap <leader>fep :e ~/.config/i3/polybar<CR>
+nnoremap <leader>fei :e ~/.config/i3/config<CR>
 nnoremap <leader>fez :e ~/.zshrc<CR>
 nnoremap <leader>feR :source %<CR>
 
