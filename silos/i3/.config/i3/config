@@ -44,7 +44,7 @@ bindsym $mod+shift+v exec "CM_LAUNCHER=rofi $HOME/oss/clipmenu/clipmenu"
 
 bindsym $mod+Tab exec rofi -show window
 
-bindsym $mod+d exec rofi -show run
+bindsym $mod+space exec rofi -show run
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -83,7 +83,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -127,21 +127,28 @@ bindsym $mod+$alt+k resize grow height 10 px or 10 ppt
 bindsym $mod+$alt+j resize shrink height 10 px or 10 ppt
 bindsym $mod+$alt+h resize grow width 10 px or 10 ppt
 
+exec --no-startup-id gnome-terminal --role=dropdown
+for_window [window_role="dropdown"] floating enable;
+for_window [window_role="dropdown"] move scratchpad, scratchpad show, move position 30px 1052px, resize set 3780 1080, move scratchpad
+bindsym $mod+Escape [window_role="dropdown"] scratchpad show;
+
 bar {
         i3bar_command $HOME/.config/polybar/launch.sh
 }
 
+bindsym $alt+grave exec "xdg-open ~"
+
 ########## Styling ##########
 
-client.focused #404552 #404552 #fafafa #ff5757 #666666
+client.focused #404552 #404552 #fafafa #ff5757 #999999
 client.focused_inactive #666666 #404552 #eeeeee #5294e2 #666666
-client.unfocused #404552 #484b52 #eeeeee #ff5757 #404552
+client.unfocused #404552 #484b52 #eeeeee #ff5757 #000000
 client.urgent #ff5757 #404552 #ffffff #555757 #404552
 client.background #404552
 
 ########## i3-gaps integration ##########
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
@@ -150,3 +157,11 @@ smart_gaps on
 gaps inner 15
 gaps outer 15
 
+smart_borders on
+
+for_window [urgent=latest] focus
+for_window [class="feh"] floating enable
+workspace_auto_back_and_forth yes
+
+assign [class="Slack"] $wrkspc0
+assign [class="Signal"] $wrkspc0
