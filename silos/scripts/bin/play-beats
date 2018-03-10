@@ -1,0 +1,2 @@
+#!/bin/env bash
+mpv --no-config "http://www.fast-serv.com/live/stream.pls?host=serv1.beatbasement.com&port=9622"

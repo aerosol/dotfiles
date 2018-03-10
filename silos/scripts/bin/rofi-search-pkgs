@@ -1,0 +1,10 @@
+#!/bin/env bash
+selected=`eopkg la --no-color -U | tail -n +3 | rofi -tokenize -dmenu -p eopkg | awk '{print "sudo eopkg it " $1}'`
+
+if [[ ! -z $selected ]];
+then
+  echo $selected | xclip -selection c
+  notify-send "Installation command copied to clipboard: <br>$ $selected"
+fi
+
+
