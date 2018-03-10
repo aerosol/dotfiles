@@ -4,6 +4,11 @@ load-local-conf() {
     echo "\e[32mLocal environment sourced:"
     echo "$(<.envrc | grep "^export" | tr '=' ' ' | awk '{print $2}' | tr '\n' ' ')"
   fi
+  if [[ -f .envrc.local && -f .autosource && -r .envrc.local ]]; then
+    source .envrc.local
+    echo "\e[32mLocal (custom) environment sourced:"
+    echo "$(<.envrc.local | grep "^export" | tr '=' ' ' | awk '{print $2}' | tr '\n' ' ')"
+  fi
 }
 
 autoload zmv
