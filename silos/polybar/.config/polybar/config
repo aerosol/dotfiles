@@ -8,30 +8,26 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #fff
-background-alt = #eee
-;foreground = ${xrdb:color7:#222}
-foreground = #000
-foreground-alt = #555
-primary = #000
-secondary = #222
-alert = #d7eaf2
+background = #99000000
+background-alt = #000
+foreground = #aaa
+foreground-alt = #777
+primary = #fff
+secondary = #ccc
+alert = #222
 underline-urgent = #f50a4d
+
 
 [bar/example]
 monitor = "DisplayPort-0"
 width = 100%
 height = 45
-;offset-x = 1%
-;offset-y = 1%
 radius = 0
-;fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 1
 line-color = #f00
 
 border-size = 0
@@ -42,34 +38,78 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "'System San Francisco Display Bold':truetype:size=18"
-font-1 = "'System San Francisco Display Bold':truetype:size=18"
-font-2 = "'Font Awesome 5 Free Regular':truetype:size=18"
+font-0 = "'System San Francisco Display':truetype:size=18;+3"
+font-1 = "'System San Francisco Display':truetype:size=18;+3"
+font-2 = "FontAwesome:size=15;+3"
 
 modules-left = i3
 ;modules-center = mpd
 modules-center = xwindow
-modules-right = filesystem volume memory cpu eth temperature powermenu date
+modules-right = volume filesystem memory cpu eth temperature date
 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+tray-transparent = false
+tray-background = #000000
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[bar/example2]
+monitor = "DisplayPort-0"
+width = 100%
+height = 45
+radius = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 0
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "'System San Francisco Display':truetype:size=18;+3"
+font-1 = "'System San Francisco Display':truetype:size=18;+3"
+font-2 = "FontAwesome:size=15;+3"
+
+modules-right = kernel updates package-browser uptime
+bottom = true
+
+[module/kernel]
+type = custom/script
+exec = uname -r
+label =   %output%
+interval = 100
+
+[module/updates]
+type = custom/script
+exec = expr $(eopkg lu | wc -l) - 1
+label =   %output%
+interval = 300
+click-right = notify-send "$(eopkg lu)"
+click-left = solus-sc
+
+[module/package-browser]
+type = custom/text
+content = 
+click-left = rofi-search-pkgs
+
+[module/uptime]
+type = custom/script
+exec = uptime --pretty
+interval = 60
+label =   %output%
+
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
+label =   %title:0:50:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -93,7 +133,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted =   %percentage_used:3%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -119,7 +159,7 @@ label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
+format = "  hq1       <label-state> <label-mode>"
 index-sort = true
 wrapping-scroll = false
 
@@ -179,34 +219,36 @@ bar-empty-foreground = ${colors.foreground-alt}
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "cpu "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+;format-underline = #f90000
+label = %percentage:3%%
+format-prefix = " "
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "mem "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
+;format-underline = #4bffdc
+label = %percentage_used:3%%
 
 [module/eth]
 type = internal/network
 interface = enp5s0
-interval = 3.0
+interval = 0.5
 
-format-connected-underline = #55aa55
-format-connected-prefix = "enp5s0 "
+;format-connected-underline = #55aa55
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = %downspeed:20%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+
 
 [module/date]
 type = internal/date
@@ -218,9 +260,9 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-;format-prefix = date
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -228,12 +270,12 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = "sound "
+format-muted-prefix = "muted "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = muted
+label-muted = 
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -258,47 +300,18 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+;format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = ramp0
-ramp-1 = ramp1
+ramp-1 = 
 ramp-2 = ramp2
 ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = X
-label-open-foreground = ${colors.secondary}
-label-close = X
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
