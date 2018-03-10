@@ -9,11 +9,18 @@ Xft.rgba: rgb
 rofi.location:          0
 rofi.color-enabled:     true
 !                       'background', 'border'
-rofi.color-window:      argb:dcffffff, argb:dcffffff
+!rofi.color-window:      argb:dcffffff, argb:dcffffff
+!! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
+!rofi.color-normal:      argb:44ffffff, #222222, argb:44ffffff, #34b0c9, argb:ffffffff
+!rofi.color-urgent:      argb:44ffffff, #222222, argb:44ffffff, #eeeeee, argb:ff000000
+!rofi.color-active:      argb:44ffffff, #222222, argb:44ffffff, #eeeeee, argb:ff000000
+!
+rofi.color-window:      argb:11000000, argb:11000000
 ! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
-rofi.color-normal:      argb:44ffffff, #222222, argb:44ffffff, #34b0c9, argb:ffffffff
-rofi.color-urgent:      argb:44ffffff, #222222, argb:44ffffff, #eeeeee, argb:ff000000
-rofi.color-active:      argb:44ffffff, #222222, argb:44ffffff, #eeeeee, argb:ff000000
+rofi.color-normal:      argb:44000000, #eeeeee, argb:44000000, #34b0c9, argb:ff000000
+rofi.color-urgent:      argb:44000000, #eeeeee, argb:44000000, #eeeeee, argb:ff000000
+rofi.color-active:      argb:44000000, #eeeeee, argb:44000000, #eeeeee, argb:ff000000
+
 rofi.separator-style:   none
 rofi.fullscreen:        true
 rofi.padding:           700
