@@ -42,7 +42,7 @@ font-0 = "'System San Francisco Display':truetype:size=18;+3"
 font-1 = "'System San Francisco Display':truetype:size=18;+3"
 font-2 = "FontAwesome:size=15;+3"
 
-modules-left = i3
+modules-left = whoami
 ;modules-center = mpd
 modules-center = xwindow
 modules-right = volume filesystem memory cpu eth temperature date
@@ -79,7 +79,8 @@ font-0 = "'System San Francisco Display':truetype:size=18;+3"
 font-1 = "'System San Francisco Display':truetype:size=18;+3"
 font-2 = "FontAwesome:size=15;+3"
 
-modules-right = kernel updates package-browser uptime
+modules-center = i3
+modules-right = kernel package-browser uptime
 bottom = true
 
 [module/kernel]
@@ -88,13 +89,17 @@ exec = uname -r
 label =   %output%
 interval = 100
 
-[module/updates]
-type = custom/script
-exec = expr $(eopkg lu | wc -l) - 1
-label =   %output%
-interval = 300
-click-right = notify-send "$(eopkg lu)"
-click-left = solus-sc
+;[module/updates]
+;type = custom/script
+;exec = expr $(eopkg lu | wc -l) - 1
+;label =   %output%
+;interval = 300
+;click-right = notify-send "$(eopkg lu)"
+;click-left = solus-sc
+
+[module/whoami]
+type = custom/text
+content = "    hq1"
 
 [module/package-browser]
 type = custom/text
@@ -159,7 +164,7 @@ label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
-format = "  hq1       <label-state> <label-mode>"
+format = "  <label-state> <label-mode>"
 index-sort = true
 wrapping-scroll = false
 
@@ -240,7 +245,7 @@ interval = 0.5
 ;format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %downspeed:20%
+label-connected = %downspeed:10%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -296,8 +301,9 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
 warn-temperature = 60
+
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
 
 format = <ramp> <label>
 ;format-underline = #f50a4d
