@@ -20,3 +20,6 @@ alias rest-post-put="curl -i -H \"Accept: application/json\" \
 
 p() { passy "$*" | pbcopy; }
 
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
