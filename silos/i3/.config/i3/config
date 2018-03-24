@@ -4,6 +4,11 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton -f -D 5 --inactive-dim=0.4
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/current.png
 
+exec --no-startup-id evolution
+exec --no-startup-id slack
+exec --no-startup-id signal-desktop
+exec --no-startup-id clipit
+
 set $mod Mod4
 set $alt Mod1
 
@@ -11,16 +16,14 @@ font pango:"System San Francisco Display" 8
 
 # mac keyboard yo
 bindsym $mod+c exec --no-startup-id "xclip -o | xclip -selection c", exec "notify-send --expire-time=1 copied"
-bindsym $mod+v exec --no-startup-id forward_key "Ctrl+v" &
-bindsym $mod+w exec --no-startup-id forward_key "Ctrl+w"
-bindsym $mod+t exec --no-startup-id forward_key "Ctrl+t"
-bindsym $mod+Shift+bracketleft exec --no-startup-id forward_key "Ctrl+Page_Up"
-bindsym $mod+Shift+bracketright exec --no-startup-id forward_key "Ctrl+Page_Down"
+bindsym $mod+v exec --no-startup-id forward-key "Ctrl+v"
+bindsym $mod+w exec --no-startup-id forward-key "Ctrl+w"
+bindsym $mod+t exec --no-startup-id forward-key "Ctrl+t"
+bindsym $mod+f exec --no-startup-id forward-key "Ctrl+f"
+bindsym $mod+Shift+bracketleft exec --no-startup-id forward-key "Ctrl+Page_Up"
+bindsym $mod+Shift+bracketright exec --no-startup-id forward-key "Ctrl+Page_Down"
 
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
-
-########## Keybindings ##########
-bindsym --release $mod+Shift+BackSpace exec gnome-screensaver-command -l
 
 bindsym --whole-window --exclude-titlebar button9 move left
 bindsym --whole-window --exclude-titlebar button8 move right
@@ -34,12 +37,16 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal -e "tmux"
 
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+Tab exec rofi -show window
+#bindsym $mod+Tab exec rofi -show window
+
+bindsym $mod+Tab workspace back_and_forth
+workspace_auto_back_and_forth no
+
 
 bindsym $mod+space exec rofi -show run
 
@@ -70,12 +77,12 @@ bindsym $mod+bar split h
 bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $alt+$mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 #bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -91,9 +98,9 @@ bindsym $mod+a focus parent
 
 focus_follows_mouse no
 
-
 set $wrkspc1 "1"
-set $wrkspc0 " "
+set $wrkspc9 "9:  "
+set $wrkspc0 "10:  "
 
 # switch to workspace
 bindsym $mod+1 workspace $wrkspc1
@@ -104,7 +111,7 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $mod+9 workspace $wrkspc9
 bindsym $mod+0 workspace $wrkspc0
 
 # move focused container to workspace
@@ -123,8 +130,6 @@ bindsym $mod+Shift+0 move container to workspace $wrkspc0
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Kill i3?' -b 'Yes' 'i3-msg exit'"
 
 bindsym $mod+$alt+l resize shrink width 10 px or 10 ppt
 bindsym $mod+$alt+k resize grow height 10 px or 10 ppt
@@ -157,18 +162,35 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
-smart_gaps on
-gaps inner 15
-gaps outer 15
+gaps inner 10
+gaps outer 10
 
 smart_borders on
 
 for_window [urgent=latest] focus
 for_window [class="feh"] floating enable
 
-workspace_auto_back_and_forth yes
-
 assign [class="Slack"] $wrkspc0
 assign [class="Signal"] $wrkspc0
+assign [class="Evolution"] $wrkspc9
 
 floating_modifier $mod
+
+set $Locker i3lock -n -u -c 000000 -i $HOME/Pictures/lock.png && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, e(x)it i3, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym x exec --no-startup-id i3-msg exit, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+BackSpace mode "$mode_system"
