@@ -1,18 +1,22 @@
 exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id xrdb -merge ~/.Xresources
 
-exec --no-startup-id compton -f -D 5 --inactive-dim=0.4
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/current.png
+exec --no-startup-id compton -f -D 5 --inactive-dim=0.3 --backend glx
+exec_always --no-startup-id feh --bg-scale $(shuf -n1 -e ~/Pictures/i3-walls/*)
 
 exec --no-startup-id evolution
-exec --no-startup-id slack
 exec --no-startup-id signal-desktop
 exec --no-startup-id clipit
+
+exec --no-startup-id i3-sensible-terminal -e "tmux"
+exec --no-startup-id firefox
+
+exec --no-startup-id gitg
 
 set $mod Mod4
 set $alt Mod1
 
-font pango:"System San Francisco Display" 8
+font pango:"Iosevka Term Medium" 8
 
 # mac keyboard yo
 bindsym $mod+c exec --no-startup-id "xclip -o | xclip -selection c", exec "notify-send --expire-time=1 copied"
@@ -42,11 +46,8 @@ bindsym $mod+Return exec i3-sensible-terminal -e "tmux"
 # kill focused window
 bindsym $mod+q kill
 
-#bindsym $mod+Tab exec rofi -show window
-
 bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth no
-
 
 bindsym $mod+space exec rofi -show run
 
@@ -55,8 +56,8 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+$alt+5 exec "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 | xclip -selection clipboard -t image/png"
-bindsym $mod+$alt+3 exec "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 ~/Pictures/yharnam-$(date -Iseconds | cut -d'+' -f1).png"
+bindsym $mod+$alt+5 exec --no-startup-id "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 | xclip -selection clipboard -t image/png"
+bindsym $mod+$alt+3 exec --no-startup-id "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 ~/Pictures/yharnam-$(date -Iseconds | cut -d'+' -f1).png && espeak done"
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -87,6 +88,9 @@ bindsym $alt+$mod+f fullscreen toggle
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+bindsym F11 move scratchpad
+bindsym $mod+Escape scratchpad show
+
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
 
@@ -98,9 +102,10 @@ bindsym $mod+a focus parent
 
 focus_follows_mouse no
 
-set $wrkspc1 "1"
-set $wrkspc9 "9:  "
-set $wrkspc0 "10:  "
+set $wrkspc1 ""
+set $wrkspc8 ""
+set $wrkspc9 " "
+set $wrkspc0 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $wrkspc1
@@ -110,7 +115,7 @@ bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+8 workspace $wrkspc8
 bindsym $mod+9 workspace $wrkspc9
 bindsym $mod+0 workspace $wrkspc0
 
@@ -136,10 +141,10 @@ bindsym $mod+$alt+k resize grow height 10 px or 10 ppt
 bindsym $mod+$alt+j resize shrink height 10 px or 10 ppt
 bindsym $mod+$alt+h resize grow width 10 px or 10 ppt
 
-exec --no-startup-id gnome-terminal --role=dropdown
-for_window [window_role="dropdown"] floating enable
-for_window [window_role="dropdown"] move scratchpad, scratchpad show, move position 30px 72px, resize set 1780 1080, move scratchpad
-bindsym $mod+Escape [window_role="dropdown"] scratchpad show;
+#exec --no-startup-id i3-sensible-terminal --role=dropdown
+#for_window [window_role="dropdown"] floating enable
+#for_window [window_role="dropdown"] move scratchpad, scratchpad show, move position 1000px 100px, resize set 1800 600, move scratchpad
+#bindsym $mod+Escape [window_role="dropdown"] scratchpad show;
 
 bar {
         i3bar_command $HOME/.config/polybar/launch.sh
@@ -169,23 +174,24 @@ smart_borders on
 
 for_window [urgent=latest] focus
 for_window [class="feh"] floating enable
+for_window [class="mpv"] floating enable
 
 assign [class="Slack"] $wrkspc0
 assign [class="Signal"] $wrkspc0
 assign [class="Evolution"] $wrkspc9
+assign [class="Gitg"] $wrkspc8
 
 floating_modifier $mod
 
 set $Locker i3lock -n -u -c 000000 -i $HOME/Pictures/lock.png && sleep 1
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, e(x)it i3, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym x exec --no-startup-id i3-msg exit, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
     # back to normal: Enter or Escape
