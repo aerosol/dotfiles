@@ -1,7 +1,6 @@
 [user]
     email = hq@mtod.org
     name = Adam Rutkowski
-    signingkey = 91730B7DB2EA841C
 [color]
     ui = true
 [alias]
@@ -49,14 +48,3 @@
     indentHeuristic = on
 [core]
 	excludesfile = /Users/hq1/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Users/hq1/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[ghi]
-	token = !security find-internet-password -a aerosol -s github.com -l 'ghi token' -w
-[commit]
-	gpgsign = true

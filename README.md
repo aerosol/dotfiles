@@ -1,8 +1,12 @@
 # dotfiles (silos) :factory: 
 
-![](https://user-images.githubusercontent.com/173738/33239280-9555ef52-d29e-11e7-9892-f16c353f9cc1.png)
-
 Every silo is make-driven stow package, contains deployable set of dotfiles per program (zsh, vim, etc.)
+
+This is the linux branch. Mainly first attempt at Solus/i3/polybar/rofi
+
+![](https://i.imgur.com/M6VUhjT.jpg)
+![](https://i.imgur.com/5bIwelb.png)
+![](https://i.imgur.com/RtrAVfW.png)
 
 ## Prerequisites
 
@@ -17,7 +21,7 @@ Every silo is make-driven stow package, contains deployable set of dotfiles per 
 #### fill: Pull existing sources and build a silo
 
 ```
-$ make fill what=~/.config/nvim into=nvim
+$ make fill what=~/.config/nvim into=nvim/.config
 ```
 
 #### save: Commit changes after hacking on a silo
