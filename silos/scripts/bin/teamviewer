@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+killall compton
+(cd /home/hq1/Apps/teamviewer_13.1.3026_amd64/teamviewer/ && ./teamviewer)

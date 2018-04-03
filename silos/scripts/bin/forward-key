@@ -1,11 +1,15 @@
 #!/bin/env bash
 
 W=`xdotool getactivewindow`
-S1=`xprop -id ${W} |awk -F '"' '/WM_CLASS/{print $4}'`
+S1=`xprop -id ${W} | awk -F '"' '/WM_CLASS/{print $4}'`
 
-echo "Found $S1 in $W. Forwarding $1." >> /tmp/log.txt
+if [ ${S1} ]; then
+    echo "Found '$S1' in '$W'. Forwarding $1." >> /tmp/log.txt
 
-sleep 0.1
-xdotool key --clearmodifiers --window $W $1 
-echo "xdotool key --repeat=0 --clearmodifiers --window $W $1" >> /tmp/log.txt
-sleep 0.1
+    sleep 0.1
+    xdotool key --delay=50 --clearmodifiers --window $W $1 
+    sleep 0.1
+    notify-send "Forwarded $1"
+else
+    echo "Meh" >> /tmp/log.txt
+fi
