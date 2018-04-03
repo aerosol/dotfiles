@@ -60,9 +60,9 @@ let g:fzf_buffers_jump = 1
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
-set background=dark
+set background=light
 set termguicolors
-colorscheme dumbo
+colorscheme gangster
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
@@ -89,6 +89,7 @@ cnoremap <C-f> <right>
 cnoremap <C-b> <left>
 
 nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <Backspace> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
@@ -97,8 +98,6 @@ nnoremap <silent> <C-w>\| <C-W>v
 nnoremap <silent> <C-w>- <C-W>s
 
 nnoremap <silent> <leader>fs :update<CR>
-
-nnoremap <Backspace> <C-^>
 
 nnoremap <silent> // :nohlsearch<CR>
 
@@ -165,7 +164,7 @@ set undofile
 set undolevels=5000
 
 set statusline=
-set statusline +=\ ↳\ \ %<%t%* " tail
+set statusline +=\ %<%t%*
 set statusline +=\ @%P%*   " percentage
 set statusline +=\ %#error#%m%*     " modified flag
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
