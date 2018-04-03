@@ -1,44 +1,29 @@
-exec --no-startup-id xrandr --dpi 192
-exec --no-startup-id xrdb -merge ~/.Xresources
-
-exec --no-startup-id compton -f -D 5 --inactive-dim=0.3 --backend glx
-exec_always --no-startup-id feh --bg-scale $(shuf -n1 -e ~/Pictures/i3-walls/*)
-
-exec --no-startup-id evolution
-exec --no-startup-id signal-desktop
-exec --no-startup-id clipit
-
-exec --no-startup-id i3-sensible-terminal -e "tmux"
-exec --no-startup-id firefox
-
-exec --no-startup-id gitg
-
 set $mod Mod4
 set $alt Mod1
 
 font pango:"Iosevka Term Medium" 8
 
 # mac keyboard yo
-bindsym $mod+c exec --no-startup-id "xclip -o | xclip -selection c", exec "notify-send --expire-time=1 copied"
+bindsym $mod+c exec --no-startup-id "xclip -o | xclip -selection c"
 bindsym $mod+v exec --no-startup-id forward-key "Ctrl+v"
 bindsym $mod+w exec --no-startup-id forward-key "Ctrl+w"
 bindsym $mod+t exec --no-startup-id forward-key "Ctrl+t"
 bindsym $mod+f exec --no-startup-id forward-key "Ctrl+f"
-bindsym $mod+Shift+bracketleft exec --no-startup-id forward-key "Ctrl+Page_Up"
-bindsym $mod+Shift+bracketright exec --no-startup-id forward-key "Ctrl+Page_Down"
+bindsym $mod+x exec --no-startup-id forward-key "Ctrl+x"
+bindsym $mod+z exec --no-startup-id forward-key "Ctrl+z"
+bindsym $mod+a exec --no-startup-id forward-key "Ctrl+a"
 
-exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
+bindsym $mod+Shift+bracketleft exec --no-startup-id forward-key "Ctrl+Page_Up"    # next tab
+bindsym $mod+Shift+bracketright exec --no-startup-id forward-key "Ctrl+Page_Down" # prev tab
 
 bindsym --whole-window --exclude-titlebar button9 move left
 bindsym --whole-window --exclude-titlebar button8 move right
 bindsym --whole-window --exclude-titlebar $mod+button2 floating toggle
 
 ### Sound ###
-# Raise Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-# Lower Volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal -e "tmux"
@@ -50,14 +35,14 @@ bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth no
 
 bindsym $mod+space exec rofi -show run
+bindsym $mod+p exec passmenu
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+$alt+5 exec --no-startup-id "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 | xclip -selection clipboard -t image/png"
-bindsym $mod+$alt+3 exec --no-startup-id "maim -u -s -n -l -c 0.157,0.333,0.466,0.4 ~/Pictures/yharnam-$(date -Iseconds | cut -d'+' -f1).png && espeak done"
+bindsym $mod+$alt+5 exec --no-startup-id flameshot gui
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -81,12 +66,13 @@ bindsym $mod+minus split v
 bindsym $alt+$mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+#bindsym $mod+y layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+bindsym XF86AudioMicMute floating toggle
 
 bindsym F11 move scratchpad
 bindsym $mod+Escape scratchpad show
@@ -95,29 +81,30 @@ bindsym $mod+Escape scratchpad show
 #bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
 
 focus_follows_mouse no
 
-set $wrkspc1 ""
-set $wrkspc8 ""
-set $wrkspc9 " "
-set $wrkspc0 ""
+set $wrkspc1 "1: "
+set $wrkspc7 "7: "
+set $wrkspc8 "8: "
+set $wrkspc9 "9:  "
+set $wrkspc0 "10: "
 
 # switch to workspace
-bindsym $mod+1 workspace $wrkspc1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace $wrkspc8
-bindsym $mod+9 workspace $wrkspc9
-bindsym $mod+0 workspace $wrkspc0
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $wrkspc1
@@ -126,9 +113,9 @@ bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+7 move container to workspace $wrkspc7
+bindsym $mod+Shift+8 move container to workspace $wrkspc8
+bindsym $mod+Shift+9 move container to workspace $wrkspc9
 bindsym $mod+Shift+0 move container to workspace $wrkspc0
 
 # reload the configuration file
@@ -147,7 +134,7 @@ bindsym $mod+$alt+h resize grow width 10 px or 10 ppt
 #bindsym $mod+Escape [window_role="dropdown"] scratchpad show;
 
 bar {
-        i3bar_command $HOME/.config/polybar/launch.sh
+        i3bar_command $HOME/.config/polybar/launch.sh &
 }
 
 bindsym $alt+grave exec "xdg-open ~"
@@ -162,7 +149,7 @@ client.background #404552
 
 ########## i3-gaps integration ##########
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 3
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
@@ -175,22 +162,23 @@ smart_borders on
 for_window [urgent=latest] focus
 for_window [class="feh"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="Archive Manager"] floating enable
 
-assign [class="Slack"] $wrkspc0
+assign [class="Slack"] $wrkspc7
 assign [class="Signal"] $wrkspc0
-assign [class="Evolution"] $wrkspc9
+assign [class="fastmail"] $wrkspc9
 assign [class="Gitg"] $wrkspc8
 
 floating_modifier $mod
 
-set $Locker i3lock -n -u -c 000000 -i $HOME/Pictures/lock.png && sleep 1
+set $Locker $HOME/.config/i3/lock.sh
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym l exec --no-startup-id $Locker lock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id $Locker suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
@@ -199,4 +187,23 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+bindsym $mod+comma exec i3-input -F 'rename workspace to "'$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).num')':%s"' -P 'Rename workspace to '$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).num')': '
+
 bindsym $mod+Shift+BackSpace mode "$mode_system"
+
+exec --no-startup-id xrandr --dpi 184
+exec --no-startup-id xrdb -merge ~/.Xresources
+
+exec_always --no-startup-id compton
+exec_always --no-startup-id feh --bg-scale $(shuf -n1 -e ~/Pictures/i3-walls/*)
+
+exec --no-startup-id fastmail
+exec --no-startup-id signal-desktop
+exec --no-startup-id clipit
+
+exec --no-startup-id i3-sensible-terminal -e "tmux"
+exec --no-startup-id firefox
+
+exec --no-startup-id gitg
+
+exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
