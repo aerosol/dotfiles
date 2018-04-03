@@ -1,6 +1,7 @@
 [user]
     email = hq@mtod.org
     name = Adam Rutkowski
+	signingkey = 1AE955DBD48E08A
 [color]
     ui = true
 [alias]
