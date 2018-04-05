@@ -191,11 +191,11 @@ bindsym $mod+comma exec i3-input -F 'rename workspace to "'$(i3-msg -t get_works
 
 bindsym $mod+Shift+BackSpace mode "$mode_system"
 
-exec --no-startup-id xrandr --dpi 184
+exec --no-startup-id xrandr --dpi 196
 exec --no-startup-id xrdb -merge ~/.Xresources
 
 exec_always --no-startup-id compton
-exec_always --no-startup-id feh --bg-scale $(shuf -n1 -e ~/Pictures/i3-walls/*)
+exec_always --no-startup-id feh --bg-fill $(shuf -n1 -e ~/Pictures/i3-walls/*)
 
 exec --no-startup-id fastmail
 exec --no-startup-id signal-desktop
