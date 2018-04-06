@@ -1,7 +1,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:"Iosevka Term Medium" 8
+font pango:"Input Mono Medium" 8
 
 # mac keyboard yo
 bindsym $mod+c exec --no-startup-id "xclip -o | xclip -selection c"
@@ -11,7 +11,7 @@ bindsym $mod+t exec --no-startup-id forward-key "Ctrl+t"
 bindsym $mod+f exec --no-startup-id forward-key "Ctrl+f"
 bindsym $mod+x exec --no-startup-id forward-key "Ctrl+x"
 bindsym $mod+z exec --no-startup-id forward-key "Ctrl+z"
-bindsym $mod+a exec --no-startup-id forward-key "Ctrl+a"
+bindsym $mod+a exec --no-startup-id forward-key "Shift+Ctrl+a"
 
 bindsym $mod+Shift+bracketleft exec --no-startup-id forward-key "Ctrl+Page_Up"    # next tab
 bindsym $mod+Shift+bracketright exec --no-startup-id forward-key "Ctrl+Page_Down" # prev tab
