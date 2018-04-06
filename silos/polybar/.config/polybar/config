@@ -8,13 +8,13 @@
 ;=====================================================
 
 [colors]
-background = #99000000
-background-alt = #000
-foreground = #aaa
-foreground-alt = #777
+background = #ffffff
+background-alt = #ddd
+foreground = #222
+foreground-alt = #222
 primary = #fff
-secondary = #ccc
-alert = #222
+secondary = #eee
+alert = #bbb
 underline-urgent = #f50a4d
 
 
@@ -38,12 +38,11 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Iosevka Term Medium:size=16;+3"
-font-1 = "Iosevka Term Medium:size=14;+3"
+font-0 = "Input Mono Medium:size=16;+3"
+font-1 = "Input Mono Medium:size=16;+3"
 font-2 = "FontAwesome:size=15;+3"
 
 modules-left = whoami
-;modules-center = mpd
 modules-center = xwindow
 modules-right = volume filesystem memory cpu eth temperature date
 
@@ -61,8 +60,8 @@ width = 100%
 height = 45
 radius = 0
 
-font-0 = "Iosevka Term Medium:size=16;+3"
-font-1 = "Iosevka Term Medium:size=14;+3"
+font-0 = "Input Mono Medium:size=16;+3"
+font-1 = "Input Mono Medium:size=16;+3"
 font-2 = "FontAwesome:size=15;+3"
 
 background = ${colors.background}
@@ -194,7 +193,7 @@ type = internal/cpu
 interval = 2
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #f90000
-label = %percentage:10%%
+label = %percentage:5%%
 format-prefix = " "
 
 [module/memory]
@@ -213,7 +212,7 @@ interval = 0.5
 ;format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %downspeed:10%
+label-connected = %downspeed:8%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -278,11 +277,11 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature%
 label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = #ff0000
 
-ramp-0 = ramp0
-ramp-1 = 
-ramp-2 = ramp2
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [settings]
