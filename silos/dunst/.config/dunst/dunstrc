@@ -61,10 +61,10 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#000000"
+    frame_color = "#eeeeee"
 
     # Define a color for the separator.
     # possible values are:
@@ -156,10 +156,10 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
+    max_icon_size = 48
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/48x48/devices/
+    icon_folders = /usr/share/icons/HighContrast/48x48/apps:/usr/share/icons/HighContrast/48x48/categories:/usr/share/icons/HighContrast/48x48/apps-extra:/usr/share/icons/HighContrast/48x48/actions
 
     ### History ###
 
@@ -222,7 +222,7 @@
     # Xev might be helpful to find names for keys.
 
     # Close notification.
-    close = ctrl+space
+    close = ctrl+x
 
     # Close all notifications.
     close_all = ctrl+shift+space
@@ -231,7 +231,7 @@
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    history = ctrl+grave
+    history = ctrl+space
 
     # Context menu.
     context = ctrl+shift+period
@@ -239,16 +239,17 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#12000000"
-    foreground = "#cccccc"
-    timeout = 1
+    background = "#ffffff"
+    frame_color = "#333333"
+    foreground = "#333333"
+    timeout = 2
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#000000"
+    background = "#ffffff"
     frame_color = "#333333"
-    foreground = "#cccccc"
+    foreground = "#333333"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
@@ -280,9 +281,9 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
-[lol]
-    history_ignore = yes
-    timeout = 1
+#[lol]
+    #history_ignore = yes
+    #timeout = 1
 
 
 #[espeak]
