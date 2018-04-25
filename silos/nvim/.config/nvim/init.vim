@@ -32,6 +32,8 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'zhaocai/GoldenView.Vim'
 
+Plug 'mattn/vim-sqlfmt'
+
 Plug 'fsharp/vim-fsharp', {'for': 'fsharp', 'do':  'make fsautocomplete'}
 Plug 'vim-syntastic/syntastic', { 'for': 'fsharp' }
 
@@ -60,9 +62,9 @@ let g:fzf_buffers_jump = 1
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
-set background=light
+set background=dark
 set termguicolors
-colorscheme gangster
+colorscheme dumbo
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
