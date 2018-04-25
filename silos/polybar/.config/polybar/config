@@ -8,13 +8,13 @@
 ;=====================================================
 
 [colors]
-background = #ffffff
-background-alt = #ddd
-foreground = #222
-foreground-alt = #222
+background = #cc000000
+background-alt = #000
+foreground = #777
+foreground-alt = #666
 primary = #fff
 secondary = #eee
-alert = #bbb
+alert = #222
 underline-urgent = #f50a4d
 
 
@@ -38,18 +38,18 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Input Mono Medium:size=16;+3"
-font-1 = "Input Mono Medium:size=16;+3"
+font-0 = "Iosevka Term Medium:size=16;+3"
+font-1 = "Iosevka Term Medium:size=16;+3"
 font-2 = "FontAwesome:size=15;+3"
 
 modules-left = whoami
-modules-center = xwindow
+;modules-center = xwindow
 modules-right = volume filesystem memory cpu eth temperature date
 
 tray-position = right
 tray-padding = 2
-tray-transparent = true
-tray-background = #000000
+tray-transparent = false
+tray-background = #cc000000
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -60,8 +60,8 @@ width = 100%
 height = 45
 radius = 0
 
-font-0 = "Input Mono Medium:size=16;+3"
-font-1 = "Input Mono Medium:size=16;+3"
+font-0 = "Iosevka Term Medium:size=16;+3"
+font-1 = "Iosevka Term Medium:size=16;+3"
 font-2 = "FontAwesome:size=15;+3"
 
 background = ${colors.background}
