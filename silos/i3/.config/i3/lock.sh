@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 lock() {
-  i3lock -n -u -c 000000 -i ~/Pictures/lock.png &
+  dm-tool lock
 }
 
 case "$1" in
@@ -9,8 +9,7 @@ case "$1" in
     lock
     ;;
   suspend)
-    lock
-    systemctl suspend
+    lock && systemctl suspend
     ;;
   hibernate)
     lock
