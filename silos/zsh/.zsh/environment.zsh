@@ -4,9 +4,13 @@ export LC_ALL=en_US.UTF-8
 export PAGER=less
 export ZSH_CACHE="$HOME/.zsh_cache"
 mkdir -p $ZSH_CACHE
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 
 # https://superuser.com/questions/1118878/using-notify-send-in-a-tmux-session-shows-error-no-notification
 unset DBUS_SESSION_BUS_ADDRESS
 
 source $HOME/.asdf/asdf.sh
+
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
+	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi
