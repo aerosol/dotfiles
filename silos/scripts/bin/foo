@@ -1,1 +1,2 @@
-notify-send test 
+#!/bin/bash
+i3lock -i <(import -silent -window root png:- | mogrify -blur 0x8 png:- | composite -gravity South -geometry -20x1200 ~/Pics/Evil_Rick_Sprite.png png:- png:-)

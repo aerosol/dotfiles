@@ -46,7 +46,7 @@ def encode(domain, key):
 
     chars = get_chars(key + domain)
     assert len(chars) == 32
-    key = hmac.new(domain, key).hexdigest()
+    key = hmac.new(domain, key).hexdigest().encode('utf-8')
     key += sha1(key).hexdigest()
     recoded = map(lambda x: chars[ord(x) % 32], key.decode('hex'))
     password = ""
@@ -75,4 +75,4 @@ if __name__ == '__main__':
         sys.stderr.write("Argument required\n")
         sys.exit(1)
     key = getpass.getpass()
-    sys.stdout.write(encode(domain, key))
+    sys.stdout.write(encode(domain.encode('utf-8'), key.encode('utf-8')))
