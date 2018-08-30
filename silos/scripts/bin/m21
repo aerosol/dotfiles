@@ -1,9 +1,0 @@
-#!/bin/env bash
-export DISPLAY=":0.0"
-
-  PMUPDATES="$(checkupdates | wc -l)"
-  AURUPDATES="$(cower -u | wc -l)"
-notify-send  -h string:bgcolor:#000000 -h string:fgcolor:#d8ff44 -i ~/.icons/archpacman64.png "   Updates"  "Pacman: $PMUPDATES  AUR: $AURUPDATES" 
-
-
-  exit
