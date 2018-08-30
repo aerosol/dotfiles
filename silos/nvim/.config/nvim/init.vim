@@ -2,8 +2,8 @@ let $VIM        = expand('~/.config/nvim/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
-Plug 'ajgrf/parchment'
 Plug 'airblade/vim-rooter'
+Plug 'ajgrf/parchment'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
@@ -11,15 +11,19 @@ Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/gist-vim'
+Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
+Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
 Plug 'thinca/vim-qfreplace'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -30,16 +34,6 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'zhaocai/GoldenView.Vim'
-
-Plug 'mattn/vim-sqlfmt'
-
-Plug 'fsharp/vim-fsharp', {'for': 'fsharp', 'do':  'make fsautocomplete'}
-Plug 'vim-syntastic/syntastic', { 'for': 'fsharp' }
-
-Plug 'w0rp/ale', {'for': ['rust']}
-Plug 'rust-lang/rust.vim/', {'for': ['rust']}
-
 call plug#end()
 
 let g:erlang_tags_ignore = '_build'
@@ -130,7 +124,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <leader>pf :FZF<CR>
-nnoremap <leader>pb :Buffers<CR>
+nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
 nnoremap <leader>ag :Rg!<CR>
@@ -138,7 +132,22 @@ nnoremap <leader>ch :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 
-set cmdheight=2
+function! WinZoomToggle()
+  if !exists('w:WinZoomIsZoomed') 
+    let w:WinZoomIsZoomed = 0
+  endif
+  if w:WinZoomIsZoomed == 0
+    execute "tabedit %"
+    let w:WinZoomIsZoomed = 1
+  elseif w:WinZoomIsZoomed == 1
+    execute "tabclose"
+    let w:WinZoomIsZoomed = 0
+  endif
+endfunction
+
+nmap <leader>z :call WinZoomToggle()<cr>
+
+set cmdheight=3
 set colorcolumn=80
 set cpoptions+=$
 set expandtab
@@ -149,8 +158,8 @@ set nosol
 set noswapfile
 set notimeout
 set nowrap
-set number
-set relativenumber
+set nonumber
+set norelativenumber
 set scrolloff=2
 set shiftwidth=2
 set showbreak=↪\
