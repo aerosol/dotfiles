@@ -6,6 +6,8 @@ export ZSH_CACHE="$HOME/.zsh_cache"
 mkdir -p $ZSH_CACHE
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # https://superuser.com/questions/1118878/using-notify-send-in-a-tmux-session-shows-error-no-notification
 unset DBUS_SESSION_BUS_ADDRESS
 

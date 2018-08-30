@@ -8,12 +8,28 @@ alias kat='tmux kill-session -a'
 alias g='git'
 alias ag='rg'
 alias vim='nvim'
+alias v='nvim .'
 
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
 #p() { passy "$*" | pbcopy; }
 
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
+wiki() {
+    dig +short txt $1.wp.dg.cx
+}
 
 
 pgcli() { (cd ~/dev && pipenv run pgcli $*); }
