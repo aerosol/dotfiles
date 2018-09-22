@@ -3,6 +3,7 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
 Plug 'airblade/vim-rooter'
+Plug 'aerosol/dumbotron.vim'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
