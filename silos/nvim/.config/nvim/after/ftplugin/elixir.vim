@@ -1,5 +1,8 @@
-autocmd FileType eelixir setlocal textwidth=1
-autocmd FileType eelixir setlocal wrapmargin=0
+augroup elixir
+  autocmd!
+  autocmd FileType eelixir setlocal textwidth=1
+  autocmd FileType eelixir setlocal wrapmargin=0
+augroup END
 
 let test#strategy = 'dispatch'
 nnoremap <leader>tf :TestFile<CR>

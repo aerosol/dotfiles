@@ -3,10 +3,11 @@ let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
 Plug 'airblade/vim-rooter'
-Plug 'ajgrf/parchment'
+Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
+Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -23,6 +24,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
 Plug 'thinca/vim-qfreplace'
+Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
@@ -44,8 +46,6 @@ let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:goldenview__enable_default_mapping = 0
 let g:signify_line_highlight = 0
-let g:signify_mapping_next_hunk = ']c'
-let g:signify_mapping_prev_hunk = '[c'
 let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
@@ -53,12 +53,14 @@ let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['.git/']
 let g:fzf_buffers_jump = 1
 
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.eex'
+
 let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
-set background=dark
 set termguicolors
-colorscheme dumbo
+set background=light
+colorscheme dumbotron
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
@@ -98,8 +100,6 @@ nnoremap <silent> <leader>fs :update<CR>
 nnoremap <silent> // :nohlsearch<CR>
 
 nnoremap <leader>fed :e $MYVIMRC<CR>
-nnoremap <leader>fep :e ~/.config/polybar/config<CR>
-nnoremap <leader>fei :e ~/.config/i3/config<CR>
 nnoremap <leader>fez :e ~/.zshrc<CR>
 nnoremap <leader>feR :source %<CR>
 
@@ -120,15 +120,13 @@ nnoremap <leader>gs :Gstatus<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
 
 nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>bc :BCommits<CR>
 nnoremap <leader>ag :Rg!<CR>
-nnoremap <leader>ch :History:<CR>
+nnoremap <leader>hh :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 
@@ -147,7 +145,7 @@ endfunction
 
 nmap <leader>z :call WinZoomToggle()<cr>
 
-set cmdheight=3
+set cmdheight=2
 set colorcolumn=80
 set cpoptions+=$
 set expandtab
@@ -176,12 +174,12 @@ set undolevels=5000
 
 set statusline=
 set statusline +=\ %<%t%*
-set statusline +=\ @%P%*   " percentage
-set statusline +=\ %#error#%m%*     " modified flag
+set statusline +=\ %#error#%m%* " modified flag
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
-set statusline +=%=%*     " separator
+set statusline +=%=%* " separator
 set statusline +=%{fugitive#head()}%*
-set statusline +=\ %y%*   " file type
+set statusline +=\ %y%* " file type
+set statusline +=\ %4l:%2c " line no/column, padded
 
 set list
 set listchars=
@@ -200,6 +198,8 @@ augroup defaults
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \   exe "normal g`\"" |
         \ endif
+
+  autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 augroup END
 
 augroup spell
@@ -216,11 +216,11 @@ augroup git
 augroup END
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=auto '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=auto '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 function! Preserve(command)
   let _s=@/
@@ -230,8 +230,6 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction
-
-autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
 
 function! StatuslineTrailingSpaceWarning()
   if !exists("b:statusline_trailing_space_warning")
