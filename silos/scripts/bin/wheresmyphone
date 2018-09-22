@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-kdeconnect-cli -d $(kdeconnect-cli -l | grep Xiaomi | awk '{print $3}') --ring
+kdeconnect-cli -d $(kdeconnect-cli -l | grep Sony | awk '{print $3}') --ring

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+w3m https://www.archlinux.org/news/ |  awk 'NR>17 && NR<30'
