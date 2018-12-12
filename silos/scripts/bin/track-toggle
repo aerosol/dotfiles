@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+timew 1>/dev/null
+if [[ $? -eq 1 ]] ; then
+  /home/hq1/bin/track-start $@
+else
+  /home/hq1/bin/track-stop
+fi
+
+
