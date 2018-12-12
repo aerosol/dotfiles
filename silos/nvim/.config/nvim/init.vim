@@ -50,8 +50,8 @@ let g:signify_line_highlight = 0
 let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
-let g:vim_markdown_folding_disabled = 1
 let g:rooter_patterns = ['.git/']
+let g:rooter_silent_chdir = 1
 let g:fzf_buffers_jump = 1
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.eex'
@@ -60,8 +60,8 @@ let mapleader=" "
 nnoremap <leader><space> :Commands<CR>
 
 set termguicolors
-set background=light
-colorscheme dumbotron
+set background=dark
+colorscheme dumbo
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
@@ -118,6 +118,8 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nnoremap <leader>gs :Gstatus<CR>
+
+nnoremap <leader>mf :MixFormat<CR>:w<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -206,7 +208,6 @@ augroup END
 augroup spell
   autocmd!
   autocmd FileType gitcommit setlocal spell
-  autocmd FileType markdown setlocal spell
 augroup END
 
 augroup git
