@@ -10,3 +10,8 @@ source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/plugins.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
+
+track-current

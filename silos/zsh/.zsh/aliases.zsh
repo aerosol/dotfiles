@@ -9,9 +9,11 @@ alias g='git'
 alias ag='rg'
 alias vim='nvim'
 alias v='nvim .'
-
+alias t='task'
+alias open='xdg-open'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+alias d="kitty +kitten diff"
 
 #p() { passy "$*" | pbcopy; }
 

@@ -14,6 +14,3 @@ function bgnotify_formatted {
   [ $1 -eq 0 ] && title="$2" || title="$2 FAILED"
   bgnotify "$title -- after $3 s" "$2";
 }
-
-
-#. /Users/hq1/dev/erlang/18_3/activate

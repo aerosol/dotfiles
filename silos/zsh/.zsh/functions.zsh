@@ -17,20 +17,6 @@ alias zcp='noglob zmv -C'
 alias zln='noglob zmv -L'
 alias zsy='noglob zmv -Ls'
 
-iprof() {
-  if [[ $# > 0 ]]; then
-      if [[ -z $TMUX ]]; then
-          # TODO: source an ENV var here
-          echo "\033]50;SetProfile=$1\a"
-      else
-          echo "\033Ptmux;\033\033]50;SetProfile=$1\007\033\\"
-      fi
-      export ITERM_PROFILE="$1"
-  else
-      echo $ITERM_PROFILE
-  fi
-}
-
 glg() {
   git log --oneline --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
@@ -61,4 +47,9 @@ fshow() {
       done
     fi
   done
+}
+
+p() {
+  pass=$(ssh -v mtod -t "P/p.py $1")
+  echo $pass | tail -n1 | xsel --clipboard --input
 }

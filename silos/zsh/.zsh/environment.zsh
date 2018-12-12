@@ -15,4 +15,6 @@ source $HOME/.asdf/asdf.sh
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+elif [[ -z "$TMUX" ]]; then
+	tmux new-session -s $(grep -E '^.{4,6}$' /usr/share/dict/american-english | shuf -n 1 | sed "s/'//g")
 fi
