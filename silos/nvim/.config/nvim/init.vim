@@ -37,8 +37,11 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'jreybert/vimagit'
 call plug#end()
 
+let g:mix_format_on_save = 1
 let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
 let g:gist_clip_command = 'pbcopy'
@@ -53,6 +56,13 @@ let g:tslime_ensure_trailing_newlines = 2
 let g:rooter_patterns = ['.git/']
 let g:rooter_silent_chdir = 1
 let g:fzf_buffers_jump = 1
+let g:comfortable_motion_interval = 300.0 / 60
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 2.0
+let g:comfortable_motion_no_default_key_mappings = 1
+
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.eex'
 
@@ -68,8 +78,8 @@ set clipboard+=unnamedplus
 
 vmap > >gv
 vmap < <gv
-nnore> >>
-nnore< <<
+nnore > >>
+nnore < <<
 
 nnoremap j gj
 nnoremap k gk
@@ -87,8 +97,9 @@ cnoremap <C-e> <end>
 cnoremap <C-f> <right>
 cnoremap <C-b> <left>
 
+nnoremap <silent> <Backspace> <C-^>
+
 nnoremap <silent> <C-h> <C-w>h
-nnoremap <silent> <Backspace> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
@@ -117,7 +128,7 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :MagitOnly<CR>
 
 nnoremap <leader>mf :MixFormat<CR>:w<CR>
 

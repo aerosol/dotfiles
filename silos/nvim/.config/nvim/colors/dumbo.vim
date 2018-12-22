@@ -29,9 +29,13 @@ hi Cursor gui=reverse guifg=NONE guibg=NONE
 hi CursorColumn gui=NONE guifg=NONE guibg=#1a1a1a
 hi CursorLine gui=NONE guifg=NONE guibg=#1a1a1a
 hi CursorLineNr gui=NONE guifg=#707070 guibg=NONE
-hi DiffAdd gui=NONE guifg=white guibg=darkgreen
+hi DiffAdded gui=NONE guifg=green guibg=NONE
+hi DiffAdd gui=NONE guifg=green guibg=NONE
+hi fileEntry gui=NONE guifg=yellow guibg=NONE
+hi titleEntry gui=NONE guifg=lightblue guibg=NONE
 hi DiffChange gui=NONE guifg=#ffffff guibg=#334b29
-hi DiffDelete gui=NONE guifg=black guibg=darkred
+hi DiffRemoved gui=NONE guifg=darkred guibg=NONE
+hi DiffDelete gui=NONE guifg=darkred guibg=NONE
 hi DiffText gui=NONE guifg=#ffffff guibg=#08661a
 hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
 hi Error gui=NONE guifg=#ff0000 guibg=NONE
@@ -45,7 +49,7 @@ hi MatchParen gui=NONE guifg=#00aa00 guibg=#333333
 hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
 hi NonText gui=NONE guifg=#211111 guibg=NONE
-hi Normal gui=NONE guifg=#b0b0b0 guibg=#0a0a0a
+hi Normal gui=NONE guifg=#b0b0b0 guibg=NONE
 hi Number gui=NONE guifg=#808080 guibg=NONE
 hi Pmenu gui=NONE guifg=NONE guibg=#1a1a1a
 hi PmenuSbar gui=NONE guifg=NONE guibg=#262626
@@ -86,10 +90,10 @@ syn match Comment      "\"__Comment.*"
 syn match Constant     "\"__Constant.*"
 syn match Cursor       "\"__Cursor.*"
 syn match CursorLine   "\"__CursorLine.*"
-syn match DiffAdd      "\"__DiffAdd.*"
+syn match DiffAdded      "\"__DiffAdd.*"
 syn match DiffChange   "\"__DiffChange.*"
 syn match DiffText     "\"__DiffText.*"
-syn match DiffDelete   "\"__DiffDelete.*"
+syn match DiffRemoved   "\"__DiffDelete.*"
 syn match Folded       "\"__Folded.*"
 syn match Function     "\"__Function.*"
 syn match Identifier   "\"__Identifier.*"
