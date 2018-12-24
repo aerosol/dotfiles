@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-curl -s https://kantor.aliorbank.pl/chart/EUR/json | jq '.actualBuyRate' | sed "s/\"//g"
