@@ -41,6 +41,9 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'jreybert/vimagit'
 call plug#end()
 
+let g:dispatch_compilers = {'mix test': 'exunit'}
+
+
 let g:mix_format_on_save = 1
 let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
@@ -128,7 +131,7 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nnoremap <leader>gs :MagitOnly<CR>
+nnoremap <leader>gs :Magit<CR>
 
 nnoremap <leader>mf :MixFormat<CR>:w<CR>
 
@@ -187,9 +190,9 @@ set undofile
 set undolevels=5000
 
 set statusline=
+set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %<%t%*
 set statusline +=\ %#error#%m%* " modified flag
-set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=%=%* " separator
 set statusline +=%{fugitive#head()}%*
 set statusline +=\ %y%* " file type
