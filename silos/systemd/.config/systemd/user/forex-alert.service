@@ -1,0 +1,10 @@
+[Unit]
+Description=Check forex rates
+
+[Service]
+Type=oneshot
+ExecStart=/home/hq1/bin/gilfoyle EUR 4.29
+ExecStart=/home/hq1/bin/gilfoyle CHF 3.79
+ExecStart=/home/hq1/bin/gilfoyle USD 3.79
+
+
