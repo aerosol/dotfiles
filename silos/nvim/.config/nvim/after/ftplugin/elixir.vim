@@ -2,13 +2,18 @@ augroup elixir
   autocmd!
   autocmd FileType eelixir setlocal textwidth=1
   autocmd FileType eelixir setlocal wrapmargin=0
+  autocmd FileType elixir setl formatexpr=CocAction('format')
+  autocmd BufWritePre <buffer> MixFormat
+  command! -nargs=0 MixFormat :call CocAction('format')
 augroup END
 
-let test#strategy = 'dispatch'
+let test#strategy = 'tslime'
 nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tv :TestVisit<CR>
+
+nnoremap <buffer> K :call CocAction('doHover')<CR>
 
  "xoxo Wojtek Mach
 function! ElixirUmbrellaTransform(cmd) abort

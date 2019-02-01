@@ -2,30 +2,29 @@ let $VIM        = expand('~/.config/nvim/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
-Plug 'airblade/vim-rooter'
 Plug 'aerosol/dumbotron.vim'
+Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
-Plug 'editorconfig/editorconfig-vim'
+Plug 'andymass/vim-matchup'
+Plug 'cocopon/iceberg.vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'mattn/gist-vim'
 Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
-Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
-Plug 'slashmili/alchemist.vim', {'for': 'elixir'}
 Plug 'thinca/vim-qfreplace'
-Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
@@ -38,34 +37,50 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'jreybert/vimagit'
+Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+let g:coc_snippet_next = '<c-n>'
+let g:coc_snippet_prev = '<c-p>'
+
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
 
 let g:dispatch_compilers = {'mix test': 'exunit'}
 
+set completeopt+=preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:mix_format_on_save = 1
 let g:erlang_tags_ignore = '_build'
 let g:filebeagle_show_hidden=1
+let g:fzf_buffers_jump = 1
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 let g:goldenview__enable_default_mapping = 0
+let g:rooter_patterns = ['.git/']
+let g:rooter_silent_chdir = 1
 let g:signify_line_highlight = 0
 let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
-let g:rooter_patterns = ['.git/']
-let g:rooter_silent_chdir = 1
-let g:fzf_buffers_jump = 1
-let g:comfortable_motion_interval = 300.0 / 60
-let g:comfortable_motion_friction = 80.0
-let g:comfortable_motion_air_drag = 2.0
-let g:comfortable_motion_no_default_key_mappings = 1
-
-nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.eex'
 
@@ -74,7 +89,7 @@ nnoremap <leader><space> :Commands<CR>
 
 set termguicolors
 set background=dark
-colorscheme dumbo
+colorscheme bluesweetshoe
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
@@ -114,6 +129,7 @@ nnoremap <silent> <leader>fs :update<CR>
 
 nnoremap <silent> // :nohlsearch<CR>
 
+nnoremap <leader>q :copen<CR>
 nnoremap <leader>fed :e $MYVIMRC<CR>
 nnoremap <leader>fez :e ~/.zshrc<CR>
 nnoremap <leader>feR :source %<CR>
@@ -132,8 +148,6 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nnoremap <leader>gs :Magit<CR>
-
-nnoremap <leader>mf :MixFormat<CR>:w<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -169,6 +183,8 @@ set expandtab
 set hidden
 set icm=nosplit
 set matchtime=5
+set updatetime=300
+set shortmess+=c
 set nosol
 set noswapfile
 set notimeout
