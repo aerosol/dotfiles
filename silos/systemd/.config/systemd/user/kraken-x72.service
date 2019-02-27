@@ -1,0 +1,13 @@
+[Unit]
+Description=Kraken AIO startup service
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=liquidctl set pump speed 100
+ExecStart=liquidctl set fan speed 40
+ExecStart=liquidctl set logo color fading ea02ff ff0004
+ExecStart=liquidctl set ring color alternating 836aff f706ff
+
+[Install]
+WantedBy=multi-user.target
