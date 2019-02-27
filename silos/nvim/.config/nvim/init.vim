@@ -2,6 +2,7 @@ let $VIM        = expand('~/.config/nvim/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
+Plug 'mcchrish/nnn.vim'
 Plug 'aerosol/dumbotron.vim'
 Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
@@ -40,6 +41,8 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
 
+let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -58,6 +61,8 @@ let g:coc_snippet_prev = '<c-p>'
 
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+nmap g? <Plug>(coc-diagnostic-info) 
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
