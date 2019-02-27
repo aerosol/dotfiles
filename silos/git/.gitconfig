@@ -47,5 +47,6 @@
     required = true
 [diff]
     indentHeuristic = on
+    algorithm = patience
 [core]
 	excludesfile = /Users/hq1/.gitignore_global
