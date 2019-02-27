@@ -8,7 +8,6 @@ comparison=$(echo "$rate >= $threshold" | bc)
 if [ $comparison -eq 1 ]
 then
   notify-send --expire-time=60000 --icon=dialog-warning "ALERT: Sell $currency. Rate: $rate"
-  espeak "$currency rate is $rate" 2>/dev/null &
 fi
 
 echo $rate
