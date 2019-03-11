@@ -62,6 +62,8 @@ let g:coc_snippet_prev = '<c-p>'
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 nmap g? <Plug>(coc-diagnostic-info) 
 
 nmap <silent> gd <Plug>(coc-definition)

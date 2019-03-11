@@ -4,7 +4,6 @@ augroup html
   autocmd FileType html setlocal wrapmargin=0
   autocmd BufWritePre *.html :call Preserve("normal gg=G")
   autocmd BufWritePre *.eex :call Preserve("normal gg=G")
-  imap <buffer> <tab> <
 augroup END
 
 
