@@ -39,9 +39,18 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'vimwiki/vimwiki'
+Plug 'sgur/vim-editorconfig'
 call plug#end()
 
 let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+      \ 'css_name': 'style.css',
+      \ 'auto_export': 1,
+      \ 'template_path': '~/vimwiki/templates/',
+      \ 'template_default': 'plain',
+      \ 'template_ext': '.html'}]
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
