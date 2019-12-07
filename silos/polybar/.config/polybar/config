@@ -17,10 +17,8 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
+background = #111
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -57,7 +55,7 @@ font-2 = "JoyPixels:scale=5;"
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = filesystem xkeyboard memory cpu wlan eth battery pulseaudio backlight-acpi date
+modules-right = filesystem xkeyboard memory cpu wlan eth pulseaudio backlight-acpi battery date
 
 tray-position = right
 tray-padding = 2
@@ -254,32 +252,22 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+poll-interval = 10
+
+label-charging = "%percentage%%"
+
+format-charging = 🔌 <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+time-format = %H:%M
+label-discharging = "%percentage%% (~%time%)"
+
+format-discharging = 🔋 <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = "🔋"
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = -
-animation-charging-1 = |
-animation-charging-2 = /
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = .
-animation-discharging-1 = ,
-animation-discharging-2 = x
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
