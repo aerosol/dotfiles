@@ -105,7 +105,7 @@ nnoremap <leader><space> :Commands<CR>
 
 set termguicolors
 set background=dark
-colorscheme bluesweetshoe
+colorscheme dumbo
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
