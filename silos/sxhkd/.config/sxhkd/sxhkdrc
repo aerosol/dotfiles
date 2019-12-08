@@ -19,7 +19,7 @@ super + BackSpace
 
 # swap the current node and the biggest node
 super + Return
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 
 # program launcher
@@ -28,6 +28,12 @@ super + @space
 
 super + Escape
 	actterm
+
+super + b
+	bspc node @parent -B
+
+F11
+	~/.config/sxhkd/switch
 
 #
 # bspwm hotkeys
