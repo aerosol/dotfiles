@@ -17,11 +17,11 @@
 ;==========================================================
 
 [colors]
-background = #111
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
+background = #1e1c31
+background-alt = #000000
+foreground = #EEFFFF
+foreground-alt = #999999
+primary = #ff0000
 secondary = #e60053
 alert = #bd2c40
 
@@ -36,9 +36,6 @@ fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #f00
 
 border-size = 0
 border-color = #00000000
