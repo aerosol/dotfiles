@@ -15,7 +15,7 @@ super + shift + 5
 	flameshot gui
 
 super + BackSpace
-	sxlock -f "-misc-fixed-medium-r-*--47-120-*-*-*-*-iso8859-1" -l -p X -u "pass or gtfo"
+	lock.sh
 
 # swap the current node and the biggest node
 super + Return
@@ -23,7 +23,7 @@ super + Return
 
 
 # program launcher
-super + @space
+super + space
 	rofi -show run
 
 super + Escape
