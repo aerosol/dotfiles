@@ -1,17 +1,17 @@
 [global]
 monitor = 0
 follow = mouse
-geometry = "400x60-70+48"
+geometry = "900x60-70+48"
 indicate_hidden = yes
 shrink = yes
 separator_height = 1
 separator_color = frame
-padding = 24
-horizontal_padding = 24
+padding = 44
+horizontal_padding = 44
 frame_width = 0
 sort = no
 idle_threshold = 120
-font = Liga Iosevka 10
+font = SF Pro Display 14
 line_height = 4
 markup = full
 format = "<b>%s</b>\n%b"
@@ -43,17 +43,17 @@ class = Dunst
 [urgency_low]
 timeout = 2
 background = "#1e2430"
-foreground = "#00ff01"
-frame_color = "#00ff01"
+foreground = #A1EFD3
+frame_color = #A1EFD3
 
 [urgency_normal]
 timeout = 4
 background = "#1e2430"
-foreground = "#f8ff00"
-frame_color = "#f8ff00"
+foreground = "#EEFFFF"
+frame_color = "#EEFFFF"
 
 [urgency_critical]
 timeout = 8
 background = "#1e2430"
-foreground = "#ff00a8"
-frame_color = "#ff00a8"global]
+foreground = #F0719B
+frame_color = #F0719B
