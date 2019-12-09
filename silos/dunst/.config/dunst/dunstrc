@@ -35,10 +35,10 @@ title = Dunst
 class = Dunst
 
 [shortcuts]
-#close = ctrl+space
-#close_all = ctrl+shift+space
-#history = ctrl+grave
-#context = ctrl+shift+period
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+grave
+context = ctrl+shift+period
 
 [urgency_low]
 timeout = 2
