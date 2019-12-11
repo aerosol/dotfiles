@@ -2,6 +2,8 @@ let $VIM        = expand('~/.config/nvim/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'aswathkk/darkscene.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'aerosol/dumbotron.vim'
 Plug 'airblade/vim-rooter'
@@ -41,7 +43,6 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'vimwiki/vimwiki'
 Plug 'sgur/vim-editorconfig'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 let g:nnn#layout = { 'left': '~20%' } " or right, up, down
@@ -106,7 +107,7 @@ nnoremap <leader><space> :Commands<CR>
 
 set termguicolors
 set background=dark
-colorscheme embark
+colorscheme darkscene
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
@@ -290,35 +291,3 @@ function! StatuslineTrailingSpaceWarning()
   endif
   return b:statusline_trailing_space_warning
 endfunction
-
-
-function! s:IsFirenvimActive(event) abort
-  if !exists('*nvim_get_chan_info')
-    return 0
-  endif
-  let l:ui = nvim_get_chan_info(a:event.chan)
-  return has_key(l:ui, 'client') && has_key(l:ui.client, "name") &&
-      \ l:ui.client.name is# "Firenvim"
-endfunction
-
-function! OnUIEnter(event) abort
-  if s:IsFirenvimActive(a:event)
-    set laststatus=0
-    set guifont=Hack:h12
-    nnoremap <Esc><Esc> :call firenvim#focus_page()<CR>
-  endif
-endfunction
-autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
-
-let g:firenvim_config = {
-    \ 'localSettings': {
-        \ '.*': {
-            \ 'selector': '',
-            \ 'priority': 0,
-        \ },
-        \ 'github\.com': {
-            \ 'selector': 'textarea',
-            \ 'priority': 1,
-        \ },
-    \ }
-\ }
