@@ -1,18 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 feh --bg-fill /home/hq1/.wallpaper.jpg &
 
-pgrep -u "$USER" screensaver || screensaver.sh &
+autostart_no_notify() {
+  pgrep -u "$USER" -f "$1" || $1 &
+}
 
-pgrep -u "$USER" sxhkd || sxhkd &
+autostart() {
+  pgrep -u "$USER" -f "$1" || (notify-send "Autostart" "$1" && $1)&
+}
 
-pgrep -u "$USER" dunst || dunst &
-
-pgrep -u "$USER" flameshot || flameshot &
-
-pgrep -u "$USER" polybar || polybar example &
-
-pgrep -u "$USER" picom >/dev/null || picom --config /home/hq1/.config/picom.conf &
+autostart_no_notify "dunst"
+autostart "screensaver.sh"
+autostart "sxhkd"
+autostart "redshift-gtk"
+autostart "greenclip daemon"
+autostart "flameshot"
+autostart "polybar example"
+autostart "picom --config /home/hq1/.config/picom.conf"
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
