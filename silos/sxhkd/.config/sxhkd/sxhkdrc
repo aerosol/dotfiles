@@ -17,6 +17,9 @@ super + shift + 5
 super + BackSpace
 	lock.sh
 
+super + shift + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 # swap the current node and the biggest node
 super + Return
 	bspc node -s biggest.local
