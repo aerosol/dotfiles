@@ -150,6 +150,8 @@ nnoremap <silent> // :nohlsearch<CR>
 nnoremap <leader>q :copen<CR>
 nnoremap <leader>fed :e $MYVIMRC<CR>
 nnoremap <leader>fez :e ~/.zshrc<CR>
+nnoremap <leader>feb :e ~/.config/bspwm/bspwmrc<CR>
+nnoremap <leader>fes :e ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
