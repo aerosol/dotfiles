@@ -103,25 +103,37 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
+format = [<label-mode>] <label-state>
+
 label-font = 2
 
-label-focused = %name%
+label-focused = %index%: %name%
 label-focused-background = ${colors.background-alt}
 label-focused-padding = 2
 
-label-occupied = %name%*
+label-occupied = %index%: %name%
 label-occupied-padding = 2
 
-label-urgent = %name%!
+label-urgent = %index%: %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %name%
+label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
+label-monocle = MO
+label-tiled = TI
+label-fullscreen = FS
+label-floating = FL
+label-pseudotiled = PS
+label-locked = LO
+label-locked-foreground = #bd2c40
+label-sticky = ST
+label-sticky-foreground = #fba922
+label-private = PR
+label-private-foreground = #bd2c40
+label-marked = MA
 
 [module/xbacklight]
 type = internal/xbacklight
