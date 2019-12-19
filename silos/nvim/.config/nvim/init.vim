@@ -196,6 +196,8 @@ endfunction
 
 nmap <leader>z :call WinZoomToggle()<cr>
 
+set foldmethod=syntax
+set foldlevel=1
 set cmdheight=2
 set colorcolumn=80
 set cpoptions+=$
