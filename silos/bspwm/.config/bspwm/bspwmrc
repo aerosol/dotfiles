@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
+xsetroot -cursor_name left_ptr
 
 feh --bg-fill /home/hq1/.wallpaper.jpg &
 
 autostart() {
+  mkdir -p /tmp/wm_startup
   pgrep -u "$USER" -f "$1" || $1 &
+  echo $! >> /tmp/wm_startup/pids
 }
 
-xsetroot -xcf /usr/share/icons/breeze_cursors/cursors/left_ptr 300
-
 autostart "dunst"
-autostart "clight"
 autostart "btops"
 autostart "picom --config /home/hq1/.config/picom.conf"
 autostart "screensaver.sh"
@@ -36,8 +36,6 @@ bspc config focus_follows_pointer true
 bspc config history_aware_focus true
 bspc config focus_by_distance true
 
-#bspc rule -a Gimp desktop='^8' state=floating follow=on
-#bspc rule -a Chromium desktop='^2'
-#bspc rule -a mplayer2 state=floating
-#bspc rule -a Kupfer.py focus=on
-
+bspc rule -a Zathura state=tiled
+bspc rule -a FloatThis state=floating
+bspc rule -a feh state=floating center=true
