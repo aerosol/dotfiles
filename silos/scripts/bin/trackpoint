@@ -1,4 +1,4 @@
 xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Profile Enabled" 1 0
-xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 0.2
+xinput --set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 0.8
 
 

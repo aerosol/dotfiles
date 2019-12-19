@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+temp=$(echo -e "0\n2000\n2500\n3000\n4000\n4500" | rofi -dmenu -p "Choose temp")
+sct $temp

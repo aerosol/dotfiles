@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-xautolock -time 5 -locker lock.sh -notifier "notify-send 'locking' 'in 10 seconds'" -notify 10
+xset s 300 5
+xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
