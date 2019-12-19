@@ -6,4 +6,5 @@ configuration {
     theme: "oxide";
     display-window: "Window";
     display-drun: "Search";
+    window-format: "{t}";
 }
