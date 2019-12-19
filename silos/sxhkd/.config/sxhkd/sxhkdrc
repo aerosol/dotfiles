@@ -15,7 +15,7 @@ super + shift + 5
 	flameshot gui
 
 super + BackSpace
-	lock.sh
+	xset s activate
 
 super + shift + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
@@ -50,10 +50,16 @@ super + shift + r
 
 # close and kill
 super + w
-	bspc node -c,k
+	bspc node -c
 
 super + q
 	bspc node -k
+
+super + n
+	kitty --class FloatThis -e nnn
+
+super + shift + t
+	colortemp
 
 # alternate between the tiled and monocle layout
 #super + f
@@ -99,7 +105,7 @@ super + Tab
 	bspc desktop -f last
 
 super + slash
-	rofi -show window -window-format '{t}'
+	rofi -show window
 
 # focus the older or newer node in the focus history
 super + {o,i}
