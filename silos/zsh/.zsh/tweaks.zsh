@@ -13,4 +13,3 @@ done
 
 autoload -U colors
 colors
-

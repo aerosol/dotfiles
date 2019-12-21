@@ -7,6 +7,10 @@ alias ii='iex -S mix'
 alias kab='pkill beam.smp'
 alias kat='tmux kill-session -a'
 alias g='git'
+alias gst='git st'
+alias gco='git checkout'
+alias gp='git pub'
+alias gf='git fetch'
 alias ag='rg'
 alias vim='nvim'
 alias v='nvim .'
@@ -15,8 +19,6 @@ alias open='xdg-open'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias d="kitty +kitten diff"
-
-#p() { passy "$*" | pbcopy; }
 
 man() {
     env \
@@ -29,12 +31,3 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
 }
-
-wiki() {
-    dig +short txt $1.wp.dg.cx
-}
-
-
-hpg() { heroku pg:credentials:url -a $1 | grep postgres | awk '{print $1}' }
-
-pgh() { pgcli $(hpg app-$1) }
