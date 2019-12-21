@@ -14,4 +14,5 @@ source $HOME/.zsh/plugins.zsh
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
 
-track-current
+#track-current
+

@@ -1,4 +1,5 @@
-alias ls="ls -Galh --color"
+alias ls="exa"
+alias ll="exa -l"
 alias o='xdg-open'
 alias get='wget -t0 -c'
 alias mps='iex -S mix phoenix.server'
@@ -33,8 +34,6 @@ wiki() {
     dig +short txt $1.wp.dg.cx
 }
 
-
-pgcli() { (cd ~/dev && pipenv run pgcli $*); }
 
 hpg() { heroku pg:credentials:url -a $1 | grep postgres | awk '{print $1}' }
 

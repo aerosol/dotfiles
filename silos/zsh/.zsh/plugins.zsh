@@ -7,7 +7,8 @@ source /etc/profile.d/autojump.sh
 
 bgnotify_threshold=4  ## set your own notification threshold
 
-source $HOME/.zsh-background-notify/bgnotify.plugin.zsh
+source /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
+zstyle ':notify:*' command-complete-timeout 8
 
 function bgnotify_formatted {
   ## $1=exit_status, $2=command, $3=elapsed_time
