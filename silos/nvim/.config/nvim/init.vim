@@ -2,14 +2,14 @@ let $VIM        = expand('~/.config/nvim/')
 let $BUNDLES    = expand($VIM . 'bundle/')
 
 call plug#begin($BUNDLES)
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'smallwat3r/vim-efficient'
 Plug 'aswathkk/darkscene.vim'
+Plug 'cocopon/iceberg.vim'
+
 Plug 'mcchrish/nnn.vim'
-Plug 'aerosol/dumbotron.vim'
 Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
 Plug 'andymass/vim-matchup'
-Plug 'cocopon/iceberg.vim'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
@@ -107,7 +107,7 @@ nnoremap <leader><space> :Commands<CR>
 
 set termguicolors
 set background=dark
-colorscheme darkscene
+colorscheme dumbo
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
