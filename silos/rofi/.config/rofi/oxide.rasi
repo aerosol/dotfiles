@@ -19,7 +19,7 @@
     lightbg:                     var(foreground);
     selected-active-foreground:  var(lightfg);
     alternate-active-background: var(blue);
-    background:                  #1e1c31;
+    background:                  #000000;
     alternate-normal-foreground: var(foreground);
     normal-background:           var(background);
     lightfg:                     #1e1c31;
