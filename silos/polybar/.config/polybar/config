@@ -17,8 +17,8 @@
 ;==========================================================
 
 [colors]
-background = #1e1c31
-background-alt = #000000
+background = #000000
+background-alt = #333333
 foreground = #EEFFFF
 foreground-alt = #999999
 primary = #ff0000
@@ -28,7 +28,7 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 48
+height = 50
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -47,7 +47,7 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = "Liga Iosevka:size=19;+3"
-font-1 = "SF Pro Display:size=24:weight=semibold;+3"
+font-1 = "SF Pro Display:size=22:weight=semibold;+3"
 font-2 = "JoyPixels:scale=5;"
 
 modules-left = bspwm
@@ -61,7 +61,7 @@ tray-maxsize = 32
 
 wm-restack = bspwm
 
-;override-redirect = true
+override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -288,7 +288,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
