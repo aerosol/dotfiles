@@ -6,6 +6,8 @@ Plug 'smallwat3r/vim-efficient'
 Plug 'aswathkk/darkscene.vim'
 Plug 'cocopon/iceberg.vim'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'mcchrish/nnn.vim'
 Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
@@ -111,6 +113,8 @@ colorscheme dumbo
 
 inoremap jk <Esc>
 set clipboard+=unnamedplus
+
+nnoremap <leader><leader> za
 
 vmap > >gv
 vmap < <gv

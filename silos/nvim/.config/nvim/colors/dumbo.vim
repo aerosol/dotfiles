@@ -2,22 +2,22 @@ hi clear
 syntax reset
 let g:colors_name = "dumbo"
 
-hi! link NeomakeErrorDefault Error
-hi! link NeomakeMessageSignDefault Error
-hi! link NeomakeMessageSign Error
-hi! link NeomakeWarningSignDefault WarningMsg
-hi! link NeomakeWarningSign WarningMsg
-hi! link NeomakeErrorSignDefault Error
-hi! link NeomakeErrorSign Error
-hi! link NeomakeInfoSignDefault Comment
-hi! link NeomakeInfoSign Comment
-hi! link NeomakeError Error
-hi! link NeomakeInfoDefault Comment
-hi! link NeomakeInfo Comment
-hi! link NeomakeMessageDefault Error
-hi! link NeomakeMessage Error
-hi! link NeomakeWarningDefault WarningMsg
-hi! link NeomakeWarning WarningMsg
+"hi! link NeomakeErrorDefault Error
+"hi! link NeomakeMessageSignDefault Error
+"hi! link NeomakeMessageSign Error
+"hi! link NeomakeWarningSignDefault WarningMsg
+"hi! link NeomakeWarningSign WarningMsg
+"hi! link NeomakeErrorSignDefault Error
+"hi! link NeomakeErrorSign Error
+"hi! link NeomakeInfoSignDefault Comment
+"hi! link NeomakeInfoSign Comment
+"hi! link NeomakeError Error
+"hi! link NeomakeInfoDefault Comment
+"hi! link NeomakeInfo Comment
+"hi! link NeomakeMessageDefault Error
+"hi! link NeomakeMessage Error
+"hi! link NeomakeWarningDefault WarningMsg
+"hi! link NeomakeWarning WarningMsg
 
 hi Boolean gui=NONE guifg=#808080 guibg=NONE
 hi ColorColumn gui=NONE guifg=NONE guibg=#1a1a1a
@@ -41,7 +41,7 @@ hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
 hi Error gui=NONE guifg=#ff0000 guibg=NONE
 hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
 hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
-hi Folded gui=NONE guifg=#707070 guibg=NONE
+hi Folded gui=NONE guifg=#4e6f2e guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
 hi IncSearch gui=NONE guifg=#ffffff guibg=#f91894
 hi LineNr gui=NONE guifg=#616161 guibg=NONE
@@ -77,7 +77,7 @@ hi Todo gui=standout guifg=NONE guibg=NONE
 hi Type gui=NONE guifg=#8f8f8f guibg=NONE
 hi Underlined gui=NONE guifg=NONE guibg=NONE
 hi VertSplit gui=NONE guifg=#333333 guibg=NONE
-hi Visual gui=NONE guifg=NONE guibg=#541492
+hi Visual gui=NONE guifg=#ffffff guibg=#541492
 hi VisualNOS gui=NONE guifg=NONE guibg=NONE
 hi WarningMsg gui=NONE guifg=NONE guibg=#260808
 hi WildMenu gui=NONE guifg=NONE guibg=#525252
@@ -114,6 +114,16 @@ syn match Type         "\"__Type.*"
 syn match Underlined   "\"__Underlined.*"
 syn match VertSplit    "\"__VertSplit.*"
 syn match Visual       "\"__Visual.*"
+
+highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+highlight CocUnderline ctermfg=Red guifg=#ff0000 gui=underline
+highlight CocErrorSign ctermfg=Red  guifg=#7c1717
+highlight CocWarningSign ctermfg=Red guifg=#7c1717
+highlight CocFloating guibg=#111111
+highlight CocCodeLens guifg=#ffbbff
+
+
+
 
 "__Comment              /* this is a comment */
 "__Constant             var = SHBLAH
