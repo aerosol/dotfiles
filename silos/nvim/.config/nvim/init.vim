@@ -139,6 +139,7 @@ nnoremap <leader>fez :e ~/.zshrc<CR>
 nnoremap <leader>feb :e ~/.config/bspwm/bspwmrc<CR>
 nnoremap <leader>fes :e ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap <leader>fet :e ~/.tmux.conf<CR>
+nnoremap <leader>fek :e ~/.config/kitty/kitty.conf<CR>
 nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
