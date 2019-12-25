@@ -18,11 +18,6 @@ function! StatuslineTrailingSpaceWarning()
   return b:statusline_trailing_space_warning
 endfunction
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 function! WinZoomToggle()
   if !exists('w:WinZoomIsZoomed') 
     let w:WinZoomIsZoomed = 0

@@ -138,6 +138,7 @@ nnoremap <leader>fed :e $MYVIMRC<CR>
 nnoremap <leader>fez :e ~/.zshrc<CR>
 nnoremap <leader>feb :e ~/.config/bspwm/bspwmrc<CR>
 nnoremap <leader>fes :e ~/.config/sxhkd/sxhkdrc<CR>
+nnoremap <leader>fet :e ~/.tmux.conf<CR>
 nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
@@ -154,9 +155,6 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nnoremap <leader>gs :Magit<CR>
-
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
 
 nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>bb :Buffers<CR>
