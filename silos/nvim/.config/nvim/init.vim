@@ -74,6 +74,7 @@ set ttimeoutlen=10
 set undofile
 set undolevels=5000
 set updatetime=300
+set wildmode=list,full
 set wrap
 
 set statusline=
@@ -96,7 +97,7 @@ set lcs+=eol:¬
 
 inoremap jk <Esc>
 
-nnoremap <leader><space> za
+nnoremap <leader><space> :Commands<cr>
 
 vmap > >gv
 vmap < <gv
@@ -140,6 +141,7 @@ nnoremap <leader>feb :e ~/.config/bspwm/bspwmrc<CR>
 nnoremap <leader>fes :e ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap <leader>fet :e ~/.tmux.conf<CR>
 nnoremap <leader>fek :e ~/.config/kitty/kitty.conf<CR>
+nnoremap <leader>fep :e ~/.config/polybar/config<CR>
 nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>

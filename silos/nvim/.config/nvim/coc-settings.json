@@ -9,6 +9,8 @@
   "coc.preferences.hoverTarget": "preview",
   "diagnostic.virtualTextLines": 1,
   "coc.preferences.colorSupport": true,
+  "html.filetypes": ["html", "eelixir", "eex"],
+  "html.enable": true,
   "languageserver": {
     "elixirls": {
       "command": "/home/hq1/dev/elixir-ls/rel/language_server.sh",
