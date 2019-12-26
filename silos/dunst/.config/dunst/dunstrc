@@ -43,17 +43,17 @@ context = ctrl+shift+period
 [urgency_low]
 timeout = 2
 background = "#1e2430"
-foreground = #A1EFD3
-frame_color = #A1EFD3
+foreground = "#a1efd3"
+frame_color = "#a1efd3"
 
 [urgency_normal]
 timeout = 4
 background = "#1e2430"
-foreground = "#EEFFFF"
-frame_color = "#EEFFFF"
+foreground = "#eeffff"
+frame_color = "#eeffff"
 
 [urgency_critical]
 timeout = 8
 background = "#1e2430"
-foreground = #F0719B
-frame_color = #F0719B
+foreground = "#f0719b"
+frame_color = "#f0719b"
