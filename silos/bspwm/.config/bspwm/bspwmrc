@@ -15,6 +15,7 @@ autostart "sxhkd"
 autostart "greenclip daemon"
 autostart "flameshot"
 autostart "polybar example"
+autostart "trackpoint"
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
