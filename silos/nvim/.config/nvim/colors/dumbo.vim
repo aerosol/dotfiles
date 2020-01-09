@@ -2,23 +2,6 @@ hi clear
 syntax reset
 let g:colors_name = "dumbo"
 
-"hi! link NeomakeErrorDefault Error
-"hi! link NeomakeMessageSignDefault Error
-"hi! link NeomakeMessageSign Error
-"hi! link NeomakeWarningSignDefault WarningMsg
-"hi! link NeomakeWarningSign WarningMsg
-"hi! link NeomakeErrorSignDefault Error
-"hi! link NeomakeErrorSign Error
-"hi! link NeomakeInfoSignDefault Comment
-"hi! link NeomakeInfoSign Comment
-"hi! link NeomakeError Error
-"hi! link NeomakeInfoDefault Comment
-"hi! link NeomakeInfo Comment
-"hi! link NeomakeMessageDefault Error
-"hi! link NeomakeMessage Error
-"hi! link NeomakeWarningDefault WarningMsg
-"hi! link NeomakeWarning WarningMsg
-
 hi Boolean gui=NONE guifg=#808080 guibg=NONE
 hi ColorColumn gui=NONE guifg=NONE guibg=#1a1a1a
 hi Comment gui=NONE guifg=#707070 guibg=NONE
