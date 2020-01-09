@@ -6,6 +6,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PAGER=less
+export TERMINAL=kitty
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 
 # https://superuser.com/questions/1118878/using-notify-send-in-a-tmux-session-shows-error-no-notification

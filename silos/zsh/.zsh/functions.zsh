@@ -32,3 +32,6 @@ p() {
   pass=$(ssh -v mtod -t "P/p.py $1")
   echo $pass | tail -n1 | xsel --clipboard --input
 }
+
+note() { nvim "/home/hq1/priv/Notes/$(date "+%Y-%m-%d").md"; }
+peep() { bat --style=numbers --color=always $(rg -il . | fzf --ansi --preview "bat --color=always --style=numbers {}") }
