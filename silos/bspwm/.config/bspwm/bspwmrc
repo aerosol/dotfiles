@@ -7,8 +7,12 @@ autostart() {
   pgrep -u "$USER" -f "$1" || $1 &
 }
 
+autostart-kill() {
+  pkill -u "$USER" "$1"; $1 &
+}
+
 autostart "dunst"
-autostart "btops"
+autostart-kill "btops"
 autostart "picom --config /home/hq1/.config/picom.conf"
 autostart "screensaver.sh"
 autostart "sxhkd"
@@ -16,6 +20,8 @@ autostart "greenclip daemon"
 autostart "flameshot"
 autostart "polybar example"
 autostart "trackpoint"
+autostart "bspwm-golden-run"
+autostart "udiskie -t"
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
@@ -28,15 +34,16 @@ bspc config focused_border_color "#1F8999"
 bspc config urgent_border_color "#B58900"
 bspc config presel_border_color "#26E2FF"
 
-bspc config split_ratio          0.65
+bspc config automatic_scheme     alternate
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config single_monocle       true
 
 bspc config focus_follows_pointer true
-bspc config history_aware_focus true
-bspc config focus_by_distance true
+bspc config history_aware_focus   true
+bspc config focus_by_distance     true
 
 bspc rule -a Zathura state=tiled
 bspc rule -a FloatThis state=floating
 bspc rule -a feh state=floating center=true
+bspc rule -a photoqt state=floating center=true
