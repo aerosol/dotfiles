@@ -27,7 +27,6 @@ super + shift + v
 super + Return
 	bspc node -s biggest.local
 
-
 # program launcher
 super + space
 	rofi -show run
@@ -95,7 +94,6 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
-
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }grave
