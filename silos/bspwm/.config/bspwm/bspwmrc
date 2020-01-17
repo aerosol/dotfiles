@@ -40,6 +40,7 @@ bspc config gapless_monocle      true
 bspc config single_monocle       true
 
 bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true
 bspc config history_aware_focus   true
 bspc config focus_by_distance     true
 
