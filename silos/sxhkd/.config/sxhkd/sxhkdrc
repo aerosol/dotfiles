@@ -11,6 +11,9 @@ XF86MonBrightness{Up,Down}
 XF86Audio{Raise,Lower}Volume
 	pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ {+,-}4%
 
+super + d
+	dolphin
+
 super + shift + 5
 	flameshot gui
 
@@ -92,6 +95,7 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
+
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }grave
