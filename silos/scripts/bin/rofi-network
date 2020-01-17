@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+#
+#   Simple network manager interface to connect/disconnect from configured
+#   networks.
+#
+#   Requirements:
+#     NetworkManager, awk, rofi
+#
+#   Notes:
+#     * "Return" will turn on/off the highlighted network.
+#     * "Alt+Return" will open the highlighted network in
+#       `nm-connection-editor`.
+#     * "Alt+e" will open `nm-connection-editor`.
+#
+
+# Basic rofi launch command. Additional option can also be provided
+# when calling this script
+LAUNCHER="rofi -dmenu -markup-rows -i -p network \
+    -kb-custom-1 Alt+Return -kb-custom-2 Alt+e $@"
+
+# Separator used to separate the displayed network information
+SEPARATOR=", "
+
+# The networks to include
+TYPES=('Ethernet' '802-11-wireless' 'vpn')
+
+# Titles for the previously defined types. Have to be even in count.
+TITLES=('Ethernet' 'Wi-Fi' 'VPN')
+
+
+function formate() {
+    echo "$(echo "$1" | awk -F ":" -v sep="$SEPARATOR" \
+        '{print $1sep"<small>"$2"</small>"}')"
+}
+
+function filter() {
+    networks="$1"
+    type_="$2"
+    echo -e "$(echo "$networks" | awk -F ":" -v t="$type_" '$3 == t')"
+}
+
+function is_active() {
+    networks="$1"
+    uuid="$2"
+    test ! -z "$(echo "$networks" \
+        | awk -F ":" -v uuid="$uuid" '$2 == uuid && $4 == "activated"')"
+}
+
+function parse_rofi_name() {
+    echo "$(echo "$line" | awk -F "$SEPARATOR" '{print $1}')"
+}
+
+function parse_rofi_uuid() {
+    line="$1"
+    uuid="$(echo "$line" | awk -F "$SEPARATOR" '{print $2}')"
+    uuid=${uuid#<small>}
+    uuid=${uuid%</small>}
+    echo "$uuid"
+}
+
+if [ ${#TYPES[@]} -ne ${#TITLES[@]} ]; then
+    echo "'TYPES' and 'TITLES' aren't even."
+    exit 1
+fi
+
+# Get a list of all connections
+networks="$(nmcli -t -f "name,uuid,type,state" c show)"
+
+# Generate a list for rofi to display
+#for type_ in "${TYPES[@]}"; do
+for i in ${!TYPES[@]}; do
+    cons="$(filter "$networks" ${TYPES[$i]})"
+    if [ -z "$cons" ]; then
+        continue
+    fi
+    rofi_options+="<u><b>${TITLES[$i]}</b></u>\n"
+    rofi_options+="$(formate "$cons")"
+    rofi_options+="\n"
+done
+
+rofi_options=${rofi_options%'\n'}
+
+# Build a index list of active networks for rofi
+count=0
+active_index=''
+while read line; do
+    uuid="$(parse_rofi_uuid "$line")"
+    if $(is_active "$networks" "$uuid"); then
+        active_index+="${count},"
+    fi
+    ((count++))
+done <<< "$(echo -e "$rofi_options")"
+active_index=${active_index%,}
+
+# Prepare additional arguments for rofi
+args=''
+if [ ! -z "$active_index" ]; then
+    args+="-a $active_index"
+fi
+
+# Show rofi
+network="$(echo -e "$rofi_options" | $LAUNCHER $args)"
+action=$?
+
+if [ $action -eq 0 ]; then
+    uuid="$(parse_rofi_uuid "$network")"
+
+    if $(is_active "$networks" "$uuid"); then
+        nmcli c down "$uuid"
+    else
+        nmcli c up "$uuid"
+    fi
+elif [ $action -eq 10 ]; then
+    uuid="$(parse_rofi_uuid "$network")"
+    nm-connection-editor -e "$uuid"
+elif [ $action -eq 11 ]; then
+    nm-connection-editor
+fi
+
