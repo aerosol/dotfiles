@@ -1,0 +1,1 @@
+feh -B black -d --auto-zoom --auto-rotate --geometry 1500x1500 --scale-down --font "Hack"

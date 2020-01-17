@@ -1,0 +1,30 @@
+toggle_filenames D
+toggle_exif E
+save_filelist C-f
+toggle_pause p
+toggle_keep_vp K
+prev_img h Left BackSpace
+next_img l Right space
+save_image C-s
+jump_first H Home
+jump_last L End
+jump_back 1-h Prior
+jump_fwd 1-l Next
+reload_plus plus
+reload_minus underscore
+scroll_left s C-Left
+scroll_right f C-Right
+scroll_up e C-Up
+scroll_down d C-Down
+scroll_left_page 1-s 1-Left
+scroll_right_page 1-f 1-Right
+scroll_up_page 1-e 1-Up
+scroll_down_page 1-d 1-Down
+zoom_in k equal Up
+zoom_out j minus Down
+
+menu_close m q Escape
+menu_up k Up
+menu_down j Down
+menu_parent h Left
+menu_child l Right
