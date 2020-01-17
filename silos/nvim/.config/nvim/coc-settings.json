@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnType": false,
   "coc.preferences.jumpCommand": "edit",
+  "diagnostic.locationlist": true,
   "suggest.enablePreview": true,
   "suggest.timeout": 1000,
   "suggest.triggerAfterInsertEnter": true,

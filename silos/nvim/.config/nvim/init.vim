@@ -21,6 +21,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'romainl/vim-cool'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sgur/vim-editorconfig'
 Plug 'sjl/tslime.vim'
