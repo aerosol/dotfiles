@@ -23,6 +23,8 @@ fill: silos
 	@mkdir -p silos/$(into)
 	mv -vi $(what) silos/$(into)
 
+slurp: silos fill unload save
+
 unload: silos
 	@echo "Unloading $(silo)..."
 	$(call check_defined, silo)
