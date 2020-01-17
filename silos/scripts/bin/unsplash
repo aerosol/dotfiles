@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-wget https://source.unsplash.com/random/3840x2160 -O /home/hq1/.wallpaper.jpg && feh --bg-fill /home/hq1/.wallpaper.jpg && notify-send "Wallpaper updated"
-
