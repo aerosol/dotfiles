@@ -10,7 +10,6 @@ autostart-kill() {
 }
 
 autostart "dunst"
-autostart-kill "btops"
 autostart "picom --config /home/hq1/.config/picom.conf"
 autostart "screensaver.sh"
 autostart "sxhkd"
@@ -19,6 +18,7 @@ autostart "flameshot"
 autostart "polybar example"
 autostart "trackpoint"
 autostart "bspwm-golden-run"
+autostart "/home/hq1/dev/bspi/bspi_listen"
 autostart "udiskie -t"
 autostart "wallpaper"
 
