@@ -55,6 +55,11 @@ super + {x,s,f}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
+# useful when golden ration comes in my way
+XF86Favorites
+    bspc node -g private; \
+    notify-send "Private node toggle"
+
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
