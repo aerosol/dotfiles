@@ -8,7 +8,7 @@ export VDPAU_DRIVER=va_gl
 #export GDK_SCALE="2"
 #export GDK_DPI_SCALE="0.5"
 
-#export XSECURELOCK_SAVER=saver_mpv
+export XSECURELOCK_SAVER=saver_mpv
 
 export GDK_DPI_SCALE=0.5
 export GDK_SCALE=2
