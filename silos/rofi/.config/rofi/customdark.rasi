@@ -18,7 +18,7 @@
   fg:         #bfcbb3;
   bg:         #282c34;
   secbg:      #0f0f0f;
-  trans:      #00000000;
+  trans:      #00000099;
   spacing: 0;
   background-color: #0000001A;
   font: "DejaVu Sans 31";
