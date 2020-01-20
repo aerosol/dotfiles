@@ -55,7 +55,7 @@ super + {x,s,f}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-# useful when golden ration comes in my way
+# useful when golden ratio comes in my way
 XF86Favorites
     bspc node -g private; \
     notify-send "Private node toggle"
