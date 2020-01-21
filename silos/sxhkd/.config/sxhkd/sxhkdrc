@@ -52,13 +52,14 @@ super + shift + t
 super + {x,s,f}
 	bspc node -t {tiled,floating,fullscreen}
 
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-
 # useful when golden ratio comes in my way
 XF86Favorites
     bspc node -g private; \
     notify-send "Private node toggle"
+
+XF86Display
+    bspc node -g sticky; \
+    notify-send "Sticky node toggle"
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
