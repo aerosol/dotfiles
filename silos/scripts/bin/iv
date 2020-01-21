@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+feh --auto-zoom -g "1600x1600" --scale-down --auto-rotate -B black -d -e "yudit/26" --start-at $1
