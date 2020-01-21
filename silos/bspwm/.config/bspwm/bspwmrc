@@ -21,6 +21,7 @@ autostart "bspwm-golden-run"
 autostart "/home/hq1/dev/bspi/bspi_listen"
 autostart "udiskie -t"
 autostart "wallpaper"
+autostart "kb-light.py + 1"
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
