@@ -21,12 +21,14 @@ autostart "bspwm-golden-run"
 autostart "/home/hq1/dev/bspi/bspi_listen"
 autostart "udiskie -t"
 autostart "wallpaper"
-autostart "kb-light.py + 1"
+autostart "kb-light.py + 2"
+autostart "conky -d"
+autostart "floating-note"
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         4
-bspc config window_gap           10
+bspc config window_gap           20
 bspc config top_padding          50
 
 bspc config normal_border_color "#000000"
@@ -46,5 +48,6 @@ bspc config focus_by_distance     true
 
 bspc rule -a Zathura state=tiled
 bspc rule -a FloatThis state=floating
+bspc rule -a mpv state=floating center=true
 bspc rule -a feh state=floating center=true
 bspc rule -a photoqt state=floating center=true
