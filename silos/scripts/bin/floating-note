@@ -1,0 +1,16 @@
+#/usr/bin/env bash
+windowwidth=1800
+windowheight=1600
+
+screenwidth=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3}')
+screenheight=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $4}')
+windowx=$(("$screenwidth"/2-"$windowwidth"/2))
+windowy=$(("$screenheight"/2-"$windowheight"/2))
+
+bspc rule -a FloatThis2 state=floating hidden=on sticky=on \
+rectangle="$windowwidth"x"$windowheight"+"$windowx"+"$windowy"
+
+while true
+do
+  kitty --class FloatThis2 -e ~/bin/scratch
+done

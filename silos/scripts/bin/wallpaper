@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 feh --bg-fill /home/hq1/.wallpaper.jpg;
-wget https://source.unsplash.com/random/3840x2160 \
-    -O /home/hq1/.wallpaper.jpg \
-    && feh --bg-fill /home/hq1/.wallpaper.jpg && notify-send "Wallpaper updated"
+#wget https://source.unsplash.com/random/3840x2160 \
+    #-O /home/hq1/.wallpaper.jpg \
+    #&& feh --bg-fill /home/hq1/.wallpaper.jpg && notify-send "Wallpaper updated"
 
