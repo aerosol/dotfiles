@@ -44,7 +44,8 @@ super + q
 	bspc node -k
 
 super + n
-	kitty --class FloatThis -e nnn
+    id=$(cat /tmp/scratchid);\
+    bspc node $id --flag hidden;bspc node -f $id
 
 super + shift + t
 	colortemp
@@ -102,3 +103,4 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-60 0,0 60,0 -60,60 0}
+
