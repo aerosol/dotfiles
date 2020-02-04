@@ -1,6 +1,7 @@
 " See `plugin` directory for all the hairballs
 
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'lambdalisue/suda.vim'
 Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
 Plug 'andymass/vim-matchup'
@@ -38,9 +39,16 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
+Plug '907th/vim-auto-save'
+Plug 'bluz71/vim-nightfly-guicolors'
 call plug#end()
 
 let mapleader=" "
+
+augroup ft_markdown
+  au!
+  au FileType markdown let b:auto_save = 1
+augroup END
 
 set clipboard+=unnamedplus
 set cmdheight=2
