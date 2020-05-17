@@ -1,5 +1,6 @@
 export XDG_CONFIG_HOME=/home/hq1/.config
 export VDPAU_DRIVER=va_gl
+export MOZ_USE_XINPUT2=1
 
 #export XDG_CURRENT_DESKTOP="KDE"
 #export QT_AUTO_SCREEN_SCALE_FACTOR="0"
