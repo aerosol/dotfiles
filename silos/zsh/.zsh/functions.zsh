@@ -11,12 +11,6 @@ load-local-conf() {
   fi
 }
 
-autoload zmv
-alias zmv='noglob zmv'
-alias zcp='noglob zmv -C'
-alias zln='noglob zmv -L'
-alias zsy='noglob zmv -Ls'
-
 glg() {
   git log --oneline --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
@@ -35,3 +29,15 @@ p() {
 
 note() { nvim "/home/hq1/priv/Notes/$(date "+%Y-%m-%d").md"; }
 peep() { bat --style=numbers --color=always $(rg -il . | fzf --ansi --preview "bat --color=always --style=numbers {}") }
+
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}

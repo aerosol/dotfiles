@@ -1,3 +1,5 @@
+autoload -U +X bashcompinit && bashcompinit
+
 # load completions system
 zmodload -i zsh/complist
 

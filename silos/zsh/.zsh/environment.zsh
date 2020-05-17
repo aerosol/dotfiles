@@ -16,6 +16,6 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 		tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 	elif [[ -z "$TMUX" ]]; then
-		tmux new-session -s $(grep -E '^.{4}$' /usr/share/dict/cracklib-small | shuf -n 1 | sed "s/'//g")
+		tmux new-session -s $(grep -E '^.{4}$' /usr/share/dict/words | shuf -n 1 | sed "s/'//g")
 	fi
 fi
