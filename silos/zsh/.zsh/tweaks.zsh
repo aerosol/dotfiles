@@ -13,5 +13,3 @@ done
 
 autoload -U colors
 colors
-
-export BAT_THEME=base16
