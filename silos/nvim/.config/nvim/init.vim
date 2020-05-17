@@ -22,6 +22,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'psliwka/vim-smoothie'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sgur/vim-editorconfig'
 Plug 'sjl/tslime.vim'
@@ -37,7 +38,6 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
 
@@ -94,8 +94,6 @@ set lcs+=extends:›
 set lcs+=precedes:‹
 set lcs+=nbsp:·
 set lcs+=eol:¬
-
-set foldtext=CustomFoldText()
 
 inoremap jk <Esc>
 
@@ -170,3 +168,11 @@ nnoremap <leader>hh :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
+
+set previewheight=50
+au BufEnter ?* call PreviewHeightWorkAround()
+func PreviewHeightWorkAround()
+    if &previewwindow
+        exec 'setlocal winheight='.&previewheight
+    endif
+endfunc
