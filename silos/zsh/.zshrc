@@ -16,3 +16,6 @@ complete -o nospace -C /usr/bin/vault vault
 
 #track-current
 
+#if [ -f ~/bin/.secret/mood ]; then
+  #~/bin/.secret/mood
+#fi
