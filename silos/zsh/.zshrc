@@ -8,4 +8,8 @@ source $HOME/.zsh/functions.zsh
 source $HOME/.zsh/hooks.zsh
 source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/plugins.zsh
-source $HOME/.zsh/os-specific.zsh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  source $HOME/.zsh/mac.zsh
+else
+  source $HOME/.zsh/linux.zsh
+fi

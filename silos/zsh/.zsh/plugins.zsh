@@ -1,10 +1,17 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export BAT_THEME="GitHub"
+export BAT_THEME="1337"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!node_modules/*"'
 export FZF_COMPLETION_OPTS="--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!node_modules/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --height 40% --layout=reverse --no-border
+ --color=fg:#cbccc6,bg:#000000,hl:#707a8c
+ --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
+ --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
+ --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff'
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
