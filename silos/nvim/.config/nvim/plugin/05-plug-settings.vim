@@ -16,3 +16,6 @@ let g:signify_line_highlight = 0
 let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
+let g:blamer_enabled = 1
+let g:blamer_delay = 700
+let g:blamer_template = '<committer>: <summary>'
