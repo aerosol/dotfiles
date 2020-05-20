@@ -5,7 +5,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob
 export FZF_COMPLETION_OPTS="--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
+export FZF_DEFAULT_OPTS='--exact'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --height 40% --layout=reverse --no-border
  --color=fg:#cbccc6,bg:#000000,hl:#707a8c
