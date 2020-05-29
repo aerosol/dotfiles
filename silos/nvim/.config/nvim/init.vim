@@ -39,11 +39,12 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'micke/vim-hybrid'
 call plug#end()
 
 set termguicolors
 set background=dark
-colorscheme space-vim-dark
+colorscheme hybrid
 
 hi Normal     ctermbg=NONE  guibg=NONE
 hi LineNr     ctermbg=NONE  guibg=NONE
