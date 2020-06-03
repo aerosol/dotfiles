@@ -19,3 +19,4 @@ let g:tslime_ensure_trailing_newlines = 2
 let g:blamer_enabled = 1
 let g:blamer_delay = 700
 let g:blamer_template = '<committer>: <summary>'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Todo', 'border': 'sharp' } }

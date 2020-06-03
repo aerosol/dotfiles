@@ -7,8 +7,8 @@ set expandtab
 set hidden
 set icm=nosplit
 set matchtime=5
-set nonumber
-set norelativenumber
+set number
+set relativenumber
 set nosol
 set noswapfile
 set notimeout

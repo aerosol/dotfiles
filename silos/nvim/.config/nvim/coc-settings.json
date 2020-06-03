@@ -14,7 +14,7 @@
   "html.enable": true,
   "languageserver": {
     "elixirls": {
-      "command": "/home/hq1/dev/elixir-ls/rel/language_server.sh",
+      "command": "/Users/hq1/dev/elixir-ls/rel/language_server.sh",
       "args": [],
       "filetypes": ["elixir"],
       "trace.server": "verbose",

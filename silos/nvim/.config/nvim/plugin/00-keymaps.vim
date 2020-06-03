@@ -67,7 +67,7 @@ nnoremap <leader>gs :Magit<CR>
 nnoremap <leader>pf :FZF<CR>
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
-nnoremap <leader>ag :Rg!<CR>
+nnoremap <leader>ag :Rg<CR>
 nnoremap <leader>hh :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>

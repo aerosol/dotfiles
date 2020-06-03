@@ -18,6 +18,7 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'mattn/gist-vim'
 Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
+Plug 'lambdalisue/fern.vim'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
@@ -40,16 +41,31 @@ Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'zhaocai/GoldenView.Vim'
 Plug 'micke/vim-hybrid'
+Plug 'olivertaylor/vacme'
 call plug#end()
 
 set termguicolors
 set background=dark
 colorscheme hybrid
+colorscheme vacme
 
-hi Normal     ctermbg=NONE  guibg=NONE
-hi LineNr     ctermbg=NONE  guibg=NONE
-hi SignColumn ctermbg=NONE  guibg=NONE
-hi Comment    guifg=#5C6370 ctermfg=59
-hi Folded     guifg=#5C6370 ctermfg=59 guibg=NONE
-hi NonText    guibg=NONE    guifg=#141414
-hi Blamer     guifg=#333333
+hi Identifier gui=bold
+hi elixirFunctionCall gui=bold
+hi elixirModuleDefine gui=bold
+hi elixirExUnitMacro gui=bold
+hi elixirBlockDefinition gui=bold
+hi elixirModuleDeclaration gui=bold
+hi elixirNumber guifg=red
+hi Type gui=bold
+hi Comment guifg=#888888
+hi Blamer guifg=#8888C7
+hi String guifg=#57864E
+
+"hi Normal     ctermbg=NONE  guibg=NONE
+"hi LineNr     ctermbg=NONE  guibg=NONE
+"hi SignColumn ctermbg=NONE  guibg=NONE
+"hi Comment    guifg=#5C6370 ctermfg=59
+"hi Folded     guifg=#5C6370 ctermfg=59 guibg=NONE
+"hi NonText    guibg=NONE    guifg=#141414
+"hi Blamer     guifg=#333333
+"hi StatusLine guibg=#ffffff guifg=#558747
