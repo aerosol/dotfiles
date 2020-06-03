@@ -1,6 +1,6 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export BAT_THEME="1337"
+export BAT_THEME="GitHub"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!node_modules/*"'
 export FZF_COMPLETION_OPTS="--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
@@ -8,8 +8,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--exact'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --height 40% --layout=reverse --no-border
- --color=fg:#cbccc6,hl:#707a8c
- --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
+ --color=fg:#424242,hl:#707a8c
+ --color=fg+:#707a8c,bg+:#EEEEA7,hl+:#B85C57
  --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
  --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff'
 
