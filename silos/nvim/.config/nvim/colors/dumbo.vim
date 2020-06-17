@@ -27,7 +27,7 @@ hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
 hi Folded gui=NONE guifg=#4e6f2e guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
 hi IncSearch gui=NONE guifg=#ffffff guibg=#316762
-hi LineNr gui=NONE guifg=#616161 guibg=NONE
+hi LineNr gui=NONE guifg=#444444 guibg=#111111
 hi MatchParen gui=NONE guifg=#00aa00 guibg=#333333
 hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
@@ -51,8 +51,7 @@ hi Statement gui=NONE guifg=#8f8f8f guibg=NONE
 hi StatusLine gui=NONE guifg=#ffffff guibg=#273e6c
 hi StatusLineNC gui=NONE guifg=#707070 guibg=#262626
 hi StorageClass gui=NONE guifg=#8f8f8f guibg=NONE
-hi String gui=NONE guifg=#808080 guibg=NONE
-hi TabLine gui=NONE guifg=#707070 guibg=#262626
+hi String gui=NONE guifg=#81a76a guibg=NONE
 hi TabLineFill gui=NONE guifg=NONE guibg=#262626
 hi TabLineSel gui=NONE guifg=#9e9e9e guibg=#262626
 hi Title gui=NONE guifg=#808080 guibg=NONE
