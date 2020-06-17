@@ -58,3 +58,4 @@ hi elixirAtom guifg=#959595
 hi elixirBlock guifg=#646464
 hi Comment    guifg=#5C6370 ctermfg=59
 hi Blamer     guifg=#333333
+hi statuserror guifg=red gui=underline
