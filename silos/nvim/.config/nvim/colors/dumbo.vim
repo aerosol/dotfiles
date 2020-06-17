@@ -48,8 +48,8 @@ hi SpellCap gui=undercurl guisp=NONE guifg=NONE guibg=NONE
 hi SpellLocal gui=undercurl guisp=NONE guifg=NONE guibg=#082608
 hi SpellRare gui=undercurl guisp=NONE guifg=NONE guibg=#262626
 hi Statement gui=NONE guifg=#8f8f8f guibg=NONE
-hi StatusLine gui=NONE guifg=#ffffff guibg=#273e6c
-hi StatusLineNC gui=NONE guifg=#707070 guibg=#262626
+hi StatusLine gui=underline guifg=#ffffff guibg=#111111
+hi StatusLineNC gui=underline guifg=#707070 guibg=NONE
 hi StorageClass gui=NONE guifg=#8f8f8f guibg=NONE
 hi String gui=NONE guifg=#81a76a guibg=NONE
 hi TabLineFill gui=NONE guifg=NONE guibg=#262626

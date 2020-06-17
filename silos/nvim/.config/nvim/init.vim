@@ -57,3 +57,4 @@ hi elixirOperator guifg=#5f5f5f
 hi elixirAtom guifg=#959595
 hi elixirBlock guifg=#646464
 hi Comment    guifg=#5C6370 ctermfg=59
+hi Blamer     guifg=#333333
