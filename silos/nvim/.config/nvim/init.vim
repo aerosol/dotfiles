@@ -44,12 +44,25 @@ call plug#end()
 
 set termguicolors
 set background=dark
-colorscheme hybrid
+colorscheme dumbo
 
-hi Normal     ctermbg=NONE  guibg=NONE
-hi LineNr     ctermbg=NONE  guibg=NONE
-hi SignColumn ctermbg=NONE  guibg=NONE
+hi elixirExUnitMacro guifg=#ffffff
+hi elixirString guifg=#81a76a
+hi elixirModuleDefine guifg=#eeeeee
+hi elixirModuleDeclaration guifg=#ffffff
+hi elixirInclude guifg=#eeeeee
+hi elixirBlockDefinition guifg=#eeeeee
+hi Folded guifg=#b0b0b0
+hi elixirFunctionDeclaration guifg=#eeeeee
+hi elixirDefine guifg=#eeeeee
+hi elixirOperator guifg=#5f5f5f
+hi elixirAtom guifg=#959595
+hi elixirBlock guifg=#646464
+
+"hi Normal     ctermbg=NONE  guibg=NONE
+"hi LineNr     ctermbg=NONE  guibg=NONE
+"hi SignColumn ctermbg=NONE  guibg=NONE
 hi Comment    guifg=#5C6370 ctermfg=59
-hi Folded     guifg=#5C6370 ctermfg=59 guibg=NONE
-hi NonText    guibg=NONE    guifg=#141414
-hi Blamer     guifg=#333333
+"hi Folded     guifg=#5C6370 ctermfg=59 guibg=NONE
+"hi NonText    guibg=NONE    guifg=#141414
+"hi Blamer     guifg=#333333
