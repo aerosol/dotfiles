@@ -44,17 +44,3 @@ call plug#end()
 set termguicolors
 set background=dark
 colorscheme dumbo
-
-hi elixirExUnitMacro guifg=#ffffff
-hi elixirModuleDefine guifg=#eeeeee
-hi elixirModuleDeclaration guifg=#ffffff
-hi elixirInclude guifg=#eeeeee
-hi elixirBlockDefinition guifg=#eeeeee
-hi Folded guifg=#b0b0b0
-hi elixirFunctionDeclaration guifg=#eeeeee
-hi elixirDefine guifg=#eeeeee
-hi elixirOperator guifg=#5f5f5f
-hi elixirAtom guifg=#959595
-hi elixirBlock guifg=#646464
-hi Comment    guifg=#5C6370 ctermfg=59
-hi Blamer     guifg=#333333

@@ -4,7 +4,7 @@ let g:colors_name = "dumbo"
 
 hi Boolean gui=NONE guifg=#808080 guibg=NONE
 hi ColorColumn gui=NONE guifg=NONE guibg=#1a1a1a
-hi Comment gui=NONE guifg=#707070 guibg=NONE
+hi Comment gui=NONE guifg=#5C6370 ctermfg=59
 hi Conceal gui=NONE guifg=#808080 guibg=NONE
 hi Conditional gui=NONE guifg=#8f8f8f guibg=NONE
 hi Constant gui=NONE guifg=#808080 guibg=NONE
@@ -24,7 +24,7 @@ hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
 hi Error gui=NONE guifg=#ff0000 guibg=NONE
 hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
 hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
-hi Folded gui=NONE guifg=#4e6f2e guibg=NONE
+hi Folded gui=NONE guifg=#b0b0b0 guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
 hi IncSearch gui=NONE guifg=#ffffff guibg=#316762
 hi LineNr gui=NONE guifg=#444444 guibg=#111111
@@ -104,8 +104,18 @@ highlight CocWarningSign ctermfg=Red guifg=#7c1717
 highlight CocFloating guibg=#111111
 highlight CocCodeLens guifg=#ffbbff
 
+hi elixirExUnitMacro guifg=#ffffff
+hi elixirModuleDefine guifg=#eeeeee
+hi elixirModuleDeclaration guifg=#ffffff
+hi elixirInclude guifg=#eeeeee
+hi elixirBlockDefinition guifg=#eeeeee
+hi elixirFunctionDeclaration guifg=#eeeeee
+hi elixirDefine guifg=#eeeeee
+hi elixirOperator guifg=#5f5f5f
+hi elixirAtom guifg=#959595
+hi elixirBlock guifg=#646464
 
-
+hi Blamer     guifg=#333333
 
 "__Comment              /* this is a comment */
 "__Constant             var = SHBLAH
