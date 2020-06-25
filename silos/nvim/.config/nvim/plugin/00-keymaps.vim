@@ -72,4 +72,3 @@ nnoremap <leader>hh :History:<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
-
