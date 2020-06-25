@@ -52,8 +52,9 @@ hi StatusLine gui=underline guifg=#ffffff guibg=#111111
 hi StatusLineNC gui=underline guifg=#707070 guibg=NONE
 hi StorageClass gui=NONE guifg=#8f8f8f guibg=NONE
 hi String gui=NONE guifg=#81a76a guibg=NONE
-hi TabLineFill gui=NONE guifg=NONE guibg=#262626
-hi TabLineSel gui=NONE guifg=#9e9e9e guibg=#262626
+hi TabLineFill gui=NONE guifg=#cccccc guibg=#262626
+hi TabLine gui=NONE guifg=#aaaaaa guibg=#262626
+hi TabLineSel gui=NONE guifg=#81a76a guibg=#000000
 hi Title gui=NONE guifg=#808080 guibg=NONE
 hi Todo gui=standout guifg=NONE guibg=NONE
 hi Type gui=NONE guifg=#8f8f8f guibg=NONE

@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'APZelos/blamer.nvim'
+Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
 Plug 'andymass/vim-matchup'
@@ -13,7 +14,9 @@ Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'kristijanhusak/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'lfv89/vim-interestingwords'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'mattn/gist-vim'
 Plug 'mattn/vim-sqlfmt'
@@ -26,7 +29,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sgur/vim-editorconfig'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
-Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
 Plug 'tpope/vim-eunuch'
