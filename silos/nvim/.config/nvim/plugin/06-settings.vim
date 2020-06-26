@@ -7,11 +7,12 @@ set expandtab
 set hidden
 set icm=nosplit
 set matchtime=5
-set number
-set relativenumber
+set noshowmode
 set nosol
 set noswapfile
 set notimeout
+set number
+set relativenumber
 set scrolloff=2
 set shiftwidth=2
 set shortmess+=c
@@ -31,7 +32,7 @@ set wildmode=list,full
 set wrap
 
 set statusline=
-set statusline +=\ \ %<%t%*
+set statusline +=\ \ %<%t%*
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%M%* " modified flag
 set statusline +=%=%* " separator
