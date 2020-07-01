@@ -2,7 +2,6 @@ call plug#begin('~/.config/nvim/bundle/')
 Plug 'APZelos/blamer.nvim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
-Plug 'alvan/vim-closetag', {'for': ['html', 'eelixir']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}

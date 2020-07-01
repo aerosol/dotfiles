@@ -18,7 +18,7 @@ nnoremap L gt
 nnoremap 0 ^
 nnoremap ^ 0
 
-nnoremap # #<C-o>
+nnoremap # *``
 
 cnoremap <C-a> <home>
 cnoremap <C-e> <end>
