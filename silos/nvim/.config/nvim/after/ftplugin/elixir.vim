@@ -26,4 +26,5 @@ endfunction
 
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
-let g:alchemist#elixir_erlang_src = "/usr/local/share/src"
+
+nmap <leader>r orequire IEx; IEx.pry<esc>
