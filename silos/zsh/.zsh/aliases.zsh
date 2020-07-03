@@ -21,4 +21,5 @@ alias zmv='noglob zmv'
 alias zcp='noglob zmv -C'
 alias zln='noglob zmv -L'
 alias zsy='noglob zmv -Ls'
+alias repry='fc -e - mix\ test=iex\ -S\ mix\ test\ --trace mix\ test'
 
