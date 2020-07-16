@@ -12,14 +12,18 @@ export MOZ_USE_XINPUT2=1
 export XSECURELOCK_SAVER=saver_mpv
 export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
 
-export GDK_DPI_SCALE=0.5
-export GDK_SCALE=2
-export QT_SCREEN_SCALE_FACTORS=eDP-1=2;DP-1=2;HDMI-1=2;DP-2=2;
-export KDE_FULL_SESSION=true
+#export GDK_DPI_SCALE=0.5
+#export GDK_SCALE=2
+#export QT_SCREEN_SCALE_FACTORS=eDP-1=2;DP-1=2;HDMI-1=2;DP-2=2;
+#export KDE_FULL_SESSION=true
 
 setxkbmap -option ctrl:nocaps 
 setxkbmap -option altwin:swap_lalt_lwin
 xrdb -merge ~/.Xresources
-exec bspwm
+#exec bspwm
+#exec instantwm
 #exec i3
-#exec startplasma-x11
+exec startplasma-x11
+#export XDG_SESSION_TYPE=x11
+#export GDK_BACKEND=x11
+#exec gnome-session
