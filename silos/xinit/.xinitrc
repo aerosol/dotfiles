@@ -20,10 +20,10 @@ export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
 setxkbmap -option ctrl:nocaps 
 setxkbmap -option altwin:swap_lalt_lwin
 xrdb -merge ~/.Xresources
-#exec bspwm
+exec bspwm
 #exec instantwm
 #exec i3
-exec startplasma-x11
+#exec startplasma-x11
 #export XDG_SESSION_TYPE=x11
 #export GDK_BACKEND=x11
 #exec gnome-session
