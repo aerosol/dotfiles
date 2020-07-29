@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'jparise/vim-graphql'
 Plug 'APZelos/blamer.nvim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
@@ -21,7 +22,6 @@ Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'psliwka/vim-smoothie'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sgur/vim-editorconfig'
@@ -39,6 +39,9 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'dbmrq/vim-ditto'
+Plug 'junegunn/limelight.vim'
+Plug 'reedes/vim-colors-pencil'
 call plug#end()
 
 set termguicolors
