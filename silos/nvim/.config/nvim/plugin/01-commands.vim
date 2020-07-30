@@ -4,5 +4,5 @@
                 \ fzf#vim#with_preview({ 'options': ['--color', 'hl:#ff8787,hl+:#ff0000'] }), <bang>0)
 
     command! Fold setl foldmethod=syntax foldlevel=2
-    command! StopFold setl nofoldenable
+    command! Unfold setl nofoldenable
 

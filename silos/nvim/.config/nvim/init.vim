@@ -1,19 +1,21 @@
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'jparise/vim-graphql'
 Plug 'APZelos/blamer.nvim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dbmrq/vim-ditto'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'janko-m/vim-test'
 Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'jparise/vim-graphql'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'kristijanhusak/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lfv89/vim-interestingwords'
@@ -39,11 +41,8 @@ Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
 Plug 'zhaocai/GoldenView.Vim'
-Plug 'dbmrq/vim-ditto'
-Plug 'junegunn/limelight.vim'
-Plug 'reedes/vim-colors-pencil'
 call plug#end()
 
 set termguicolors
-set background=dark
-colorscheme dumbo
+set background=light
+colorscheme dumbo_light

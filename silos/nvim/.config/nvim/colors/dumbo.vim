@@ -68,6 +68,26 @@ hi lCursor gui=NONE guifg=NONE guibg=NONE
 hi Identifier gui=NONE guifg=NONE guibg=NONE
 hi PreProc gui=NONE guifg=NONE guibg=NONE
 
+highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+highlight CocUnderline ctermfg=Red guifg=#ff0000 gui=underline
+highlight CocErrorSign ctermfg=Red  guifg=#7c1717
+highlight CocWarningSign ctermfg=Red guifg=#7c1717
+highlight CocFloating guibg=#111111
+highlight CocCodeLens guifg=#ffbbff
+
+hi elixirExUnitMacro guifg=#ffffff
+hi elixirModuleDefine guifg=#eeeeee
+hi elixirModuleDeclaration guifg=#ffffff
+hi elixirInclude guifg=#eeeeee
+hi elixirBlockDefinition guifg=#eeeeee
+hi elixirFunctionDeclaration guifg=#eeeeee
+hi elixirDefine guifg=#eeeeee
+hi elixirOperator guifg=#5f5f5f
+hi elixirAtom guifg=#959595
+hi elixirBlock guifg=#646464
+
+hi Blamer     guifg=#333333
+
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
 syn match Constant     "\"__Constant.*"
@@ -97,26 +117,6 @@ syn match Type         "\"__Type.*"
 syn match Underlined   "\"__Underlined.*"
 syn match VertSplit    "\"__VertSplit.*"
 syn match Visual       "\"__Visual.*"
-
-highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
-highlight CocUnderline ctermfg=Red guifg=#ff0000 gui=underline
-highlight CocErrorSign ctermfg=Red  guifg=#7c1717
-highlight CocWarningSign ctermfg=Red guifg=#7c1717
-highlight CocFloating guibg=#111111
-highlight CocCodeLens guifg=#ffbbff
-
-hi elixirExUnitMacro guifg=#ffffff
-hi elixirModuleDefine guifg=#eeeeee
-hi elixirModuleDeclaration guifg=#ffffff
-hi elixirInclude guifg=#eeeeee
-hi elixirBlockDefinition guifg=#eeeeee
-hi elixirFunctionDeclaration guifg=#eeeeee
-hi elixirDefine guifg=#eeeeee
-hi elixirOperator guifg=#5f5f5f
-hi elixirAtom guifg=#959595
-hi elixirBlock guifg=#646464
-
-hi Blamer     guifg=#333333
 
 "__Comment              /* this is a comment */
 "__Constant             var = SHBLAH

@@ -1,6 +1,6 @@
 function! Light() 
   set background=light
-  colorscheme pencil
+  colorscheme dumbo_light
 endfunction
 
 function! Dark()
