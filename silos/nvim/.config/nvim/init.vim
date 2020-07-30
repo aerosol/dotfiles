@@ -44,5 +44,10 @@ Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
 
 set termguicolors
-set background=light
-colorscheme dumbo_light
+if $MUH_THEME == 'light'
+  set background=light
+  colorscheme dumbo_light
+else
+  set background=dark
+  colorscheme dumbo
+endif

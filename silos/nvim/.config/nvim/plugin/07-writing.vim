@@ -1,15 +1,4 @@
-function! Light() 
-  set background=light
-  colorscheme dumbo_light
-endfunction
-
-function! Dark()
-  set background=dark
-  colorscheme dumbo
-endfunction
-
 function! ProseOn()
-  call Light()
   DittoOn
   " force top correction on most recent misspelling
   nnoremap <buffer> <c-s> [s1z=<c-o>
@@ -24,7 +13,6 @@ function! ProseOff()
   set showmode
   set showcmd
   set scrolloff=2
-  call Dark()
   DittoOff
   Limelight!
 endfunction
