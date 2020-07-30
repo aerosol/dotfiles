@@ -28,7 +28,7 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 50
+height = 60
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -46,8 +46,8 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Input Mono Condensed:size=19;+3"
-font-1 = "SF Pro Display:size=22:weight=semibold;+3"
+font-0 = "PragmataPro:size=22;+3"
+font-1 = "PragmataPro:size=22:weight=semibold;+3"
 font-2 = "JoyPixels:scale=5;"
 font-3 = Font Awesome 5 Free:pixelsize=20;3
 font-4 = Font Awesome 5 Free Solid:pixelsize=20;3
