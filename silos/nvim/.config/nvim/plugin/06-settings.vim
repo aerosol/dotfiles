@@ -39,7 +39,7 @@ set statusline +=%=%* " separator
 set statusline +=%= " separator
 set statusline +=\ \ %{fugitive#head()}%*
 set statusline +=\ \ %Y%* " file type
-set statusline +=\ %4l:%2c " line no/column, padded
+set statusline +=\ %4l:%2c\ 
 
 set list
 set listchars=
