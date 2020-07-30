@@ -76,6 +76,8 @@ hi elixirAtom guifg=#555555
 hi elixirBlock guifg=#646464
 
 hi Blamer     guifg=#5b6d82
+hi Beacon     guibg=black ctermbg=15
+
 
 hi sqlComment guibg=#333333 guifg=#ffffff
 
