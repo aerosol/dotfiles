@@ -1,6 +1,6 @@
 if [[ "$MUH_THEME" = "light" ]] then
 	export BAT_THEME="ansi-light"
-	export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+	export FZF_DEFAULT_OPTS='
 	 --height 40% --layout=reverse --no-border
 	 --color=fg:#000000,hl:#b33da7
 	 --color=fg+:#000000,bg+:#eeeeee,hl+:#ff0000

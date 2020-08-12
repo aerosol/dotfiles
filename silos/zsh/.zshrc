@@ -3,8 +3,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
   source $HOME/.zsh/linux.zsh
 fi
-export MUH_THEME="light"
-source $HOME/.zsh/colors.zsh
+export MUH_THEME="dark"
 source $HOME/.zsh/environment.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tweaks.zsh
@@ -15,3 +14,6 @@ source $HOME/.zsh/functions.zsh
 source $HOME/.zsh/hooks.zsh
 source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/plugins.zsh
+source $HOME/.zsh/colors.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
