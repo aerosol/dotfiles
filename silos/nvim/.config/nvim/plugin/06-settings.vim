@@ -1,7 +1,6 @@
 set clipboard+=unnamedplus
 set cmdheight=2
 set colorcolumn=80
-set completeopt+=preview
 set cpoptions+=$
 set expandtab
 set hidden
