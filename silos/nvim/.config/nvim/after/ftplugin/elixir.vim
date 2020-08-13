@@ -1,10 +1,8 @@
-augroup elixir
-  autocmd!
+augroup elixir_dev
   autocmd FileType eelixir setlocal textwidth=1
   autocmd FileType eelixir setlocal wrapmargin=0
-  "autocmd FileType elixir setl formatexpr=CocAction('format')
-  "autocmd BufWritePre <buffer> MixFormat
-  "command! -nargs=0 MixFormat :call CocAction('format')
+  autocmd FileType elixir setlocal formatprg=mix\ format\ -\ 2>/dev/null
+  autocmd BufWritePre <buffer> :normal gggqG
 augroup END
 
 let test#strategy = 'tslime'

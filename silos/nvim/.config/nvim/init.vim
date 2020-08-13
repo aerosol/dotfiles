@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'liuchengxu/vista.vim'
 Plug 'natebosch/vim-lsc'
 Plug 'ajh17/VimCompletesMe'
 Plug 'APZelos/blamer.nvim'
