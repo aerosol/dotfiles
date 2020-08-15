@@ -2,7 +2,6 @@ augroup elixir_dev
   autocmd FileType eelixir setlocal textwidth=1
   autocmd FileType eelixir setlocal wrapmargin=0
   autocmd FileType elixir setlocal formatprg=mix\ format\ -\ 2>/dev/null
-  autocmd BufWritePre <buffer> :normal gggqG
 augroup END
 
 let test#strategy = 'tslime'

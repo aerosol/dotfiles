@@ -1,10 +1,8 @@
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'liuchengxu/vista.vim'
-Plug 'natebosch/vim-lsc'
-Plug 'ajh17/VimCompletesMe'
 Plug 'APZelos/blamer.nvim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
+Plug 'ajh17/VimCompletesMe'
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dbmrq/vim-ditto'
@@ -22,10 +20,12 @@ Plug 'junegunn/limelight.vim'
 Plug 'kristijanhusak/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lfv89/vim-interestingwords'
+Plug 'liuchengxu/vista.vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
+Plug 'natebosch/vim-lsc'
 Plug 'psliwka/vim-smoothie'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sgur/vim-editorconfig'
@@ -54,11 +54,20 @@ else
   colorscheme dumbo
 endif
 
+ function! s:HandleStatus(method, params)
+   " Used in statusline to show when server is busy
+   echomsg a:params
+   let g:dart_server_status = a:params.isAnalyzing
+ endfunction
+
 let g:lsc_server_commands = {
  \  'elixir': {
  \    'command': '/home/hq1/dev/elixir-ls/rel/language_server.sh',
  \    'log_level': -1,
- \    'suppress_stderr': v:true
+ \    'suppress_stderr': v:true,
+ \    'notifications': {
+ \        '$/analyzerStatus': function('<SID>HandleStatus'),
+ \    }
  \  }
  \}
 
@@ -82,4 +91,5 @@ let g:lsc_enable_autocomplete  = v:true
 let g:lsc_enable_diagnostics   = v:true
 let g:lsc_reference_highlights = v:true
 let g:lsc_trace_level          = 'off'
+
 
