@@ -48,6 +48,7 @@ set termguicolors
 if $MUH_THEME == 'light'
   set background=light
   colorscheme dumbo_light
+  set cursorline
 else
   set background=dark
   colorscheme dumbo
