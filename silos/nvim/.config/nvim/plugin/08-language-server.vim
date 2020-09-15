@@ -1,8 +1,8 @@
 let g:lsc_server_commands = {
  \  'elixir': {
  \    'command': '/home/hq1/dev/elixir-ls/rel/language_server.sh',
- \    'log_level': -1,
- \    'suppress_stderr': v:true,
+ "\    'log_level': -1,
+ "\    'suppress_stderr': v:true,
  \  }
  \}
 
