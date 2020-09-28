@@ -1,5 +1,17 @@
+" plugins:
+" --------
+" plugin/00-keymaps.vim
+" plugin/01-commands.vim
+" plugin/02-completion.vim
+" plugin/03-functions.vim
+" plugin/04-default.vim
+" plugin/05-plug-settings.vim
+" plugin/06-settings.vim
+" plugin/07-writing.vim
+" plugin/08-language-server.vim
+ 
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'APZelos/blamer.nvim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
 Plug 'ajh17/VimCompletesMe'

@@ -10,6 +10,11 @@ nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tv :TestVisit<CR>
 
+nnoremap tf :TestFile<CR>
+nnoremap tt :TestNearest<CR>
+nnoremap tl :TestLast<CR>
+nnoremap tv :TestVisit<CR>
+
 "nnoremap <buffer> K :call CocAction('doHover')<CR>
 
  "xoxo Wojtek Mach

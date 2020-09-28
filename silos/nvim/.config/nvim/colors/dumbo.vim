@@ -51,7 +51,7 @@ hi Statement gui=NONE guifg=#8f8f8f guibg=NONE
 hi StatusLine gui=underline guifg=#ffffff guibg=#111111
 hi StatusLineNC gui=underline guifg=#707070 guibg=NONE
 hi StorageClass gui=NONE guifg=#8f8f8f guibg=NONE
-hi String gui=NONE guifg=#81a76a guibg=NONE
+hi String gui=NONE guifg=#8ba5a5 guibg=NONE
 hi TabLineFill gui=NONE guifg=#cccccc guibg=#262626
 hi TabLine gui=NONE guifg=#aaaaaa guibg=#262626
 hi TabLineSel gui=NONE guifg=#81a76a guibg=#000000
@@ -80,11 +80,18 @@ hi elixirModuleDefine guifg=#eeeeee
 hi elixirModuleDeclaration guifg=#ffffff
 hi elixirInclude guifg=#eeeeee
 hi elixirBlockDefinition guifg=#eeeeee
-hi elixirFunctionDeclaration guifg=#eeeeee
-hi elixirDefine guifg=#eeeeee
+hi elixirFunctionDeclaration guifg=#d3cba5
+hi elixirDefine guifg=#d3cba5
 hi elixirOperator guifg=#5f5f5f
 hi elixirAtom guifg=#959595
 hi elixirBlock guifg=#646464
+hi elixirFunctionCall guifg=#8b8567
+hi elixirAlias guifg=#a69f7b
+hi elixirId guifg=#cccccc
+hi elixirAtom guifg=#777777
+hi elixirBoolean guifg=#816899
+hi elixirMapDelimiter guifg=#7e9b9d
+hi elixirTupleDelimiter guifg=#859d75
 
 hi Blamer     guifg=#333333
 

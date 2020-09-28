@@ -10,6 +10,11 @@ augroup defaults
   autocmd InsertLeave,WinEnter,WinLeave * set nocursorline
   autocmd InsertEnter * set cursorline
   autocmd InsertLeave * Beacon
+
+  au InsertLeave * hi StatusLine gui=underline guifg=#ffffff guibg=#111111
+  au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
+
+  au BufEnter ?* call PreviewHeightWorkAround()
 augroup END
 
 augroup spell
@@ -18,7 +23,6 @@ augroup spell
   autocmd FileType magit setlocal spell
 augroup END
 
-au BufEnter ?* call PreviewHeightWorkAround()
 func PreviewHeightWorkAround()
     if &previewwindow
         exec 'setlocal winheight='.&previewheight

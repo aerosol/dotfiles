@@ -36,6 +36,8 @@ nnoremap <silent> <C-w>\| <C-W>v
 nnoremap <silent> <C-w>- <C-W>s
 
 nnoremap <silent> <leader>fs :update<CR>
+nnoremap <silent> ss :update<CR>
+nnoremap <silent> <leader>wa :wa<CR>
 
 nnoremap <silent> // :nohlsearch<CR>
 
@@ -65,10 +67,12 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 nnoremap <leader>gs :Magit<CR>
 
 nnoremap <leader>pf :FZF<CR>
-nnoremap <leader>bb :Buffers<CR>
+nnoremap gb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>ag :Rg!<CR>
+nnoremap gag :Rg!<CR>
 nnoremap <leader>hh :History:<CR>
+nnoremap Q :qa<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
