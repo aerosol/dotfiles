@@ -28,7 +28,6 @@ Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'kristijanhusak/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lfv89/vim-interestingwords'
