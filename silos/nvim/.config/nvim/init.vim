@@ -11,6 +11,7 @@
 " plugin/08-language-server.vim
  
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'MattesGroeger/vim-bookmarks'
 Plug 'altercation/vim-colors-solarized'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
@@ -42,7 +43,7 @@ Plug 'sgur/vim-editorconfig'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise', {'for': ['elixir', 'ruby']}
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'

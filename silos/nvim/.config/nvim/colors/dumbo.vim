@@ -95,6 +95,9 @@ hi elixirTupleDelimiter guifg=#859d75
 
 hi Blamer     guifg=#333333
 
+hi BookmarkSign guifg=#ffffff guibg=#476b86
+hi BookmarkAnnotationSign guifg=#ffffff guifg=#468645
+
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
 syn match Constant     "\"__Constant.*"

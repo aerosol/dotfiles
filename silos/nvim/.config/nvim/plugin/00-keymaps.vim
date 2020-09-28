@@ -76,3 +76,9 @@ nnoremap Q :qa<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
+
+nnoremap <leader>ba :BookmarkAnnotate<cr>
+nnoremap <leader>bn :BookmarkNext<cr>
+nnoremap <leader>bN :BookmarkPrev<cr>
+nnoremap <leader>bl :BookmarkShowAll<cr>
+

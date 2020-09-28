@@ -23,3 +23,8 @@ let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
 let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
 let g:interestingWordsRandomiseColors = 1
+let g:bookmark_sign = '✪ '
+let g:bookmark_annotation_sign = '✍ '
+let g:bookmark_auto_close = 1
+let g:bookmark_location_list = 1
+
