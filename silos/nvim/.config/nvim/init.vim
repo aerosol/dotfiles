@@ -3,7 +3,7 @@
 " plugin/00-keymaps.vim
 " plugin/01-commands.vim
 " plugin/02-completion.vim
-" plugin/03-functions.vim
+" plugin/3-functions.vim
 " plugin/04-default.vim
 " plugin/05-plug-settings.vim
 " plugin/06-settings.vim
@@ -17,6 +17,7 @@ Plug 'DanilaMihailov/beacon.nvim'
 Plug 'airblade/vim-rooter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'andymass/vim-matchup'
+Plug 'mhinz/vim-mix-format'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dbmrq/vim-ditto'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
@@ -53,7 +54,6 @@ Plug 'vim-erlang/vim-erlang-compiler', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-omnicomplete', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-runtime', {'for': 'erlang'}
 Plug 'vim-erlang/vim-erlang-tags', {'for': 'erlang'}
-Plug 'zhaocai/GoldenView.Vim'
 call plug#end()
 
 set termguicolors

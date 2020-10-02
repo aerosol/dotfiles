@@ -27,4 +27,5 @@ let g:bookmark_sign = '✪ '
 let g:bookmark_annotation_sign = '✍ '
 let g:bookmark_auto_close = 1
 let g:bookmark_location_list = 1
+let g:mix_format_on_save = 1
 

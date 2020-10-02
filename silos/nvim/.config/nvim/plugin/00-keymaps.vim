@@ -2,8 +2,6 @@ let mapleader=" "
 
 inoremap jk <Esc>
 
-nnoremap <leader><space> :Commands<cr>
-
 vmap > >gv
 vmap < <gv
 nnore > >>
@@ -24,8 +22,6 @@ cnoremap <C-a> <home>
 cnoremap <C-e> <end>
 cnoremap <C-f> <right>
 cnoremap <C-b> <left>
-
-nnoremap <silent> <Backspace> <C-^>
 
 nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
@@ -66,13 +62,12 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 
 nnoremap <leader>gs :Magit<CR>
 
-nnoremap <leader>pf :FZF<CR>
-nnoremap gb :Buffers<CR>
+nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
-nnoremap <leader>ag :Rg!<CR>
-nnoremap gag :Rg!<CR>
+nnoremap <leader>rg :Rg!<CR>
 nnoremap <leader>hh :History:<CR>
 nnoremap Q :qa<CR>
+nnoremap <leader><space> :FZF<cr>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
@@ -81,4 +76,3 @@ nnoremap <leader>ba :BookmarkAnnotate<cr>
 nnoremap <leader>bn :BookmarkNext<cr>
 nnoremap <leader>bN :BookmarkPrev<cr>
 nnoremap <leader>bl :BookmarkShowAll<cr>
-
