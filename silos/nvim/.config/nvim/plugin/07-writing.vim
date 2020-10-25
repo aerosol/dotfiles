@@ -8,7 +8,6 @@ function! ProseOn()
   set nolist
   set scrolloff=999
   set laststatus=0
-  Limelight
 endfunction
 
 function! ProseOff()
@@ -18,7 +17,6 @@ function! ProseOff()
   set laststatus=2
   set list
   DittoOff
-  Limelight!
 endfunction
 
 augroup prose

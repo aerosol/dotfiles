@@ -32,7 +32,7 @@ set wrap
 
 set statusline=
 set statusline +=\ %{nerdfont#find()}%*\ \ %<%t%*
-set statusline +=\ set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
+set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%M%* " modified flag
 set statusline +=%=%* " separator
 set statusline +=%= " separator

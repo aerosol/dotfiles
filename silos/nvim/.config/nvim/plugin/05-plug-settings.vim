@@ -18,3 +18,4 @@ let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '
 let g:interestingWordsRandomiseColors = 1
 let g:mix_format_on_save = 1
 let g:fern#renderer = "nerdfont"
+let g:fern#default_hidden = 1
