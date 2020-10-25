@@ -1,5 +1,5 @@
-alias ls="exa"
-alias ll="exa -l"
+alias ls="exa --icons"
+alias ll="ls -al"
 alias get='wget -t0 -c'
 alias mt='mix test'
 alias mps='iex -S mix phoenix.server'
