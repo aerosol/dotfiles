@@ -72,7 +72,7 @@ nnoremap <leader><space> :FZF<cr>
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
 
-nmap - :Fern . -reveal=%<cr>
+nmap - :Fern %:h -reveal=%<cr>
 
 function! s:init_fern() abort
   nmap <buffer> <silent> <C-h> <C-w>h
@@ -81,6 +81,7 @@ function! s:init_fern() abort
   nmap <buffer> <silent> <C-l> <C-w>l
   nmap <buffer> <silent> <tab> <Plug>(fern-action-mark)j
   nmap <buffer> <silent> - <Plug>(fern-action-leave)
+  nmap <buffer> <silent> + <Plug>(fern-action-new-path)
   setlocal cursorline
 endfunction
 
