@@ -93,10 +93,11 @@ hi elixirBoolean guifg=#816899
 hi elixirMapDelimiter guifg=#7e9b9d
 hi elixirTupleDelimiter guifg=#859d75
 
-hi Blamer     guifg=#333333
-
 hi BookmarkSign guifg=#ffffff guibg=#476b86
 hi BookmarkAnnotationSign guifg=#ffffff guifg=#468645
+
+highlight link FernRootText   Directory
+highlight link FernBranchText   String
 
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"

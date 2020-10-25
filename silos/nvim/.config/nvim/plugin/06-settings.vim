@@ -31,13 +31,12 @@ set wildmode=list,full
 set wrap
 
 set statusline=
-set statusline +=\ \ \ %<%t%*
-set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
+set statusline +=\ %{nerdfont#find()}%*\ \ %<%t%*
+set statusline +=\ set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%M%* " modified flag
 set statusline +=%=%* " separator
 set statusline +=%= " separator
 set statusline +=\ \ %{fugitive#head()}%*
-set statusline +=\ \ %Y%* " file type
 set statusline +=\ %4l:%2c\ 
 
 set list
