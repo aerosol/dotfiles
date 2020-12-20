@@ -1,7 +1,7 @@
 /* Rofi config file */
 configuration {
     lines: 10;
-    font: "SF Pro Display 32";
+    font: "SF Pro Display 12";
     show-icons: true;
     theme: "oxide";
     display-window: "Window";
