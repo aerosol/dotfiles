@@ -15,6 +15,7 @@ augroup defaults
   au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
 
   au BufEnter ?* call PreviewHeightWorkAround()
+  au VimResized * wincmd =
 augroup END
 
 augroup spell

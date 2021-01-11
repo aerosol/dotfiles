@@ -10,14 +10,17 @@
 " plugin/07-writing.vim
 " plugin/08-language-server.vim
  
+
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'ajh17/VimCompletesMe'
+Plug 'alx741/vim-rustfmt'
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dbmrq/vim-ditto'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
@@ -30,8 +33,8 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
 Plug 'mattn/gist-vim'
 Plug 'mattn/vim-sqlfmt'
