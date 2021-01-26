@@ -3,7 +3,7 @@ syntax reset
 let g:colors_name = "dumbo"
 
 hi Boolean gui=NONE guifg=#808080 guibg=NONE
-hi ColorColumn gui=NONE guifg=NONE guibg=#1a1a1a
+hi ColorColumn gui=NONE guifg=NONE guibg=NONE
 hi Comment gui=NONE guifg=#5C6370 ctermfg=59
 hi Conceal gui=NONE guifg=#808080 guibg=NONE
 hi Conditional gui=NONE guifg=#8f8f8f guibg=NONE
@@ -24,10 +24,10 @@ hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
 hi Error gui=NONE guifg=#ff0000 guibg=NONE
 hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
 hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
-hi Folded gui=NONE guifg=#b0b0b0 guibg=NONE
+hi Folded gui=NONE guifg=#054959 guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
 hi IncSearch gui=NONE guifg=#ffffff guibg=#316762
-hi LineNr gui=NONE guifg=#444444 guibg=#111111
+hi LineNr gui=NONE guifg=#444444 guibg=NONE
 hi MatchParen gui=NONE guifg=#00aa00 guibg=#333333
 hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
@@ -48,7 +48,7 @@ hi SpellCap gui=undercurl guisp=NONE guifg=NONE guibg=NONE
 hi SpellLocal gui=undercurl guisp=NONE guifg=NONE guibg=#082608
 hi SpellRare gui=undercurl guisp=NONE guifg=NONE guibg=#262626
 hi Statement gui=NONE guifg=#8f8f8f guibg=NONE
-hi StatusLine gui=underline guifg=#ffffff guibg=#111111
+hi StatusLine gui=underline guifg=#000000 guibg=#ffffff
 hi StatusLineNC gui=underline guifg=#707070 guibg=NONE
 hi StorageClass gui=NONE guifg=#8f8f8f guibg=NONE
 hi String gui=NONE guifg=#8ba5a5 guibg=NONE
@@ -92,6 +92,12 @@ hi elixirAtom guifg=#777777
 hi elixirBoolean guifg=#816899
 hi elixirMapDelimiter guifg=#7e9b9d
 hi elixirTupleDelimiter guifg=#859d75
+
+hi rustAttribute guifg=#cccccc
+hi rustFuncName guifg=#d3cba5
+
+hi rustFuncCall guifg=#8b8567
+hi rustAssert guifg=#eeeeee
 
 hi BookmarkSign guifg=#ffffff guibg=#476b86
 hi BookmarkAnnotationSign guifg=#ffffff guifg=#468645
