@@ -63,8 +63,10 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 nnoremap <leader>gs :Magit<CR>
 
 nnoremap <leader>bb :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <leader>pt :Tags<CR>
 nnoremap <leader>rg :Rg!<CR>
+nnoremap <C-r> :Rg!<CR>
 nnoremap <leader>hh :History:<CR>
 nnoremap Q :qa<CR>
 nnoremap <leader><space> :FZF<cr>

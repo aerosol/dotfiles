@@ -50,6 +50,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 set termguicolors
