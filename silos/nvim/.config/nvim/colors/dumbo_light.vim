@@ -3,13 +3,13 @@ syntax reset
 let g:colors_name = "dumbo_light"
 
 hi Boolean gui=NONE guifg=#707070 guibg=NONE
-hi ColorColumn gui=NONE guifg=NONE guibg=#f5f5f5
-hi Comment gui=NONE guifg=#969696 guibg=NONE
+hi ColorColumn gui=NONE guifg=NONE guibg=#eeeeee
+hi Comment gui=NONE guifg=#688888 guibg=NONE
 hi Conceal gui=NONE guifg=#707070 guibg=NONE
 hi Conditional gui=NONE guifg=#4a4a4a guibg=NONE
 hi Constant gui=NONE guifg=#707070 guibg=NONE
 hi Cursor gui=reverse guifg=NONE guibg=NONE
-hi CursorColumn gui=NONE guifg=NONE guibg=#f5f5f5
+hi CursorColumn gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLine gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
 hi DiffAdd gui=NONE guifg=NONE guibg=#f0fff0
@@ -31,7 +31,7 @@ hi MatchParen gui=NONE guifg=NONE guibg=#e3e3e3
 hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
 hi NonText gui=NONE guifg=#eeeeee guibg=NONE
-hi Normal gui=NONE guifg=#000000 guibg=#ffffff
+hi Normal gui=NONE guifg=#000000 guibg=NONE
 hi Number gui=NONE guifg=#707070 guibg=NONE
 hi Pmenu gui=NONE guifg=NONE guibg=#f5f5f5
 hi PmenuSbar gui=NONE guifg=NONE guibg=#ededed
@@ -64,20 +64,30 @@ hi lCursor gui=NONE guifg=NONE guibg=NONE
 hi Identifier gui=NONE guifg=NONE guibg=NONE
 hi PreProc gui=NONE guifg=NONE guibg=NONE
 
-hi elixirExUnitMacro guifg=#000000
-hi elixirModuleDefine guifg=#111111
+hi elixirExUnitMacro guifg=#111111
+hi elixirModuleDefine guifg=#444444
 hi elixirModuleDeclaration guifg=#000000
-hi elixirInclude guifg=#111111
-hi elixirBlockDefinition guifg=#111111
-hi elixirFunctionDeclaration guifg=#111111
-hi elixirDefine guifg=#111111
+hi elixirInclude guifg=#444444
+hi elixirBlockDefinition guifg=#444444
+hi elixirFunctionDeclaration guifg=#ba61ad
+hi elixirDefine guifg=#ba61ad
 hi elixirOperator guifg=#5f5f5f
-hi elixirAtom guifg=#555555
 hi elixirBlock guifg=#646464
+hi elixirFunctionCall guifg=#8b8567
+hi elixirAlias guifg=#c05169
+hi elixirId guifg=#333333
+hi elixirAtom guifg=#220077
+hi elixirBoolean guifg=#46939f
+hi elixirMapDelimiter guifg=#7e9b9d
+hi elixirTupleDelimiter guifg=#859d75
+hi elixirKeyword guifg=#777777
+hi elixirBlockDefinition guifg=#777777
+hi elixirPrivateDefine guifg=#555555
+hi elixirPrivateFunctionDeclaration guifg=#111111
+hi elixirVariable guifg=#2233aa
 
 hi Blamer     guifg=#5b6d82
-hi Beacon     guibg=black ctermbg=15
-
+hi Beacon     guibg=#cccccc
 
 hi sqlComment guibg=#333333 guifg=#ffffff
 

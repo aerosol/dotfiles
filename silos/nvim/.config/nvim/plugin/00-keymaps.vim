@@ -60,21 +60,20 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nnoremap <leader>gs :Magit<CR>
 
-nnoremap <leader>bb :Buffers<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <leader>pt :Tags<CR>
-nnoremap <leader>rg :Rg!<CR>
-nnoremap <C-r> :Rg!<CR>
-nnoremap <leader>hh :History:<CR>
 nnoremap Q :qa<CR>
-nnoremap <leader><space> :FZF<cr>
+nnoremap gl :BLines<cr>
+nnoremap gb :Buffers<cr>
+nnoremap bb :Buffers<cr>
+nnoremap go :FZF<cr>
+nnoremap gh :History<cr>
+nnoremap gt :Rg!<CR>
+nnoremap gs :Magit<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
 
-nmap - :Fern %:h -reveal=%<cr>
+nmap - :Fern %:p:h -reveal=%:p<cr>
 
 function! s:init_fern() abort
   nmap <buffer> <silent> <C-h> <C-w>h

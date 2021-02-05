@@ -16,11 +16,11 @@ Plug 'DanilaMihailov/beacon.nvim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'alx741/vim-rustfmt'
 Plug 'andymass/vim-matchup'
+Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dbmrq/vim-ditto'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
-Plug 'ghifarit53/tokyonight-vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
@@ -42,7 +42,6 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
 Plug 'natebosch/vim-lsc'
-Plug 'psliwka/vim-smoothie'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
@@ -50,7 +49,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
-Plug 'ap/vim-css-color'
 call plug#end()
 
 set termguicolors

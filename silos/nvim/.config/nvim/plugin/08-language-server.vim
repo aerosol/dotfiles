@@ -14,7 +14,7 @@ let g:lsc_auto_map = {
  \  'ShowHover': 'K',
  \  'FindCodeActions': 'ga',
  \  'Completion': 'omnifunc',
- \  'DocumentSymbol': 'go',
+ \  'DocumentSymbol': 'gO',
  \  'WorkspaceSymbol': 'gS',
  \  'SignatureHelp': 'gm'
  \}
