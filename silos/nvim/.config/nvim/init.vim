@@ -12,13 +12,13 @@
  
 
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 Plug 'DanilaMihailov/beacon.nvim'
-Plug 'ajh17/VimCompletesMe'
 Plug 'alx741/vim-rustfmt'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dbmrq/vim-ditto'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
@@ -27,7 +27,6 @@ Plug 'jparise/vim-graphql'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'kristijanhusak/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lambdalisue/fern-git-status.vim'
@@ -41,7 +40,6 @@ Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
-Plug 'natebosch/vim-lsc'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
