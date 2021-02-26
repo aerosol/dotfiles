@@ -11,7 +11,7 @@ augroup defaults
   autocmd InsertEnter * set cursorline
   autocmd InsertLeave * Beacon
 
-  au InsertLeave * hi StatusLine gui=underline guifg=#ffffff guibg=#111111
+  au InsertLeave * hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
   au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
 
   au BufEnter ?* call PreviewHeightWorkAround()

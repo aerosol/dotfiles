@@ -32,7 +32,7 @@ hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
 hi NonText gui=NONE guifg=#eeeeee guibg=NONE
 hi Normal gui=NONE guifg=#000000 guibg=NONE
-hi Number gui=NONE guifg=#707070 guibg=NONE
+hi Number gui=NONE guifg=#c05169 guibg=NONE
 hi Pmenu gui=NONE guifg=NONE guibg=#f5f5f5
 hi PmenuSbar gui=NONE guifg=NONE guibg=#ededed
 hi PmenuSel gui=NONE guifg=NONE guibg=#e3e3e3
@@ -45,7 +45,7 @@ hi SpellBad gui=undercurl guisp=NONE guifg=NONE guibg=#fff0f0
 hi SpellCap gui=undercurl guisp=NONE guifg=NONE guibg=NONE
 hi SpellLocal gui=undercurl guisp=NONE guifg=NONE guibg=#f0fff0
 hi SpellRare gui=undercurl guisp=NONE guifg=NONE guibg=#ededed
-hi Statement gui=NONE guifg=#4a4a4a guibg=NONE
+hi Statement gui=bold guifg=#4a4a4a guibg=NONE
 hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
 hi StatusLineNC gui=underline guifg=#cccccc guibg=#eaffff
 hi StorageClass gui=NONE guifg=#4a4a4a guibg=NONE
@@ -61,7 +61,7 @@ hi VertSplit gui=NONE guifg=#888888 guibg=NONE
 hi WarningMsg gui=NONE guifg=NONE guibg=#fff0f0
 hi WildMenu gui=NONE guifg=NONE guibg=#d1d1d1
 hi lCursor gui=NONE guifg=NONE guibg=NONE
-hi Identifier gui=NONE guifg=NONE guibg=NONE
+hi Identifier gui=bold guifg=NONE guibg=NONE
 hi PreProc gui=NONE guifg=NONE guibg=NONE
 
 hi elixirExUnitMacro guifg=#111111
@@ -85,6 +85,7 @@ hi elixirBlockDefinition guifg=#777777
 hi elixirPrivateDefine guifg=#555555
 hi elixirPrivateFunctionDeclaration guifg=#111111
 hi elixirVariable guifg=#2233aa gui=bold
+hi elixirInterpolationDelimiter guifg=#007700 
 
 hi Blamer     guifg=#5b6d82
 hi Beacon     guibg=#cccccc
