@@ -14,6 +14,5 @@ source $HOME/.zsh/functions.zsh
 source $HOME/.zsh/hooks.zsh
 source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/plugins.zsh
-source $HOME/.zsh/colors.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
