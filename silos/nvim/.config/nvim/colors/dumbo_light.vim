@@ -46,8 +46,8 @@ hi SpellCap gui=undercurl guisp=NONE guifg=NONE guibg=NONE
 hi SpellLocal gui=undercurl guisp=NONE guifg=NONE guibg=#f0fff0
 hi SpellRare gui=undercurl guisp=NONE guifg=NONE guibg=#ededed
 hi Statement gui=NONE guifg=#4a4a4a guibg=NONE
-hi StatusLine gui=underline guifg=#ffffff guibg=#111111
-hi StatusLineNC gui=underline guifg=#707070 guibg=NONE
+hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
+hi StatusLineNC gui=underline guifg=#cccccc guibg=#eaffff
 hi StorageClass gui=NONE guifg=#4a4a4a guibg=NONE
 hi String gui=NONE guifg=#161d82 guibg=NONE
 hi TabLine gui=NONE guifg=#969696 guibg=#ededed
@@ -65,16 +65,16 @@ hi Identifier gui=NONE guifg=NONE guibg=NONE
 hi PreProc gui=NONE guifg=NONE guibg=NONE
 
 hi elixirExUnitMacro guifg=#111111
-hi elixirModuleDefine guifg=#444444
-hi elixirModuleDeclaration guifg=#000000
-hi elixirInclude guifg=#444444
+hi elixirModuleDefine guifg=#444444 gui=bold
+hi elixirModuleDeclaration guifg=#000000 gui=bold
+hi elixirInclude guifg=#444444 gui=bold
 hi elixirBlockDefinition guifg=#444444
-hi elixirFunctionDeclaration guifg=#ba61ad
-hi elixirDefine guifg=#ba61ad
+hi elixirFunctionDeclaration guifg=#ba61ad gui=bold
+hi elixirDefine guifg=#ba61ad gui=bold
 hi elixirOperator guifg=#5f5f5f
 hi elixirBlock guifg=#646464
 hi elixirFunctionCall guifg=#8b8567
-hi elixirAlias guifg=#c05169
+hi elixirAlias guifg=#c05169 gui=bold
 hi elixirId guifg=#333333
 hi elixirAtom guifg=#220077
 hi elixirBoolean guifg=#46939f
@@ -84,7 +84,7 @@ hi elixirKeyword guifg=#777777
 hi elixirBlockDefinition guifg=#777777
 hi elixirPrivateDefine guifg=#555555
 hi elixirPrivateFunctionDeclaration guifg=#111111
-hi elixirVariable guifg=#2233aa
+hi elixirVariable guifg=#2233aa gui=bold
 
 hi Blamer     guifg=#5b6d82
 hi Beacon     guibg=#cccccc
