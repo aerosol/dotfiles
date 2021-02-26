@@ -22,9 +22,9 @@ hi ErrorMsg gui=NONE guifg=NONE guibg=#fff0f0
 hi FoldColumn gui=NONE guifg=#c2c2c2 guibg=NONE
 hi Folded gui=NONE guifg=#834c73 guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
-hi IncSearch gui=NONE guifg=#000000 guibg=#17d0f5
-hi Search gui=NONE guifg=#000000 guibg=#17d0f5
-hi Visual gui=NONE guifg=#000000 guibg=#17d0f5
+hi IncSearch gui=NONE guifg=#000000 guibg=#aeeeee
+hi Search gui=NONE guifg=#000000 guibg=#aeeeee
+hi Visual gui=NONE guifg=#000000 guibg=#aeeeee
 hi VisualNOS gui=NONE guifg=NONE guibg=NONE
 hi LineNr gui=NONE guifg=#c2c2c2 guibg=NONE
 hi MatchParen gui=NONE guifg=NONE guibg=#e3e3e3
