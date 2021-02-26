@@ -20,3 +20,21 @@ let g:signify_line_highlight = 0
 let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
+
+function! s:init_fern() abort
+  nmap <buffer> <silent> <C-h> <C-w>h
+  nmap <buffer> <silent> <C-j> <C-w>j
+  nmap <buffer> <silent> <C-k> <C-w>k
+  nmap <buffer> <silent> <C-l> <C-w>l
+  nmap <buffer> <silent> <tab> <Plug>(fern-action-mark)j
+  nmap <buffer> <silent> - <Plug>(fern-action-leave)
+  nmap <buffer> <silent> + <Plug>(fern-action-new-path)
+  setlocal cursorline
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
