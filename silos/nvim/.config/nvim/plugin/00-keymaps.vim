@@ -49,8 +49,6 @@ nnoremap <leader>feR :source %<CR>
 
 nnoremap <leader>? :echo expand("%:p")<CR>
 
-nnoremap <C-P> @:
-
 vnoremap @ :norm@
 
 nmap n nzz
@@ -62,11 +60,17 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 
 
 nnoremap Q :qa<CR>
-nnoremap gl :BLines<cr>
-nnoremap gb :Buffers<cr>
-nnoremap go :FZF<cr>
+
+nnoremap go :Files<cr>
+
 nnoremap gh :History<cr>
-nnoremap gt :Rg!<CR>
+
+nnoremap <leader>l :Rg!<CR>
+vnoremap <leader>l y:Rg <C-R>=trim(escape(@",'/\'))<CR><CR>
+nnoremap gl :Rg <C-R><C-W><CR>
+nnoremap <leader><leader> :Buffers<CR>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
 nnoremap gs :Magit<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
