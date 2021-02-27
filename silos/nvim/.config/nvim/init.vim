@@ -12,6 +12,7 @@
  
 
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'camspiers/lens.vim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'alx741/vim-rustfmt'
 Plug 'andymass/vim-matchup'

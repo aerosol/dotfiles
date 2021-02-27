@@ -21,6 +21,8 @@ let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "iw", "iW", "ip", "it"]
+let g:lens#animate = 0
+let g:lens#width_resize_max = 90
 
 function! s:init_fern() abort
   nmap <buffer> <silent> <C-h> <C-w>h
