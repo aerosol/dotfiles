@@ -21,4 +21,4 @@ function collapse_pwd {
   echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
-PROMPT='(%M) %F{blue}${vcs_info_msg_0_}%f %B$(collapse_pwd)%b $ '
+PROMPT=' (%M) %F{blue}${vcs_info_msg_0_}%f %B$(collapse_pwd)%b $ '

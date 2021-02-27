@@ -1,7 +1,9 @@
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow 2> /dev/null'
-export FZF_COMPLETION_OPTS="--preview '(cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --color=never --follow 2> /dev/null'
+export FZF_DEFAULT_OPTS="--layout=reverse --no-color"
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS="$FZF_COMPLETION_OPTS"
+export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
