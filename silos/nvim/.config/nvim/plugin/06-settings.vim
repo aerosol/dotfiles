@@ -5,6 +5,7 @@ set cpoptions+=$
 set expandtab
 set hidden
 set icm=nosplit
+set lazyredraw
 set matchtime=5
 set noshowmode
 set nosol

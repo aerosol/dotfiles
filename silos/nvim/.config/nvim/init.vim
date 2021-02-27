@@ -12,8 +12,6 @@
  
 
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'alx741/vim-rustfmt'
 Plug 'andymass/vim-matchup'
@@ -22,6 +20,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
+Plug 'hrsh7th/nvim-compe'
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
 Plug 'jreybert/vimagit'
@@ -41,6 +40,7 @@ Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
+Plug 'neovim/nvim-lspconfig'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
@@ -48,6 +48,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'wellle/targets.vim'
 call plug#end()
 
 set termguicolors

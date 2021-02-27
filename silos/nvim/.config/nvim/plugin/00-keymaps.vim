@@ -71,6 +71,10 @@ nnoremap gl :Rg <C-R><C-W><CR>
 nnoremap <leader><leader> :Buffers<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
+set wildcharm=<C-z>
+cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
+cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
+
 nnoremap gs :Magit<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
