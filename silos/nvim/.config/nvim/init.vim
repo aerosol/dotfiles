@@ -49,6 +49,7 @@ Plug 'thinca/vim-qfreplace'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 call plug#end()
 

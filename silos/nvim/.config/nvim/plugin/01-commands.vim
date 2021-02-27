@@ -4,4 +4,3 @@ command! -bang -nargs=* Rg
 
 command! Fold setl foldmethod=syntax foldlevel=2
 command! Unfold setl nofoldenable
-
