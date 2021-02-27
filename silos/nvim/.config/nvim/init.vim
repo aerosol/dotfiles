@@ -9,11 +9,13 @@
 " plugin/06-settings.vim
 " plugin/07-writing.vim
 " plugin/08-language-server.vim
+"
+" colors:
+" colors/dumbo_light.vim
  
 
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'DanilaMihailov/beacon.nvim'
-Plug 'alx741/vim-rustfmt'
+Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
@@ -35,6 +37,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
+Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/gist-vim'
 Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
@@ -47,7 +50,6 @@ Plug 'thinca/vim-qfreplace'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 call plug#end()
 

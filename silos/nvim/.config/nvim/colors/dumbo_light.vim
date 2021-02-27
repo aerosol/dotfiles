@@ -4,7 +4,7 @@ let g:colors_name = "dumbo_light"
 
 hi Boolean gui=NONE guifg=#707070 guibg=NONE
 hi ColorColumn gui=NONE guifg=NONE guibg=#eeeeee
-hi Comment gui=NONE guifg=#688888 guibg=NONE
+hi Comment gui=italic guifg=#688888 guibg=NONE
 hi Conceal gui=NONE guifg=#707070 guibg=NONE
 hi Conditional gui=NONE guifg=#4a4a4a guibg=NONE
 hi Constant gui=NONE guifg=#707070 guibg=NONE
@@ -91,11 +91,14 @@ hi elixirPrivateDefine guifg=#555555
 hi elixirPrivateFunctionDeclaration guifg=#111111
 hi elixirVariable guifg=#2233aa gui=bold
 hi elixirInterpolationDelimiter guifg=#007700 
+hi elixirUnusedVariable gui=NONE guifg=#888888
 
 hi Blamer     guifg=#5b6d82
 hi Beacon     guibg=#cccccc
 
-hi sqlComment guibg=#333333 guifg=#ffffff
+hi sqlComment guibg=#333333 guifg=#ffffff gui=italic
+
+highlight link HighlightedyankRegion DiffAdded
 
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
