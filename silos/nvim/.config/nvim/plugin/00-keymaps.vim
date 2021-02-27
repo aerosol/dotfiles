@@ -73,6 +73,8 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap gm :Marks<CR>
 nnoremap dm :delm!<CR>:delm A-Z0-9<CR>
 
+nnoremap <leader>p viwp
+
 set wildcharm=<C-z>
 cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
