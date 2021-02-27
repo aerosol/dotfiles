@@ -12,17 +12,22 @@ hi Cursor gui=reverse guifg=NONE guibg=NONE
 hi CursorColumn gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLine gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
-hi DiffAdd gui=NONE guifg=NONE guibg=#f0fff0
+hi DiffAdd gui=NONE guifg=#ffffff guibg=#009200
+hi DiffAdded gui=NONE guifg=#ffffff guibg=#009200
 hi DiffChange gui=NONE guifg=NONE guibg=#f5f5f5
+hi DiffChanged gui=NONE guifg=NONE guibg=#f5f5f5
 hi DiffDelete gui=NONE guifg=NONE guibg=#fff0f0
+hi DiffRemoved gui=NONE guifg=#ffffff guibg=#aa0000
 hi DiffText gui=NONE guifg=NONE guibg=#e3e3e3
+hi diffLine gui=bold guibg=yellow
+hi fileEntry gui=bold
 hi Directory gui=NONE guifg=#4a4a4a guibg=NONE
 hi Error gui=NONE guifg=NONE guibg=#fff0f0
 hi ErrorMsg gui=NONE guifg=NONE guibg=#fff0f0
 hi FoldColumn gui=NONE guifg=#c2c2c2 guibg=NONE
 hi Folded gui=NONE guifg=#834c73 guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
-hi IncSearch gui=NONE guifg=#000000 guibg=#aaeeee
+hi IncSearch gui=bold guifg=#000000 guibg=#aaeeee
 hi Search gui=NONE guifg=#333333 guibg=yellow
 hi Visual gui=NONE guifg=#000000 guibg=#aeeeee
 hi VisualNOS gui=NONE guifg=NONE guibg=NONE
