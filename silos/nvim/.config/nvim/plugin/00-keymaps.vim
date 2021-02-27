@@ -79,7 +79,7 @@ set wildcharm=<C-z>
 cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 
-nnoremap gs :Magit<CR>
+nnoremap gs :Gstatus<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>

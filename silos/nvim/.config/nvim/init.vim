@@ -25,7 +25,6 @@ Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'hrsh7th/nvim-compe'
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
-Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
