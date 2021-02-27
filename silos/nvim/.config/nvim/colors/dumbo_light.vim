@@ -12,8 +12,8 @@ hi Cursor gui=reverse guifg=NONE guibg=NONE
 hi CursorColumn gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLine gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
-hi DiffAdd gui=NONE guifg=#ffffff guibg=#009200
-hi DiffAdded gui=NONE guifg=#ffffff guibg=#009200
+hi DiffAdd gui=NONE guifg=NONE guibg=#b5ffab
+hi DiffAdded gui=NONE guifg=NONE guibg=#b5ffab
 hi DiffChange gui=NONE guifg=NONE guibg=#f5f5f5
 hi DiffChanged gui=NONE guifg=NONE guibg=#f5f5f5
 hi DiffDelete gui=NONE guifg=NONE guibg=#fff0f0
