@@ -70,6 +70,8 @@ vnoremap <leader>l y:Rg <C-R>=trim(escape(@",'/\'))<CR><CR>
 nnoremap gl :Rg <C-R><C-W><CR>
 nnoremap <leader><leader> :Buffers<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap gm :Marks<CR>
+nnoremap dm :delm!<CR>:delm A-Z0-9<CR>
 
 set wildcharm=<C-z>
 cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
