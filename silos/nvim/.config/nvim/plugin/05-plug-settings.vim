@@ -21,6 +21,9 @@ let g:signify_skip_filetype = { 'diff': 1 }
 let g:signify_update_on_focusgained = 1
 let g:tslime_ensure_trailing_newlines = 2
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "iw", "iW", "ip", "it"]
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'elixir']
+let g:markdown_syntax_conceal = 2
+let g:markdown_minlines = 100
 
 function! s:init_fern() abort
   nmap <buffer> <silent> <C-h> <C-w>h

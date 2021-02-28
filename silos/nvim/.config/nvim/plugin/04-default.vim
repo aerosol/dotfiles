@@ -9,7 +9,6 @@ augroup defaults
   autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
   autocmd InsertLeave,WinEnter,WinLeave * set nocursorline
   autocmd InsertEnter * set cursorline
-  autocmd InsertLeave * Beacon
 
   au InsertLeave * hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
   au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
@@ -28,4 +27,3 @@ func PreviewHeightWorkAround()
         exec 'setlocal winheight='.&previewheight
     endif
 endfunc
-

@@ -93,12 +93,17 @@ hi elixirVariable guifg=#2233aa gui=bold
 hi elixirInterpolationDelimiter guifg=#007700 
 hi elixirUnusedVariable gui=NONE guifg=#888888
 
-hi Blamer     guifg=#5b6d82
-hi Beacon     guibg=#cccccc
-
 hi sqlComment guibg=#333333 guifg=#ffffff gui=italic
 
 highlight link HighlightedyankRegion DiffAdded
+highlight link plugName Comment
+highlight link markdownCode Comment
+
+hi markdownH1 gui=bold guifg=#000000
+hi markdownH2 gui=bold guifg=#000000
+hi markdownH3 gui=bold guifg=#000000
+hi markdownLinkText gui=bold guifg=#000000
+hi markdownCodeDelimiter guifg=#cccccc
 
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
