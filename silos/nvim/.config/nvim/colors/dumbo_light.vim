@@ -102,6 +102,10 @@ highlight link markdownCode Comment
 hi markdownH1 gui=bold guifg=#000000
 hi markdownH2 gui=bold guifg=#000000
 hi markdownH3 gui=bold guifg=#000000
+hi markdownH4 gui=bold guifg=#000000
+hi markdownH5 gui=bold guifg=#000000
+hi markdownH6 gui=bold guifg=#000000
+hi markdownH7 gui=bold guifg=#000000
 hi markdownLinkText gui=bold guifg=#000000
 hi markdownCodeDelimiter guifg=#cccccc
 
