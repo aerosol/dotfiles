@@ -1,4 +1,3 @@
-autocmd BufWritePost *.rkt Neomake!
 autocmd FileType racket nnoremap <C-c><C-l> :call SendToTmux('(enter! "'. expand('%:t') .'")')<CR>
 autocmd FileType racket RainbowParenthesesToggle
 autocmd FileType racket RainbowParenthesesLoadRound

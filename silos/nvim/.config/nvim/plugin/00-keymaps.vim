@@ -85,3 +85,9 @@ nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
 
 nmap - :Fern %:p:h -reveal=%:p<cr>
+
+vnoremap q" xi""<Esc>P
+vnoremap q' xi''<Esc>P
+vnoremap q( xi()<Esc>P
+vnoremap q[ xi[]<Esc>P
+vnoremap q{ xi{}<Esc>P

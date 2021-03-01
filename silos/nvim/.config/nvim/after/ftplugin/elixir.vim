@@ -1,7 +1,6 @@
 augroup elixir_dev
   autocmd FileType eelixir setlocal textwidth=1
   autocmd FileType eelixir setlocal wrapmargin=0
-  autocmd FileType elixir setlocal formatprg=mix\ format\ -\ 2>/dev/null
 augroup END
 
 let test#strategy = 'tslime'
@@ -15,8 +14,6 @@ nnoremap tt :TestNearest<CR>
 nnoremap tl :TestLast<CR>
 nnoremap tv :TestVisit<CR>
 
-"nnoremap <buffer> K :call CocAction('doHover')<CR>
-
  "xoxo Wojtek Mach
 function! ElixirUmbrellaTransform(cmd) abort
   if match(a:cmd, 'apps/') != -1
@@ -28,5 +25,3 @@ endfunction
 
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
-
-nmap <leader>r orequire IEx; IEx.pry<esc>
