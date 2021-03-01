@@ -1,18 +1,31 @@
-" plugins:
+" hq1's vim files
+" minimalists and/or purists will not be amused
+"
+" settings:
 " --------
 " plugin/00-keymaps.vim
 " plugin/01-commands.vim
-" plugin/02-completion.vim
+" plugin/02-augroups.vim
 " plugin/03-functions.vim
-" plugin/04-default.vim
-" plugin/05-plug-settings.vim
+" plugin/04- ???
+" plugin/05-gvars.vim
 " plugin/06-settings.vim
-" plugin/07-writing.vim
+" plugin/07- ???
 " plugin/08-language-server.vim
 "
 " colors:
 " colors/dumbo_light.vim
- 
+
+set termguicolors
+if $MUH_THEME == 'light'
+  set background=light
+  colorscheme dumbo_light
+else
+  set background=dark
+  colorscheme dumbo
+endif
+
+" plugins:
 
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
@@ -30,7 +43,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/glyph-palette.vim'
@@ -51,13 +63,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
-set termguicolors
-if $MUH_THEME == 'light'
-  set background=light
-  colorscheme dumbo_light
-else
-  set background=dark
-  colorscheme dumbo
-endif

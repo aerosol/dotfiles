@@ -24,21 +24,3 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "iw", "iW", "ip", "it"]
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'elixir']
 let g:markdown_syntax_conceal = 2
 let g:markdown_minlines = 100
-
-function! s:init_fern() abort
-  nmap <buffer> <silent> <C-h> <C-w>h
-  nmap <buffer> <silent> <C-j> <C-w>j
-  nmap <buffer> <silent> <C-k> <C-w>k
-  nmap <buffer> <silent> <C-l> <C-w>l
-  nmap <buffer> <silent> <tab> <Plug>(fern-action-mark)j
-  nmap <buffer> <silent> - <Plug>(fern-action-leave)
-  nmap <buffer> <silent> + <Plug>(fern-action-new-path)
-  setlocal cursorline
-endfunction
-
-augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
-  autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
-augroup END
