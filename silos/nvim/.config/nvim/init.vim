@@ -47,7 +47,7 @@ endif
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
-Plug 'ap/vim-css-color', {'for': ['html', 'css', 'vim']}
+Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
