@@ -43,7 +43,8 @@ tray-detached = false
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
-tray-maxsize = 16
+tray-maxsize = 48
+tray-scale = 1.0
 
 wm-restack = bspwm
 
