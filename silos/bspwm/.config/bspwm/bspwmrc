@@ -29,7 +29,7 @@ bspc monitor -d I II III IV V VI
 bspc config border_radius        24
 bspc config border_width          4
 bspc config window_gap           16
-bspc config top_padding          65
+bspc config bottom_padding          65
 
 bspc config normal_border_color "#000000"
 bspc config focused_border_color "#1F8999"
