@@ -15,6 +15,7 @@ offset-x = 16
 offset-y = 8
 radius = 16
 fixed-center = true
+bottom = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
