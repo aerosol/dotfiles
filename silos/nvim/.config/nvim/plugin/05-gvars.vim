@@ -1,5 +1,14 @@
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.eex'
 let g:db_async = 1
+let g:db_ui_execute_on_save = 0
+let g:db_ui_table_helpers = {
+\ 	'postgresql': {
+\ 		'Count': 'select count(*) from "{optional_schema}{table}"',
+\ 		'Explain': 'EXPLAIN ANALYZE {last_query}',
+\ 		'Explain (pev)': 'EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON) {last_query}'
+\ 	}
+\ }
+let g:db_ui_use_nerd_fonts = 1
 let g:fern#default_hidden = 1
 let g:fern#renderer = "nerdfont"
 let g:filebeagle_show_hidden=1

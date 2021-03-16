@@ -52,3 +52,5 @@ set lcs+=eol:¬
 set previewheight=50
 
 set fillchars=vert:❘
+
+set mouse=a
