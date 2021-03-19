@@ -1,4 +1,4 @@
-export MUH_THEME="light"
+# theme set in .zshenv
 if [[ "$OSTYPE" == "darwin"* ]]; then
   source $HOME/.zsh/mac.zsh
 else
