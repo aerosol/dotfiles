@@ -16,7 +16,17 @@
 " colors:
 " -------
 " colors/dumbo_light.vim
-"
+" colors/dumbo.vim
+
+set termguicolors
+if $MUH_THEME == 'light'
+  set background=light
+  colorscheme dumbo_light
+else
+  set background=dark
+  colorscheme dumbo
+endif
+
 " filetypes:
 " ----------
 " after/ftplugin/clojure.vim
@@ -33,17 +43,8 @@
 " after/ftplugin/vagrant.vim
 " after/ftplugin/yaml.vim
 
-set termguicolors
-if $MUH_THEME == 'light'
-  set background=light
-  colorscheme dumbo_light
-else
-  set background=dark
-  colorscheme dumbo
-endif
-
 " plugins:
-
+" --------
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
