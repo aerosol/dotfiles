@@ -5,7 +5,8 @@ let g:db_ui_table_helpers = {
 \ 	'postgresql': {
 \ 		'Count': 'select count(*) from "{optional_schema}{table}"',
 \ 		'Explain': 'EXPLAIN ANALYZE {last_query}',
-\ 		'Explain (pev)': 'EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON) {last_query}'
+\ 		'Explain (pev)': 'EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON) {last_query}',
+\       'Describe': '\d "{optional_schema}{table}";'
 \ 	}
 \ }
 let g:db_ui_use_nerd_fonts = 1
