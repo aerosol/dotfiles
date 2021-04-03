@@ -4,7 +4,7 @@ let g:colors_name = "dumbo"
 
 hi Boolean gui=NONE guifg=#808080 guibg=NONE
 hi ColorColumn gui=NONE guifg=NONE guibg=NONE
-hi Comment gui=NONE guifg=#5C6370 ctermfg=59
+hi Comment gui=italic guifg=#5C6370 ctermfg=59
 hi Conceal gui=NONE guifg=#808080 guibg=NONE
 hi Conditional gui=NONE guifg=#8f8f8f guibg=NONE
 hi Constant gui=NONE guifg=#808080 guibg=NONE
@@ -31,8 +31,8 @@ hi LineNr gui=NONE guifg=#444444 guibg=NONE
 hi MatchParen gui=NONE guifg=#00aa00 guibg=#333333
 hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
-hi NonText gui=NONE guifg=#211111 guibg=NONE
-hi Normal gui=NONE guifg=#b0b0b0 guibg=NONE
+hi NonText gui=NONE guifg=#363c42 guibg=NONE
+hi Normal gui=NONE guifg=#ADBAC7 guibg=NONE
 hi Number gui=NONE guifg=#808080 guibg=NONE
 hi Pmenu gui=NONE guifg=NONE guibg=#1a1a1a
 hi PmenuSbar gui=NONE guifg=NONE guibg=#262626
@@ -41,7 +41,7 @@ hi PmenuThumb gui=NONE guifg=NONE guibg=#424242
 hi Question gui=NONE guifg=NONE guibg=NONE
 hi Search gui=NONE guifg=#ffffff guibg=#316762
 hi SignColumn gui=NONE guifg=#616161 guibg=NONE
-hi Special gui=NONE guifg=#808080 guibg=NONE
+hi Special gui=NONE guifg=#768390 guibg=NONE
 hi SpecialKey gui=NONE guifg=#616161 guibg=NONE
 hi SpellBad gui=undercurl guisp=NONE guifg=NONE guibg=#260808
 hi SpellCap gui=undercurl guisp=NONE guifg=NONE guibg=NONE
@@ -55,7 +55,7 @@ hi String gui=NONE guifg=#8ba5a5 guibg=NONE
 hi TabLineFill gui=NONE guifg=#cccccc guibg=#262626
 hi TabLine gui=NONE guifg=#aaaaaa guibg=#262626
 hi TabLineSel gui=NONE guifg=#81a76a guibg=#000000
-hi Title gui=NONE guifg=#808080 guibg=NONE
+hi Title gui=NONE guifg=#768390 guibg=NONE
 hi Todo gui=standout guifg=NONE guibg=NONE
 hi Type gui=NONE guifg=#8f8f8f guibg=NONE
 hi Underlined gui=NONE guifg=NONE guibg=NONE
@@ -151,7 +151,7 @@ syn match Visual       "\"__Visual.*"
 "__Function             function sblah()
 "__Identifier           Never ran into that actually...
 "__IncSearch            Next search term
-"__NonText              This is not a text, move on
+"__NodText              This is not a text, move on
 "__Normal               Typical text goes like this
 "__Pmenu                Currently selected menu item
 "__PreProc              #define SHBLAH true
