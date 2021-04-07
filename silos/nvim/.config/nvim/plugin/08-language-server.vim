@@ -106,5 +106,3 @@ require'lspconfig'.elixirls.setup{
 
 
 EOF 
-
-
