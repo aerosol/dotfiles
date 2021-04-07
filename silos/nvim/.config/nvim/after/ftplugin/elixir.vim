@@ -3,7 +3,7 @@ augroup elixir_dev
   autocmd FileType eelixir setlocal wrapmargin=0
 augroup END
 
-let test#strategy = 'tslime'
+let test#strategy = 'dispatch'
 nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>tt :TestNearest<CR>
 nnoremap <leader>tl :TestLast<CR>
