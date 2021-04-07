@@ -13,7 +13,6 @@ augroup defaults
   au InsertLeave * hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
   au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
 
-  au BufEnter ?* call PreviewHeightWorkAround()
   au VimResized * wincmd =
 augroup END
 
@@ -21,12 +20,6 @@ augroup spell
   autocmd!
   autocmd FileType gitcommit setlocal spell
 augroup END
-
-func PreviewHeightWorkAround()
-    if &previewwindow
-        exec 'setlocal winheight='.&previewheight
-    endif
-endfunc
 
 function! s:init_fern() abort
   nmap <buffer> <silent> <C-h> <C-w>h

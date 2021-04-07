@@ -49,7 +49,7 @@ set lcs+=precedes:‹
 set lcs+=nbsp:·
 set lcs+=eol:¬
 
-set previewheight=50
+set previewheight=15
 
 set fillchars=vert:❘
 
