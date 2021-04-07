@@ -1,5 +1,7 @@
-#!/usr/bin/env bash
-feh --bg-fill /home/hq1/.wallpaper.jpg;
+#!/usr/bin/env zsh
+#feh --bg-fill /home/hq1/.wallpaper.jpg;
+feh --bg-fill "$(/bin/ls /home/hq1/Pictures/Sony\ Global/**/*.jpg | shuf | head -n 1)"
+
 #wget https://source.unsplash.com/random/3840x2160 \
     #-O /home/hq1/.wallpaper.jpg \
     #&& feh --bg-fill /home/hq1/.wallpaper.jpg && notify-send "Wallpaper updated"
