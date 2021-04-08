@@ -3,12 +3,6 @@ augroup elixir_dev
   autocmd FileType eelixir setlocal wrapmargin=0
 augroup END
 
-let test#strategy = 'dispatch'
-nnoremap <leader>tf :TestFile<CR>
-nnoremap <leader>tt :TestNearest<CR>
-nnoremap <leader>tl :TestLast<CR>
-nnoremap <leader>tv :TestVisit<CR>
-
 nnoremap tf :TestFile<CR>
 nnoremap tt :TestNearest<CR>
 nnoremap tl :TestLast<CR>
@@ -25,3 +19,17 @@ endfunction
 
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
+
+function! CustomStrategy(cmd)
+  execute 'botright 10 new'
+  call termopen(a:cmd)
+  echo 'Running tests: ' . a:cmd
+  nmap <buffer> q :bd!<cr>
+  nnoremap <buffer> o gF<C-w>=
+  au BufEnter <buffer> wincmd _
+  au BufLeave <buffer> resize 10
+  wincmd p
+endfunction
+
+let test#custom_strategies = {'custom': function('CustomStrategy')}
+let test#strategy = "custom"
