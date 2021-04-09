@@ -30,7 +30,7 @@ function! ExUnitPanel(cmd)
   execute 'file! ExUnit'
   echo 'ExUnit: ' . a:cmd
   nmap <buffer> q :bd!<cr>
-  nnoremap <buffer> o gF<C-w>=
+  nnoremap <buffer> o :vs<cr>gF<C-w>=
   au BufEnter <buffer> wincmd _
   au BufLeave <buffer> resize 10
   wincmd p

@@ -56,3 +56,5 @@ let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
 let g:compe.source.vsnip = v:true
 let g:compe.source.vim_dadbod_completion = v:true
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
