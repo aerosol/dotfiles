@@ -20,10 +20,18 @@ endfunction
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
 
+function! ChooseBuffer(buffername)
+ endfunction
+
 function! CustomStrategy(cmd)
+  let bnr = bufnr("ExUnit")
+  if bnr > 0
+     execute 'bdelete! ' . bnr
+  endif
   execute 'botright 10 new'
   call termopen(a:cmd)
-  echo 'Running tests: ' . a:cmd
+  execute 'file! ExUnit'
+  echo 'ExUnit: ' . a:cmd
   nmap <buffer> q :bd!<cr>
   nnoremap <buffer> o gF<C-w>=
   au BufEnter <buffer> wincmd _
