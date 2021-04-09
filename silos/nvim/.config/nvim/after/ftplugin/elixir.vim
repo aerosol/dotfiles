@@ -20,10 +20,7 @@ endfunction
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
 
-function! ChooseBuffer(buffername)
- endfunction
-
-function! CustomStrategy(cmd)
+function! ExUnitPanel(cmd)
   let bnr = bufnr("ExUnit")
   if bnr > 0
      execute 'bdelete! ' . bnr
@@ -39,5 +36,5 @@ function! CustomStrategy(cmd)
   wincmd p
 endfunction
 
-let test#custom_strategies = {'custom': function('CustomStrategy')}
+let test#custom_strategies = {'custom': function('ExUnitPanel')}
 let test#strategy = "custom"
