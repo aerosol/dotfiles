@@ -41,7 +41,7 @@ super + w
 	bspc node -c
 
 super + q
-	bspc node -k
+	bspc node -c
 
 super + n
     id=$(cat /tmp/scratchid);\
