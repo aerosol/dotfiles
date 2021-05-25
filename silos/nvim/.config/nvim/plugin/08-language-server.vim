@@ -1,4 +1,6 @@
 lua << EOF 
+vim.lsp.set_log_level("debug")
+local lsp_status = require('lsp-status')
 
 require'compe'.setup {
   enabled = true;
@@ -97,12 +99,22 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
+
+lsp_status.config({
+status_symbol = ' '
+})
+
+lsp_status.register_progress()
+lsp_status.on_attach(client)
+
 end
 
-require'lspconfig'.elixirls.setup{
-  cmd = { "/home/hq1/dev/elixir-ls/rel/language_server.sh" };
-  on_attach = on_attach
-}
+local lsp_config = require('lspconfig')
 
+lsp_config.elixirls.setup{
+  cmd = { "/home/hq1/dev/elixir-ls/rel/language_server.sh" };
+  on_attach = on_attach,
+  capabilities = lsp_status.capabilities
+}
 
 EOF 

@@ -84,4 +84,5 @@ Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'nvim-lua/lsp-status.nvim'
 call plug#end()

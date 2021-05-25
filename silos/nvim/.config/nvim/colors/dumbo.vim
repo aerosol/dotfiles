@@ -28,7 +28,7 @@ hi Folded gui=NONE guifg=#054959 guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
 hi IncSearch gui=NONE guifg=#ffffff guibg=#316762
 hi LineNr gui=NONE guifg=#444444 guibg=NONE
-hi MatchParen gui=NONE guifg=#00aa00 guibg=#333333
+hi MatchParen gui=NONE guifg=#ffffff guibg=#00aa00
 hi ModeMsg gui=NONE guifg=NONE guibg=NONE
 hi MoreMsg gui=NONE guifg=NONE guibg=NONE
 hi NonText gui=NONE guifg=#363c42 guibg=NONE

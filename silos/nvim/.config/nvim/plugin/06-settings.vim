@@ -31,8 +31,20 @@ set updatetime=300
 set wildmode=list,full
 set wrap
 
+" Statusline
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+
+  return ''
+endfunction
+
+
+
 set statusline=
 set statusline +=\ %{nerdfont#find()}%*\ \ %<%t%*
+set statusline +=\ \ %{LspStatus()}%*
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%M%* " modified flag
 set statusline +=%=%* " separator
