@@ -58,6 +58,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'janko-m/vim-test', {'for': ['elixir', 'rust']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'romainl/vim-qf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-dadbod-completion'

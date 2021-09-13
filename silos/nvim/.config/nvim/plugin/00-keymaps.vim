@@ -69,7 +69,7 @@ nnoremap <leader>l :Rg!<CR>
 vnoremap <leader>l y:Rg <C-R>=trim(escape(@",'/\'))<CR><CR>
 nnoremap gl :Rg <C-R><C-W><CR>
 nnoremap <leader><leader> :Buffers<CR>
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 nnoremap gm :Marks<CR>
 nnoremap dm :delm!<CR>:delm A-Z0-9<CR>
 
@@ -80,6 +80,8 @@ cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 
 nnoremap gs :Gstatus<CR>
+nnoremap gb :Gblame<CR>
+nnoremap gB :GBrowse<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
@@ -91,3 +93,6 @@ vnoremap q' xi''<Esc>P
 vnoremap q( xi()<Esc>P
 vnoremap q[ xi[]<Esc>P
 vnoremap q{ xi{}<Esc>P
+
+nnoremap gnc ]c 
+nnoremap gpc [c 

@@ -1,6 +1,7 @@
 augroup elixir_dev
   autocmd FileType eelixir setlocal textwidth=1
   autocmd FileType eelixir setlocal wrapmargin=0
+  autocmd FileType elixir imap ii \|> IO.inspect(label: )<esc>ha
 augroup END
 
 nnoremap tf :TestFile<CR>
