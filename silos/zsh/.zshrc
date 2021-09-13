@@ -16,3 +16,4 @@ source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/plugins.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.secrets ] && source ~/.secrets
