@@ -79,7 +79,7 @@ set wildcharm=<C-z>
 cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 
-nnoremap gs :Gstatus<CR>
+nnoremap gs :Git<CR>
 nnoremap gb :Gblame<CR>
 nnoremap gB :GBrowse<CR>
 
