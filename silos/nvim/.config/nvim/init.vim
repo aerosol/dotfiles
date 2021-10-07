@@ -56,7 +56,7 @@ Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'hrsh7th/nvim-compe'
-Plug 'janko-m/vim-test', {'for': ['elixir', 'rust']}
+Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
