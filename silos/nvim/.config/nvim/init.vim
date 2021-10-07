@@ -50,6 +50,7 @@ Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-markify'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
@@ -58,7 +59,6 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'janko-m/vim-test', {'for': ['elixir', 'rust']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'romainl/vim-qf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kristijanhusak/vim-dadbod-completion'
@@ -75,6 +75,8 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'romainl/vim-qf'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
@@ -85,6 +87,4 @@ Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 call plug#end()
