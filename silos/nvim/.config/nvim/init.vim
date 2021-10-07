@@ -86,4 +86,5 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 call plug#end()

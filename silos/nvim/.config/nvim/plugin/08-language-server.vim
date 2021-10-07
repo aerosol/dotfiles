@@ -117,4 +117,18 @@ lsp_config.elixirls.setup{
   capabilities = lsp_status.capabilities
 }
 
+lsp_config.gopls.setup {
+    cmd = {"gopls", "serve"},
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities,
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
+}
+
 EOF 
