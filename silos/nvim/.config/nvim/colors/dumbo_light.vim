@@ -95,6 +95,9 @@ hi elixirUnusedVariable gui=NONE guifg=#888888
 
 hi sqlComment guibg=#333333 guifg=#ffffff gui=italic
 
+hi goType guibg=NONE guifg=#c05169 gui=italic
+hi goDeclType guibg=NONE guifg=#007700 gui=italic
+
 highlight link HighlightedyankRegion DiffAdded
 highlight link plugName Comment
 highlight link markdownCode Comment
