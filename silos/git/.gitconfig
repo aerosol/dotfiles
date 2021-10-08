@@ -43,3 +43,5 @@
     algorithm = patience
 [core]
 	excludesfile = /home/hq1/.gitignore_global
+[init]
+	defaultBranch = main
