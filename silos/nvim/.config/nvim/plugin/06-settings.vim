@@ -66,3 +66,5 @@ set previewheight=15
 set fillchars=vert:❘
 
 set mouse=a
+
+set completeopt=menu,menuone,noselect

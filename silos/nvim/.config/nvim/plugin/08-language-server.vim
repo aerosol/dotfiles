@@ -2,33 +2,6 @@ lua << EOF
 vim.lsp.set_log_level("debug")
 local lsp_status = require('lsp-status')
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
-  };
-}
-
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -52,6 +25,38 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
+
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      -- For `vsnip` user.
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+    ['<CR>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+
+    -- For vsnip user.
+    { name = 'vsnip' },
+
+    -- For luasnip user.
+    -- { name = 'luasnip' },
+
+    -- For ultisnips user.
+    -- { name = 'ultisnips' },
+
+    { name = 'buffer' },
+  }
+})
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
@@ -114,13 +119,13 @@ local lsp_config = require('lspconfig')
 lsp_config.elixirls.setup{
   cmd = { "/home/hq1/dev/elixir-ls/rel/language_server.sh" };
   on_attach = on_attach,
-  capabilities = lsp_status.capabilities
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.gopls.setup {
     cmd = {"gopls", "serve"},
     on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
+    capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities),
     settings = {
       gopls = {
         analyses = {
