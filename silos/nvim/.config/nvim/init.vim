@@ -10,7 +10,7 @@
 " plugin/04- ???
 " plugin/05-gvars.vim
 " plugin/06-settings.vim
-" plugin/07- ???
+" plugin/07-treesitter.vim
 " plugin/08-language-server.vim
 "
 " colors:
@@ -80,6 +80,8 @@ Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'romainl/vim-qf'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/tslime.vim'

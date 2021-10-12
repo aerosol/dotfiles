@@ -60,7 +60,7 @@ hi TabLineFill gui=NONE guifg=NONE guibg=#ededed
 hi TabLineSel gui=NONE guifg=#000000 guibg=#cccccc
 hi Title gui=NONE guifg=#707070 guibg=NONE
 hi Todo gui=standout guifg=NONE guibg=NONE
-hi Type gui=NONE guifg=#4a4a4a guibg=NONE
+hi Type gui=italic guifg=#4a4a4a guibg=NONE
 hi Underlined gui=NONE guifg=NONE guibg=NONE
 hi VertSplit gui=NONE guifg=#888888 guibg=NONE
 hi WarningMsg gui=NONE guifg=NONE guibg=#fff0f0
@@ -111,6 +111,13 @@ hi markdownH6 gui=bold guifg=#000000
 hi markdownH7 gui=bold guifg=#000000
 hi markdownLinkText gui=bold guifg=#000000
 hi markdownCodeDelimiter guifg=#cccccc
+
+hi link TSVariable elixirId
+hi link TSFunction elixirFunctionDeclaration
+hi link TSParameter elixirVariable
+hi link TSInclude elixirInclude
+hi link TSProperty elixirBlockDefinition
+hi link TSConstBuiltin elixirAtom
 
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
