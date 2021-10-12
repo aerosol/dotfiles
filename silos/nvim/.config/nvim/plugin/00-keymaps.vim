@@ -80,8 +80,8 @@ cnoremap <expr> <Tab>   getcmdtype() =~ '[\/?]' ? "<C-g>" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 
 nnoremap gs :Git<CR>
-nnoremap gb :Gblame<CR>
-nnoremap gB :GBrowse<CR>
+nnoremap gb :Git blame<CR>
+nnoremap gB :Git browse<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>
