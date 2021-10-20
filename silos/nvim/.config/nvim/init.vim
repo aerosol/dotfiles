@@ -71,7 +71,6 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
-Plug 'luukvbaal/stabilize.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt'
@@ -95,7 +94,3 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
-
-lua << EOF
-require("stabilize").setup()
-EOF

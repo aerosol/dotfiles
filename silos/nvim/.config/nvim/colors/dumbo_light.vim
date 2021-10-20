@@ -119,6 +119,8 @@ hi link TSInclude elixirInclude
 hi link TSProperty elixirBlockDefinition
 hi link TSConstBuiltin elixirAtom
 
+hi RustInlayHint gui=italic guifg=#bbbbbb
+
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
 syn match Constant     "\"__Constant.*"
