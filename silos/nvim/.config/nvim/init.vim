@@ -48,7 +48,6 @@ endif
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
-Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-markify'
@@ -72,6 +71,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
+Plug 'luukvbaal/stabilize.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt'
@@ -84,6 +84,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'romainl/vim-qf'
 Plug 'scrooloose/nerdcommenter'
+Plug 'simrat39/rust-tools.nvim'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
 Plug 'tpope/vim-dadbod'
@@ -94,3 +95,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
+
+lua << EOF
+require("stabilize").setup()
+EOF
