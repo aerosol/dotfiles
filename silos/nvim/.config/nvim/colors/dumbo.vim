@@ -97,11 +97,7 @@ hi elixirBlockDefinition guifg=#777777
 hi elixirPrivateDefine guifg=#555555
 hi elixirPrivateFunctionDeclaration guifg=#777777
 
-hi rustAttribute guifg=#cccccc
-hi rustFuncName guifg=#d3cba5
-
-hi rustFuncCall guifg=#8b8567
-hi rustAssert guifg=#eeeeee
+hi RustInlayHint gui=italic guifg=#333333
 
 hi BookmarkSign guifg=#ffffff guibg=#476b86
 hi BookmarkAnnotationSign guifg=#ffffff guifg=#468645

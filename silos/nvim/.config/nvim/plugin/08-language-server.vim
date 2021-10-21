@@ -1,5 +1,6 @@
 lua << EOF
 vim.lsp.set_log_level("debug")
+
 local lsp_status = require('lsp-status')
 
 local t = function(str)
@@ -125,7 +126,7 @@ local rust_opts = {
 
 require('rust-tools').setup(rust_opts)
 
-
+require("trouble").setup {}
 EOF
 
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -142,3 +143,6 @@ nnoremap <silent> <space>e <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<C
 nnoremap <silent> [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nmap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()

@@ -52,6 +52,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-markify'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
+Plug 'folke/trouble.nvim'
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'hrsh7th/cmp-buffer'
@@ -64,8 +65,10 @@ Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'kosayoda/nvim-lightbulb'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/glyph-palette.vim'
