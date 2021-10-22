@@ -54,6 +54,26 @@ local lsp_config = require('lspconfig')
 
 lsp_config.jsonls.setup {
   cmd = { 'vscode-json-languageserver', '--stdio' },
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+}
+
+lsp_config.yamlls.setup {
+  cmd = { 'yaml-language-server', '--stdio' },
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+}
+
+lsp_config.html.setup {
+  cmd = { 'vscode-html-languageserver', '--stdio' },
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+}
+
+lsp_config.cssls.setup {
+  cmd = { 'vscode-css-languageserver', '--stdio' },
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.elixirls.setup{
@@ -129,6 +149,7 @@ nnoremap <silent> <space>e <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<C
 nnoremap <silent> [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> <space>q <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-nmap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <space>ff <cmd>lua vim.lsp.buf.formatting()<CR>
 
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
