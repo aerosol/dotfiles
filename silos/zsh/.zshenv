@@ -1,1 +1,1 @@
-export MUH_THEME="light"
+export MUH_THEME="dark"
