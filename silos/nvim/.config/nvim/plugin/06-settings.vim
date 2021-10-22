@@ -40,8 +40,6 @@ function! LspStatus() abort
   return ''
 endfunction
 
-
-
 set statusline=
 set statusline +=\ %{nerdfont#find()}%*\ \ %<%t%*
 set statusline +=\ \ %{LspStatus()}%*

@@ -46,14 +46,12 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'norcalli/nvim-colorizer.lua'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-markify'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
-Plug 'folke/trouble.nvim'
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'hrsh7th/cmp-buffer'
@@ -82,6 +80,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
 Plug 'neovim/nvim-lspconfig'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'

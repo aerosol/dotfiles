@@ -108,6 +108,8 @@ local rust_opts = {
         hover_with_actions = true,
         inlay_hints = {
             highlight = "RustInlayHint",
+            parameter_hints_prefix = " <- ",
+            other_hints_prefix = " => ",
         },
     },
 
@@ -131,8 +133,6 @@ local rust_opts = {
 }
 
 require('rust-tools').setup(rust_opts)
-
-require("trouble").setup {}
 EOF
 
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
