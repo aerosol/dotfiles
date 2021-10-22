@@ -7,7 +7,7 @@
 " plugin/01-commands.vim
 " plugin/02-augroups.vim
 " plugin/03-functions.vim
-" plugin/04-assorted.vim
+" plugin/04-???
 " plugin/05-gvars.vim
 " plugin/06-settings.vim
 " plugin/07-treesitter.vim
@@ -94,5 +94,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
-Plug 'yuttie/comfortable-motion.vim'
+Plug 'karb94/neoscroll.nvim'
 call plug#end()
+
+lua require('neoscroll').setup()
+lua require 'colorizer'.setup { 'css'; 'vim'; }
