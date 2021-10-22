@@ -63,7 +63,7 @@ Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-peekaboo'
+Plug 'tversteeg/registers.nvim'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'kristijanhusak/vim-dadbod-ui'
