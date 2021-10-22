@@ -45,30 +45,16 @@ vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 local on_attach = function(client, bufnr)
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd!
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
-
-lsp_status.config({
-status_symbol = ' '
-})
-
-lsp_status.register_progress()
-lsp_status.on_attach(client)
-
+  lsp_status.config({})
+  lsp_status.register_progress()
+  lsp_status.on_attach(client)
 end
 
 local lsp_config = require('lspconfig')
+
+lsp_config.jsonls.setup {
+  cmd = { 'vscode-json-languageserver', '--stdio' },
+}
 
 lsp_config.elixirls.setup{
   cmd = { "/home/hq1/dev/elixir-ls/rel/language_server.sh" };

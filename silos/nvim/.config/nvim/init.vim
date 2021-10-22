@@ -7,7 +7,7 @@
 " plugin/01-commands.vim
 " plugin/02-augroups.vim
 " plugin/03-functions.vim
-" plugin/04- ???
+" plugin/04-assorted.vim
 " plugin/05-gvars.vim
 " plugin/06-settings.vim
 " plugin/07-treesitter.vim
@@ -46,6 +46,7 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
