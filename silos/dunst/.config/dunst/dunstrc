@@ -1,17 +1,18 @@
 [global]
 monitor = 0
 follow = mouse
-geometry = "900x60-20+20"
+width = 600
+height = 300
 indicate_hidden = yes
-shrink = yes
+shrink = no
 separator_height = 0
 separator_color = frame
-padding = 40
-horizontal_padding = 44
+padding = 20
+horizontal_padding = 24
 frame_width = 0
 sort = no
 idle_threshold = 120
-font = SF Pro Display 14
+font = PragmataPro
 line_height = 2
 markup = full
 format = "<b>%s</b>\n%b"
@@ -33,12 +34,6 @@ always_run_script = true
 corner_radius = 20
 title = Dunst
 class = Dunst
-
-[shortcuts]
-close = ctrl+space
-close_all = ctrl+shift+space
-history = ctrl+grave
-context = ctrl+shift+period
 
 [urgency_low]
 timeout = 2
