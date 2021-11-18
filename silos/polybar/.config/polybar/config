@@ -38,7 +38,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=20;3
 
 modules-left = xwindow
 modules-center = bspwm
-modules-right = xkeyboard pulseaudio backlight-acpi wlan battery date
+modules-right = power-profile xkeyboard pulseaudio backlight-acpi wlan battery date
 
 tray-detached = false
 tray-position = right
@@ -193,6 +193,11 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/power-profile]
+type = custom/script
+exec = powerprofilesctl get
+interval = 60
 
 [module/date]
 type = internal/date
