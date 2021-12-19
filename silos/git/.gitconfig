@@ -41,7 +41,19 @@
 [diff]
     indentHeuristic = on
     algorithm = patience
+    colorMoved = default
 [core]
 	excludesfile = /home/hq1/.gitignore_global
+    pager = delta
+
 [init]
 	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+[merge]
+    conflictstyle = diff3
