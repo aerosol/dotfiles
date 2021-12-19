@@ -3,7 +3,6 @@ configuration {
     lines: 10;
     font: "PragmataPro 42";
     show-icons: true;
-    theme: "sidebar";
     display-window: "Window";
     display-drun: "Search";
     window-format: "{t}";
