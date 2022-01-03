@@ -51,6 +51,7 @@ Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'dhruvasagar/vim-markify'
+Plug 'dm1try/golden_size'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
@@ -63,7 +64,7 @@ Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'tversteeg/registers.nvim'
+Plug 'karb94/neoscroll.nvim'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'kristijanhusak/vim-dadbod-ui'
@@ -92,9 +93,9 @@ Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'tversteeg/registers.nvim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
-Plug 'karb94/neoscroll.nvim'
 call plug#end()
 
 lua require('neoscroll').setup()

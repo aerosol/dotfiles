@@ -24,7 +24,7 @@ hi Directory gui=NONE guifg=#8f8f8f guibg=NONE
 hi Error gui=NONE guifg=#ff0000 guibg=NONE
 hi ErrorMsg gui=NONE guifg=#ff0000 guibg=NONE
 hi FoldColumn gui=NONE guifg=#616161 guibg=NONE
-hi Folded gui=NONE guifg=#054959 guibg=NONE
+hi Folded gui=NONE guifg=#ee4959 guibg=NONE
 hi Ignore gui=NONE guifg=NONE guibg=NONE
 hi IncSearch gui=NONE guifg=#ffffff guibg=#316762
 hi LineNr gui=NONE guifg=#444444 guibg=NONE

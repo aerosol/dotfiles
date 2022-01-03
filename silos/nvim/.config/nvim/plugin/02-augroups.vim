@@ -6,12 +6,12 @@ augroup defaults
         \   exe "normal g`\"" |
         \ endif
 
-  autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
-  autocmd InsertLeave,WinEnter,WinLeave * set nocursorline
-  autocmd InsertEnter * set cursorline
+ " autocmd InsertLeave,BufWritePost * unlet! b:statusline_trailing_space_warning
+ " autocmd InsertLeave,WinEnter,WinLeave * set nocursorline
+ " autocmd InsertEnter * set cursorline
 
-  au InsertLeave * hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
-  au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
+ " au InsertLeave * hi StatusLine gui=underline guifg=#000000 guibg=#aeeeee
+ " au InsertEnter * hi StatusLine gui=underline guifg=#ffffff guibg=red
 
   au VimResized * wincmd =
 augroup END
