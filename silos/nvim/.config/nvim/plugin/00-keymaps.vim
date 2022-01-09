@@ -84,6 +84,7 @@ cnoremap <expr> <S-Tab> getcmdtype() =~ '[\/?]' ? "<C-t>" : "<S-Tab>"
 nnoremap gs :Git<CR>
 nnoremap gb :Git blame<CR>
 nnoremap gB :GBrowse<CR>
+vnoremap gB :GBrowse<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 nmap <leader>z :call WinZoomToggle()<cr>

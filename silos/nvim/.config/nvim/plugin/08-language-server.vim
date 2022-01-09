@@ -69,6 +69,17 @@ lsp_config.elixirls.setup{
   capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
 }
 
+lsp_config.racket_langserver.setup{
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+}
+
+lsp_config.elixirls.setup{
+  cmd = { "/home/hq1/dev/elixir-ls/rel/language_server.sh" };
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+}
+
 lsp_config.gopls.setup {
     cmd = {"gopls", "serve"},
     on_attach = on_attach,
