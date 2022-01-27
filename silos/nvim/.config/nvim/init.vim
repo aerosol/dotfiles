@@ -46,6 +46,7 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
