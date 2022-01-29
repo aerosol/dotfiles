@@ -8,7 +8,7 @@ XF86Audio{Raise,Lower}Volume
 	pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ {+,-}4%
 
 super + d
-	dolphin
+	pcmanfm
 
 super + shift + 5
 	flameshot gui
