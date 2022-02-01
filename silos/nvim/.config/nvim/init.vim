@@ -46,7 +46,6 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
@@ -73,6 +72,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt'
@@ -82,11 +82,13 @@ Plug 'mhinz/vim-signify'
 Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'romainl/vim-qf'
 Plug 'scrooloose/nerdcommenter'
 Plug 'simrat39/rust-tools.nvim'
+Plug 'sindrets/diffview.nvim'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
 Plug 'tpope/vim-dadbod'
