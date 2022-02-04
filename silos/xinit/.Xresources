@@ -1,5 +1,5 @@
-Xft.dpi: 240
-rofi.dpi: 240
+Xft.dpi: 168
+rofi.dpi: 168
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hinstyle: hintfull
