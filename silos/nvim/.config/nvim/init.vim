@@ -101,4 +101,5 @@ Plug 'wellle/targets.vim'
 call plug#end()
 
 lua require('neoscroll').setup()
+lua require'diffview'.setup { enhanced_diff_hl = true, file_history_panel = { follow = true } }
 lua require 'colorizer'.setup { 'css'; 'vim'; }
