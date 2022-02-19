@@ -68,6 +68,7 @@ nnoremap go :Files<cr>
 nnoremap gh :History<cr>
 
 nnoremap <leader>l :Rg!<CR>
+nnoremap <leader>L :RgAll!<CR>
 vnoremap <leader>l y:Rg <C-R>=trim(escape(@",'/\'))<CR><CR>
 nnoremap gl :Rg <C-R><C-W><CR>
 nnoremap <leader><leader> :Buffers<CR>
