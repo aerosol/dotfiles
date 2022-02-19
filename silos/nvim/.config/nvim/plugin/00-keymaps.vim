@@ -49,7 +49,7 @@ nnoremap <leader>feq :e ~/.config/qtile/config.py<CR>
 nnoremap <leader>feR :source %<CR>
 
 
-nnoremap <leader>? :echo expand("%:p")<CR>
+nnoremap <leader>? :echo expand("%:p") . " in " . getcwd()<CR>
 
 vnoremap @ :norm@
 
