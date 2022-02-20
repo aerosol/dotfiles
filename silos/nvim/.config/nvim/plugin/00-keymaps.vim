@@ -64,6 +64,7 @@ nmap <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 nnoremap Q :qa<CR>
 
 nnoremap go :Files<cr>
+nnoremap gO :FilesAll<cr>
 
 nnoremap gh :History<cr>
 
