@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-bspc query -N -n .floating > /tmp/scratchid
-cd ~/Sync/Notes && nvim "$(date "+%Y-%m-%d").md"

@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-kdeconnect-cli -d $(kdeconnect-cli -l | grep Sony | awk '{print $3}') --ring

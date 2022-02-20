@@ -1,2 +1,0 @@
-#!/usr/bin/bash
-notify-send --icon=dialog-error "$(timew stop)"

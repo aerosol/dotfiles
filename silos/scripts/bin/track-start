@@ -1,2 +1,0 @@
-#!/usr/bin/bash
-timew start "'$@'" && notify-send --icon=dialog-positive "Tracking started: $*"
