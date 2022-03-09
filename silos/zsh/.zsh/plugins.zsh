@@ -1,4 +1,4 @@
-export FZF_DEFAULT_COMMAND='rg --files --hidden --color=never --follow 2> /dev/null'
+export FZF_DEFAULT_COMMAND='fd --type file --hidden 2> /dev/null'
 export FZF_DEFAULT_OPTS="--layout=reverse"
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
