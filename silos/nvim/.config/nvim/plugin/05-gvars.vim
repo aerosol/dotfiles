@@ -24,6 +24,7 @@ let g:goldenview__enable_default_mapping = 0
 let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
 let g:interestingWordsRandomiseColors = 1
 let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 1
 let g:rooter_patterns = ['.git/', 'mix.exs']
 let g:rooter_manual_only = 1
 let g:signify_line_highlight = 0
