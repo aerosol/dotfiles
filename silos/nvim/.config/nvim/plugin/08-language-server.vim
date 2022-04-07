@@ -1,5 +1,4 @@
 lua << EOF
-vim.lsp.set_log_level("debug")
 local lsp_status = require('lsp-status')
 
 local cmp = require'cmp'
