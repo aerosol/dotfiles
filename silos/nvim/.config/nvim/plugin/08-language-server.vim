@@ -73,6 +73,12 @@ lsp_config.elixirls.setup{
   capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
 }
 
+lsp_config.pylsp.setup{
+  cmd = { "pylsp" };
+  on_attach = on_attach,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+}
+
 lsp_config.tsserver.setup{
   cmd = { 'typescript-language-server', '--stdio' };
   on_attach = on_attach,
