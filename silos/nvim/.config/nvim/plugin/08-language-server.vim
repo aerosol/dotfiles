@@ -99,6 +99,8 @@ lsp_config.gopls.setup {
     },
 }
 
+lsp_config.gdscript.setup{}
+
 local rust_opts = {
     tools = { -- rust-tools options
         runnables = {

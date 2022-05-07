@@ -56,6 +56,7 @@ Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'hrsh7th/cmp-buffer'
+Plug 'habamax/vim-godot'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
