@@ -48,7 +48,7 @@ set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%M%* " modified flag
 set statusline +=%=%* " separator
 set statusline +=%= " separator
-set statusline +=\ \ %{fugitive#head()}%*
+set statusline +=\ \ %{FugitiveHead()}%*
 set statusline +=\ %4l:%2c\ 
 
 set list

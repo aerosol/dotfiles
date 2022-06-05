@@ -46,7 +46,9 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'simrat39/symbols-outline.nvim'
 Plug 'airblade/vim-rooter'
+Plug 'github/copilot.vim'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
