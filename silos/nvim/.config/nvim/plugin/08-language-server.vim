@@ -68,7 +68,7 @@ lsp_config.racket_langserver.setup{
 }
 
 lsp_config.elixirls.setup{
-  cmd = { "/home/hq1/dev/elixir-ls/rel/language_server.sh" };
+  cmd = { vim.env.HOME .. "/dev/elixir-ls/rel/language_server.sh" };
   on_attach = on_attach,
   capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
 }
