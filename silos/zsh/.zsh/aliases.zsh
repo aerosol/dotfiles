@@ -17,7 +17,6 @@ alias grima='git fetch && git checkout master && git pull origin master && git c
 alias grc='git rebase --continue'
 alias ag='rg'
 alias vim='nvim'
-alias v='nvim'
 alias d="kitty +kitten diff"
 alias yt="ytfzf -t -s"
 
