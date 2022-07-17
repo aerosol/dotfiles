@@ -46,7 +46,6 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'simrat39/symbols-outline.nvim'
 Plug 'airblade/vim-rooter'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
@@ -56,8 +55,8 @@ Plug 'dhruvasagar/vim-markify'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
-Plug 'hrsh7th/cmp-buffer'
 Plug 'habamax/vim-godot'
+Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
@@ -99,6 +98,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tversteeg/registers.nvim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
+Plug 'wsdjeg/vim-fetch'
 call plug#end()
 
 lua require('neoscroll').setup()
