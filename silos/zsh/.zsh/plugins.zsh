@@ -24,4 +24,4 @@ zstyle ':notify:*' command-complete-timeout 8
 
 [ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
 
-export PATH="${HOME}/.asdf/installs/elixir/`asdf current elixir | awk '{print $1}'`/.mix:${PATH}"
+export PATH="${HOME}/.asdf/installs/elixir/`asdf current elixir | awk '{print $2}'`/.mix:${PATH}"
