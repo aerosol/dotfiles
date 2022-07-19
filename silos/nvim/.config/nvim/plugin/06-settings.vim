@@ -1,4 +1,3 @@
-set laststatus=3
 set clipboard+=unnamedplus
 set cmdheight=2
 set colorcolumn=80
