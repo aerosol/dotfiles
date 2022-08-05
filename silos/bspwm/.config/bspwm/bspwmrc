@@ -9,7 +9,6 @@ autostart-kill() {
   pkill -u "$USER" "$1"; $1 &
 }
 
-autostart "firefox"
 autostart "dunst"
 autostart "picom -b --config /home/hq1/.config/picom.conf"
 autostart "screensaver.sh"
@@ -18,16 +17,16 @@ autostart "greenclip daemon"
 autostart "flameshot"
 autostart "polybar example"
 autostart "trackpoint"
-autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
+autostart "bspi_listen --config /home/hq2/.config/bspwm/bspi.ini"
 autostart "udiskie -t"
 autostart "wallpaper"
 autostart "conky -d"
 
 bspc monitor -d I II III IV V VI
 
-bspc config border_width          3
+bspc config border_width          6
 bspc config window_gap           16
-bspc config bottom_padding          65
+bspc config bottom_padding       65
 
 bspc config normal_border_color "#000000"
 bspc config focused_border_color "#1F8999"
