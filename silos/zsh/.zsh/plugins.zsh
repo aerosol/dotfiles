@@ -19,8 +19,6 @@ _fzf_compgen_dir() {
 }
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f /etc/profile.d/autojump.sh ] && . /etc/profile.d/autojump.sh
-[ -f /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh ] && . /usr/share/zsh/plugins/zsh-notify/notify.plugin.zsh
-zstyle ':notify:*' command-complete-timeout 8
 
 [ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
 
