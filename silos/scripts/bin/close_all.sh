@@ -10,5 +10,6 @@ if [ "$really" == "yes" ]; then
     while [[ $(wmctrl -l | wc -l) -gt 0 ]]; do
         sleep 0.5
     done
+    rm ~/.mozilla/firefox/*.default*/{.parentlock,lock}
     bspc quit
 fi
