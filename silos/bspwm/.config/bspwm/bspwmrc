@@ -9,18 +9,18 @@ autostart-kill() {
   pkill -u "$USER" "$1"; $1 &
 }
 
+autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
+autostart "conky -d"
 autostart "dunst"
+autostart "flameshot"
+autostart "greenclip daemon"
 autostart "picom -b --config /home/hq1/.config/picom.conf"
+autostart "polybar example"
 autostart "screensaver.sh"
 autostart "sxhkd"
-autostart "greenclip daemon"
-autostart "flameshot"
-autostart "polybar example"
 autostart "trackpoint"
-autostart "bspi_listen --config /home/hq2/.config/bspwm/bspi.ini"
 autostart "udiskie -t"
 autostart "wallpaper"
-autostart "conky -d"
 
 bspc monitor -d I II III IV V VI
 
