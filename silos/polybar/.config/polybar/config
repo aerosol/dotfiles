@@ -1,6 +1,6 @@
 [colors]
-background = #dd1a1b26
-background-alt = #333333
+background = #551a1b26
+background-alt = #5500cc00
 foreground = #EEFFFF
 foreground-alt = #999999
 primary = #ff0000
@@ -29,8 +29,8 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "PragmataPro:size=24;+3"
-font-1 = "PragmataPro:size=24:weight=semibold;+3"
+font-0 = "TerminessTTF Nerd Font:size=24;5"
+font-1 = "TerminessTTF Nerd Font:size=24;5"
 font-2 = "JoyPixels:scale=5;"
 font-3 = Font Awesome 5 Free:pixelsize=20;3
 font-4 = Font Awesome 5 Free Solid:pixelsize=20;3
