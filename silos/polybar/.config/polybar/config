@@ -1,5 +1,5 @@
 [colors]
-background = #551a1b26
+background = #1a1b26
 background-alt = #5500cc00
 foreground = #EEFFFF
 foreground-alt = #999999
@@ -13,7 +13,6 @@ width = 99%
 height = 60
 offset-x = 16
 offset-y = 8
-radius = 16
 fixed-center = true
 bottom = true
 
@@ -22,6 +21,8 @@ foreground = ${colors.foreground}
 
 border-size = 0
 border-color = #ffffff
+
+radius = 16
 
 padding-left = 1
 padding-right = 1
@@ -38,7 +39,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=20;3
 
 modules-left = xwindow
 modules-center = bspwm
-modules-right = power-profile xkeyboard pulseaudio backlight-acpi wlan battery date
+modules-right = temperature power-profile xkeyboard pulseaudio backlight-acpi wlan battery date
 
 tray-detached = false
 tray-position = right
@@ -265,12 +266,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
-format-warn = <ramp> <label-warn>
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+hwmon-path = /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon6/temp1_input
 
 [settings]
 screenchange-reload = true
