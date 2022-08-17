@@ -17,16 +17,3 @@ function! StatuslineTrailingSpaceWarning()
   endif
   return b:statusline_trailing_space_warning
 endfunction
-
-function! WinZoomToggle()
-  if !exists('w:WinZoomIsZoomed') 
-    let w:WinZoomIsZoomed = 0
-  endif
-  if w:WinZoomIsZoomed == 0
-    execute "tabedit %"
-    let w:WinZoomIsZoomed = 1
-  elseif w:WinZoomIsZoomed == 1
-    execute "tabclose"
-    let w:WinZoomIsZoomed = 0
-  endif
-endfunction

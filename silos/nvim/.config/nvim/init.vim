@@ -7,7 +7,7 @@
 " plugin/01-commands.vim
 " plugin/02-augroups.vim
 " plugin/03-functions.vim
-" plugin/04-???
+" plugin/04-zk.vim
 " plugin/05-gvars.vim
 " plugin/06-settings.vim
 " plugin/07-treesitter.vim
@@ -46,6 +46,7 @@ endif
 " plugins:
 " --------
 call plug#begin('~/.config/nvim/bundle/')
+Plug 'mickael-menu/zk-nvim'
 Plug 'airblade/vim-rooter'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
@@ -68,7 +69,7 @@ Plug 'kosayoda/nvim-lightbulb'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern.vim', {'branch': 'main'}
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'

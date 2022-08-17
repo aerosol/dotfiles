@@ -110,7 +110,6 @@ local rust_opts = {
           use_telescope = false
         },
         autoSetHints = true,
-        hover_with_actions = true,
         inlay_hints = {
             highlight = "RustInlayHint",
             parameter_hints_prefix = " <- ",

@@ -90,7 +90,6 @@ nnoremap gB :GBrowse<CR>
 vnoremap gB :GBrowse<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
-nmap <leader>z :call WinZoomToggle()<cr>
 
 nmap - :Fern %:p:h -reveal=%:p<cr>
 
