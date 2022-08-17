@@ -2,7 +2,7 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86MonBrightness{Up,Down}
-	light -s sysfs/backlight/intel_backlight -{A,U} 4
+    brightnessctl s 10{+,-}
 
 XF86Audio{Raise,Lower}Volume
 	pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ {+,-}4%
