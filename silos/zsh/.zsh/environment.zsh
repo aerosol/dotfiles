@@ -8,6 +8,7 @@ export LC_ALL=en_US.UTF-8
 export PAGER=less
 export TERMINAL=kitty
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH
+export ZK_NOTEBOOK_DIR=~/notebooks/
 
 if [[ "$TERM" == "xterm-kitty" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
