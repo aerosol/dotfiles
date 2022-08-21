@@ -17,3 +17,9 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
 		tmux new-session -s $(shuf -n 1 ~/.zsh/_short-words.txt)
 	fi
 fi
+
+if [[ "$MUH_THEME" == "light" ]]; then
+  export BAT_THEME="GitHub"
+else
+  export BAT_THEME="1337"
+fi
