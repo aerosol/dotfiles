@@ -18,15 +18,6 @@
 " colors/dumbo_light.vim
 " colors/dumbo.vim
 
-set termguicolors
-if $MUH_THEME == 'light'
-  set background=light
-  colorscheme dumbo_light
-else
-  set background=dark
-  colorscheme dumbo
-endif
-
 " filetypes:
 " ----------
 " after/ftplugin/clojure.vim
@@ -45,8 +36,9 @@ endif
 
 " plugins:
 " --------
+set termguicolors
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'mickael-menu/zk-nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'airblade/vim-rooter'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
@@ -73,7 +65,7 @@ Plug 'lambdalisue/fern.vim', {'branch': 'main'}
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
-Plug 'lukas-reineke/indent-blankline.nvim'
+"Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt'
@@ -105,3 +97,11 @@ call plug#end()
 lua require('neoscroll').setup()
 lua require'diffview'.setup { enhanced_diff_hl = true, file_history_panel = { follow = true } }
 lua require 'colorizer'.setup { 'css'; 'vim'; }
+
+if $MUH_THEME == 'light'
+  set background=light
+  colorscheme dumbo_light
+else
+  set background=dark
+  colorscheme dumbo
+endif

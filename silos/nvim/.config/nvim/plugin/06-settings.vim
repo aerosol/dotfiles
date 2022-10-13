@@ -48,7 +48,7 @@ set statusline +=\ %#error#%M%* " modified flag
 set statusline +=%=%* " separator
 set statusline +=%= " separator
 set statusline +=\ \ %{FugitiveHead()}%*
-set statusline +=\ %4l:%2c\ 
+set statusline +=\ %l:%c\ 
 
 set list
 set listchars=

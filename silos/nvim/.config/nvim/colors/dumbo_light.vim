@@ -8,7 +8,7 @@ hi Comment gui=italic guifg=#688888 guibg=NONE
 hi Conceal gui=NONE guifg=#707070 guibg=NONE
 hi Conditional gui=NONE guifg=#4a4a4a guibg=NONE
 hi Constant gui=NONE guifg=#707070 guibg=NONE
-hi Cursor gui=reverse guifg=NONE guibg=NONE
+hi Cursor guifg=#ff0000 guibg=#ff0000
 hi CursorColumn gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLine gui=NONE guifg=NONE guibg=#eeeeee
 hi CursorLineNr gui=NONE guifg=#969696 guibg=NONE
