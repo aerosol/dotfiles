@@ -21,5 +21,6 @@ _fzf_compgen_dir() {
 [ -f /etc/profile.d/autojump.sh ] && . /etc/profile.d/autojump.sh
 
 [ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
+[ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 
 export PATH="${HOME}/.asdf/installs/elixir/`asdf current elixir | awk '{print $2}'`/.mix:${PATH}"
