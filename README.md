@@ -39,7 +39,7 @@ $ make withdraw silo=nvim
 #### slurp: Pull existing sources, build a silo, unload it and save
 
 ```
-$ make fill what=~/.config/nvim into=nvim/.config silo=nvim
+$ make slurp what=~/.config/nvim into=nvim/.config silo=nvim
 ```
 
 
