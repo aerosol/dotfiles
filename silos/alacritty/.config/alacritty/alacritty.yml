@@ -182,7 +182,7 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x10100F'
+    black:   '0xEEEEEE'
     red:     '0xC40233'
     green:   '0x009F6B'
     yellow:  '0xFFD700'
