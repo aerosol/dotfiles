@@ -41,54 +41,54 @@ local lsp_config = require('lspconfig')
 lsp_config.jsonls.setup {
   cmd = { 'vscode-json-languageserver', '--stdio' },
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.yamlls.setup {
   cmd = { 'yaml-language-server', '--stdio' },
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.html.setup {
   cmd = { 'vscode-html-languageserver', '--stdio' },
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.cssls.setup {
   cmd = { 'vscode-css-languageserver', '--stdio' },
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.racket_langserver.setup{
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.elixirls.setup{
   cmd = { vim.env.HOME .. "/workspaces/github/elixir-ls/rel/language_server.sh" };
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.pylsp.setup{
   cmd = { "pylsp" };
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.tsserver.setup{
   cmd = { 'typescript-language-server', '--stdio' };
   on_attach = on_attach,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities)
 }
 
 lsp_config.gopls.setup {
     cmd = {"gopls", "serve"},
     on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities),
+    capabilities = require('cmp_nvim_lsp').default_capabilities(lsp_status.capabilities),
     settings = {
       gopls = {
         analyses = {
