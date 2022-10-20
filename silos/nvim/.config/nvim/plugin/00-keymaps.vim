@@ -44,6 +44,7 @@ nnoremap <leader>feb :e ~/.config/bspwm/bspwmrc<CR>
 nnoremap <leader>fes :e ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap <leader>fet :e ~/.tmux.conf<CR>
 nnoremap <leader>fek :e ~/.config/kitty/kitty.conf<CR>
+nnoremap <leader>fea :e ~/.config/alacritty/alacritty.yml<CR>
 nnoremap <leader>fep :e ~/.config/polybar/config<CR>
 nnoremap <leader>feq :e ~/.config/qtile/config.py<CR>
 nnoremap <leader>feR :source %<CR>
