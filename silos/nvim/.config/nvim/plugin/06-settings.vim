@@ -11,8 +11,8 @@ set noshowmode
 set nosol
 set noswapfile
 set notimeout
-set number
-set relativenumber
+"set number
+"set relativenumber
 set scrolloff=2
 set shiftwidth=2
 set shortmess+=c

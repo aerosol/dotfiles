@@ -65,7 +65,6 @@ Plug 'lambdalisue/fern.vim', {'branch': 'main'}
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
-"Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt'

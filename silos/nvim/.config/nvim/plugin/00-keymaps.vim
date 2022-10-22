@@ -44,6 +44,7 @@ nnoremap <leader>feb :e ~/.config/bspwm/bspwmrc<CR>
 nnoremap <leader>fes :e ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap <leader>fet :e ~/.tmux.conf<CR>
 nnoremap <leader>fek :e ~/.config/kitty/kitty.conf<CR>
+nnoremap <leader>fei :e ~/.config/i3/config<CR>
 nnoremap <leader>fea :e ~/.config/alacritty/alacritty.yml<CR>
 nnoremap <leader>fep :e ~/.config/polybar/config<CR>
 nnoremap <leader>feq :e ~/.config/qtile/config.py<CR>
@@ -88,7 +89,6 @@ nnoremap gs :Git<CR>
 nnoremap gh :DiffviewFileHistory<CR>
 nnoremap gb :Git blame<CR>
 nnoremap gB :GBrowse<CR>
-vnoremap gB :GBrowse<CR>
 
 nmap <leader>C :call Preserve("%s/\\s\\+$//e")<CR>
 
