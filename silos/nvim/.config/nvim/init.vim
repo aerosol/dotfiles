@@ -38,7 +38,6 @@
 " --------
 set termguicolors
 call plug#begin('~/.config/nvim/bundle/')
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'airblade/vim-rooter'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
@@ -47,11 +46,13 @@ Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
 Plug 'dhruvasagar/vim-markify'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
+Plug 'ggandor/leap.nvim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'habamax/vim-godot'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -94,8 +95,9 @@ Plug 'wsdjeg/vim-fetch'
 call plug#end()
 
 lua require('neoscroll').setup()
-lua require'diffview'.setup { enhanced_diff_hl = true, file_history_panel = { follow = true } }
-lua require 'colorizer'.setup { 'css'; 'vim'; }
+lua require('diffview').setup { enhanced_diff_hl = true, file_history_panel = { follow = true } }
+lua require('colorizer').setup { 'css'; 'vim'; }
+lua require('leap').add_default_mappings()
 
 if $MUH_THEME == 'light'
   set background=light
