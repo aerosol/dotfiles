@@ -12,6 +12,7 @@
 " plugin/06-settings.vim
 " plugin/07-treesitter.vim
 " plugin/08-language-server.vim
+" plugin/09-experimental.vim
 "
 " colors:
 " -------
