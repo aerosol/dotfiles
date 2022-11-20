@@ -1,9 +1,5 @@
-/* Rofi config file */
 configuration {
-    lines: 10;
-    font: "PragmataPro 42";
-    show-icons: true;
-    display-window: "Window";
-    display-drun: "Search";
-    window-format: "{t}";
+  font: "SF Pro Display 40";
 }
+
+@theme "/home/hq1/.config/rofi/themes/minimal.rasi"
