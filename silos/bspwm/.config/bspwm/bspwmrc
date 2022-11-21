@@ -12,7 +12,6 @@ autostart-kill() {
 
 if [ "$HOSTNAME" = yharnam ]; then
   xrandr --output HDMI-A-0 --rotate right --mode 3840x2160 --left-of DisplayPort-0 --rate 60
-  feh --bg-fill ~/Pictures/wallpaper-primary.jpg --bg-fill ~/Pictures/wallpaper-secondary.jpg
 fi
 
 if [ "$HOSTNAME" = carb ]; then
@@ -20,6 +19,7 @@ if [ "$HOSTNAME" = carb ]; then
 fi
 
 autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
+autostart "wallpaper"
 autostart "emote"
 autostart "dunst"
 autostart "flameshot"
