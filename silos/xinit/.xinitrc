@@ -1,5 +1,5 @@
-xrdb -merge ~/.Xresources
-if [ "$HOST" = carb ]; then
+if [ "$HOSTNAME" = carb ]; then
+xrdb -merge ~/.Xresources.carb
 setxkbmap -option ctrl:nocaps 
 setxkbmap -option altwin:swap_lalt_lwin
 export BROWSER=firefox
