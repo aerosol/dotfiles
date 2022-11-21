@@ -1,7 +1,6 @@
 if [ "$HOSTNAME" = carb ]; then
-wget https://source.unsplash.com/random/3840x2160 \
-    -O /home/hq1/.wallpaper.jpg \
-    && feh --bg-fill /home/hq1/.wallpaper.jpg && notify-send "Wallpaper updated"
+  wget https://source.unsplash.com/random/3840x2160 -O /home/hq1/.wallpaper.jpg
+  feh --bg-fill /home/hq1/.wallpaper.jpg
 fi
 
 if [ "$HOSTNAME" = yharnam ]; then
@@ -10,3 +9,4 @@ if [ "$HOSTNAME" = yharnam ]; then
   feh --bg-fill ~/Pictures/wallpaper-primary.jpg --bg-fill ~/Pictures/wallpaper-secondary.jpg
 fi
 
+notify-send "Wallpaper updated"
