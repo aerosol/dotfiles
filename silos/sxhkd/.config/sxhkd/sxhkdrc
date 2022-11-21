@@ -11,7 +11,7 @@ super + d
 	dolphin
 
 super + shift + 5
-	flameshot gui
+    import png:- | xclip -selection c -t image/png
 
 ~button3
   bspc query -D -d 'focused.!occupied' && \{ \
@@ -19,7 +19,7 @@ super + shift + 5
   \}
 
 alt + shift + ctrl + super + Escape
-	flameshot gui
+    import png:- | xclip -selection c -t image/png
 
 super + BackSpace
 	xset s activate
