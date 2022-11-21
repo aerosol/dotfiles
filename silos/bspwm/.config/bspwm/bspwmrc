@@ -44,8 +44,9 @@ bspc config borderless_monocle   false
 bspc config gapless_monocle      false
 bspc config single_monocle       true
 
-bspc config focus_follows_pointer true
-bspc config pointer_follows_focus true
+bspc config focus_follows_pointer false
+bspc config pointer_follows_focus false
+bspc config pointer_follows_monitor true
 bspc config history_aware_focus   true
 bspc config focus_by_distance     true
 
