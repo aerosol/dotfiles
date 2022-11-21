@@ -10,6 +10,9 @@ XF86Audio{Raise,Lower}Volume
 super + period
   rofi -modi emoji -show emoji
 
+super + equal
+  rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo '{result}' | xsel --clipboard --input"
+
 super + d
 	dolphin
 
