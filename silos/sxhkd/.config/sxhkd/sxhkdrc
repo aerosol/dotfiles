@@ -8,7 +8,7 @@ XF86Audio{Raise,Lower}Volume
 	pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ {+,-}4%
 
 super + d
-	pcmanfm
+	dolphin
 
 super + shift + 5
 	flameshot gui
@@ -26,13 +26,13 @@ super + space
 	rofi -show run
 
 super + Escape
-	actterm
+	~/bin/actterm
 
 F11
 	~/.config/sxhkd/switch
 
 super + alt + q
-	close_all.sh
+	~/bin/close_all.sh
 
 super + shift + r
 	pkill -USR1 -x sxhkd && sleep 1s && sxhkd &
@@ -87,7 +87,10 @@ super + {o,i}
 	bspc wm -h on
 
 super + {_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} focused:'^{1-9,0}'
+
+control + shift + alt + f
+	bspc node -m next
 
 super + b
 	bspc node @parent -B
