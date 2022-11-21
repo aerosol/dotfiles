@@ -13,6 +13,9 @@ super + d
 super + shift + 5
 	flameshot gui
 
+alt + shift + ctrl + super + Escape
+	flameshot gui
+
 super + BackSpace
 	xset s activate
 
@@ -29,7 +32,7 @@ super + Escape
 	~/bin/actterm
 
 F11
-	~/.config/sxhkd/switch
+	bspc node -t {tiled,floating,fullscreen}
 
 super + alt + q
 	~/bin/close_all.sh
