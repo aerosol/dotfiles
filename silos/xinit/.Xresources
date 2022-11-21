@@ -1,9 +1,7 @@
-Xft.dpi: 168
-rofi.dpi: 168
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hinstyle: hintfull
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
-Xcursor.size: 48
+Xcursor.size:	36
+Xcursor.theme:	Hackneyed
+Xft.antialias:	1
+Xft.dpi:	120
+Xft.hinting:	1
+Xft.hintstyle:	hintslight
+Xft.rgba:	rgb
