@@ -9,6 +9,7 @@ export PAGER=less
 export TERMINAL=alacritty
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 export ZK_NOTEBOOK_DIR=~/notebooks/
+export EXA_ICON_SPACING=2
 
 if [[ "$TERM" == "xterm-256color" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
