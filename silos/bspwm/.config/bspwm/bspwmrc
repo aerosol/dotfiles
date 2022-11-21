@@ -10,11 +10,12 @@ autostart-kill() {
 }
 
 autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
+autostart "emote"
 #autostart "conky -d"
 autostart "dunst"
 autostart "flameshot"
 autostart "greenclip daemon"
-autostart "picom --animations --animation-for-open-window=zoom --animation-stiffness=500 --animation-window-mass=2"
+autostart "picom"
 autostart "polybar example"
 autostart "screensaver.sh"
 autostart "sxhkd"
