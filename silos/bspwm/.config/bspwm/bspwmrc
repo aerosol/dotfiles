@@ -22,7 +22,6 @@ autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
 autostart "wallpaper"
 autostart "emote"
 autostart "dunst"
-autostart "flameshot"
 autostart "greenclip daemon"
 autostart "picom"
 if [ "$HOSTNAME" = yharnam ]; then
@@ -47,7 +46,10 @@ fi
 bspc config border_width         8
 bspc config window_gap           8
 bspc config bottom_padding       45
-bspc config top_padding          45
+
+if [ "$HOSTNAME" = yharnam ]; then
+  bspc config top_padding          45
+fi
 
 bspc config normal_border_color "#444444"
 bspc config focused_border_color "#00aa00"
@@ -74,3 +76,4 @@ bspc rule -a feh state=floating center=true
 bspc rule -a photoqt state=floating center=true
 
 bspc rule -a kitty state=floating rectangle=2024x1768+0+0 center=true
+bspc rule -a Alacritty state=floating rectangle=2024x1768+0+0 center=true
