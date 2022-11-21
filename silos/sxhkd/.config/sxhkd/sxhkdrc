@@ -13,6 +13,11 @@ super + d
 super + shift + 5
 	flameshot gui
 
+~button3
+  bspc query -D -d 'focused.!occupied' && \{ \
+      jgmenu_run; \
+  \}
+
 alt + shift + ctrl + super + Escape
 	flameshot gui
 
