@@ -5,11 +5,6 @@ autostart() {
   pgrep -u "$USER" -f "$1" || $1 &
 }
 
-autostart-kill() {
-  pkill -u "$USER" "$1"; $1 &
-}
-
-
 if [ "$HOSTNAME" = yharnam ]; then
   xrandr --output HDMI-A-0 --rotate right --mode 3840x2160 --left-of DisplayPort-0 --rate 60
 fi
@@ -20,7 +15,6 @@ fi
 
 autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
 autostart "wallpaper"
-autostart "emote"
 autostart "dunst"
 autostart "greenclip daemon"
 autostart "picom"
