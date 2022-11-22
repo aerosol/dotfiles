@@ -17,7 +17,7 @@ super + d
 	dolphin
 
 super + shift + 5
-    import png:- | xclip -selection c -t image/png
+    maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
 
 ~button3
   bspc query -D -d 'focused.!occupied' && \{ \
@@ -25,7 +25,7 @@ super + shift + 5
   \}
 
 alt + shift + ctrl + super + Escape
-    import png:- | xclip -selection c -t image/png
+    maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
 
 super + BackSpace
 	xset s activate
@@ -33,8 +33,11 @@ super + BackSpace
 super + shift + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
+ctrl + shift + alt + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 super + Return
-	bspc node -s biggest.local
+	bspc node -s biggest.local --follow
 
 super + space
 	rofi -show run
@@ -43,7 +46,7 @@ super + Escape
 	~/bin/actterm
 
 F11
-	bspc node -t {tiled,floating,fullscreen}
+	bspc node -t {tiled,fullscreen}
 
 super + alt + q
 	~/bin/close_all.sh
@@ -101,7 +104,10 @@ super + {o,i}
 	bspc wm -h on
 
 super + {_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} focused:'^{1-9,0}'
+	bspc {desktop -f,node -d} focused:'^{1-9,0}' --follow
+
+control + shift + alt {1-9,0}
+	bspc node -d focused:'^{1-9,0}' --follow
 
 control + shift + alt + f
 	bspc node -m next
