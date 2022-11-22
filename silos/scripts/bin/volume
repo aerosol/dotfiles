@@ -1,0 +1,26 @@
+getsink() {
+    pacmd list-sinks |
+        awk '/index:/{i++} /* index:/{print i; exit}'
+}
+
+getvolume() {
+    pacmd list-sinks |
+        awk '/^\svolume:/{i++} i=='$(getsink)'{print $5; exit}'
+}
+
+up() {
+  pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +4%
+}
+
+down() {
+  pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -4%
+}
+
+case "$1" in
+  up ) up ;;
+  down ) down ;;
+  * ) break ;;
+esac
+
+paplay ~/bin/smw_coin.wav &
+notify-send "Volume" "$(getvolume)" -i audio-headphones
