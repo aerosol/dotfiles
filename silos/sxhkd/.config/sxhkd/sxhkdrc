@@ -7,11 +7,25 @@ XF86MonBrightness{Up,Down}
 XF86Audio{Raise,Lower}Volume
 	pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ {+,-}4%
 
+super + period
+  rofi -modi emoji -show emoji
+
+super + equal
+  rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo '{result}' | xsel --clipboard --input"
+
 super + d
-	pcmanfm
+	dolphin
 
 super + shift + 5
-	flameshot gui
+    maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
+
+~button3
+  bspc query -D -d 'focused.!occupied' && \{ \
+      jgmenu_run; \
+  \}
+
+alt + shift + ctrl + super + Escape
+    maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
 
 super + BackSpace
 	xset s activate
@@ -19,20 +33,23 @@ super + BackSpace
 super + shift + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
+ctrl + shift + alt + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 super + Return
-	bspc node -s biggest.local
+	bspc node -s biggest.local --follow
 
 super + space
 	rofi -show run
 
 super + Escape
-	actterm
+	~/bin/actterm
 
 F11
-	~/.config/sxhkd/switch
+	bspc node -t {tiled,fullscreen}
 
 super + alt + q
-	close_all.sh
+	~/bin/close_all.sh
 
 super + shift + r
 	pkill -USR1 -x sxhkd && sleep 1s && sxhkd &
@@ -87,7 +104,13 @@ super + {o,i}
 	bspc wm -h on
 
 super + {_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} focused:'^{1-9,0}' --follow
+
+control + shift + alt {1-9,0}
+	bspc node -d focused:'^{1-9,0}' --follow
+
+control + shift + alt + f
+	bspc node -m next
 
 super + b
 	bspc node @parent -B
