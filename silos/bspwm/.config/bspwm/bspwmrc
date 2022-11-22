@@ -13,11 +13,11 @@ if [ "$HOSTNAME" = carb ]; then
   bspc monitor -d I II III IV V VI
 fi
 
+autostart "picom"
 autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
 autostart "wallpaper"
 autostart "dunst"
 autostart "greenclip daemon"
-autostart "picom"
 if [ "$HOSTNAME" = yharnam ]; then
   autostart "polybar primary"
   autostart "polybar top"
@@ -35,6 +35,7 @@ setxkbmap -layout "pl(intl)"
 if [ "$HOSTNAME" = yharnam ]; then
   bspc monitor DisplayPort-0 -d I II III IV V
   bspc monitor HDMI-A-0 -d VI VII VIII IX X
+  feh --bg-fill /home/hq1/.wallpaper-primary.jpg --bg-fill /home/hq1/.wallpaper-secondary.jpg
 fi
 
 bspc config border_width         8
