@@ -6,7 +6,7 @@ fi
 if [ "$HOSTNAME" = yharnam ]; then
   wget https://source.unsplash.com/random/3840x2160 -O /home/hq1/.wallpaper-primary.jpg
   wget https://source.unsplash.com/random/2160x3840 -O /home/hq1/.wallpaper-secondary.jpg
-  feh --bg-fill ~/Pictures/wallpaper-primary.jpg --bg-fill ~/Pictures/wallpaper-secondary.jpg
+  feh --bg-fill /home/hq1/.wallpaper-primary.jpg --bg-fill /home/hq1/.wallpaper-secondary.jpg
 fi
 
 notify-send "Wallpaper updated"
