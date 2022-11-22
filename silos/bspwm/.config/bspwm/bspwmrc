@@ -14,6 +14,7 @@ if [ "$HOSTNAME" = carb ]; then
 fi
 
 autostart "picom"
+autostart "flameshot"
 autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
 autostart "wallpaper"
 autostart "dunst"
