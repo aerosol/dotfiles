@@ -5,7 +5,7 @@ XF86MonBrightness{Up,Down}
     brightnessctl s 10{+,-}
 
 XF86Audio{Raise,Lower}Volume
-	pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ {+,-}4%
+    ~/bin/volume {up,down}
 
 super + period
   rofi -modi emoji -show emoji
