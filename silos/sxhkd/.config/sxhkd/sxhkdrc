@@ -1,5 +1,5 @@
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+  ~/bin/volume mute
 
 XF86MonBrightness{Up,Down}
     brightnessctl s 10{+,-}
