@@ -20,12 +20,16 @@ down() {
 
 beep() {
   paplay ~/bin/smw_coin.wav &
-  notify-send "Volume" "$(getvolume)" -i audio-headphones
+  dunstify -r 555 -h int:value:$(getvolume) -i audio-headphones "Volume" "$(getvolume)"
 }
 
 mute() {
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
-    notify-send "Volume" "muted: $(getmuted)" -i audio-headphones
+    if [ $(getmuted) == yes ]; then
+      notify-send -r 555 "Volume" "Muted" -i audio-volume-muted-symbolic-rtl
+    else
+      dunstify -r 555 -h int:value:$(getvolume) -i audio-headphones "Volume" "Unmuted"
+    fi
 }
 
 case "$1" in
