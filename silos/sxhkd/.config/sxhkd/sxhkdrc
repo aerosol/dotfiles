@@ -17,7 +17,7 @@ super + d
 	dolphin
 
 super + shift + 5
-    maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
+    flameshot gui
 
 ~button3
   bspc query -D -d 'focused.!occupied' && \{ \
@@ -25,7 +25,7 @@ super + shift + 5
   \}
 
 alt + shift + ctrl + super + Escape
-    maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
+    flameshot gui
 
 super + BackSpace
 	xset s activate
