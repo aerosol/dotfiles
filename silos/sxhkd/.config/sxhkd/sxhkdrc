@@ -46,7 +46,11 @@ super + Escape
 	~/bin/actterm
 
 F11
-	bspc node -t {tiled,fullscreen}
+    if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
+        bspc node focused -t fullscreen; \
+    else \
+        bspc node focused -t tiled; \
+    fi
 
 super + alt + q
 	~/bin/close_all.sh
