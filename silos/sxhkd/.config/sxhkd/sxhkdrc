@@ -33,7 +33,7 @@ super + BackSpace
 super + shift + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-ctrl + shift + alt + v
+ctrl + shift + alt + super + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 super + Return
@@ -63,10 +63,6 @@ super + w
 
 super + q
 	bspc node -c
-
-super + n
-    id=$(cat /tmp/scratchid);\
-    bspc node $id --flag hidden;bspc node -f $id
 
 super + shift + t
 	colortemp
