@@ -22,6 +22,7 @@ autostart "greenclip daemon"
 if [ "$HOSTNAME" = yharnam ]; then
   autostart "polybar primary"
   autostart "polybar top"
+  autostart "xscreensaver"
 fi
 if [ "$HOSTNAME" = carb ]; then
   autostart "polybar sole"
@@ -69,6 +70,3 @@ bspc rule -a FloatThis state=floating
 bspc rule -a mpv state=floating center=true
 bspc rule -a feh state=floating center=true
 bspc rule -a photoqt state=floating center=true
-
-bspc rule -a kitty state=floating rectangle=2024x1768+0+0 center=true
-bspc rule -a Alacritty state=floating rectangle=2024x1768+0+0 center=true
