@@ -5,6 +5,10 @@ autostart() {
   pgrep -u "$USER" -f "$1" || $1 &
 }
 
+autostart-kill() {
+  pkill -u "$USER" "$1"; $2 &
+}
+
 if [ "$HOSTNAME" = yharnam ]; then
   xrandr --output HDMI-A-0 --rotate right --mode 3840x2160 --left-of DisplayPort-0 --rate 60
 fi
@@ -15,20 +19,19 @@ fi
 
 autostart "picom"
 autostart "flameshot"
-autostart "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
-autostart "wallpaper"
-autostart "dunst"
+autostart-kill "bspi_listen" "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
+autostart-kill "wallpaper" "wallpaper"
+autostart-kill "dunst" "dunst"
 autostart "greenclip daemon"
 if [ "$HOSTNAME" = yharnam ]; then
-  autostart "polybar primary"
-  autostart "polybar top"
-  autostart "xscreensaver"
+  autostart-kill "polybar" "polybar primary"
+  autostart-kill "polybar" "polybar top"
 fi
 if [ "$HOSTNAME" = carb ]; then
-  autostart "polybar sole"
-  autostart "screensaver.sh"
+  autostart-kill "polybar" "polybar sole"
 fi
-autostart "sxhkd"
+autostart "screensaver.sh"
+autostart-kill "sxhkd" "sxhkd"
 autostart "udiskie -t"
 
 setxkbmap -layout "pl(intl)"
