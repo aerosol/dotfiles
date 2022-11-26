@@ -33,6 +33,7 @@ fi
 autostart "screensaver.sh"
 autostart-kill "sxhkd" "sxhkd"
 autostart "udiskie -t"
+dunstify "bspwm" "Hello, $USER" -i computer-symbolic
 
 setxkbmap -layout "pl(intl)"
 
