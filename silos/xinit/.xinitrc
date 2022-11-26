@@ -1,3 +1,4 @@
+export XSECURELOCK_FONT="SF Pro Display:size=46"
 if [ "$HOSTNAME" = carb ]; then
   xrdb -merge ~/.Xresources.carb
   setxkbmap -option ctrl:nocaps 
@@ -7,7 +8,5 @@ if [ "$HOSTNAME" = carb ]; then
   export XDG_CONFIG_HOME=/home/hq1/.config
   export XDG_CURRENT_DESKTOP=bspwm
   export XDG_SESSION_TYPE=x11
-  export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
-  export XSECURELOCK_SAVER=saver_mpv
   exec bspwm
 fi
