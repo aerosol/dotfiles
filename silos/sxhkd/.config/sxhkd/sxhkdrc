@@ -7,8 +7,11 @@ XF86Audio{Raise,Lower}Volume
 XF86MonBrightness{Up,Down}
   brightnessctl s 10{+,-}
 
+super + o ; k
+  kill -9 $(ps a | rofi -dmenu -font "PragmataPro 36" | awk '{ print $1 }')
+
 alt + shift + ctrl + super + r
-  dunstify "bspwm" "reloading" && bspc wm -r && dunstify "bspwm" "reloaded"
+  bspc wm -r
 
 super + period
   rofi -modi emoji -show emoji
