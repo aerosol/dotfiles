@@ -24,8 +24,9 @@ autostart-kill "wallpaper" "wallpaper"
 autostart-kill "dunst" "dunst"
 autostart "greenclip daemon"
 if [ "$HOSTNAME" = yharnam ]; then
-  autostart-kill "polybar" "polybar primary"
-  autostart-kill "polybar" "polybar top"
+  autostart-kill "polybar" ""
+  autostart "polybar primary"
+  autostart "polybar top"
 fi
 if [ "$HOSTNAME" = carb ]; then
   autostart-kill "polybar" "polybar sole"
