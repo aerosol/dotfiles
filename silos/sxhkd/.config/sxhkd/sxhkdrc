@@ -10,7 +10,7 @@ XF86MonBrightness{Up,Down}
 super + o ; k
   kill -9 $(ps a | rofi -dmenu -font "PragmataPro 36" | awk '{ print $1 }')
 
-alt + shift + ctrl + super + r
+alt + shift + ctrl + r
   bspc wm -r
 
 super + period
@@ -22,7 +22,7 @@ super + equal
 super + shift + v
   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-ctrl + shift + alt + super + v
+ctrl + shift + alt + v
   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 super + space
