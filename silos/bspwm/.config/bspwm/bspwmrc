@@ -17,6 +17,7 @@ if [ "$HOSTNAME" = carb ]; then
   bspc monitor -d I II III IV V VI
 fi
 
+autostart "/home/hq1/bin/screensaver.sh"
 autostart "picom"
 autostart "flameshot"
 autostart-kill "bspi_listen" "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
@@ -31,7 +32,6 @@ fi
 if [ "$HOSTNAME" = carb ]; then
   autostart-kill "polybar" "polybar sole"
 fi
-autostart "screensaver.sh"
 autostart-kill "sxhkd" "sxhkd"
 autostart "udiskie -t"
 dunstify "bspwm" "Hello, $USER" -i computer-symbolic
