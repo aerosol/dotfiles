@@ -1,6 +1,5 @@
 getvolume() {
-    pactl list sinks | grep '^[[:space:]]Volume:' | \
-    head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
+    pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'
 }
 
 getmuted() {
@@ -33,5 +32,5 @@ case "$1" in
   up ) up && beep ;;
   down ) down && beep ;;
   mute ) mute ;;
-  * ) break ;;
+  * ) getvolume ;;
 esac
