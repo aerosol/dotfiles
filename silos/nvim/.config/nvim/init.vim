@@ -71,7 +71,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt'
 Plug 'mattn/webapi-vim'
-Plug 'mhinz/vim-mix-format'
 Plug 'mhinz/vim-signify'
 Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -94,6 +93,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'wsdjeg/vim-fetch'
 Plug 'alaviss/nim.nvim'
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 lua require('neoscroll').setup()
