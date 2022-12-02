@@ -52,6 +52,7 @@ Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
 Plug 'habamax/vim-godot'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-omni'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go', 'nim']}
