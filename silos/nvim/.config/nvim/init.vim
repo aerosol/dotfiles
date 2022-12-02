@@ -40,16 +40,14 @@
 set termguicolors
 call plug#begin('~/.config/nvim/bundle/')
 Plug 'airblade/vim-rooter'
+Plug 'alaviss/nim.nvim'
 Plug 'alx741/vim-rustfmt', {'for': ['rust']}
 Plug 'andymass/vim-matchup'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
-Plug 'dhruvasagar/vim-markify'
 Plug 'elixir-lang/vim-elixir', {'for': ['eelixir', 'elixir']}
 Plug 'gcmt/wildfire.vim'
-Plug 'ggandor/leap.nvim'
 Plug 'gregsexton/MatchTag', {'for': ['html', 'eelixir']}
-Plug 'habamax/vim-godot'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-omni'
@@ -68,9 +66,8 @@ Plug 'lambdalisue/fern.vim', {'branch': 'main'}
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
-Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/vim-gist'
-Plug 'mattn/vim-sqlfmt'
+Plug 'mattn/vim-sqlfmt', {'for': 'sql'}
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-signify'
 Plug 'neovim/nvim-lspconfig'
@@ -78,10 +75,9 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-Plug 'romainl/vim-qf'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
-Plug 'simrat39/rust-tools.nvim'
+Plug 'simrat39/rust-tools.nvim', {'for': 'rust'}
 Plug 'sindrets/diffview.nvim'
 Plug 'sjl/tslime.vim'
 Plug 'thinca/vim-qfreplace'
@@ -93,8 +89,6 @@ Plug 'tversteeg/registers.nvim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'wsdjeg/vim-fetch'
-Plug 'alaviss/nim.nvim'
-Plug 'sbdchd/neoformat'
 call plug#end()
 
 lua require('neoscroll').setup()
