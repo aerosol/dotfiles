@@ -54,7 +54,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go']}
+Plug 'janko-m/vim-test', {'for': ['elixir', 'rust', 'go', 'nim']}
 Plug 'jparise/vim-graphql', {'for': ['graphql']}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -93,6 +93,7 @@ Plug 'tversteeg/registers.nvim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
 Plug 'wsdjeg/vim-fetch'
+Plug 'alaviss/nim.nvim'
 call plug#end()
 
 lua require('neoscroll').setup()
