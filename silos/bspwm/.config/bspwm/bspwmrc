@@ -46,10 +46,10 @@ fi
 
 bspc config border_width         8
 bspc config window_gap           8
-bspc config bottom_padding       45
+bspc config bottom_padding       65
 
 if [ "$HOSTNAME" = yharnam ]; then
-  bspc config top_padding          45
+  bspc config top_padding 65
 fi
 
 bspc config normal_border_color "#444444"
