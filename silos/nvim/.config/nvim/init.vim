@@ -61,10 +61,8 @@ Plug 'karb94/neoscroll.nvim'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern.vim', {'branch': 'main'}
 Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/nerdfont.vim'
 Plug 'lfv89/vim-interestingwords'
 Plug 'mattn/vim-gist'
 Plug 'mattn/vim-sqlfmt', {'for': 'sql'}
@@ -94,7 +92,6 @@ call plug#end()
 lua require('neoscroll').setup()
 lua require('diffview').setup { enhanced_diff_hl = true, file_history_panel = { follow = true } }
 lua require('colorizer').setup { 'css'; 'vim'; }
-lua require('leap').add_default_mappings()
 
 if $MUH_THEME == 'light'
   set background=light

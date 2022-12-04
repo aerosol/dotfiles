@@ -41,7 +41,7 @@ function! LspStatus() abort
 endfunction
 
 set statusline=
-set statusline +=\ %{nerdfont#find()}%*\ \ %<%t%*
+set statusline +=\ %<%t%*
 set statusline +=\ \ %{LspStatus()}%*
 set statusline +=\ %{StatuslineTrailingSpaceWarning()}%*
 set statusline +=\ %#error#%M%* " modified flag
