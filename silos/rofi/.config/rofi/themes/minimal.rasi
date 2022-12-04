@@ -4,7 +4,6 @@
 	text-color:                 #eee;
 	normal-foreground:          @text-color;
 	normal-background:          @background-color;
-	separator-style:            "none";
 	margin:                     0;
 }
 
@@ -14,18 +13,27 @@ prompt {
 }
 
 element-text {
-highlight: bold #ff0000;
+  highlight: bold #ff0000;
+}
+
+listview {
+  lines: 10;
+  spacing: 5;
 }
 
 element {
     padding: 10px;
 }
 element selected, element-text selected {
-    background-color: #111;
+    background-color: #333;
 }
 
 window {
+  width: 50%;
   background-color: @winbg;
-  fullscreen: true;
-  padding: 20%;
+  location: south;
+  padding: 40px;
+  margin: 100px;
+  border: 10px;
+  border-color: #222;
 }
