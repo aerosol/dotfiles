@@ -1,6 +1,7 @@
 export ZSH_CACHE="$HOME/.zsh_cache"
 mkdir -p $ZSH_CACHE
 
+export MUH_THEME="dark"
 export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
 export LANG=en_US.UTF-8

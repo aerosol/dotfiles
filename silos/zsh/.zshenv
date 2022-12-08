@@ -1,1 +1,1 @@
-export MUH_THEME="dark"
+source $HOME/.zsh/environment.zsh

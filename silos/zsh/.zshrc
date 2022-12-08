@@ -4,7 +4,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
   source $HOME/.zsh/linux.zsh
 fi
-source $HOME/.zsh/environment.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tweaks.zsh
 source $HOME/.zsh/history.zsh
