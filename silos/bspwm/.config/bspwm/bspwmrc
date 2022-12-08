@@ -17,10 +17,10 @@ if [ "$HOSTNAME" = carb ]; then
   bspc monitor -d I II III IV V VI
 fi
 
-autostart "/home/hq1/bin/screensaver.sh"
+autostart "screensaver.sh"
 autostart "picom"
 autostart "flameshot"
-autostart-kill "bspi_listen" "bspi_listen --config /home/hq1/.config/bspwm/bspi.ini"
+autostart-kill "bspi_listen" "bspi_listen --config ~/.config/bspwm/bspi.ini"
 autostart-kill "wallpaper" "wallpaper"
 autostart-kill "dunst" "dunst"
 autostart "greenclip daemon"
@@ -41,7 +41,7 @@ setxkbmap -layout "pl(intl)"
 if [ "$HOSTNAME" = yharnam ]; then
   bspc monitor DisplayPort-0 -d I II III IV V
   bspc monitor HDMI-A-0 -d VI
-  feh --bg-fill /home/hq1/.wallpaper-primary.jpg --bg-fill /home/hq1/.wallpaper-secondary.jpg
+  feh --bg-fill ~/.wallpaper-primary.jpg --bg-fill ~/.wallpaper-secondary.jpg
 fi
 
 bspc config border_width         8
