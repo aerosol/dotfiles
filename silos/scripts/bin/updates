@@ -1,6 +1,9 @@
 #!/bin/env bash
 updates="$(checkupdates)"
-  count=`echo "$updates" | wc -l`
+  count=`echo -n "$updates" | wc -l`
+if [ "$count" == 0 ]; then
+  exit
+fi
 if echo "$updates" | grep -q "kernel"; then
   echo "$count (kernel available)"
 else
