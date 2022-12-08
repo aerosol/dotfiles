@@ -1,8 +1,8 @@
 XF86AudioMute
-  ~/bin/volume mute
+  volume mute
 
 XF86Audio{Raise,Lower}Volume
-  ~/bin/volume {up,down}
+  volume {up,down}
 
 XF86MonBrightness{Up,Down}
   brightnessctl s 10{+,-}
@@ -50,7 +50,7 @@ super + Return
   bspc node -s biggest.local --follow
 
 super + Escape
-  ~/bin/actterm
+  actterm
 
 F11
   if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
@@ -60,7 +60,7 @@ F11
   fi
 
 super + alt + q
-  ~/bin/close_all.sh
+  close_all.sh
 
 super + w
   bspc node -c
@@ -69,7 +69,7 @@ super + q
   bspc node -c
 
 super + shift + t
-  ~/bin/colortemp
+  colortemp
 
 super + {x,s,f}
   bspc node -t {tiled,floating,fullscreen}
