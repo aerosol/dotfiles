@@ -20,6 +20,7 @@
   "neotest": { "branch": "master", "commit": "de2f68fb13a05c361e0c096e167f7f79712f3a5c" },
   "neotest-elixir": { "branch": "master", "commit": "cc723d4648ce23acd6eb6a6d77978835f7ceb2af" },
   "nvim-cmp": { "branch": "main", "commit": "e55033fce468c9c578b946948807f2ac48a6ee08" },
+  "nvim-highlight-colors": { "branch": "main", "commit": "5d20935b99d976ffa0d8226a78a8b2e091f0f699" },
   "nvim-lightbulb": { "branch": "master", "commit": "56b9ce31ec9d09d560fe8787c0920f76bc208297" },
   "nvim-lspconfig": { "branch": "master", "commit": "9c73b57ed03ad0a906e2cdc2fc348bf86ae53e3a" },
   "nvim-tree.lua": { "branch": "master", "commit": "9e4c39572f631bb60ee15cb9d46e1daa9927a45e" },

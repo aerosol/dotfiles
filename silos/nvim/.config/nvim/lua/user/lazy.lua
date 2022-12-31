@@ -17,7 +17,7 @@ local plugins = {
 		dependencies = "rktjmp/lush.nvim",
 
 		config = function()
-			vim.cmd([[colorscheme zenbones]])
+			vim.cmd([[colorscheme hq1bones]])
 		end,
 	},
 	{
@@ -273,6 +273,12 @@ local plugins = {
 		end,
 	},
 	"thinca/vim-qfreplace",
+
+	{ 'brenoprata10/nvim-highlight-colors',
+		config = function()
+			require('nvim-highlight-colors').setup({})
+		end
+	}
 }
 
 require("lazy").setup(plugins, {})
