@@ -278,7 +278,9 @@ local plugins = {
 		config = function()
 			require('nvim-highlight-colors').setup({})
 		end
-	}
+	},
+	"elixir-editors/vim-elixir"
+
 }
 
 require("lazy").setup(plugins, {})

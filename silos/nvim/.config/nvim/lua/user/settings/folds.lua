@@ -1,7 +1,7 @@
 vim.opt.foldlevelstart = 1
 vim.opt.foldenable = true
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = "indent"
 vim.opt.foldminlines = 4
 
 function CustomFoldText()

@@ -6,7 +6,7 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "typescript", "help", "elixir", "comment" },
 
 	highlight = { enable = true },
-	-- indent = { enable = false, disable = { "python" } },
+	indent = { enable = false },
 	incremental_selection = {
 		enable = true,
 		keymaps = {

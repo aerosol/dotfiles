@@ -11,11 +11,11 @@ local bg = vim.o.background
 -- Based on https://github.com/gruvbox-community/gruvbox#palette
 local palette
 palette = util.palette_extend({
-	bg = hsluv "#1C1917",
+	bg = hsluv "#000000",
 	fg = hsluv "#ADBAC7",
 	rose = hsluv "#c05169",
 	leaf = hsluv "#81a76a",
-	wood = hsluv "#8b8567",
+	wood = hsluv "#cc8567",
 	water = hsluv "#5C6370",
 	blossom = hsluv "#ee4959",
 	sky = hsluv "#46939f",
@@ -28,6 +28,7 @@ local base_specs = generator.generate(palette, bg, generator.get_global_config(c
 -- Optionally extend specs using Lush
 local specs = lush.extends({ base_specs }).with(function()
 	return {
+		Folded { bg = palette.sky.darken(90), fg = palette.fg },
 		Statement { base_specs.Statement, fg = palette.rose },
 		Special { fg = palette.water },
 		Type { fg = palette.sky },
