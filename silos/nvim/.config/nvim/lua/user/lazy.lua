@@ -112,62 +112,8 @@ local plugins = {
 			end, opts)
 		end,
 	},
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"jfpedroza/neotest-elixir",
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-		},
-		config = function()
-			local neotest = require("neotest")
-			neotest.setup({
-				adapters = {
-					require("neotest-elixir"),
-				},
-				icons = {
-					child_indent = "|",
-					child_prefix = "-",
-					collapsed = "",
-					expanded = "",
-					failed = "",
-					final_child_indent = "",
-					final_child_prefix = "",
-					non_collapsible = "",
-					passed = "♥ ",
-					running = "",
-					running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
-					skipped = "⚀",
-					unknown = "",
-				},
-			})
+	"vim-test/vim-test",
 
-			vim.keymap.set("n", "tt", function()
-				neotest.run.run()
-			end, { desc = "Run closest test" })
-
-			vim.keymap.set("n", "te", function()
-				neotest.output.open({ enter = true })
-			end, { desc = "Open test output" })
-
-			vim.keymap.set("n", "tf", function()
-				neotest.run.run(vim.fn.expand("%"))
-			end, { desc = "Run tests for the whole file" })
-
-			vim.keymap.set("n", "to", function()
-				neotest.output_panel.toggle()
-			end, { desc = "Toggle test output panel" })
-
-			vim.keymap.set("n", "ts", function()
-				neotest.summary.toggle()
-			end, { desc = "Toggle test summary" })
-
-			vim.keymap.set("n", "tl", function()
-				neotest.run.run_last()
-			end, { desc = "Run last test" })
-		end,
-	},
 	{
 		"kosayoda/nvim-lightbulb",
 		dependencies = "antoinemadec/FixCursorHold.nvim",
@@ -179,7 +125,7 @@ local plugins = {
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "zenbones",
+					theme = "hq1bones",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
@@ -204,7 +150,7 @@ local plugins = {
 							end,
 						},
 					},
-					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_b = { "diff", "diagnostics" },
 					lualine_c = { "filename" },
 					lualine_x = { "filetype" },
 					lualine_y = {},
