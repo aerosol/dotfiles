@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-TERMINAL=kitty
+TERMINAL=alacritty
 WID=$(xdotool search $TERMINAL 2>/dev/null | sort | head -1)
 if [ -z "$WID" ]
 then

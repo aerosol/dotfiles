@@ -1,0 +1,36 @@
+getvolume() {
+    pactl get-source-volume @DEFAULT_SOURCE@ | awk '{print $5}'
+}
+
+getmuted() {
+    pactl get-source-mute @DEFAULT_SOURCE@ | awk '{print $2}'
+}
+
+up() {
+  pactl set-source-mute @DEFAULT_SOURCE@ false ; pactl set-source-volume @DEFAULT_SOURCE@ +4%
+}
+
+down() {
+  pactl set-source-mute @DEFAULT_SOURCE@ false ; pactl set-source-volume @DEFAULT_SOURCE@ -4%
+}
+
+beep() {
+  paplay ~/bin/smw_coin.wav &
+  dunstify -r 555 -h int:value:$(getvolume) -i audio-microphone "Microphone" "$(getvolume)"
+}
+
+mute() {
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    if [ $(getmuted) == yes ]; then
+      dunstify -r 555 "Microphone" "Muted" -i audio-volume-muted-symbolic-rtl
+    else
+      dunstify -r 555 -h int:value:$(getvolume) -i audio-microphone "Microphone" "Unmuted"
+    fi
+}
+
+case "$1" in
+  up ) up && beep ;;
+  down ) down && beep ;;
+  mute ) mute ;;
+  * ) getvolume ;;
+esac
