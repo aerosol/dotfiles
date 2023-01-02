@@ -107,9 +107,7 @@ local plugins = {
 				fzf.live_grep_native()
 			end, opts)
 
-			vim.keymap.set("n", "<leader>L", function()
-				fzf.live_grep_native({ rg_opts = '--no-ignore' })
-			end, opts)
+			vim.keymap.set("n", "<leader>L", function() fzf.live_grep_native({ rg_opts = '--no-ignore' }) end, opts)
 
 			vim.keymap.set("n", "<leader><space>", function()
 				fzf.buffers()

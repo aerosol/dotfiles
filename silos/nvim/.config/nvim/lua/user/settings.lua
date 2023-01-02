@@ -19,3 +19,5 @@ vim.opt.undofile = true
 vim.opt.undolevels = 5000
 vim.opt.updatetime = 750
 vim.opt.wrap = true
+vim.opt.ttimeoutlen = 10
+vim.opt.timeout = false
