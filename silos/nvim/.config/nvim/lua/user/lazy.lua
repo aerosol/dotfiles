@@ -107,6 +107,10 @@ local plugins = {
 				fzf.live_grep_native()
 			end, opts)
 
+			vim.keymap.set("n", "<leader>L", function()
+				fzf.live_grep_native({ rg_opts = '--no-ignore' })
+			end, opts)
+
 			vim.keymap.set("n", "<leader><space>", function()
 				fzf.buffers()
 			end, opts)
@@ -183,22 +187,6 @@ local plugins = {
 		require('mini.cursorword').setup({})
 	end },
 	{
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({
-
-				-- show_help = false,
-				triggers = "auto",
-				plugins = { spelling = true },
-				key_labels = { ["<leader>"] = "SPC" },
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	},
-
-	{
 		"anuvyklack/windows.nvim",
 		dependencies = {
 			{ "anuvyklack/middleclass" },
@@ -239,7 +227,9 @@ local plugins = {
 				},
 				use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
 				mappings = {
-					['p'] = function(payload)
+					['.'] = function(payload)
+						vim.cmd('tcd ' .. payload.dir)
+						print('Tab changed root to ' .. payload.dir)
 						-- Payload is an object describing the node under the cursor, the object
 						-- has the following keys:
 						-- - dir: the current netrw directory (vim.b.netrw_curdir)
@@ -247,7 +237,6 @@ local plugins = {
 						-- - link: the referenced file if the node under the cursor is a symlink
 						-- - extension: the file extension if the node under the cursor is a file
 						-- - type: the type of node under the cursor (0 = dir, 1 = file, 2 = symlink)
-						print(vim.inspect(payload))
 					end,
 				}
 			}

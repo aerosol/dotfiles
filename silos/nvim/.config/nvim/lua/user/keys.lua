@@ -19,3 +19,6 @@ keymap("c", "<C-a>", "<home>", {})
 keymap("c", "<C-e>", "<end>", {})
 
 keymap("i", "ii", "|> IO.inspect(label: :)<Left>", {})
+
+keymap("n", "H", ":tabprevious<cr>", opts)
+keymap("n", "L", ":tabnext<cr>", opts)
