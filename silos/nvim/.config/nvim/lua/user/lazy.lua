@@ -125,7 +125,7 @@ local plugins = {
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "hq1bones",
+					theme = "auto",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
@@ -225,8 +225,33 @@ local plugins = {
 			require('nvim-highlight-colors').setup({})
 		end
 	},
-	"elixir-editors/vim-elixir"
-
+	"elixir-editors/vim-elixir",
+	"tpope/vim-vinegar",
+	{ "prichrd/netrw.nvim", dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require 'netrw'.setup {
+				-- Put your configuration here, or leave the object empty to take the default
+				-- configuration.
+				icons = {
+					symlink = '', -- Symlink icon (directory and file)
+					directory = '', -- Directory icon
+					file = '', -- File icon
+				},
+				use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
+				mappings = {
+					['p'] = function(payload)
+						-- Payload is an object describing the node under the cursor, the object
+						-- has the following keys:
+						-- - dir: the current netrw directory (vim.b.netrw_curdir)
+						-- - node: the name of the file or directory under the cursor
+						-- - link: the referenced file if the node under the cursor is a symlink
+						-- - extension: the file extension if the node under the cursor is a file
+						-- - type: the type of node under the cursor (0 = dir, 1 = file, 2 = symlink)
+						print(vim.inspect(payload))
+					end,
+				}
+			}
+		end },
 }
 
 require("lazy").setup(plugins, {})
