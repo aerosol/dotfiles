@@ -12,7 +12,7 @@ export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.nimble/bin:$PATH
 export ZK_NOTEBOOK_DIR=~/notebooks/
 export EXA_ICON_SPACING=2
 
-if [[ "$TERM" == "xterm-kitty" ]]; then
+if [[ "$TERM" == "xterm-256color" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 		tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 	elif [[ -z "$TMUX" ]]; then
