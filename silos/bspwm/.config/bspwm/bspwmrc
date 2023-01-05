@@ -21,7 +21,7 @@ autostart "screensaver.sh"
 autostart "picom"
 autostart "flameshot"
 autostart-kill "bspi_listen" "bspi_listen --config ~/.config/bspwm/bspi.ini"
-autostart-kill "wallpaper" "wallpaper"
+# autostart-kill "wallpaper" "wallpaper"
 autostart-kill "dunst" "dunst"
 autostart "greenclip daemon"
 if [ "$HOSTNAME" = yharnam ]; then
@@ -41,7 +41,7 @@ setxkbmap -layout "pl(intl)"
 if [ "$HOSTNAME" = yharnam ]; then
   bspc monitor DisplayPort-0 -d I II III IV V
   bspc monitor HDMI-A-0 -d VI
-  feh --bg-fill ~/.wallpaper-primary.jpg --bg-fill ~/.wallpaper-secondary.jpg
+  feh --bg-fill ~/Pictures/wall-right.jpg --bg-fill ~/Pictures/wall-left.jpg
 fi
 
 bspc config border_width         8
