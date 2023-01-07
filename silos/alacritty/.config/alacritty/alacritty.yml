@@ -67,7 +67,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  #opacity: 1.0
+  opacity: 0.93
 
   # Startup Mode (changes require restart)
   #
@@ -117,6 +117,10 @@ font:
   italic:
     family: JetBrains Mono
     style: Regular
+
+  bold:
+    family: PragmataPro Mono Liga
+    style: Bold
 
   # Bold font face
   #bold:
