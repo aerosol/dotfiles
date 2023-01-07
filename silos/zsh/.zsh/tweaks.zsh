@@ -1,7 +1,11 @@
+autoload -Uz promptinit && promptinit
+autoload -Uz vcs_info
+
 setopt AUTO_CD
 setopt EXTENDED_GLOB
 setopt PROMPT_SUBST
 setopt RC_QUOTES
+setopt PROMPT_SUBST
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
