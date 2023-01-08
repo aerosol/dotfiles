@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 if [[ ${1} == *":"* ]]; then
     nvim ${1/:*/} -c "${1/*:/}"
 else
