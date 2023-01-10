@@ -41,7 +41,7 @@ setxkbmap -layout "pl(intl)"
 if [ "$HOSTNAME" = yharnam ]; then
   bspc monitor DisplayPort-0 -d I II III IV V
   bspc monitor HDMI-A-0 -d VI
-  feh --bg-fill ~/Pictures/wall-right.jpg --bg-fill ~/Pictures/wall-left.jpg
+  feh --bg-fill ~/Pictures/wall-right.jpg --bg-center ~/Pictures/wall-left.jpg
 fi
 
 bspc config border_width         8
