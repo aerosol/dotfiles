@@ -111,7 +111,7 @@ window:
 font:
   # Normal (roman) font face
   normal:
-    family: PragmataPro Mono Liga
+    family: PragmataPro Mono
     style: Regular
 
   italic:
@@ -119,7 +119,7 @@ font:
     style: Regular
 
   bold:
-    family: PragmataPro Mono Liga
+    family: PragmataPro Mono
     style: Bold
 
   # Bold font face
