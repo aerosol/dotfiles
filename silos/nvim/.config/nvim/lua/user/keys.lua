@@ -23,3 +23,5 @@ keymap("i", "ii", "|> IO.inspect(label: :)<Left>", {})
 
 keymap("n", "H", ":tabprevious<cr>", opts)
 keymap("n", "L", ":tabnext<cr>", opts)
+
+keymap("n", "<Bs>", ":close<cr>", opts)
