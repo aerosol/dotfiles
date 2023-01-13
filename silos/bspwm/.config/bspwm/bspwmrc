@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 xsetroot -cursor_name left_ptr
 
-autostart() {
-  pgrep -u "$USER" -f "$1" || $1 &
+startuplog="/tmp/.bspwm.startup.log"
+
+run_once () {
+  ! pgrep "$1" && $@&
 }
 
-autostart-kill() {
-  pkill -u "$USER" "$1"; $2 &
+kill_run () {
+  pkill "$1"
+  run_once $@
 }
 
 if [ "$HOSTNAME" = yharnam ]; then
@@ -17,23 +20,22 @@ if [ "$HOSTNAME" = carb ]; then
   bspc monitor -d I II III IV V VI
 fi
 
-autostart "screensaver.sh"
-autostart "picom"
-autostart "flameshot"
-autostart-kill "bspi_listen" "bspi_listen --config ~/.config/bspwm/bspi.ini"
-# autostart-kill "wallpaper" "wallpaper"
-autostart-kill "dunst" "dunst"
-autostart "greenclip daemon"
+run_once screensaver.sh
+run_once picom
+run_once flameshot
+kill_run bspi_listen --config ~/.config/bspwm/bspi.ini
+kill_run dunst
+run_once greenclip daemon
 if [ "$HOSTNAME" = yharnam ]; then
-  autostart-kill "polybar" ""
-  autostart "polybar primary"
-  autostart "polybar top"
+  kill_run polybar primary
+  run_once polybar top
 fi
 if [ "$HOSTNAME" = carb ]; then
-  autostart-kill "polybar" "polybar sole"
+  kill_run polybar sole
 fi
-autostart-kill "sxhkd" "sxhkd"
-autostart "udiskie -t"
+kill_run sxhkd
+kill_run udiskie -t
+
 dunstify "bspwm" "Hello, $USER" -i computer-symbolic
 
 setxkbmap -layout "pl(intl)"
@@ -42,16 +44,16 @@ if [ "$HOSTNAME" = yharnam ]; then
   bspc monitor DisplayPort-0 -d I II III IV V
   bspc monitor HDMI-A-0 -d VI
   feh --bg-fill ~/Pictures/wall-right.jpg --bg-center ~/Pictures/wall-left.jpg
+  bspc config focus_follows_pointer false
+  bspc config top_padding 65
 fi
-
+if [ "$HOSTNAME" = carb ]; then
+  bspc config focus_follows_pointer true
+  hsetroot -solid "#1e1c31"
+fi
 bspc config border_width         8
 bspc config window_gap           8
 bspc config bottom_padding       65
-
-if [ "$HOSTNAME" = yharnam ]; then
-  bspc config top_padding 65
-fi
-
 bspc config normal_border_color "#444444"
 bspc config focused_border_color "#ff0080"
 bspc config urgent_border_color "#B58900"
@@ -62,7 +64,6 @@ bspc config borderless_monocle   false
 bspc config gapless_monocle      false
 bspc config single_monocle       true
 
-bspc config focus_follows_pointer false
 bspc config pointer_follows_focus false
 bspc config pointer_follows_monitor true
 bspc config history_aware_focus   true
@@ -71,7 +72,7 @@ bspc config focus_by_distance     true
 bspc config split_ratio          0.43
 
 bspc rule -a Zathura state=tiled
-bspc rule -a FloatThis state=floating
 bspc rule -a mpv state=floating center=true
 bspc rule -a feh state=floating center=true
 bspc rule -a photoqt state=floating center=true
+bspc rule -a zoom state=floating
