@@ -23,6 +23,7 @@ fi
 run_once screensaver.sh
 run_once picom
 run_once flameshot
+run_once unclutter
 kill_run bspi_listen --config ~/.config/bspwm/bspi.ini
 kill_run dunst
 run_once greenclip daemon
