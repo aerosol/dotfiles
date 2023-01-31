@@ -182,7 +182,7 @@ colors:
   # COLORSCHEME: base16-windows-nt.yml
   # Default colors
   primary:
-    background: "0x00101f"
+    background: "0x000000"
     foreground: "0xADBAC7"
 
   # Colors the cursor will use if `custom_cursor_colors` is true

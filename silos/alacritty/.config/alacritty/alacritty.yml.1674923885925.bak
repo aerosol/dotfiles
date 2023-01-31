@@ -10,7 +10,6 @@
 # to the user's home directory starting with `~/`.
 #import:
 #  - /path/to/alacritty.yml
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -32,7 +31,6 @@ window:
   #dimensions:
   #  columns: 0
   #  lines: 0
-
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
@@ -40,7 +38,6 @@ window:
   #position:
   #  x: 0
   #  y: 0
-
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
@@ -51,7 +48,6 @@ window:
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
-
   # Window decorations
   #
   # Values for `decorations`:
@@ -62,13 +58,11 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
   #decorations: full
-
   # Background opacity
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
   opacity: 0.95
-
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -79,20 +73,16 @@ window:
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
   #startup_mode: Windowed
-
   # Window title
   #title: Alacritty
-
   # Allow terminal applications to change Alacritty's window title.
   #dynamic_title: true
-
   # Window class (Linux/BSD only):
   #class:
   # Application instance name
   #instance: Alacritty
   # General application class
   #general: Alacritty
-
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark`
@@ -103,10 +93,8 @@ window:
 # Maximum number of lines in the scrollback buffer.
 # Specifying '0' will disable scrolling.
 #history: 10000
-
 # Scrolling distance multiplier.
 #multiplier: 3
-
 # Font configuration
 font:
   # Normal (roman) font face
@@ -129,10 +117,8 @@ font:
   # If the bold family is not specified, it will fall back to the
   # value specified for the normal font.
   #family: monospace
-
   # The `style` can be specified to pick a specific face.
   #style: Bold
-
   # Bold italic font face
   #bold_italic:
   # Font family
@@ -140,10 +126,8 @@ font:
   # If the bold italic family is not specified, it will fall back to the
   # value specified for the normal font.
   #family: monospace
-
   # The `style` can be specified to pick a specific face.
   #style: Bold Italic
-
   # Point size
   size: 14.0
 
@@ -153,82 +137,67 @@ font:
   offset:
     #  x: 0
     y: 6
-
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   #glyph_offset:
   #  x: 0
   #  y: 0
-
   # Thin stroke font rendering (macOS only)
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
   #use_thin_strokes: true
-
   # Use built-in font for box drawing characters.
   #
   # If `true`, Alacritty will use a custom built-in font for box drawing
   # characters (Unicode points 2500 - 259f).
   #
   #builtin_box_drawing: true
-
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 #
 # Colors (Blood Moon)
 colors:
-  # COLORSCHEME: base16-windows-nt.yml
-  # Default colors
+  name: Yousai
+  author: Kori
   primary:
-    background: "0x00101f"
-    foreground: "0xADBAC7"
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  normal:
-    black: "0x222222"
-    red: "0xc05169"
-    green: "0x81a76a"
-    yellow: "0xcc8567"
-    blue: "0x5C6370"
-    magenta: "0xee4959"
-    cyan: "0x46939f"
-    white: "0xeeeeee"
-
-  # Bright colors
-  bright:
-    black: "0x8f8f8f"
-    red: "0xee4959"
-    green: "0x00aa00"
-    yellow: "0xfcba03"
-    blue: "0x8ba5a5"
-    magenta: "0x541492"
-    cyan: "0x008000"
-    white: "0xffffff"
-
+    background: "#F5E7DE"
+    foreground: "#34302D"
   cursor:
-    text: "0x000000"
-    cursor: "0x00ff00"
-
-  # Normal colors
+    text: "#F5E7DE"
+    cursor: "#34302D"
+  normal:
+    black: "#666661"
+    red: "#992E2E"
+    green: "#4C3226"
+    yellow: "#A67C53"
+    blue: "#4C7399"
+    magenta: "#BF9986"
+    cyan: "#D97742"
+    white: "#34302D"
+  bright:
+    black: "#7F7F7A"
+    red: "#B23636"
+    green: "#664233"
+    yellow: "#BF8F60"
+    blue: "#5986B2"
+    magenta: "#D9AE98"
+    cyan: "#F2854A"
+    white: "#4C4742"
 shell:
   program: /bin/zsh
 #  args:
 #    - --login
-
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
 #working_directory: None
-
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
-
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
-
 #mouse:
 # Click settings
 #
@@ -237,10 +206,8 @@ shell:
 # or triple click.
 #double_click: { threshold: 300 }
 #triple_click: { threshold: 300 }
-
 # If this is `true`, the cursor is temporarily hidden when typing.
 #hide_when_typing: false
-
 # Regex hints
 #
 # Terminal hints can be used to find text in the visible part of the terminal
@@ -248,7 +215,6 @@ shell:
 #hints:
 # Keys used for the hint labels.
 #alphabet: "jfkdls;ahgurieowpq"
-
 # List with all available hints
 #
 # Each hint must have a `regex` and either an `action` or a `command` field.
@@ -284,7 +250,6 @@ shell:
 #   binding:
 #     key: U
 #     mods: Control|Shift
-
 # Mouse bindings
 #
 # Mouse bindings are specified as a list of objects, much like the key
@@ -317,7 +282,6 @@ shell:
 #  - { mouse: Right,                 action: ExpandSelection }
 #  - { mouse: Right,  mods: Control, action: ExpandSelection }
 #  - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
-
 # Key bindings
 #
 # Key bindings are specified as a list of objects. For example, this is the
@@ -536,7 +500,6 @@ key_bindings:
   #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
-
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
@@ -585,7 +548,6 @@ key_bindings:
   #- { key: Slash,  mods: Shift,         mode: Vi|~Search, action: SearchBackward          }
   #- { key: N,                           mode: Vi|~Search, action: SearchNext              }
   #- { key: N,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
-
   # Search Mode
   #- { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
   #- { key: Escape,                mode: Search,     action: SearchCancel          }
@@ -598,7 +560,6 @@ key_bindings:
   #- { key: Down,                  mode: Search,     action: SearchHistoryNext     }
   #- { key: Return,                mode: Search|~Vi, action: SearchFocusNext       }
   #- { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
-
   # (Windows, Linux, and BSD only)
   #- { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
   #- { key: C,              mods: Control|Shift,                   action: Copy             }
@@ -612,10 +573,8 @@ key_bindings:
   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
   #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
-
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
-
   # (macOS only)
   #- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
@@ -637,13 +596,13 @@ key_bindings:
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
+theme: Yousai
+
 #debug:
 # Display the time it takes to redraw each frame.
 #render_timer: false
-
 # Keep the log file after quitting Alacritty.
 #persistent_logging: false
-
 # Log level
 #
 # Values for `log_level`:
@@ -654,6 +613,5 @@ key_bindings:
 #   - Debug
 #   - Trace
 #log_level: Warn
-
 # Print all received window events.
 #print_events: false
