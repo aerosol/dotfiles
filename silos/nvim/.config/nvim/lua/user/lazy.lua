@@ -263,6 +263,11 @@ local plugins = {
 				}
 			}
 		end },
+	{ "tversteeg/registers.nvim",
+		config = function()
+			require("registers").setup()
+		end }
+
 }
 
 require("lazy").setup(plugins, {})
