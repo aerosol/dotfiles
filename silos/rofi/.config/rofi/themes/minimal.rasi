@@ -13,7 +13,7 @@ prompt {
 }
 
 element-text {
-  highlight: bold #ff0000;
+  highlight: underline #ff0000;
 }
 
 listview {
