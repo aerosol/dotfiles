@@ -236,37 +236,13 @@ local plugins = {
 		end
 	},
 	"elixir-editors/vim-elixir",
-	"tpope/vim-vinegar",
-	{ "prichrd/netrw.nvim", dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require 'netrw'.setup {
-				-- Put your configuration here, or leave the object empty to take the default
-				-- configuration.
-				icons = {
-					symlink = '', -- Symlink icon (directory and file)
-					directory = '', -- Directory icon
-					file = '', -- File icon
-				},
-				use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
-				mappings = {
-					['.'] = function(payload)
-						vim.cmd('tcd ' .. payload.dir)
-						print('Tab changed root to ' .. payload.dir)
-						-- Payload is an object describing the node under the cursor, the object
-						-- has the following keys:
-						-- - dir: the current netrw directory (vim.b.netrw_curdir)
-						-- - node: the name of the file or directory under the cursor
-						-- - link: the referenced file if the node under the cursor is a symlink
-						-- - extension: the file extension if the node under the cursor is a file
-						-- - type: the type of node under the cursor (0 = dir, 1 = file, 2 = symlink)
-					end,
-				}
-			}
-		end },
 	{ "tversteeg/registers.nvim",
 		config = function()
 			require("registers").setup()
-		end }
+		end },
+	{ 'lambdalisue/fern.vim' },
+
+
 
 }
 
