@@ -25,5 +25,3 @@ keymap("n", "H", ":tabprevious<cr>", opts)
 keymap("n", "L", ":tabnext<cr>", opts)
 
 keymap("n", "<Bs>", ":close<cr>", opts)
-
-keymap("n", "-", ":Fern %:p:h -reveal=%:p<cr>", opts)
