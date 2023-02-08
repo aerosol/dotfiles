@@ -71,6 +71,9 @@ super + q
 super + shift + t
   colortemp
 
+super + i 
+	bspc node -g sticky
+
 super + {x,s,f}
   bspc node -t {tiled,floating,fullscreen}
 
