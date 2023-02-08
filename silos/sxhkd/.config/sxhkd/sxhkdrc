@@ -71,7 +71,7 @@ super + q
 super + shift + t
   colortemp
 
-super + i 
+super + e 
 	bspc node -g sticky
 
 super + {x,s,f}
