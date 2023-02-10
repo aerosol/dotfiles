@@ -26,14 +26,6 @@ local plugins = {
 		config = true,
 	},
 	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-
-		version = "nightly",
-	},
-	{
 		"aserowy/tmux.nvim",
 		config = function()
 			require("tmux").setup({
@@ -198,16 +190,6 @@ local plugins = {
 		end,
 	},
 	"andymass/vim-matchup",
-	{
-		"echasnovski/mini.surround",
-		branch = "stable",
-		config = function()
-			require("mini.surround").setup({})
-		end,
-	},
-	{ "echasnovski/mini.cursorword", config = function()
-		require('mini.cursorword').setup({})
-	end },
 	{
 		"anuvyklack/windows.nvim",
 		dependencies = {
