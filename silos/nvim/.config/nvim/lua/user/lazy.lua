@@ -185,7 +185,7 @@ local plugins = {
 				tabline = {},
 				winbar = {},
 				inactive_winbar = {},
-				extensions = { "quickfix", "fzf", "nvim-tree", "man" },
+				extensions = { "quickfix", "fzf", "man" },
 			})
 		end,
 	},
