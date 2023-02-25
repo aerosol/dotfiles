@@ -1,4 +1,6 @@
 export XSECURELOCK_FONT="SF Pro Display:size=46"
+export XSECURELOCK_BLANK_TIMEOUT=-1
+export XSECURELOCK_PASSWORD_PROMPT=kamoji
 if [ "$HOSTNAME" = carb ]; then
   xrdb -merge ~/.Xresources.carb
   setxkbmap -option ctrl:nocaps 
