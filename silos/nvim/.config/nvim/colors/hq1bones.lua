@@ -12,13 +12,13 @@ local bg = vim.o.background
 local palette
 palette = util.palette_extend({
 	bg = hsluv "#000000",
-	fg = hsluv "#ADBAC7",
-	rose = hsluv "#c05169",
-	leaf = hsluv "#81a76a",
-	wood = hsluv "#cc8567",
-	water = hsluv "#5C6370",
-	blossom = hsluv "#ee4959",
-	sky = hsluv "#46939f",
+	fg = hsluv "#C2C3C7",
+	rose = hsluv "#7E2553",
+	leaf = hsluv "#008751",
+	wood = hsluv "#AB5236",
+	water = hsluv "#5f574f",
+	blossom = hsluv "#FF77A8",
+	sky = hsluv "#83769C",
 }, bg)
 
 -- Generate the lush specs using the generator util
@@ -28,10 +28,8 @@ local base_specs = generator.generate(palette, bg, generator.get_global_config(c
 -- Optionally extend specs using Lush
 local specs = lush.extends({ base_specs }).with(function()
 	return {
-		Folded { bg = palette.sky.darken(90), fg = palette.fg },
-		Statement { base_specs.Statement, fg = palette.rose },
 		Special { fg = palette.water },
-		Type { fg = palette.sky },
+		Type { fg = palette.sky, gui = "italic" }
 	}
 end)
 
