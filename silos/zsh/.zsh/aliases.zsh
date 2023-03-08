@@ -1,4 +1,5 @@
 alias ls="exa --icons"
+alias wip="git commit . -m 'wip'"
 alias ll="ls -al"
 alias get='wget -t0 -c'
 alias mt='mix test'
