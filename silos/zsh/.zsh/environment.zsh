@@ -7,9 +7,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PAGER=less
-export TERMINAL=kitty
+export TERMINAL=alacritty
 export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.nimble/bin:$PATH
-export ZK_NOTEBOOK_DIR=~/notebooks/
 export EXA_ICON_SPACING=2
 
 if [[ "$TERM" == "xterm-256color" ]]; then
