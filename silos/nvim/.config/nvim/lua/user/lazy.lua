@@ -230,8 +230,15 @@ local plugins = {
 				sort_order = "directories_first",
 			}
 		end
-	}
-
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		ft = "markdown",
+		build = ":call mkdp#util#install()",
+	},
+	'tpope/vim-dadbod',
+	'kristijanhusak/vim-dadbod-ui',
+	'EdenEast/nightfox.nvim'
 
 
 }
