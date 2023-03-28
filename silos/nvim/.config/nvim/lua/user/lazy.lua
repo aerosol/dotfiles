@@ -120,7 +120,8 @@ local plugins = {
 				fzf.live_grep_native()
 			end, opts)
 
-			vim.keymap.set("n", "<leader>L", function() fzf.live_grep_native({
+			vim.keymap.set("n", "<leader>L", function()
+				fzf.live_grep_native({
 					rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']]
 				})
 			end, opts)
@@ -224,7 +225,6 @@ local plugins = {
 		end },
 	{ 'elihunter173/dirbuf.nvim',
 		config = function()
-
 			require("dirbuf").setup {
 				hash_padding = 2,
 				sort_order = "directories_first",
@@ -238,7 +238,6 @@ local plugins = {
 	},
 	'tpope/vim-dadbod',
 	'kristijanhusak/vim-dadbod-ui',
-	'EdenEast/nightfox.nvim'
 
 
 }
