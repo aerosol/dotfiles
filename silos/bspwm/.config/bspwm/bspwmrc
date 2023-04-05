@@ -46,7 +46,7 @@ if [ "$HOSTNAME" = yharnam ]; then
   bspc monitor HDMI-A-0 -d VI
   feh --bg-fill ~/Pictures/wall-right.jpg --bg-center ~/Pictures/wall-left.jpg
   bspc config focus_follows_pointer false
-  bspc config top_padding 65
+  bspc config top_padding 55
 fi
 if [ "$HOSTNAME" = carb ]; then
   bspc config focus_follows_pointer true
@@ -54,7 +54,7 @@ if [ "$HOSTNAME" = carb ]; then
 fi
 bspc config border_width         8
 bspc config window_gap           8
-bspc config bottom_padding       65
+bspc config bottom_padding       55
 bspc config normal_border_color "#444444"
 bspc config focused_border_color "#ff0080"
 bspc config urgent_border_color "#B58900"
