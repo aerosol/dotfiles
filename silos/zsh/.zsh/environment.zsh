@@ -13,7 +13,7 @@ export EXA_ICON_SPACING=2
 
 if [[ "$TERM" == "xterm-256color" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-		tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+		echo "ssh connection detected, not starting tmux"
 	elif [[ -z "$TMUX" ]]; then
 		tmux new-session -s $(shuf -n 1 ~/.zsh/_short-words.txt)
 	fi
