@@ -50,10 +50,9 @@ if [ "$HOSTNAME" = yharnam ]; then
   bspc config bottom_padding 55
 fi
 if [ "$HOSTNAME" = carb ]; then
-  feh --bg-tile ~/bg-laptop.jpg
   bspc config focus_follows_pointer true
-  hsetroot -solid "#1e1c31"
   bspc config bottom_padding 75
+  feh --bg-tile ~/bg-laptop.jpg
 fi
 bspc config border_width         8
 bspc config window_gap           8
