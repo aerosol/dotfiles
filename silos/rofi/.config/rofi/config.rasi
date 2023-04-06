@@ -1,5 +1,5 @@
 configuration {
-  font: "SF Pro Display 30";
+  font: "SF Pro Display 26";
 }
 
 @theme "/home/hq1/.config/rofi/themes/minimal.rasi"
