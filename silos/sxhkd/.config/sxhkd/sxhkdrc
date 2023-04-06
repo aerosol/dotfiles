@@ -7,14 +7,11 @@ XF86Audio{Raise,Lower}Volume
 XF86MonBrightness{Up,Down}
   brightnessctl s 10{+,-}
 
-super + o ; k
-  kill -9 $(ps a | rofi -dmenu -font "PragmataPro 36" | awk '{ print $1 }')
-
 alt + shift + ctrl + r
   bspc wm -r
 
 super + period
-  rofi -modi emoji -show emoji
+  rofi -modi emoji -show emoji -theme-str 'listview\{layout: vertical;\}'
 
 super + equal
   rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo '{result}' | xsel --clipboard --input"
