@@ -64,7 +64,7 @@ amos
 amps
 amra
 amyl
-anal
+****
 andy
 anew
 anna
@@ -74,7 +74,7 @@ ansi
 ante
 anti
 ants
-anus
+****
 aped
 apes
 apex
@@ -252,7 +252,7 @@ bone
 bong
 bonn
 bony
-boob
+****
 book
 boom
 boon
@@ -394,7 +394,7 @@ coat
 coax
 cobb
 coca
-cock
+****
 coco
 coda
 code
@@ -439,7 +439,7 @@ cozy
 crab
 crag
 cram
-crap
+****
 craw
 crew
 crib
@@ -477,7 +477,7 @@ dais
 dale
 daly
 dame
-damn
+****
 damp
 dams
 dana
@@ -606,7 +606,7 @@ dyad
 dyed
 dyer
 dyes
-dyke
+****
 dyne
 e'er
 each
@@ -673,7 +673,7 @@ ezra
 face
 fact
 fade
-fags
+****
 fail
 fain
 fair
@@ -944,17 +944,17 @@ heal
 heap
 hear
 heat
-hebe
+****
 heck
 heed
 heel
 heft
 heir
 held
-hell
+****
 helm
 help
-hemp
+****
 hems
 hens
 hera
@@ -980,7 +980,7 @@ hire
 hiss
 hits
 hive
-hoar
+****
 hobo
 hock
 hoes
@@ -992,7 +992,7 @@ holm
 holt
 holy
 home
-homo
+****
 hone
 hong
 honk
@@ -1021,7 +1021,7 @@ hugh
 hugo
 hulk
 hull
-hump
+****
 hums
 hung
 hunk
@@ -1095,7 +1095,7 @@ jean
 jeep
 jeer
 jeff
-jerk
+****
 jess
 jest
 jets
@@ -1164,7 +1164,7 @@ khan
 kick
 kids
 kiev
-kill
+****
 kilo
 kind
 king
@@ -1176,12 +1176,12 @@ kits
 kiva
 kivu
 kiwi
-klan
+****
 klux
 knee
 knew
 knit
-knob
+****
 knot
 know
 knox
@@ -1296,7 +1296,7 @@ loft
 loge
 logo
 logs
-loin
+****
 lois
 loki
 lola
@@ -1335,7 +1335,7 @@ lura
 lure
 lurk
 lush
-lust
+****
 lute
 lutz
 luxe
@@ -1457,7 +1457,7 @@ mows
 much
 muck
 mudd
-muff
+****
 mugs
 muir
 mule
@@ -1489,7 +1489,7 @@ nate
 nato
 nave
 navy
-nazi
+****
 ncaa
 ncar
 neal
@@ -1538,7 +1538,7 @@ noun
 nova
 novo
 ntis
-nude
+****
 null
 numb
 nuns
@@ -1583,9 +1583,9 @@ open
 opts
 opus
 or's
-oral
+****
 ores
-orgy
+****
 orin
 orly
 osha
@@ -1601,7 +1601,7 @@ oval
 oven
 over
 ovid
-ovum
+****
 owed
 owes
 owls
@@ -1640,7 +1640,7 @@ path
 pats
 paul
 pave
-pawn
+****
 paws
 pays
 peak
@@ -1679,7 +1679,7 @@ pigs
 pike
 pile
 pill
-pimp
+****
 pine
 ping
 pink
@@ -1687,7 +1687,7 @@ pins
 pint
 pion
 pipe
-piss
+****
 pith
 pits
 pitt
@@ -1722,7 +1722,7 @@ pont
 pony
 pooh
 pool
-poop
+****
 poor
 pope
 pops
@@ -1740,7 +1740,7 @@ pram
 pray
 prep
 prey
-prig
+****
 prim
 prod
 prof
@@ -1768,7 +1768,7 @@ pure
 purl
 purr
 push
-puss
+****
 puts
 putt
 pyle
@@ -1782,7 +1782,7 @@ quiz
 quod
 race
 rack
-racy
+****
 raft
 rage
 rags
@@ -1797,7 +1797,7 @@ rand
 rang
 rank
 rant
-rape
+****
 raps
 rapt
 rare
@@ -1897,7 +1897,7 @@ ruff
 rugs
 ruin
 rule
-rump
+****
 rune
 rung
 runs
@@ -1947,7 +1947,7 @@ scat
 scot
 scow
 scud
-scum
+****
 seal
 seam
 sean
@@ -1976,7 +1976,7 @@ sewn
 sews
 sexy
 shad
-shag
+****
 shah
 sham
 shaw
@@ -2054,10 +2054,10 @@ slow
 slug
 slum
 slur
-slut
+****
 smog
 smug
-smut
+****
 snag
 snap
 snip
@@ -2124,7 +2124,7 @@ stun
 styx
 subs
 such
-suck
+****
 suds
 sued
 sues
@@ -2181,7 +2181,7 @@ teal
 team
 tear
 teas
-teat
+****
 tech
 teem
 teen
@@ -2210,7 +2210,7 @@ this
 thor
 thou
 thud
-thug
+****
 thus
 tick
 tide
@@ -2230,7 +2230,7 @@ tint
 tiny
 tips
 tire
-tits
+****
 toad
 toby
 todd
@@ -2303,7 +2303,7 @@ twos
 type
 typo
 ucla
-ugly
+****
 ulan
 undo
 unit
@@ -2389,7 +2389,7 @@ wall
 walt
 wand
 wane
-wang
+****
 want
 ward
 ware
@@ -2416,7 +2416,7 @@ webb
 webs
 weco
 weds
-weed
+****
 week
 weep
 wehr
@@ -2440,7 +2440,7 @@ whim
 whip
 whir
 whit
-whiz
+****
 whoa
 whom
 whop
@@ -2475,7 +2475,7 @@ wive
 woke
 wold
 wolf
-womb
+****
 wong
 wont
 wood
@@ -2531,3 +2531,4 @@ zone
 zoom
 zoos
 zorn
+
