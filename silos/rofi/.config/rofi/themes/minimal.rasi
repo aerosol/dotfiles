@@ -30,11 +30,11 @@ element selected, element-text selected {
 }
 
 window {
-  width: 100%;
+  width: 60%;
   background-color: @winbg;
-  location: north;
+  location: south;
   padding: 40px;
-  margin: 8px;
+  margin: 80px;
   border: 8px;
   border-color: #222;
 }
