@@ -52,7 +52,7 @@ fi
 if [ "$HOSTNAME" = carb ]; then
   bspc config focus_follows_pointer true
   bspc config bottom_padding 75
-  feh --bg-tile ~/bg-laptop.jpg
+  feh --bg-fill ~/bg-laptop.jpg
 fi
 bspc config border_width         8
 bspc config window_gap           8
