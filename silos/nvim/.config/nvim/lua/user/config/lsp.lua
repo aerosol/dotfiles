@@ -11,8 +11,10 @@ local on_attach = function(_, bufnr)
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 	nmap("gd", function()
-		fzf.lsp_definitions({ jump_to_single_result = true,
-			jump_to_single_result_action = require('fzf-lua.actions').file_vsplit, })
+		fzf.lsp_definitions({
+			jump_to_single_result = true,
+			jump_to_single_result_action = require('fzf-lua.actions').file_vsplit,
+		})
 	end, "[G]oto [D]efinition")
 	nmap("gr", function()
 		fzf.lsp_references({ jump_to_single_result = true })
@@ -55,7 +57,6 @@ local servers = {
 	pyright = {},
 	rust_analyzer = {},
 	tsserver = {},
-
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -99,6 +100,9 @@ local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
 cmp.setup({
+	experimental = {
+		ghost_text = true
+	},
 	formatting = {
 		format = lspkind.cmp_format(),
 	},
@@ -108,7 +112,7 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-d>"] = cmp.mapping.scroll_docs( -4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
@@ -127,8 +131,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
+			elseif luasnip.jumpable( -1) then
+				luasnip.jump( -1)
 			else
 				fallback()
 			end
