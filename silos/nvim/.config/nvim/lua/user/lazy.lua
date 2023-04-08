@@ -15,7 +15,6 @@ local plugins = {
 	{
 		"mcchrish/zenbones.nvim",
 		dependencies = "rktjmp/lush.nvim",
-
 		config = function()
 			vim.g.hq1bones_transparent_background = true
 			vim.cmd([[colorscheme hq1bones]])
@@ -120,9 +119,14 @@ local plugins = {
 				fzf.live_grep_native()
 			end, opts)
 
+			vim.keymap.set("n", "<leader>b", function()
+				fzf.git_branches()
+			end, opts)
+
 			vim.keymap.set("n", "<leader>L", function()
 				fzf.live_grep_native({
-					rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']]
+					rg_opts =
+					[[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']]
 				})
 			end, opts)
 
@@ -169,7 +173,7 @@ local plugins = {
 							end,
 						},
 					},
-					lualine_b = { "diff", "diagnostics" },
+					lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = { "filename" },
 					lualine_x = { "filetype" },
 					lualine_y = {},
@@ -213,17 +217,21 @@ local plugins = {
 	},
 	"thinca/vim-qfreplace",
 
-	{ 'brenoprata10/nvim-highlight-colors',
+	{
+		'brenoprata10/nvim-highlight-colors',
 		config = function()
 			require('nvim-highlight-colors').setup({})
 		end
 	},
 	"elixir-editors/vim-elixir",
-	{ "tversteeg/registers.nvim",
+	{
+		"tversteeg/registers.nvim",
 		config = function()
 			require("registers").setup()
-		end },
-	{ 'elihunter173/dirbuf.nvim',
+		end
+	},
+	{
+		'elihunter173/dirbuf.nvim',
 		config = function()
 			require("dirbuf").setup {
 				hash_padding = 2,
