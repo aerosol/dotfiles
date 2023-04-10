@@ -252,8 +252,6 @@ local plugins = {
 	},
 	'tpope/vim-dadbod',
 	'kristijanhusak/vim-dadbod-ui',
-
-
 }
 
 require("lazy").setup(plugins, {})
