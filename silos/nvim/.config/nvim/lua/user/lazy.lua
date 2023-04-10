@@ -198,14 +198,13 @@ local plugins = {
 						{
 							'tabs',
 							icons_enabled = true,
+							max_length = 80,
 							mode = 1,
-
 							tabs_color = {
 								-- Same values as the general color option can be used here.
 								active = 'Typedef', -- Color for active tab.
 								inactive = 'Visual', -- Color for inactive tab.
 							},
-
 							fmt = function(name, context)
 								-- Show + if buffer is modified in tab
 								local buflist = vim.fn.tabpagebuflist(context.tabnr)
@@ -217,11 +216,9 @@ local plugins = {
 							end
 						}
 					},
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = { 'filetype' },
-					lualine_z = { 'branch' }
+					lualine_x = {
+						'branch'
+					}
 				},
 				winbar = {},
 				inactive_winbar = {},
