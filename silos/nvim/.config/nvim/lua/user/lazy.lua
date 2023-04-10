@@ -179,9 +179,9 @@ local plugins = {
 							end,
 						},
 					},
-					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_b = { "diff", "diagnostics" },
 					lualine_c = { "filename" },
-					lualine_x = { "filetype" },
+					lualine_x = {},
 					lualine_y = {},
 					lualine_z = { "location" },
 				},
@@ -193,7 +193,36 @@ local plugins = {
 					lualine_y = {},
 					lualine_z = {},
 				},
-				tabline = {},
+				tabline = {
+					lualine_a = {
+						{
+							'tabs',
+							icons_enabled = true,
+							mode = 1,
+
+							tabs_color = {
+								-- Same values as the general color option can be used here.
+								active = 'Typedef', -- Color for active tab.
+								inactive = 'Visual', -- Color for inactive tab.
+							},
+
+							fmt = function(name, context)
+								-- Show + if buffer is modified in tab
+								local buflist = vim.fn.tabpagebuflist(context.tabnr)
+								local winnr = vim.fn.tabpagewinnr(context.tabnr)
+								local bufnr = buflist[winnr]
+								local mod = vim.fn.getbufvar(bufnr, '&mod')
+
+								return name .. (mod == 1 and ' +' or '')
+							end
+						}
+					},
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = { 'filetype' },
+					lualine_z = { 'branch' }
+				},
 				winbar = {},
 				inactive_winbar = {},
 				extensions = { "quickfix", "fzf", "man" },
