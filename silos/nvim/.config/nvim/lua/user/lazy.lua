@@ -97,27 +97,27 @@ local plugins = {
 
 			fzf.setup({
 				fzf_opts = {
-					['--layout'] = 'reverse'
+					["--layout"] = "reverse",
 				},
 				winopts = {
 					fullscreen = true,
 					preview = {
-						layout = 'flex',
-						default = 'bat_native'
-					}
-				}
+						layout = "flex",
+						default = "bat_native",
+					},
+				},
 			})
 
 			vim.keymap.set("n", "go", function()
 				fzf.files({
-					winopts = { preview = { hidden = 'hidden' } },
+					winopts = { preview = { hidden = "hidden" } },
 				})
 			end, opts)
 
 			vim.keymap.set("n", "gO", function()
 				fzf.files({
-					winopts = { preview = { hidden = 'hidden' } },
-					fd_opts = [[--color=never --type f --hidden --follow --no-ignore -E .git -E _build -E .elixir_ls]]
+					winopts = { preview = { hidden = "hidden" } },
+					fd_opts = [[--color=never --type f --hidden --follow --no-ignore -E .git -E _build -E .elixir_ls]],
 				})
 			end, opts)
 
@@ -131,8 +131,7 @@ local plugins = {
 
 			vim.keymap.set("n", "<leader>L", function()
 				fzf.live_grep_native({
-					rg_opts =
-					[[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']]
+					rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']],
 				})
 			end, opts)
 
@@ -196,29 +195,29 @@ local plugins = {
 				tabline = {
 					lualine_a = {
 						{
-							'tabs',
+							"tabs",
 							icons_enabled = true,
 							max_length = 80,
 							mode = 1,
 							tabs_color = {
 								-- Same values as the general color option can be used here.
-								active = 'Typedef', -- Color for active tab.
-								inactive = 'Visual', -- Color for inactive tab.
+								active = "Typedef", -- Color for active tab.
+								inactive = "Visual", -- Color for inactive tab.
 							},
 							fmt = function(name, context)
 								-- Show + if buffer is modified in tab
 								local buflist = vim.fn.tabpagebuflist(context.tabnr)
 								local winnr = vim.fn.tabpagewinnr(context.tabnr)
 								local bufnr = buflist[winnr]
-								local mod = vim.fn.getbufvar(bufnr, '&mod')
+								local mod = vim.fn.getbufvar(bufnr, "&mod")
 
-								return name .. (mod == 1 and ' +' or '')
-							end
-						}
+								return name .. (mod == 1 and " +" or "")
+							end,
+						},
 					},
 					lualine_x = {
-						'branch'
-					}
+						"branch",
+					},
 				},
 				winbar = {},
 				inactive_winbar = {},
@@ -250,34 +249,54 @@ local plugins = {
 	"thinca/vim-qfreplace",
 
 	{
-		'brenoprata10/nvim-highlight-colors',
+		"brenoprata10/nvim-highlight-colors",
 		config = function()
-			require('nvim-highlight-colors').setup({})
-		end
+			require("nvim-highlight-colors").setup({})
+		end,
 	},
 	"elixir-editors/vim-elixir",
 	{
 		"tversteeg/registers.nvim",
 		config = function()
 			require("registers").setup()
-		end
+		end,
 	},
 	{
-		'elihunter173/dirbuf.nvim',
+		"elihunter173/dirbuf.nvim",
 		config = function()
-			require("dirbuf").setup {
+			require("dirbuf").setup({
 				hash_padding = 2,
 				sort_order = "directories_first",
-			}
-		end
+			})
+		end,
 	},
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
 		build = ":call mkdp#util#install()",
 	},
-	'tpope/vim-dadbod',
-	'kristijanhusak/vim-dadbod-ui',
+	"tpope/vim-dadbod",
+	"kristijanhusak/vim-dadbod-ui",
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		dependencies = { "mason.nvim", "nvim-lua/plenary.nvim" },
+		opts = function()
+			local null_ls = require("null-ls")
+			return {
+				-- root_dir = require("null-ls.utils").root_pattern(".null-ls-root", "Makefile", ".git"),
+				sources = {
+					null_ls.builtins.diagnostics.commitlint,
+					null_ls.builtins.diagnostics.flake8,
+					null_ls.builtins.diagnostics.gitlint,
+					null_ls.builtins.diagnostics.markdownlint,
+					null_ls.builtins.diagnostics.shellcheck,
+					null_ls.builtins.formatting.shfmt,
+					null_ls.builtins.formatting.stylua,
+				},
+				on_attach = require("user.config.lsp").on_attach,
+			}
+		end,
+	},
 }
 
 require("lazy").setup(plugins, {})
