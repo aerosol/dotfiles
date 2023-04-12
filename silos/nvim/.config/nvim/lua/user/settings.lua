@@ -1,3 +1,5 @@
+vim.g.editorconfig = false
+
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 2
