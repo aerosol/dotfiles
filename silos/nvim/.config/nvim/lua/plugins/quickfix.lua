@@ -1,0 +1,1 @@
+return "thinca/vim-qfreplace"

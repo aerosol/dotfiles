@@ -1,1 +1,0 @@
-return "aymericbeaumet/vim-symlink"
