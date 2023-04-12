@@ -25,7 +25,6 @@ return {
 		end,
 	},
 	"tpope/vim-sleuth",
-	"vim-test/vim-test",
 	"andymass/vim-matchup",
 	{
 		"anuvyklack/windows.nvim",
