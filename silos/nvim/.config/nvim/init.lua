@@ -15,9 +15,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("plugins", {})
-
 require("user.settings")
 require("user.keys")
 require("user.commands")
-
 require("user.config.lsp")
