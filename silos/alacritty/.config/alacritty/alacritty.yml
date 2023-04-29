@@ -152,7 +152,7 @@ font:
   # spacing.
   offset:
     #  x: 0
-    y: 6
+    y: 8
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -179,38 +179,37 @@ font:
 #
 # Colors (Blood Moon)
 colors:
-  # COLORSCHEME: base16-windows-nt.yml
-  # Default colors
   primary:
-    background: "0x000000"
-    foreground: "0xADBAC7"
+    background: '0x000000'
+    foreground: '0xdcd7ba'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
   normal:
-    black: "0x222222"
-    red: "0xc05169"
-    green: "0x81a76a"
-    yellow: "0xcc8567"
-    blue: "0x5C6370"
-    magenta: "0xee4959"
-    cyan: "0x46939f"
-    white: "0xeeeeee"
+    black:   '0x090618'
+    red:     '0xc34043'
+    green:   '0x76946a'
+    yellow:  '0xc0a36e'
+    blue:    '0x7e9cd8'
+    magenta: '0x957fb8'
+    cyan:    '0x6a9589'
+    white:   '0xc8c093'
 
-  # Bright colors
   bright:
-    black: "0x8f8f8f"
-    red: "0xee4959"
-    green: "0x00aa00"
-    yellow: "0xfcba03"
-    blue: "0x8ba5a5"
-    magenta: "0x541492"
-    cyan: "0x008000"
-    white: "0xffffff"
+    black:   '0x727169'
+    red:     '0xe82424'
+    green:   '0x98bb6c'
+    yellow:  '0xe6c384'
+    blue:    '0x7fb4ca'
+    magenta: '0x938aa9'
+    cyan:    '0x7aa89f'
+    white:   '0xdcd7ba'
 
-  cursor:
-    text: "0x000000"
-    cursor: "0x00ff00"
+  selection:
+    background: '0x2d4f67'
+    foreground: '0xc8c093'
 
+  indexed_colors:
+    - { index: 16, color: '0xffa066' }
+    - { index: 17, color: '0xff5d62' }
   # Normal colors
 shell:
   program: /bin/zsh
