@@ -19,7 +19,7 @@ element-text {
 listview {
   lines: 20;
   spacing: 5;
-	layout: horizontal;
+	layout: vertical;
 }
 
 element {
