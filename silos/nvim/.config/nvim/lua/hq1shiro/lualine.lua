@@ -1,9 +1,9 @@
 local colors = {
 	color2 = "#0000af",
-	color3 = "#A37ACC",
-	color4 = "#5C6773",
+	color3 = "#87005f",
+	color4 = "#cde8ff",
 	color5 = "#ffffff",
-	color13 = "#86B300",
+	color13 = "#af00af",
 	color10 = "#00005f",
 	color8 = "#f07178",
 	color9 = "#ffffff",
@@ -28,7 +28,7 @@ return {
 		b = { fg = colors.color9, bg = colors.color5 },
 	},
 	insert = {
-		a = { fg = colors.color2, bg = colors.color13, gui = "bold" },
+		a = { fg = colors.color5, bg = colors.color13, gui = "bold" },
 		b = { fg = colors.color4, bg = colors.color5 },
 	},
 }
