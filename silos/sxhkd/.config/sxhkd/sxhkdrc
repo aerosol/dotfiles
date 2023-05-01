@@ -11,7 +11,7 @@ alt + shift + ctrl + r
   bspc wm -r
 
 super + period
-  rofi -modi emoji -show emoji -theme-str 'listview\{layout: vertical;\}'
+  rofi -modi emoji -show emoji 
 
 super + equal
   rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo '{result}' | xsel --clipboard --input"
@@ -26,10 +26,10 @@ ctrl + shift + alt + f
   bspc node -m next
 
 super + space
-  rofi -show run
+  rofi -show run -theme-str 'listview\{layout: horizontal;\}'
 
 super + slash
-  rofi -show window
+  rofi -show window -theme-str 'listview\{layout: horizontal;\}'
 
 super + d
   dolphin
