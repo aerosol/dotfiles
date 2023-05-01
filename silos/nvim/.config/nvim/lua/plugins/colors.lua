@@ -1,5 +1,11 @@
 return {
 	{
+		"yasukotelin/shirotelin",
+		config = function()
+			vim.cmd([[colorscheme shirotelin]])
+		end,
+	},
+	{
 		"mcchrish/zenbones.nvim",
 		dependencies = "rktjmp/lush.nvim",
 		config = function()
@@ -11,9 +17,9 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
-			local k = require("kanagawa")
-			k.setup({ transparent = true })
-			k.load("dragon")
+			-- local k = require("kanagawa")
+			-- k.setup({ transparent = true })
+			-- k.load("dragon")
 		end,
 	},
 }
