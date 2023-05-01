@@ -67,7 +67,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.90
+  # opacity: 0.90
 
   # Startup Mode (changes require restart)
   #
@@ -178,39 +178,34 @@ font:
 #draw_bold_text_with_bright_colors: false
 #
 # Colors (Blood Moon)
+# Colors (One Light)
 colors:
+  # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xdcd7ba'
-
-  normal:
-    black:   '0x090618'
-    red:     '0xc34043'
-    green:   '0x76946a'
-    yellow:  '0xc0a36e'
-    blue:    '0x7e9cd8'
-    magenta: '0x957fb8'
-    cyan:    '0x6a9589'
-    white:   '0xc8c093'
-
-  bright:
-    black:   '0x727169'
-    red:     '0xe82424'
-    green:   '0x98bb6c'
-    yellow:  '0xe6c384'
-    blue:    '0x7fb4ca'
-    magenta: '0x938aa9'
-    cyan:    '0x7aa89f'
-    white:   '0xdcd7ba'
-
-  selection:
-    background: '0x2d4f67'
-    foreground: '0xc8c093'
-
-  indexed_colors:
-    - { index: 16, color: '0xffa066' }
-    - { index: 17, color: '0xff5d62' }
+    foreground: '#000000'
+    background: '#ffffff'
   # Normal colors
+  normal:
+    # NOTE: Use '#131613' for the `black` color if you'd like to see
+    # black text on the background.
+    black:   '#282c34'
+    red:     '#85005C'
+    green:   '#005F00'
+    yellow:  '#d19a66'
+    blue:    '#000087'
+    magenta: '#AF00AF'
+    cyan:    '#046161'
+    white:   '#abb2bf'
+  # Bright colors
+  bright:
+    black:   '#5c6370'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#FFFF64'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#ffffff'
 shell:
   program: /bin/zsh
 #  args:
