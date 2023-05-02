@@ -85,10 +85,10 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 6
+    frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = "#000000"
+    frame_color = "#aaaaaa"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -312,8 +312,8 @@
     # Icon for notifications with low urgency, uncomment to enable
 
 [urgency_normal]
-    background = "#111111"
-    foreground = "#ffffff"
+    background = "#C0C0C0"
+    foreground = "#000000"
     timeout = 10
     default_icon = preferences-system-notifications-symbolic
 
