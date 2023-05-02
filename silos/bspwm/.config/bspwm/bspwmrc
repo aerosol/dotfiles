@@ -44,7 +44,6 @@ setxkbmap -layout "pl(intl)"
 if [ "$HOSTNAME" = yharnam ]; then
 	bspc monitor DisplayPort-0 -d I II III IV V
 	bspc monitor HDMI-A-0 -d VI
-	xsetroot -solid "#FFFFFF"
 	bspc config focus_follows_pointer false
 	bspc config top_padding 55
 	bspc config bottom_padding 55
@@ -52,12 +51,14 @@ fi
 if [ "$HOSTNAME" = carb ]; then
 	bspc config focus_follows_pointer true
 	bspc config bottom_padding 75
-	feh --bg-fill ~/bg-laptop.jpg
 fi
+
+hsetroot -solid "#008080"
+
 bspc config border_width 8
 bspc config window_gap 8
-bspc config normal_border_color "#444444"
-bspc config focused_border_color "#008080"
+bspc config normal_border_color "#00005f"
+bspc config focused_border_color "#af00af"
 bspc config urgent_border_color "#B58900"
 bspc config presel_border_color "#26E2FF"
 
