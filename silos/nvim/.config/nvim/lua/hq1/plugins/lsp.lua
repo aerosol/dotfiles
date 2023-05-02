@@ -28,7 +28,7 @@ return {
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.stylua,
 				},
-				on_attach = require("user.config.lsp").on_attach,
+				on_attach = require("hq1.config.lsp").on_attach,
 			}
 		end,
 	},
