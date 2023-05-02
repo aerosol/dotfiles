@@ -3,21 +3,21 @@ xsetroot -cursor_name left_ptr
 
 startuplog="/tmp/.bspwm.startup.log"
 
-run_once () {
-  ! pgrep "$1" && $@&
+run_once() {
+	! pgrep "$1" && $@ &
 }
 
-kill_run () {
-  pkill "$1"
-  run_once $@
+kill_run() {
+	pkill "$1"
+	run_once $@
 }
 
 if [ "$HOSTNAME" = yharnam ]; then
-  xrandr --output HDMI-A-0 --rotate right --mode 3840x2160 --left-of DisplayPort-0 --rate 60
+	xrandr --output HDMI-A-0 --rotate right --mode 3840x2160 --left-of DisplayPort-0 --rate 60
 fi
 
 if [ "$HOSTNAME" = carb ]; then
-  bspc monitor -d I II III IV V VI
+	bspc monitor -d I II III IV V VI
 fi
 
 run_once screensaver.sh
@@ -28,11 +28,11 @@ kill_run bspi_listen --config ~/.config/bspwm/bspi.ini
 kill_run dunst
 run_once greenclip daemon
 if [ "$HOSTNAME" = yharnam ]; then
-  kill_run polybar primary
-  run_once polybar top
+	kill_run polybar primary
+	run_once polybar top
 fi
 if [ "$HOSTNAME" = carb ]; then
-  kill_run polybar sole
+	kill_run polybar sole
 fi
 kill_run sxhkd
 kill_run udiskie -t
@@ -42,36 +42,36 @@ dunstify "bspwm" "Hello, $USER" -i computer-symbolic
 setxkbmap -layout "pl(intl)"
 
 if [ "$HOSTNAME" = yharnam ]; then
-  bspc monitor DisplayPort-0 -d I II III IV V
-  bspc monitor HDMI-A-0 -d VI
-  feh --bg-fill ~/Pictures/wall-right.jpg --bg-center ~/Pictures/wall-left.jpg
-  bspc config focus_follows_pointer false
-  bspc config top_padding 55
-  bspc config bottom_padding 55
+	bspc monitor DisplayPort-0 -d I II III IV V
+	bspc monitor HDMI-A-0 -d VI
+	xsetroot -solid "#FFFFFF"
+	bspc config focus_follows_pointer false
+	bspc config top_padding 55
+	bspc config bottom_padding 55
 fi
 if [ "$HOSTNAME" = carb ]; then
-  bspc config focus_follows_pointer true
-  bspc config bottom_padding 75
-  feh --bg-fill ~/bg-laptop.jpg
+	bspc config focus_follows_pointer true
+	bspc config bottom_padding 75
+	feh --bg-fill ~/bg-laptop.jpg
 fi
-bspc config border_width         8
-bspc config window_gap           8
+bspc config border_width 8
+bspc config window_gap 8
 bspc config normal_border_color "#444444"
-bspc config focused_border_color "#ff0080"
+bspc config focused_border_color "#008080"
 bspc config urgent_border_color "#B58900"
 bspc config presel_border_color "#26E2FF"
 
-bspc config automatic_scheme     alternate
-bspc config borderless_monocle   false
-bspc config gapless_monocle      false
-bspc config single_monocle       true
+bspc config automatic_scheme alternate
+bspc config borderless_monocle false
+bspc config gapless_monocle false
+bspc config single_monocle true
 
 bspc config pointer_follows_focus false
 bspc config pointer_follows_monitor true
-bspc config history_aware_focus   true
-bspc config focus_by_distance     true
+bspc config history_aware_focus true
+bspc config focus_by_distance true
 
-bspc config split_ratio          0.43
+bspc config split_ratio 0.43
 
 bspc rule -a Zathura state=tiled
 bspc rule -a mpv state=floating center=true
