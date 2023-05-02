@@ -18,6 +18,7 @@ return {
 					endif
 					execute 'botright 10 new'
 					call termopen(a:cmd)
+					norm G
 					execute 'file! TestPanel'
 					echo 'Test: ' . a:cmd
 					nmap <buffer> q :bd!<cr>
