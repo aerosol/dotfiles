@@ -138,7 +138,7 @@ local theme = lush(function(injected_functions)
 		Type({ gui = "bold", fg = "#87005f" }),
 		Typedef({ gui = "bold", fg = "#87005f" }),
 		Underlined({ gui = "underline", fg = "#af00af" }),
-		VertSplit({ gui = "reverse" }),
+		VertSplit({ fg = "#0000af" }),
 		Visual({ bg = "#cde8ff" }),
 		VisualNOS({ gui = "bold,underline" }),
 		WarningHighlight({ bg = "#ffffd7" }),
