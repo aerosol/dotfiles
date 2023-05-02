@@ -1,0 +1,40 @@
+* {
+	background-color:           rgb(255,255,255);
+	winbg:					 	rgb(255,255,255);
+	text-color:                 #000000;
+	normal-foreground:          @text-color;
+	normal-background:          @background-color;
+	margin:                     0;
+}
+
+prompt {
+  text-color: #000087;
+  margin: 0 20px 0 0;
+}
+
+element-text {
+  highlight: underline #008083;
+}
+
+listview {
+  lines: 20;
+  spacing: 5;
+	layout: vertical;
+}
+
+element {
+    padding: 10px;
+}
+element selected, element-text selected {
+    background-color: #C0C0C0;
+}
+
+window {
+  width: 60%;
+  background-color: @winbg;
+  location: south;
+  padding: 40px;
+  margin: 80px;
+  border: 2px 8px 8px 2px;
+  border-color: #C0C0C0;
+}

@@ -2,4 +2,4 @@ configuration {
   font: "SF Pro Display 26";
 }
 
-@theme "/home/hq1/.config/rofi/themes/minimal.rasi"
+@theme "/home/hq1/.config/rofi/themes/minimal_light.rasi"
