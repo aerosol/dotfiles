@@ -30,11 +30,6 @@ glg() {
 FZF-EOF"
 }
 
-p() {
-  pass=$(ssh -v mtod -t "P/p.py $1")
-  echo $pass | tail -n1 | xsel --clipboard --input
-}
-
 man() {
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
