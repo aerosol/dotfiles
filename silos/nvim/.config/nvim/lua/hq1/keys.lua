@@ -14,6 +14,8 @@ keymap("n", "N", "Nzz", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
+keymap("i", "jk", "<Esc>", opts)
+
 keymap("n", "<C-p>", "za", opts)
 
 keymap("c", "<C-a>", "<home>", {})
