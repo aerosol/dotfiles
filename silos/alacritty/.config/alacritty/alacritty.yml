@@ -180,7 +180,7 @@ colors:
   # Default colors
   primary:
     foreground: '#000000'
-    background: '#ffffff'
+    background: '#FFFFE8'
   # Normal colors
   normal:
     # NOTE: Use '#131613' for the `black` color if you'd like to see
