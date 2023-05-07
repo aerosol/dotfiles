@@ -57,8 +57,8 @@ hsetroot -solid "#3B6EA5"
 
 bspc config border_width 8
 bspc config window_gap 32
-bspc config normal_border_color "#00005f"
-bspc config focused_border_color "#af00af"
+bspc config normal_border_color "#305982"
+bspc config focused_border_color "#ffffff"
 bspc config urgent_border_color "#B58900"
 bspc config presel_border_color "#26E2FF"
 
