@@ -53,7 +53,7 @@ if [ "$HOSTNAME" = carb ]; then
 	bspc config bottom_padding 75
 fi
 
-hsetroot -solid "#008080"
+hsetroot -solid "#3B6EA5"
 
 bspc config border_width 8
 bspc config window_gap 32
