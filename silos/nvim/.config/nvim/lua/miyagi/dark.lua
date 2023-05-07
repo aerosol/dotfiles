@@ -50,7 +50,7 @@ local theme = lush(function()
 		diffRemoved({ DiffDelete }),
 		WarningMessage({ DiffDelete }),
 		Pmenu({ bg = highlight1, fg = white }),
-		NormalFloat({ Pmenu }),
+		NormalFloat({ bg = dark }),
 		PmenuExtra({ Pmenu }),
 		PmenuSel({ bg = faded, fg = white }),
 		PmenuExtraSel({ PmenuSel }),
