@@ -53,12 +53,13 @@ local special = "#789468"
 ---@diagnostic disable: undefined-global
 local theme = lush(function()
 	return {
-		Normal({ bg = bg, fg = basic }), -- normal text
+		Normal({ bg = bg, fg = basic }),
+		Directory({ fg = special, gui = "italic" }),
+		DirBufFile({ fg = bright, gui = "italic" }),
 		LineNr({ fg = subtle }),
 		Comment({ fg = faded, gui = "italic" }),
 		Keyword({ Normal }),
 		Type({ Normal }),
-		Directory({ Normal }),
 		SpecialKey({ Normal }),
 		Function({ fg = bright, gui = "italic" }),
 		Identifier({ Normal }),

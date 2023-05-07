@@ -39,6 +39,10 @@ return {
 			fzf.git_branches()
 		end, opts)
 
+		vim.keymap.set("n", "=", function()
+			fzf.lsp_document_symbols()
+		end, opts)
+
 		vim.keymap.set("n", "<leader>L", function()
 			fzf.live_grep_native({
 				rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']],
