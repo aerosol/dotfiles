@@ -11,6 +11,7 @@ local dark = "#111111"
 local highlight1 = "#00005f"
 local highlight2 = "#fffefa"
 local special = "#789468"
+local warn = "#824149"
 
 ---@diagnostic disable: undefined-global
 local theme = lush(function()
@@ -44,7 +45,10 @@ local theme = lush(function()
 		SignColumn({ fg = special, bg = "none" }),
 		DiffAdd({ fg = special, bg = "none" }),
 		DiffChange({ fg = highlight2, bg = "none" }),
-		DiffDelete({ fg = "red", bg = "none" }),
+		DiffDelete({ fg = warn, bg = "none" }),
+		diffAdded({ DiffAdd }),
+		diffRemoved({ DiffDelete }),
+		WarningMessage({ DiffDelete }),
 		Pmenu({ bg = highlight1, fg = white }),
 		NormalFloat({ Pmenu }),
 		PmenuExtra({ Pmenu }),
