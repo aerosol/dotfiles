@@ -176,33 +176,11 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
-colors:
-  # Default colors
-  primary:
-    foreground: '#000000'
-    background: '#FFFFE8'
-  # Normal colors
-  normal:
-    # NOTE: Use '#131613' for the `black` color if you'd like to see
-    # black text on the background.
-    black:   '#282c34'
-    red:     '#85005C'
-    green:   '#005F00'
-    yellow:  '#d19a66'
-    blue:    '#000087'
-    magenta: '#AF00AF'
-    cyan:    '#046161'
-    white:   '#555555'
-  # Bright colors
-  bright:
-    black:   '#5c6370'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#FFFF64'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#ffffff'
+
+import:
+  # - ~/.config/alacritty/hq1shiro.yaml
+  - ~/.config/alacritty/hq1miyagi.yaml
+
 shell:
   program: /bin/zsh
 #  args:
