@@ -1,11 +1,8 @@
--- lush port of https://github.com/yasukotelin/shirotelin
 local lush = require("lush")
-local hsl = lush.hsl
-local hsluv = lush.hsluv
+-- local hsl = lush.hsl
 
 ---@diagnostic disable: undefined-global
-local theme = lush(function(injected_functions)
-	local sym = injected_functions.sym
+local theme = lush(function()
 	return {
 		Boolean({ gui = "bold", fg = "#0000af" }),
 		Character({ fg = "#0000af" }),
@@ -89,7 +86,7 @@ local theme = lush(function(injected_functions)
 		ModeMsg({ gui = "bold", fg = "#303030" }),
 		MoreMsg({ gui = "bold", fg = "seagreen" }),
 		NonText({ fg = "#d0d0d0" }),
-		Normal({ bg = "none", fg = "black" }),
+		Normal({ bg = "#FFFFE8", fg = "black" }),
 		SignColumn({ Normal }),
 		DirBufHash({ Normal }),
 		Number({ fg = "#0000af" }),
@@ -174,4 +171,5 @@ local theme = lush(function(injected_functions)
 		LspWarningText({ WarningHighlight }),
 	}
 end)
+
 return theme

@@ -3,10 +3,11 @@ return {
 		"rktjmp/lush.nvim",
 		config = function()
 			if os.getenv("MUH_THEME") == "light" then
-				vim.cmd([[colorscheme hq1shiro]])
+				vim.o.background = "light"
 			else
-				vim.cmd([[colorscheme hq1miyagi]])
+				vim.o.background = "dark"
 			end
+			vim.cmd("colorscheme miyagi")
 		end,
 	},
 }
