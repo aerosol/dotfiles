@@ -7,9 +7,10 @@ local basic = "#aaaaaa"
 local bright = "#bbbbbb"
 local faded = "#666666"
 local subtle = "#222222"
-local dark = "#111111"
+local dark = "#222222"
 local highlight1 = "#00005f"
-local highlight2 = "#fffefa"
+local highlight2 = "#111111"
+local highlight3 = "#ced9b2"
 local special = "#789468"
 local warn = "#824149"
 
@@ -27,6 +28,7 @@ local theme = lush(function()
 		Function({ fg = bright, gui = "italic" }),
 		Identifier({ Normal }),
 		MatchParen({ fg = white, bg = special }),
+		MatchWord({ fg = "none", bg = "none", gui = "underline" }),
 		Operator({ fg = faded }),
 		Conditional({ Normal }),
 		Statement({ fg = faded }),
@@ -40,9 +42,9 @@ local theme = lush(function()
 		Constant({ fg = special, gui = "italic" }),
 		Number({ Normal }),
 		Boolean({ Normal }),
-		Search({ fg = dark, bg = highlight2 }),
-		IncSearch({ fg = dark, bg = highlight2 }),
-		SignColumn({ fg = special, bg = "none" }),
+		Search({ fg = white, bg = dark, gui = "underline" }),
+		IncSearch({ fg = white, bg = dark, gui = "underline" }),
+		SignColumn({ fg = highlight3, bg = "none" }),
 		DiffAdd({ fg = special, bg = "none" }),
 		DiffChange({ fg = highlight2, bg = "none" }),
 		DiffDelete({ fg = warn, bg = "none" }),
@@ -58,6 +60,7 @@ local theme = lush(function()
 		PmenuKindSel({ PmenuSel }),
 		PmenuSbar({ bg = "#eeeeee" }),
 		PmenuThumb({ bg = "#185858" }),
+		Todo({ fg = white, gui = "underline" }),
 	}
 end)
 

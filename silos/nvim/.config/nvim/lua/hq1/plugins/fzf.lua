@@ -40,7 +40,9 @@ return {
 		end, opts)
 
 		vim.keymap.set("n", "=", function()
-			fzf.lsp_document_symbols()
+			fzf.lsp_document_symbols({
+				winopts = { fullscreen = false, preview = { hidden = "hidden" } },
+			})
 		end, opts)
 
 		vim.keymap.set("n", "<leader>L", function()
