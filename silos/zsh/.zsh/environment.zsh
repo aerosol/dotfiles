@@ -19,8 +19,4 @@ if [[ "$TERM" == "xterm-256color" ]]; then
 	fi
 fi
 
-if [[ "$MUH_THEME" == "light" ]]; then
-  export BAT_THEME="GitHub"
-else
-  export BAT_THEME="1337"
-fi
+# export BAT_THEME="GitHub"
