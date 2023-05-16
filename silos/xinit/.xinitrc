@@ -2,6 +2,7 @@ export XSECURELOCK_FONT="SF Pro Display:size=46"
 export XSECURELOCK_BLANK_TIMEOUT=-1
 export XSECURELOCK_PASSWORD_PROMPT=kamoji
 if [ "$HOSTNAME" = carb ]; then
+  export QT_AUTO_SCREEN_SCALE_FACTOR=1
   xrdb -merge ~/.Xresources.carb
   setxkbmap -option ctrl:nocaps 
   setxkbmap -option altwin:swap_lalt_lwin
