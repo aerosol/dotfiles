@@ -1,26 +1,19 @@
 return {
 	{
-		"folke/styler.nvim",
-		dependencies = {
-			"projekt0n/github-nvim-theme",
-		},
+		"rebelot/kanagawa.nvim",
 		config = function()
-			require("styler").setup({
-				themes = {
-					javascript = { colorscheme = "github_dark_high_contrast" },
-				},
-			})
+			vim.cmd("colorscheme kanagawa")
 		end,
 	},
 	{
 		"rktjmp/lush.nvim",
-		config = function()
-			if os.getenv("MUH_THEME") == "light" then
-				vim.o.background = "light"
-			else
-				vim.o.background = "dark"
-			end
-			vim.cmd("colorscheme miyagi")
-		end,
+		-- config = function()
+		-- 	if os.getenv("MUH_THEME") == "light" then
+		-- 		vim.o.background = "light"
+		-- 	else
+		-- 		vim.o.background = "dark"
+		-- 	end
+		-- 	vim.cmd("colorscheme miyagi")
+		-- end,
 	},
 }
