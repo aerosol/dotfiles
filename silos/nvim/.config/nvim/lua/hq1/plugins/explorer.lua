@@ -1,10 +1,23 @@
 return {
 	"aymericbeaumet/vim-symlink",
-	"elihunter173/dirbuf.nvim",
-	config = function()
-		require("dirbuf").setup({
-			hash_padding = 2,
-			sort_order = "directories_first",
-		})
-	end,
+	{
+		"stevearc/oil.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				keymaps = {
+					["<CR>"] = "actions.select",
+					["-"] = "actions.parent",
+					["_"] = "actions.open_cwd",
+					["g."] = "actions.cd",
+					["gh"] = "actions.toggle_hidden",
+				},
+				use_default_keymaps = false,
+				view_options = {
+					show_hidden = true,
+				},
+			})
+			vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+		end,
+	},
 }
