@@ -2,7 +2,11 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
-			vim.cmd("colorscheme kanagawa")
+			if os.getenv("MUH_THEME") == "dark" then
+				vim.cmd("colorscheme kanagawa-dragon")
+			else
+				vim.cmd("colorscheme miyagi")
+			end
 		end,
 	},
 	{
