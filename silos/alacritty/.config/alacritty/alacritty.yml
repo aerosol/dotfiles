@@ -179,7 +179,8 @@ font:
 
 import:
   # - ~/.config/alacritty/hq1shiro.yaml
-  - ~/.config/alacritty/hq1miyagi.yaml
+  # - ~/.config/alacritty/hq1miyagi.yaml
+  - ~/.config/alacritty/kanagawa.yaml
 
 shell:
   program: /bin/zsh
