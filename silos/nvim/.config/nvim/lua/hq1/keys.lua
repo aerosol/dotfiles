@@ -29,6 +29,8 @@ keymap("n", "L", ":tabnext<cr>", opts)
 keymap("n", "<Bs>", ":close<cr>", opts)
 
 keymap("n", "<leader>fed", "<cmd>:e ~/.config/nvim/lua/hq1<cr>", opts)
+keymap("n", "<leader>feh", "<cmd>:e ~/.config/hypr/hyprland.conf<cr>", opts)
+keymap("n", "<leader>few", "<cmd>:e ~/.config/waybar/<cr>", opts)
 keymap("n", "<leader>fek", "<cmd>:e ~/.config/kitty/kitty.conf<cr>", opts)
 keymap("n", "<leader>feb", "<cmd>:e ~/.config/bspwm/bspwmrc<cr>", opts)
 keymap("n", "<leader>fes", "<cmd>:e ~/.config/sxhkd/sxhkdrc<cr>", opts)
