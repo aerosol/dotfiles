@@ -9,6 +9,10 @@
     "modules-left": ["wlr/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["idle_inhibitor", "network", "battery", "battery#bat2", "clock", "tray"],
+
+    "wlr/workspaces": {
+     "format": "{name}"
+},
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
