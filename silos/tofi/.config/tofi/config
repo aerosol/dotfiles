@@ -1,0 +1,12 @@
+width = 100%
+height = 100%
+border-width = 0
+outline-width = 0
+padding-left = 10%
+padding-top = 35%
+padding-right = 10%
+result-spacing = 15
+num-results = 8
+font = SF Pro Display
+background-color = #000A
+text-cursor = true
