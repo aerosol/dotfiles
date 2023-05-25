@@ -1,12 +1,14 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: PragmataPro;
-    font-size: 14px;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 1px 6px;
 }
 
 window#waybar {
-    background-color: #C0C0C0;
-    color: #000000;
+    background-color: #3B6EA5;
+    color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -17,11 +19,6 @@ window#waybar.hidden {
 
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -33,7 +30,7 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #000000;
+    color: #ffffff;
 }
 
 #workspaces button:hover {
@@ -41,8 +38,7 @@ button:hover {
 }
 
 #workspaces button.active {
-    background-color: #ffffff;
-    box-shadow: inset 0 -3px #000000;
+    background-color: #003399;
 }
 
 #workspaces button.urgent {
@@ -76,6 +72,11 @@ button:hover {
 #window,
 #workspaces {
     margin: 0 4px;
+}
+
+#window {
+    font-family: SF Pro Display;
+    font-weight: 600;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
