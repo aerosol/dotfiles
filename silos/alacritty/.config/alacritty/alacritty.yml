@@ -84,7 +84,7 @@ window:
   #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
@@ -119,7 +119,11 @@ font:
     style: Regular
 
   bold:
-    family: PragmataPro Mono
+    family: JetBrains Mono
+    style: Bold
+
+  bold_italic:
+    family: JetBrains Mono
     style: Bold
 
   # Bold font face
@@ -180,7 +184,8 @@ font:
 import:
   # - ~/.config/alacritty/hq1shiro.yaml
   # - ~/.config/alacritty/hq1miyagi.yaml
-  - ~/.config/alacritty/kanagawa.yaml
+  # - ~/.config/alacritty/kanagawa.yaml
+  - ~/.config/alacritty/solarized.yaml
 
 shell:
   program: /bin/zsh
