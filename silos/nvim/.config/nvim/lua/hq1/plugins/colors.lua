@@ -1,34 +1,11 @@
 return {
 	{
-		"rebelot/kanagawa.nvim",
+		"Tsuzat/NeoSolarized.nvim",
 		config = function()
-			require("kanagawa").setup({
-				colors = {
-					theme = {
-						all = {
-							ui = {
-								bg_gutter = "none",
-							},
-						},
-					},
-				},
+			require("NeoSolarized").setup({
+				transparent = true,
 			})
-			if os.getenv("MUH_THEME") == "dark" then
-				vim.cmd("colorscheme kanagawa-dragon")
-			else
-				vim.cmd("colorscheme miyagi")
-			end
+			vim.cmd("colorscheme NeoSolarized")
 		end,
-	},
-	{
-		"rktjmp/lush.nvim",
-		-- config = function()
-		-- 	if os.getenv("MUH_THEME") == "light" then
-		-- 		vim.o.background = "light"
-		-- 	else
-		-- 		vim.o.background = "dark"
-		-- 	end
-		-- 	vim.cmd("colorscheme miyagi")
-		-- end,
 	},
 }
