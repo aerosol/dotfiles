@@ -23,11 +23,15 @@ set $term alacritty
 set $menu tofi-run | xargs swaymsg exec --
 
 # exec_always piow --syslog
+exec dunst
+exec firefox
+exec alacritty
+exec_always swaybg -c '#3B6EA5'
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in \/usr\/share\/backgrounds\/sway\/)
-output * bg \/usr\/share\/backgrounds\/sway\/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg \/usr\/share\/backgrounds\/sway\/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -39,10 +43,10 @@ output * bg \/usr\/share\/backgrounds\/sway\/Sway_Wallpaper_Blue_1920x1080.png f
 #
 # Example configuration:
 #
-# exec swayidle -w \\
-#          timeout 300 'swaylock -f -c 000000' \\
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \\
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \\
+         timeout 300 'gtklock -d' \\
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \\
+         before-sleep 'gtklock -d'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -93,7 +97,7 @@ input * {
     floating_modifier $mod normal
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Alt+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -113,6 +117,12 @@ input * {
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
+
+    bindsym XF86MonBrightnessUp exec brightnessctl s 10+
+    bindsym XF86MonBrightnessDown exec brightnessctl s 10-
+    bindsym XF86AudioRaiseVolume exec volume up
+    bindsym XF86AudioLowerVolume exec volume down
+    bindsym XF86AudioMute exec volume mute
 #
 # Workspaces:
 #
@@ -147,9 +157,10 @@ input * {
     bindsym $mod+b splitv
 
     # Switch the current container between different layout styles
-    # bindsym $mod+e layout toggle
+    bindsym $mod+e layout toggle splith tabbed stacking splitv
     bindsym $mod+t layout tabbed
     bindsym $mod+g layout toggle split
+    bindsym $mod+p sticky toggle
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
