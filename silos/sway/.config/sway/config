@@ -12,6 +12,7 @@ set $term alacritty
 set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area grimblast --notify copy area
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
+set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 
 exec dunst
 exec firefox
@@ -28,6 +29,7 @@ exec swayidle -w \\
 
 
 floating_modifier $mod normal
+bindsym $mod+period exec $emoji
 bindsym Ctrl+Shift+f move window to output left, focus output left
 bindsym Ctrl+Shift+v exec $clipboard
 bindsym $mod+Escape exec 'wlrctl window focus Alacritty || $term'
