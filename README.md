@@ -1,15 +1,5 @@
 # dotfiles (silos) :factory: 
 
-## More or less up to date snapshots:
-
-### laptop
-
-![](https://user-images.githubusercontent.com/173738/231552755-e9e5b3af-e60d-49df-bb8d-014cf1421b7b.png)
-
-### desktop
-
-![](https://user-images.githubusercontent.com/173738/231703710-41a33dbb-ed36-413b-bdd0-70ea639f8340.png)
-
 ## Synopsis
 
 Every silo is make-driven stow package, contains deployable set of dotfiles per program (zsh, vim, etc.)
