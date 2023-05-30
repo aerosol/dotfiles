@@ -6,7 +6,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu tofi-run
+set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area grimblast --notify copy area
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 
