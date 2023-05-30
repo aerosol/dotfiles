@@ -116,10 +116,10 @@ bindsym $mod+q mode "quickmode"
 bar {
     position bottom
     status_command i3blocks
-    status_padding 10
+    status_padding 4
 
     colors {
-        statusline #ffffff
+        statusline #000000
         background #C0C0C0
         inactive_workspace #000000 #C0C0C0 #000000
     }
