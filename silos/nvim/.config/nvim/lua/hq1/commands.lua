@@ -14,19 +14,28 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
+	pattern = "*",
+	callback = function()
+		if not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+			vim.api.nvim_command("update")
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions = vim.opt.formatoptions
-			- "a" -- No auto formatting
-			- "t" -- No auto-wrapping
-			+ "c" -- comments respect textwidth
-			+ "q" -- Allow formatting comments w/ gq
-			- "o" -- O and o, don't continue comments
-			+ "r" -- But do continue when pressing enter.
-			+ "n" -- Indent past the formatlistpat, not underneath it.
-			+ "j" -- Allow joining multi-line comments
-			- "2" -- No paragraph idents
+				- "a" -- No auto formatting
+				+ "t" -- Auto-wrapping
+				+ "c" -- comments respect textwidth
+				- "q" -- Allow formatting comments w/ gq
+				- "o" -- O and o, don't continue comments
+				+ "r" -- But do continue when pressing enter.
+				+ "n" -- Indent past the formatlistpat, not underneath it.
+				+ "j" -- Allow joining multi-line comments
+				- "2" -- No paragraph idents
 	end,
 })
 
