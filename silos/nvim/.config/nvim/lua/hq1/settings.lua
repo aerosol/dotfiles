@@ -23,3 +23,4 @@ vim.opt.updatetime = 750
 vim.opt.wrap = true
 vim.opt.ttimeoutlen = 10
 vim.opt.timeout = false
+vim.opt.spell = true
