@@ -115,15 +115,15 @@ font:
     style: Regular
 
   italic:
-    family: JetBrains Mono
+    family: JetBrainsMonoNL Nerd Font
     style: Regular
 
   bold:
-    family: JetBrains Mono
+    family: JetBrainsMonoNL Nerd Font
     style: Bold
 
   bold_italic:
-    family: JetBrains Mono
+    family: JetBrainsMonoNL Nerd Font
     style: Bold
 
   # Bold font face
@@ -149,7 +149,7 @@ font:
   #style: Bold Italic
 
   # Point size
-  size: 18.0
+  size: 18.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
