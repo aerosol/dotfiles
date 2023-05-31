@@ -14,6 +14,7 @@ set $screenshot_area grimblast --notify copy area
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 
+exec swayrd
 exec dunst
 exec firefox
 exec alacritty
@@ -29,6 +30,7 @@ exec swayidle -w \\
 
 
 floating_modifier $mod normal
+bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
 bindsym $mod+period exec $emoji
 bindsym Ctrl+Shift+f move window to output left, focus output left
 bindsym Ctrl+Shift+v exec $clipboard
