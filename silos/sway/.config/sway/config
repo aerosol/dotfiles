@@ -76,8 +76,8 @@ bindsym $mod+t layout tabbed
 bindsym $mod+g layout toggle split
 bindsym $mod+p sticky toggle
 
-bindsym $mod+f fullscreen
-bindsym F11 fullscreen
+bindsym $mod+f fullscreen toggle
+bindsym F11 fullscreen toggle
 bindsym $mod+Shift+4 exec $screenshot_area
 bindsym Ctrl+Shift+$mod+Escape exec $screenshot_area
 
