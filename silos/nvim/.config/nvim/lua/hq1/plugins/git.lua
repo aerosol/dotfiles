@@ -1,10 +1,16 @@
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
 return {
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			keymap("n", "gd", ":tab :DiffviewOpen<cr>", opts)
+		end,
+	},
 	{
 		"tpope/vim-fugitive",
 		config = function()
-			local keymap = vim.keymap.set
-			local opts = { noremap = true, silent = true }
-
 			keymap("n", "gs", ":tab :Git<cr>", opts)
 			keymap("n", "gl", ":tab :Git log<cr>", opts)
 			keymap({ "n", "v" }, "gb", ":Git blame<cr>", opts)
