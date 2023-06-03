@@ -26,6 +26,9 @@ keymap("i", "ii", "|> IO.inspect(label: :)<Left>", {})
 keymap("n", "H", ":tabprevious<cr>", opts)
 keymap("n", "L", ":tabnext<cr>", opts)
 
+keymap("v", "y", "ygv<esc>", opts)
+keymap("n", "p", "p=`]", opts)
+
 keymap("n", "<leader>fed", "<cmd>:e ~/.config/nvim/lua/hq1<cr>", opts)
 keymap("n", "<leader>feh", "<cmd>:e ~/.config/hypr/hyprland.conf<cr>", opts)
 keymap("n", "<leader>few", "<cmd>:e ~/.config/waybar/<cr>", opts)

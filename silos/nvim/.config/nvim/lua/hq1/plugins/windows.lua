@@ -12,9 +12,7 @@ return {
 		require("windows").setup({
 			animation = {
 				enable = false,
-				duration = 150,
 			},
 		})
-		vim.keymap.set("n", "<leader>Z", "<Cmd>WindowsMaximize<CR>")
 	end,
 }

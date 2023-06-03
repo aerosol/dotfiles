@@ -5,7 +5,7 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		config = function()
-			keymap("n", "gd", ":tab :DiffviewOpen<cr>", opts)
+			keymap("n", "gD", ":tab :DiffviewOpen<cr>:WindowsDisableAutowidth<cr>", opts)
 		end,
 	},
 	{
