@@ -28,6 +28,7 @@ exec swayidle -w \\
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \\
          before-sleep 'gtklock -d'
 
+focus_on_window_activation focus
 
 floating_modifier $mod normal
 bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
