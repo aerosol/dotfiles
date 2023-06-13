@@ -23,7 +23,6 @@ return {
 				sources = {
 					null_ls.builtins.diagnostics.flake8,
 					null_ls.builtins.diagnostics.gitlint,
-					null_ls.builtins.diagnostics.markdownlint,
 					null_ls.builtins.diagnostics.shellcheck,
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.stylua,

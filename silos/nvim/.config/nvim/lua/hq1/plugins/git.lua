@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = false }
 
 return {
 	{
@@ -13,6 +13,10 @@ return {
 		config = function()
 			keymap("n", "gs", ":tab :Git<cr>", opts)
 			keymap("n", "gl", ":tab :Git log<cr>", opts)
+			keymap("n", "gc", ":tab :Git commit<cr>", opts)
+			keymap("n", "gI", ":Git rebase -i origin/", opts)
+			keymap("n", "gC", ":Git rebase --continue", opts)
+			keymap("n", "gA", ":Git rebase --abort", opts)
 			keymap({ "n", "v" }, "gb", ":Git blame<cr>", opts)
 			keymap({ "n", "v" }, "gB", ":GBrowse<cr>", opts)
 		end,

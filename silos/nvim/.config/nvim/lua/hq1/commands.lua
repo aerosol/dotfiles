@@ -1,4 +1,14 @@
 -- go to last loc when opening a buffer
+
+-- autocmd BufReadPost git-rebase-todo :silent %!git-rb
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "git-rebase-todo",
+	callback = function()
+		vim.cmd([[:silent %!git-rb]])
+	end,
+})
+
 vim.api.nvim_create_autocmd("BufReadPre", {
 	pattern = "*",
 	callback = function()
@@ -27,15 +37,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions = vim.opt.formatoptions
-				- "a" -- No auto formatting
-				+ "t" -- Auto-wrapping
-				+ "c" -- comments respect textwidth
-				- "q" -- Allow formatting comments w/ gq
-				- "o" -- O and o, don't continue comments
-				+ "r" -- But do continue when pressing enter.
-				+ "n" -- Indent past the formatlistpat, not underneath it.
-				+ "j" -- Allow joining multi-line comments
-				- "2" -- No paragraph idents
+			- "a" -- No auto formatting
+			+ "t" -- Auto-wrapping
+			+ "c" -- comments respect textwidth
+			- "q" -- Allow formatting comments w/ gq
+			- "o" -- O and o, don't continue comments
+			+ "r" -- But do continue when pressing enter.
+			+ "n" -- Indent past the formatlistpat, not underneath it.
+			+ "j" -- Allow joining multi-line comments
+			- "2" -- No paragraph idents
 	end,
 })
 
