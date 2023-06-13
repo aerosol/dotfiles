@@ -1,3 +1,0 @@
-echo "🔔 dunstctl history | jq '.data[] | length'"
-
-
