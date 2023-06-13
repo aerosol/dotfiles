@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+# usage: git extract <source_branch> <target_branch> [<main_branch>]
+# example: git extract origin/wip-feature-dirty feature-clean origin/main
+
+# I often work on long-living dirty feature branches, saving garbage "wip"
+# checkpoints, before I fully understand what am I even doing.
+
+# When the feature is finished and tested, I end up with the garbage log that's
+# mostly meaningless, but not quite. I find it hard to separate sensible commit
+# messages from those that served only as a snapshot of some intermittent state.
+
+# Usually the main units I can reason about are files/directories/namespaces etc.
+# So before submitting a proper PR, I need to, not only rebase against the main branch,
+# but also tidy up the log.
+
+# This script aims to help with that, provided I know which _paths_ should
+# eventually end up in the clean, public branch annotated with descriptive commits
+# others could then review.
+
+# The script will open a new fzf multi picker window with all the files
+# changed between <source_branch> and <main_branch>.
+# After selecting one or more files, it will switch to <target_branch>,
+# creating it, if necessary, and then restore selected file(s) into it.
+
+# The commit message will be pre-populated with a comment containing all
+# the commit messages associated with selected file(s), as seen in <source_branch>.
+
+# In case multiple authors were involved, the Co-authored-by header(s) will be
+# automatically added.
+
+myself=$(git config user.email)
+src="$1"
+
+if [ -z "$2" ]; then
+	target=$(git rev-parse --abbrev-ref HEAD)
+else
+	target="$2"
+fi
+
+if [ -z "$src" ] || [ -z "$target" ]; then
+	echo "usage: $(basename "$0") <source_branch> <target_branch>"
+	exit 1
+fi
+
+if [ -z "$3" ]; then
+	main="origin/master"
+else
+	main="$3"
+fi
+
+if ! git rev-parse --verify "$main" >/dev/null 2>&1; then
+	echo "error: main branch '$main' does not exist"
+	exit 1
+fi
+
+if ! git rev-parse --verify "$src" >/dev/null 2>&1; then
+	echo "error: source branch '$src' does not exist"
+	exit 1
+fi
+
+base=$(git merge-base "$src" "$main")
+preview="git diff $base $src --color=always -- {-1}"
+selection=$(git diff --name-only "$src" "$base" | fzf --multi --ansi --preview "$preview")
+
+if [ -z "${selection}" ]; then
+	echo "Nothing to split"
+	exit 1
+else
+	git switch -c "$target"
+	tmp=$(mktemp)
+	printf "\n\n" >"$tmp"
+
+	coauth=$(git log --format="Co-authored-by: %aN <%ae>" "$main..$src" -- $selection | sort | uniq | grep -v "$myself")
+
+	for arg in $selection; do
+		messages=$(git log --format="%h %s" "$main..$src" -- "$arg")
+		git restore --source "$src" --staged --worktree -- "$arg"
+
+		printf "%s - restored from:\n\n%s\n\n" "$arg" "$messages" >>"$tmp"
+	done
+
+	echo "$coauth" >>"$tmp"
+	git commit -t "$tmp"
+fi
