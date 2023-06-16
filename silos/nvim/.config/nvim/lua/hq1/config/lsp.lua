@@ -108,7 +108,25 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
+lspkind.init({
+	symbol_map = {
+		Copilot = "",
+		Codeium = "",
+	},
+})
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+vim.api.nvim_set_hl(0, "CmpItemKindCodeium", { fg = "#6CC644" })
+
 cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered({
+			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+		}),
+		documentation = cmp.config.window.bordered({
+			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+		}),
+	},
 	experimental = {
 		ghost_text = true,
 	},
@@ -148,9 +166,11 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
+		{ name = "codeium",  group_index = 2 },
+		{ name = "copilot",  group_index = 2 },
+		{ name = "nvim_lsp", group_index = 2 },
+		{ name = "luasnip",  group_index = 2 },
+		{ name = "buffer",   group_index = 2 },
 	},
 })
 

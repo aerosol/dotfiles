@@ -1,3 +1,4 @@
+; extends
 ((query
 	 (pattern
 		 (seq
