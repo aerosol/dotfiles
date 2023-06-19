@@ -1,7 +1,5 @@
 -- go to last loc when opening a buffer
 
--- autocmd BufReadPost git-rebase-todo :silent %!git-rb
-
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "git-rebase-todo",
 	callback = function()
