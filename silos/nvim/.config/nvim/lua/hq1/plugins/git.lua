@@ -13,12 +13,15 @@ return {
 				":DiffviewFileHistory --range=origin/master...HEAD --right-only --no-merges",
 				{}
 			)
+			keymap("v", "dp", ":diffput<cr>", opts)
+			keymap("v", "dg", ":diffget<cr>", opts)
 		end,
 	},
 	{
 		"tpope/vim-fugitive",
 		config = function()
 			keymap("n", "gs", ":tab :Git<cr>", opts)
+			keymap("n", "gp", ":Git push<cr>", opts)
 			keymap("n", "gl", ":tab :Git log<cr>", opts)
 			keymap("n", "gc", ":tab :Git commit<cr>", opts)
 			keymap("n", "gI", ":Git rebase -i origin/", opts)
