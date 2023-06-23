@@ -33,7 +33,7 @@ function M.on_attach(_, bufnr)
 
 	-- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
-	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	-- nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
 
@@ -100,9 +100,6 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
--- Turn on lsp status information
-require("fidget").setup()
-
 -- nvim-cmp setup
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -166,11 +163,11 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = {
-		{ name = "codeium",  group_index = 2 },
-		{ name = "copilot",  group_index = 2 },
+		{ name = "codeium", group_index = 2 },
+		{ name = "copilot", group_index = 2 },
 		{ name = "nvim_lsp", group_index = 2 },
-		{ name = "luasnip",  group_index = 2 },
-		{ name = "buffer",   group_index = 2 },
+		{ name = "luasnip", group_index = 2 },
+		{ name = "buffer", group_index = 2 },
 	},
 })
 

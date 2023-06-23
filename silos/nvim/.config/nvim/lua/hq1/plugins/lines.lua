@@ -8,6 +8,15 @@ return {
 			"nvim-tree/nvim-web-devicons", -- optional dependency
 		},
 		opts = {
+
+			exclude_filetypes = { "netrw", "oil", "toggleterm" },
+			show_dirname = false,
+			lead_custom_section = function()
+				return ""
+			end,
+			custom_section = function()
+				return ""
+			end,
 			symbols = {
 				---Modification indicator.
 				---
@@ -17,12 +26,12 @@ return {
 				---Truncation indicator.
 				---
 				---@type string
-				ellipsis = "",
+				ellipsis = "%#WinbarBreadcrumb#‥",
 
 				---Entry separator.
 				---
 				---@type string
-				separator = "",
+				separator = "%#WinbarBreadcrumb#",
 			},
 			kinds = {
 				File = "",
@@ -53,36 +62,36 @@ return {
 				TypeParameter = "",
 			},
 			theme = {
-				normal = { bold = false, italic = true, bg = "black", underline = true },
-				dirname = { fg = "#737aa2", bold = false, italic = true },
-				basename = { bold = false, italic = true },
-				context = { bold = false, italic = true },
-				context_file = { bold = false, italic = true },
-				context_module = { bold = false, italic = true },
-				context_namespace = { bold = false, italic = true },
-				context_package = { bold = false, italic = true },
-				context_class = { bold = false, italic = true },
-				context_method = { bold = false, italic = true },
-				context_property = { bold = false, italic = true },
-				context_field = { bold = false, italic = true },
-				context_constructor = { bold = false, italic = true },
-				context_enum = { bold = false, italic = true },
-				context_interface = { bold = false, italic = true },
-				context_function = { bold = false, italic = true },
-				context_variable = { bold = false, italic = true },
-				context_constant = { bold = false, italic = true },
-				context_string = { bold = false, italic = true },
-				context_number = { bold = false, italic = true },
-				context_boolean = { bold = false, italic = true },
-				context_array = { bold = false, italic = true },
-				context_object = { bold = false, italic = true },
-				context_key = { bold = false, italic = true },
-				context_null = { bold = false, italic = true },
-				context_enum_member = { bold = false, italic = true },
-				context_struct = { bold = false, italic = true },
-				context_event = { bold = false, italic = true },
-				context_operator = { bold = false, italic = true },
-				context_type_parameter = { bold = false, italic = true },
+				normal = { link = "WinbarBreadcrumb" },
+				dirname = { link = "WinbarBreadcrumb" },
+				basename = { link = "WinbarBreadcrumbEm" },
+				context = { link = "WinbarBreadcrumb" },
+				context_file = { link = "WinbarBreadcrumm" },
+				context_module = { link = "WinbarBreadcrumb" },
+				context_namespace = { link = "WinbarBreadcrumb" },
+				context_package = { link = "WinbarBreadcrumb" },
+				context_class = { link = "WinbarBreadcrumb" },
+				context_method = { link = "WinbarBreadcrumb" },
+				context_property = { link = "WinbarBreadcrumb" },
+				context_field = { link = "WinbarBreadcrumb" },
+				context_constructor = { link = "WinbarBreadcrumb" },
+				context_enum = { link = "WinbarBreadcrumb" },
+				context_interface = { link = "WinbarBreadcrumb" },
+				context_function = { link = "WinbarBreadcrumb" },
+				context_variable = { link = "WinbarBreadcrumb" },
+				context_constant = { link = "WinbarBreadcrumb" },
+				context_string = { link = "WinbarBreadcrumb" },
+				context_number = { link = "WinbarBreadcrumb" },
+				context_boolean = { link = "WinbarBreadcrumb" },
+				context_array = { link = "WinbarBreadcrumb" },
+				context_object = { link = "WinbarBreadcrumb" },
+				context_key = { link = "WinbarBreadcrumb" },
+				context_null = { link = "WinbarBreadcrumb" },
+				context_enum_member = { link = "WinbarBreadcrumb" },
+				context_struct = { link = "WinbarBreadcrumb" },
+				context_event = { link = "WinbarBreadcrumb" },
+				context_operator = { link = "WinbarBreadcrumb" },
+				context_type_parameter = { link = "WinbarBreadcrumb" },
 			},
 
 			-- configurations go here
@@ -120,11 +129,32 @@ return {
 							end,
 						},
 					},
-					lualine_b = { "diff", "diagnostics" },
-					lualine_c = { "filename" },
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = { "location" },
+					lualine_b = { { "filename", path = 3, color = { gui = "italic" } } },
+					lualine_c = { "diff", "diagnostics" },
+					lualine_x = {
+						{
+							function()
+								local msg = "⊗ LSP"
+								local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+								local clients = vim.lsp.get_active_clients()
+								if next(clients) == nil then
+									return msg
+								end
+								for _, client in ipairs(clients) do
+									local filetypes = client.config.filetypes
+									if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+										return "✓ " .. client.name
+									end
+								end
+								return msg
+							end,
+							color = { gui = "italic" },
+						},
+					},
+				},
+				lualine_y = {
+					{ "branch", color = { gui = "italic" } },
+					lualine_z = { { "location", color = { gui = "italic" } } },
 				},
 				inactive_sections = {
 					lualine_a = {},
@@ -140,7 +170,7 @@ return {
 							"tabs",
 							icons_enabled = true,
 							max_length = 80,
-							mode = 0,
+							mode = 1,
 							tabs_color = {
 								-- Same values as the general color option can be used here.
 								active = "Typedef", -- Color for active tab.
