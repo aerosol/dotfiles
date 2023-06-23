@@ -165,7 +165,6 @@ return {
 				inactive_winbar = {},
 				extensions = { "quickfix", "fzf", "man" },
 			})
-			vim.cmd("set showtabline=1")
 		end,
 	},
 }

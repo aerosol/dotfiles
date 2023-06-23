@@ -8,6 +8,7 @@ return {
 					highlights.Folded.bg = nil
 					highlights.Folded.fg = blue
 					highlights.Pmenu = { bg = "#0E1A0F" }
+					highlights.NormalFloat = { bg = "#0E1A0F" }
 
 					highlights.DiffAdd = { bg = "#081F10" }
 					highlights.DiffChange = { bg = "#0E1A0F" }
