@@ -23,11 +23,6 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec_always swaybg -c '#3B6EA5'
 
-exec swayidle -w \\
-         timeout 300 'gtklock -d' \\
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \\
-         before-sleep 'gtklock -d'
-
 focus_on_window_activation focus
 
 floating_modifier $mod normal

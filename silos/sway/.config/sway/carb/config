@@ -1,3 +1,21 @@
+set $lock swaylock \\
+    --screenshots \\
+    --clock \\
+    --indicator \\
+    --indicator-radius 100 \\
+    --indicator-thickness 20 \\
+    --effect-blur 7x5 \\
+    --effect-vignette 0.8:0.8 \\
+    --ring-color ffffff \\
+    --key-hl-color ffffff \\
+    --line-color 000000 \\
+    --inside-color 000000 \\
+    --separator-color 000000 \\
+    --fade-in 0.2
+
+bindswitch lid:on exec $lock
+bindsym Ctrl+Shift+L exec $lock
+
 input * {
     xkb_layout us,pl
     xkb_options "altwin:swap_lalt_lwin,ctrl:nocaps,grp:alt_shift_toggle"
