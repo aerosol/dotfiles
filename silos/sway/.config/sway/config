@@ -11,6 +11,8 @@ set $right l
 set $term alacritty
 set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area grimblast --notify copy area
+set $screencast_area record-screen
+
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 
@@ -78,6 +80,8 @@ bindsym $mod+f fullscreen toggle
 bindsym F11 fullscreen toggle
 bindsym $mod+Shift+4 exec $screenshot_area
 bindsym Ctrl+Shift+$mod+Escape exec $screenshot_area
+bindsym $mod+Shift+0 exec $screencast_area
+bindsym $mod+Shift+Backspace exec $screencast_stop
 
 bindsym $mod+x floating toggle
 
