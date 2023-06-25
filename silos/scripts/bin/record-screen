@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+codename=$(shuf -n 3 ~/.zsh/_short-words.txt | xargs)
+f="$HOME/Videos/"record-$(date +%Y-%m-%d-%H-%M-%S)"-$codename.mp4"
+
+if pkill --signal SIGINT wf-recorder; then
+	dunstify "wf-recorder killed" -i video-x-generic-symbolic
+	exit 0
+fi
+
+geometry="$(slurp -d)"
+if [ -n "$geometry" ]; then
+	dunstify "Recording" "$codename" -i video-x-generic-symbolic
+	wf-recorder -f "$f" -g "$geometry" --force-yuv
+	dunstify "Recorded" "$codename" -i video-x-generic-symbolic
+fi
