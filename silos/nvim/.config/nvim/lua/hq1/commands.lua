@@ -55,10 +55,16 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
 	callback = function()
-		if vim.lsp.buf.server_ready() then
-			vim.lsp.buf.format()
-		end
+		vim.lsp.buf.format({ async = false })
 	end,
 })
+
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		if vim.lsp.buf.server_ready() then
+-- 			vim.lsp.buf.format()
+-- 		end
+-- 	end,
+-- })

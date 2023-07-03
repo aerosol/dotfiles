@@ -23,8 +23,8 @@ return {
 				on_highlights = function(highlights, _colors)
 					highlights.Folded.bg = nil
 					highlights.Folded.fg = "blue"
-					highlights.Pmenu = { bg = "#0E1A0F" }
-					highlights.NormalFloat = { bg = "#0E1A0F" }
+					highlights.Pmenu = { bg = "#141819" }
+					highlights.NormalFloat = { bg = "#141819" }
 					highlights.WinbarBreadcrumb = { italic = true, fg = "#999999", bg = "#141819" }
 					highlights.WinbarBreadcrumbEm = { italic = true, fg = "#dddddd", bg = "#141819", underline = true }
 					highlights.DiffAdd = { bg = "#081F10" }
