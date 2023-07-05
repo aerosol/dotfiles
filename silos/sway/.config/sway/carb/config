@@ -1,4 +1,4 @@
-set $file_manager dolphin
+set $file_manager pcmanfm
 
 set $lock swaylock \\
     --screenshots \\
