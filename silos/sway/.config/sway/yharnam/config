@@ -1,3 +1,5 @@
+set $file_manager dolphin
+
 output DP-1 mode 3840x2160@60Hz pos 2160 0
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0
 output HDMI-A-1 transform 90

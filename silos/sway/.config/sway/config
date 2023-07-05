@@ -31,6 +31,7 @@ exec_always swaybg -c '#3B6EA5'
 focus_on_window_activation focus
 
 floating_modifier $mod normal
+bindsym $mod+d exec $file_manager
 bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
 bindsym $mod+period exec $emoji
 bindsym Ctrl+Shift+f move window to output left, focus output left
