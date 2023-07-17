@@ -101,6 +101,11 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			if vim.g.neovide then
+				font_modifier = "italic"
+			else
+				font_modifier = ""
+			end
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -148,13 +153,13 @@ return {
 								end
 								return msg
 							end,
-							color = { gui = "italic" },
+							color = { gui = font_modifier },
 						},
 					},
 				},
 				lualine_y = {
-					{ "branch", color = { gui = "italic" } },
-					lualine_z = { { "location", color = { gui = "italic" } } },
+					{ "branch", color = { gui = font_modifier } },
+					lualine_z = { { "location", color = { gui = font_modifier } } },
 				},
 				inactive_sections = {
 					lualine_a = {},

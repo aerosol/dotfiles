@@ -18,15 +18,28 @@ return {
 	{
 		"Tsuzat/NeoSolarized.nvim",
 		config = function()
+			local neovide = vim.g.neovide
 			require("NeoSolarized").setup({
 				transparent = true,
+				enable_italics = not neovide,
+				styles = {
+					-- Style to be applied to different syntax groups
+					comments = { italic = not neovide },
+					keywords = { italic = not neovide },
+					functions = { bold = true },
+					variables = {},
+					string = { italic = not neovide },
+					underline = true, -- true/false; for global underline
+					undercurl = true, -- true/false; for global undercurl
+				},
 				on_highlights = function(highlights, _colors)
 					highlights.Folded.bg = nil
 					highlights.Folded.fg = "blue"
 					highlights.Pmenu = { bg = "#141819" }
 					highlights.NormalFloat = { bg = "#141819" }
-					highlights.WinbarBreadcrumb = { italic = true, fg = "#999999", bg = "#141819" }
-					highlights.WinbarBreadcrumbEm = { italic = true, fg = "#dddddd", bg = "#141819", underline = true }
+					highlights.WinbarBreadcrumb = { italic = not neovide, fg = "#999999", bg = "#141819" }
+					highlights.WinbarBreadcrumbEm =
+						{ italic = true, fg = "#dddddd", bg = "#141819", underline = not neovide }
 					highlights.DiffAdd = { bg = "#081F10" }
 					highlights.DiffChange = { bg = "#0E1A0F" }
 					highlights.DiffDelete = { bg = "#2F0505" }
