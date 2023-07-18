@@ -134,7 +134,7 @@ return {
 							end,
 						},
 					},
-					lualine_b = { { "filename", path = 3, color = { gui = "italic" } } },
+					lualine_b = { { "filename", path = 3, color = { gui = font_modifier } } },
 					lualine_c = { "diff", "diagnostics" },
 					lualine_x = {
 						{
