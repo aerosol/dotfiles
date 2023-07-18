@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 if vim.g.neovide then
-	vim.o.guifont = "PragmataPro Liga:h24,JetBrainsMonoNL NF:h24"
+	vim.o.guifont = "PragmataPro Liga:h18"
 	vim.g.neovide_padding_top = 20
 	vim.g.neovide_padding_bottom = 20
 	vim.g.neovide_padding_right = 20

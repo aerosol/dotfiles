@@ -25,6 +25,7 @@ keymap("i", "ii", "|> IO.inspect(label: :)<Left>", {})
 keymap("i", ",,", '<esc>"tyiWi<<esc>Ea>', {})
 keymap("i", ",.", '<esc>"tyiWi<<esc>Ea><esc>i<space>', {})
 keymap("i", "//", '</<esc>"tpa>', {})
+keymap("i", "%%", "<%= %><esc>F=a<space>", {})
 
 keymap("n", "H", ":tabprevious<cr>", opts)
 keymap("n", "L", ":tabnext<cr>", opts)
