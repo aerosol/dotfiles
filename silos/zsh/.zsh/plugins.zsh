@@ -29,5 +29,4 @@ _fzf_compgen_dir() {
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
 
-
 export PATH="${HOME}/.asdf/installs/elixir/`asdf current elixir | awk '{print $2}'`/.mix:${PATH}"
