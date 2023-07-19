@@ -2,6 +2,8 @@ autoload -Uz promptinit && promptinit
 autoload -Uz vcs_info
 
 setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
 setopt EXTENDED_GLOB
 setopt PROMPT_SUBST
 setopt RC_QUOTES

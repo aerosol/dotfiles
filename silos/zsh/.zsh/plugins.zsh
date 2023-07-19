@@ -25,9 +25,6 @@ _fzf_compgen_dir() {
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f /etc/profile.d/autojump.sh ] && . /etc/profile.d/autojump.sh
 
-# go to most recent dir
-j
-
 [ -f $HOME/.asdf/asdf.sh ] && . $HOME/.asdf/asdf.sh
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
