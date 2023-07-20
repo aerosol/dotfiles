@@ -134,3 +134,4 @@ bar {
         inactive_workspace #000000 #C0C0C0 #000000
     }
 }
+for_window [class="zoom"] floating enable
