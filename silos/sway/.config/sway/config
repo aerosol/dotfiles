@@ -19,6 +19,10 @@ set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
 
+exec obsidian
+for_window [class="obsidian"] floating enable, move absolute position 400 0, border none, move scratchpad
+bindsym $mod+comma scratchpad show, mode "default"
+
 exec swayrd
 exec dunst
 exec firefox
@@ -115,7 +119,7 @@ mode "quickmode" {
     bindsym $down move down, mode "default"
     bindsym $up move up, mode "default"
     bindsym $right move right, mode "default"
- 
+
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
