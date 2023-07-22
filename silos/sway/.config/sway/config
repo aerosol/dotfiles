@@ -16,11 +16,16 @@ set $screencast_area wl-screencast
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 
+for_window [class="obsidian"] floating enable, opacity 0.9, border none, move scratchpad
+for_window [class="Signal"] move workspace 5
+for_window [class="Spotify"] move workspace 5
+for_window [class="zoom"] floating enable
+
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
 
 exec obsidian
-for_window [class="obsidian"] floating enable, opacity 0.9, border none, move scratchpad
+
 bindsym $mod+comma scratchpad show, mode "default"
 
 exec swayrd
@@ -138,4 +143,3 @@ bar {
         inactive_workspace #000000 #C0C0C0 #000000
     }
 }
-for_window [class="zoom"] floating enable
