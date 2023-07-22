@@ -1,5 +1,8 @@
 set $file_manager pcmanfm
 
+output eDP-1 scale 1
+
+
 set $lock swaylock \\
     --screenshots \\
     --clock \\

@@ -20,7 +20,7 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
 
 exec obsidian
-for_window [class="obsidian"] floating enable, move absolute position 400 0, border none, move scratchpad
+for_window [class="obsidian"] floating enable, opacity 0.9, border none, move scratchpad
 bindsym $mod+comma scratchpad show, mode "default"
 
 exec swayrd
