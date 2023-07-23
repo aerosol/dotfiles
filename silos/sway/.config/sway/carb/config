@@ -2,7 +2,7 @@ set $file_manager pcmanfm
 
 output eDP-1 scale 1
 
-seat seat0 xcursor_theme Hackneyed 42
+seat seat0 xcursor_theme Adwaita 42
 seat * hide_cursor when-typing enable
 
 set $lock swaylock \\

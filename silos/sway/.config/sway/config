@@ -16,7 +16,7 @@ set $screencast_area wl-screencast
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 
-for_window [class="obsidian"] floating enable, opacity 0.9, border none, move scratchpad
+for_window [app_id="obsidian"] floating enable, border none, move scratchpad
 for_window [class="Signal"] move workspace 5
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
@@ -24,9 +24,9 @@ for_window [class="zoom"] floating enable
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
 
-exec obsidian
+exec obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform
 
-bindsym $mod+Tab [class="obsidian"] scratchpad show, resize set 3000 1800
+bindsym $mod+Tab [app_id="obsidian"] scratchpad show, resize set 3000 1800
 
 exec dunst
 exec firefox
