@@ -1,4 +1,4 @@
-font pango:JetBrains Mono Regular 11
+font pango:JetBrains Mono Regular 20
 
 include /etc/sway/config.d/*
 include "`hostnamectl hostname`/*"
@@ -26,12 +26,11 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 exec obsidian
 
-bindsym $mod+comma scratchpad show, mode "default"
+bindsym $mod+Tab [class="obsidian"] scratchpad show, resize set 3000 1800
 
-exec swayrd
 exec dunst
 exec firefox
-exec alacritty
+exec $term
 exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
@@ -42,7 +41,6 @@ focus_follows_mouse no
 
 floating_modifier $mod normal
 bindsym $mod+d exec $file_manager
-bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
 bindsym $mod+period exec $emoji
 bindsym Ctrl+Shift+f move window to output left, focus output left
 bindsym Ctrl+Shift+v exec $clipboard
@@ -135,7 +133,7 @@ bindsym $mod+q mode "quickmode"
 bar {
     position bottom
     status_command i3blocks
-    status_padding 4
+    status_padding 8
 
     colors {
         statusline #000000
