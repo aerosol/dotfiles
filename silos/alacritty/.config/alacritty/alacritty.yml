@@ -149,7 +149,7 @@ font:
   #style: Bold Italic
 
   # Point size
-  size: 24
+  size: 18
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -186,6 +186,7 @@ import:
   # - ~/.config/alacritty/hq1miyagi.yaml
   # - ~/.config/alacritty/kanagawa.yaml
   - ~/.config/alacritty/solarized.yaml
+  - ~/.alacritty-local-override.yaml
 
 shell:
   program: /bin/zsh
