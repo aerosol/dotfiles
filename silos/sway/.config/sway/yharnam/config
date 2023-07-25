@@ -1,3 +1,4 @@
+font pango:JetBrainsMono Nerd Font 12
 set $file_manager dolphin
 
 output DP-1 mode 3840x2160@60Hz pos 2160 0

@@ -1,3 +1,4 @@
+font pango:JetBrainsMono Nerd Font 12
 set $file_manager pcmanfm
 
 output eDP-1 scale 1

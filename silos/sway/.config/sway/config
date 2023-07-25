@@ -1,5 +1,3 @@
-font pango:JetBrains Mono Regular 20
-
 include /etc/sway/config.d/*
 include "`hostnamectl hostname`/*"
 
@@ -26,7 +24,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 exec obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform
 
-bindsym $mod+Tab [app_id="obsidian"] scratchpad show, resize set 3000 1800
+bindsym $mod+Tab [app_id="obsidian"] scratchpad show
 
 exec dunst
 exec firefox
@@ -117,6 +115,8 @@ bindsym $mod+r mode "resize"
 
 mode "quickmode" {
     bindsym r reload
+    bindsym o exec "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform", mode "default"
+
 
     bindsym $left move left, mode "default"
     bindsym $down move down, mode "default"
