@@ -10,6 +10,7 @@ export PAGER=less
 export TERMINAL=alacritty
 export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.nimble/bin:$PATH
 export EXA_ICON_SPACING=2
+export MOZ_ENABLE_WAYLAND=1
 
 if [[ "$TERM" == "xterm-256color" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
