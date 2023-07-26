@@ -163,11 +163,11 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = {
-		{ name = "codeium", group_index = 2 },
-		{ name = "copilot", group_index = 2 },
+		{ name = "codeium",  group_index = 2 },
+		{ name = "copilot",  group_index = 2 },
 		{ name = "nvim_lsp", group_index = 2 },
-		{ name = "luasnip", group_index = 2 },
-		{ name = "buffer", group_index = 2 },
+		{ name = "luasnip",  group_index = 2 },
+		{ name = "buffer",   group_index = 2 },
 	},
 })
 
@@ -185,6 +185,10 @@ cmp.setup.cmdline(":", {
 	}, {
 		{ name = "cmdline" },
 	}),
+})
+
+vim.diagnostic.config({
+	virtual_text = false,
 })
 
 return M
