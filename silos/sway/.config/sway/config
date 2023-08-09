@@ -94,7 +94,7 @@ bindsym F11 fullscreen toggle
 bindsym $mod+Shift+4 exec $screenshot_area
 bindsym $hyper+Escape exec $screenshot_area
 bindsym $mod+Shift+0 exec $screencast_area
-bindsym $mod+Shift+Backspace exec $screencast_stop
+bindsym $hyper+1 exec $screencast_area
 
 bindsym $mod+x floating toggle
 
