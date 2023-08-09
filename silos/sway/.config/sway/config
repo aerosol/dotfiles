@@ -10,6 +10,8 @@ set $term alacritty
 set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area wl-screenshot
 set $screencast_area wl-screencast
+set $hyper Ctrl+Shift+$mod+Alt
+set $meh Ctrl+Shift+Alt
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
@@ -40,8 +42,8 @@ focus_follows_mouse no
 floating_modifier $mod normal
 bindsym $mod+d exec $file_manager
 bindsym $mod+period exec $emoji
-bindsym Ctrl+Shift+f move window to output left, focus output left
-bindsym Ctrl+Shift+v exec $clipboard
+bindsym $meh+f move window to output left, focus output left
+bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
 bindsym $mod+Escape exec 'wlrctl window focus Alacritty || $term'
 bindsym $mod+w kill
@@ -90,7 +92,7 @@ bindsym $mod+p sticky toggle
 bindsym $mod+f fullscreen toggle
 bindsym F11 fullscreen toggle
 bindsym $mod+Shift+4 exec $screenshot_area
-bindsym Ctrl+Shift+$mod+Escape exec $screenshot_area
+bindsym $hyper+Escape exec $screenshot_area
 bindsym $mod+Shift+0 exec $screencast_area
 bindsym $mod+Shift+Backspace exec $screencast_stop
 

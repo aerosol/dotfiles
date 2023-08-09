@@ -9,8 +9,7 @@ seat seat0 xcursor_theme Hackneyed 42
 seat * hide_cursor when-typing enable
 
 input * {
-    xkb_layout pl,us
-    xkb_options "grp:alt_shift_toggle"
+    xkb_layout pl
 }
 
 workspace 1 output DP-1
