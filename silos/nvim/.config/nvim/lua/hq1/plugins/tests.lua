@@ -17,10 +17,11 @@ return {
 						 execute 'bdelete! ' . bnr
 					endif
 					execute 'botright 10 new'
-					call termopen(a:cmd)
+					let cmd = a:cmd . ' --max-failures 1'
+					call termopen(cmd)
 					norm G
 					execute 'file! TestPanel'
-					echo 'Test: ' . a:cmd
+					echo 'Test: ' . cmd
 					nmap <buffer> q :bd!<cr>
 					nnoremap <buffer> o :vs<cr>gF<C-w>=
 					au BufEnter <buffer> wincmd _

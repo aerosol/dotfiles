@@ -1,8 +1,5 @@
 return {
 	{
-		"kevinhwang91/nvim-bqf",
-	},
-	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {}, -- this is equalent to setup({}) function
@@ -22,7 +19,7 @@ return {
 		config = function()
 			require("eyeliner").setup({
 				highlight_on_key = true, -- show highlights only after keypress
-				dim = true, -- dim all other characters if set to true (recommended!)
+				dim = true,          -- dim all other characters if set to true (recommended!)
 			})
 		end,
 	},
