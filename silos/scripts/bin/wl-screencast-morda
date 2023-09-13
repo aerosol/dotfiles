@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+codename=$(shuf -n 3 ~/.zsh/_short-words.txt | xargs)
+f="$HOME/Videos/"record-$(date +%Y-%m-%d-%H-%M-%S)"-$codename.mp4"
+
+if pkill --signal SIGINT wf-recorder; then
+	dunstify "wf-recorder killed" -i video-x-generic-symbolic
+	pkill --signal SIGINT gst-launch-1.0
+	exit 0
+fi
+
+
+geometry="$(slurp -d)"
+if [ -n "$geometry" ]; then
+	gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! videoscale ! videoflip method=horizontal-flip ! video/x-raw,width=640,height=480 ! autovideosink &
+
+	dunstify "Recording" "$codename" -i video-x-generic-symbolic
+	wf-recorder -f "$f" -g "$geometry" --force-yuv -x yuv420p -a
+	dunstify "Recorded" "$codename" -i video-x-generic-symbolic
+fi
