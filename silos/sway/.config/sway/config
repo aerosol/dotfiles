@@ -10,6 +10,7 @@ set $term alacritty
 set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area wl-screenshot
 set $screencast_area wl-screencast
+set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 
@@ -20,6 +21,7 @@ for_window [app_id="obsidian"] floating enable, border none, move scratchpad
 for_window [class="Signal"] move workspace 5
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
+for_window [class="GStreamer"] floating enable
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
@@ -94,6 +96,7 @@ bindsym F11 fullscreen toggle
 bindsym $mod+Shift+4 exec $screenshot_area
 bindsym $hyper+Escape exec $screenshot_area
 bindsym $mod+Shift+0 exec $screencast_area
+bindsym $mod+Shift+1 exec $screencast_area_morda
 bindsym $hyper+1 exec $screencast_area
 
 bindsym $mod+x floating toggle
