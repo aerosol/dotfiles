@@ -1,5 +1,14 @@
 return {
 	{
+		'declancm/cinnamon.nvim',
+		config = function()
+			require('cinnamon').setup({
+				extra_keymaps = true
+
+			})
+		end
+	},
+	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {}, -- this is equalent to setup({}) function
