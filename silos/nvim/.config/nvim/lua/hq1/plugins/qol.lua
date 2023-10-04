@@ -1,5 +1,57 @@
 return {
 	{
+		"shortcuts/no-neck-pain.nvim",
+		version = "*",
+		config = function()
+			local pain = require('no-neck-pain')
+			local sideBufOpts = {
+				enabled = true,
+				bo = {
+					filetype = "md",
+					buftype = "nofile",
+					bufhidden = "hide",
+					buflisted = false,
+					swapfile = false,
+				}
+			}
+			pain.setup({
+				width = 140,
+				autocmds = {
+					enableOnVimEnter = true,
+					enableOnTabEnter = false,
+					reloadOnColorSchemeChange = false,
+				},
+				mappings = {
+					enabled = true
+
+				},
+				buffers = {
+					left = sideBufOpts,
+					right = sideBufOpts,
+					scratchPad = {
+						enabled = true,
+						fileName = "SideNotes",
+					},
+				},
+
+
+			})
+		end
+	},
+	{
+		'rlane/pounce.nvim',
+		config = function()
+			local pounce = require('pounce')
+			pounce.setup({})
+			local keymap = vim.keymap.set
+			local opts = { noremap = true, silent = true }
+
+			keymap("n", "s", function() pounce.pounce({}) end, opts)
+			keymap("x", "s", function() pounce.pounce {} end)
+			keymap("o", "gs", function() pounce.pounce {} end)
+		end
+	},
+	{
 		'declancm/cinnamon.nvim',
 		config = function()
 			require('cinnamon').setup({
