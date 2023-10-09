@@ -6,7 +6,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term foot
 set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area wl-screenshot
 set $screencast_area wl-screencast
@@ -47,7 +47,7 @@ bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output left, focus output left
 bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
-bindsym $mod+Escape exec 'wlrctl window focus Alacritty || $term'
+bindsym $mod+Escape exec 'wlrctl window focus $term || $term'
 bindsym $mod+w kill
 bindsym $mod+space exec $menu
 bindsym $mod+Alt+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
