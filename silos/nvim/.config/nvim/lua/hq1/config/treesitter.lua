@@ -15,7 +15,6 @@ require("nvim-treesitter.configs").setup({
 		"rust",
 		"typescript",
 		"help",
-		"elixir",
 		"comment",
 		"javascript",
 		"diff",
