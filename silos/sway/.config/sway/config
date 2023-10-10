@@ -41,6 +41,8 @@ exec_always swaybg -c '#3B6EA5'
 focus_on_window_activation focus
 focus_follows_mouse no
 
+gaps inner 10
+
 floating_modifier $mod normal
 bindsym $mod+d exec $file_manager
 bindsym $mod+period exec $emoji
