@@ -7,20 +7,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "heex",
-	callback = function()
-		vim.diagnostic.config({ virtual_lines = false })
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "elixir",
-	callback = function()
-		vim.diagnostic.config({ virtual_lines = true })
-	end,
-})
-
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*",
 	callback = function()
