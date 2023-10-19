@@ -80,35 +80,6 @@ require("neodev").setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local lexical_config = {
-	filetypes = { "elixir", "eelixir", "heex", "surface" },
-	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
-	settings = {},
-}
-
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
-
-if not configs.lexical then
-	configs.lexical = {
-		default_config = {
-			filetypes = lexical_config.filetypes,
-			cmd = lexical_config.cmd,
-			root_dir = function(fname)
-				return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
-			end,
-			-- optional settings
-			settings = lexical_config.settings,
-		},
-	}
-end
-
-lspconfig.lexical.setup({
-	-- optional config
-	on_attach = M.on_attach,
-})
-
-
 -- Setup mason so it can manage external tooling
 require("mason").setup()
 
