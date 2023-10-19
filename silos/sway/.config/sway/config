@@ -20,8 +20,8 @@ title_align center
 default_border normal 2
 client.focused #cccccc #000000 #ffffff #000000 #000000
 client.focused_inactive #000000 #000000 #dddddd #aaaaaa
-titlebar_padding 8
-titlebar_border_thickness 1
+# titlebar_padding 8
+# titlebar_border_thickness 1
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
