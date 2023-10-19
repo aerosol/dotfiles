@@ -1,6 +1,7 @@
 M = {}
 
 function M.on_attach(_, bufnr)
+	print('attach')
 	local fzf = require("fzf-lua")
 	local nmap = function(keys, func, desc)
 		if desc then
