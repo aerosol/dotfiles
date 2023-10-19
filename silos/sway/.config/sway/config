@@ -13,6 +13,15 @@ set $screencast_area wl-screencast
 set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
+set $wallpapers_path $HOME/wallpapers
+output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
+
+title_align center
+default_border normal 2
+client.focused #cccccc #000000 #ffffff #000000 #000000
+client.focused_inactive #000000 #000000 #dddddd #aaaaaa
+titlebar_padding 8
+titlebar_border_thickness 1
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
@@ -36,12 +45,11 @@ exec $term
 exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
-exec_always swaybg -c '#3B6EA5'
 
 focus_on_window_activation focus
 focus_follows_mouse no
 
-gaps inner 10
+gaps inner 20
 
 floating_modifier $mod normal
 bindsym $mod+d exec $file_manager
@@ -144,7 +152,9 @@ bar {
 
     colors {
         statusline #000000
-        background #C0C0C0
-        inactive_workspace #000000 #C0C0C0 #000000
+        background #ffffff00
+        inactive_workspace #000000 #000000 #aaaaaa
+        active_workspace #000000 #000000 #ffffff
+        focused_workspace #ffffff #ffffff #000000
     }
 }
