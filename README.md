@@ -4,6 +4,34 @@
 
 Every silo is make-driven stow package, contains deployable set of dotfiles per program (zsh, vim, etc.)
 
+### Current silos:
+
+ag
+alacritty
+bat
+bspwm
+dunst
+feh
+foot
+git
+hypr
+kitty
+nvim
+picom
+polybar
+rofi
+scripts
+swappy
+sway
+sxhkd
+systemd
+tmux
+tofi
+workstyle
+xinit
+zathura
+zsh
+
 ## Prerequisites
 
  - GNU Make
