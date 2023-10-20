@@ -38,33 +38,8 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 	end,
 })
 
--- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
--- 	pattern = "*",
--- 	callback = function()
--- 		vim.opt.formatoptions = vim.opt.formatoptions
--- 			- "a" -- No auto formatting
--- 			+ "t" -- Auto-wrapping
--- 			+ "c" -- comments respect textwidth
--- 			- "q" -- Allow formatting comments w/ gq
--- 			- "o" -- O and o, don't continue comments
--- 			+ "r" -- But do continue when pressing enter.
--- 			+ "n" -- Indent past the formatlistpat, not underneath it.
--- 			+ "j" -- Allow joining multi-line comments
--- 			- "2" -- No paragraph idents
--- 	end,
--- })
-
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		vim.lsp.buf.format({ async = false })
 	end,
 })
-
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = "*",
--- 	callback = function()
--- 		if vim.lsp.buf.server_ready() then
--- 			vim.lsp.buf.format()
--- 		end
--- 	end,
--- })

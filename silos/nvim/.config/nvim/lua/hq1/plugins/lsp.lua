@@ -3,7 +3,7 @@ return {
 		'linrongbin16/lsp-progress.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
-			require('lsp-progress').setup()
+			require('lsp-progress').setup({})
 		end
 	},
 	{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = true },

@@ -1,7 +1,6 @@
 M = {}
 
 function M.on_attach(_, bufnr)
-	print('attach')
 	local fzf = require("fzf-lua")
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -32,6 +31,21 @@ function M.on_attach(_, bufnr)
 			end
 		end
 	end, "[G]oto [R]eferences")
+
+	nmap("=", function()
+		local capabilities = vim.lsp.get_active_clients()
+		for _, client in ipairs(capabilities) do
+			if client.capabilities and client.capabilities.documentSymbols then
+				fzf.lsp_document_symbols({
+					winopts = { fullscreen = false, preview = { hidden = "hidden" } },
+				})
+			else
+				fzf.lgrep_curbuf({ search = '(def |defp |defmacro | +test \")', no_esc = true, previewer = false })
+			end
+		end
+	end, "Outline")
+
+
 
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 
