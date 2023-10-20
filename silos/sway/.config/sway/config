@@ -37,9 +37,7 @@ for_window [class="GStreamer"] floating enable
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
 
-exec obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform
-
-bindsym $mod+Tab [app_id="obsidian"] scratchpad show
+bindsym $mod+Tab workspace back_and_forth
 
 exec dunst
 exec firefox
