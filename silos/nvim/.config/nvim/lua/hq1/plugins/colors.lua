@@ -39,11 +39,14 @@ return {
 					highlights.NormalFloat = { bg = "#141819" }
 					highlights.WinbarBreadcrumb = { italic = not neovide, fg = "#999999", bg = "#141819" }
 					highlights.WinbarBreadcrumbEm =
-						{ italic = true, fg = "#dddddd", bg = "#141819", underline = not neovide }
+					{ italic = true, fg = "#dddddd", bg = "#141819", underline = not neovide }
 					highlights.DiffAdd = { bg = "#081F10" }
 					highlights.DiffChange = { bg = "#0E1A0F" }
 					highlights.DiffDelete = { bg = "#2F0505" }
 					highlights.DiffText = { bg = "#0E1A0F" }
+					highlights.PounceAcceptBest = { bg = "#008800", fg = "#ffffff", underline = true }
+					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
+					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
 					-- highlights.diffAdded = { fg = c.green }
 					-- highlights.diffRemoved = { fg = c.red }
 					-- highlights.diffChanged = { fg = c.blue }
