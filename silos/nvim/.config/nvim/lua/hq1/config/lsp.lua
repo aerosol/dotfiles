@@ -1,6 +1,7 @@
 M = {}
 
 function M.on_attach(_, bufnr)
+	print('attach')
 	local fzf = require("fzf-lua")
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -22,7 +23,14 @@ function M.on_attach(_, bufnr)
 	end, "[G]oto [D]efinition")
 
 	nmap("gr", function()
-		fzf.lsp_references({ jump_to_single_result = true })
+		local capabilities = vim.lsp.get_active_clients()
+		for _, client in ipairs(capabilities) do
+			if client.capabilities and client.capabilities.textDocument and client.capabilities.textDocument.references then
+				fzf.lsp_references({ jump_to_single_result = true })
+			else
+				fzf.grep_cWORD()
+			end
+		end
 	end, "[G]oto [R]eferences")
 
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
@@ -79,6 +87,36 @@ require("neodev").setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+local lexical_config = {
+	filetypes = { "elixir", "eelixir", "heex" },
+	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
+	settings = {
+	},
+}
+
+if not configs.lexical then
+	configs.lexical = {
+		default_config = {
+			filetypes = lexical_config.filetypes,
+			cmd = lexical_config.cmd,
+			root_dir = function(fname)
+				return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
+			end,
+			-- optional settings
+			settings = lexical_config.settings,
+		},
+	}
+end
+
+
+lspconfig.lexical.setup({
+	-- optional config
+	on_attach = M.on_attach,
+})
 
 -- Setup mason so it can manage external tooling
 require("mason").setup()
