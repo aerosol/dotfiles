@@ -10,6 +10,16 @@ function M.on_attach(_, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
+	local caps = function(cap)
+		do
+			local clients = vim.lsp.get_active_clients()
+			for _, client in ipairs(clients) do
+				local caps = client.server_capabilities
+				return caps and caps[cap]
+			end
+		end
+	end
+
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
@@ -22,26 +32,24 @@ function M.on_attach(_, bufnr)
 	end, "[G]oto [D]efinition")
 
 	nmap("gr", function()
-		local capabilities = vim.lsp.get_active_clients()
-		for _, client in ipairs(capabilities) do
-			if client.capabilities and client.capabilities.textDocument and client.capabilities.textDocument.references then
-				fzf.lsp_references({ jump_to_single_result = true })
-			else
-				fzf.grep_cWORD()
-			end
+		if caps('referencesProvider') then
+			fzf.lsp_references({ jump_to_single_result = true })
+		else
+			fzf.grep_cWORD()
 		end
 	end, "[G]oto [R]eferences")
 
 	nmap("=", function()
-		local capabilities = vim.lsp.get_active_clients()
-		for _, client in ipairs(capabilities) do
-			if client.capabilities and client.capabilities.documentSymbols then
-				fzf.lsp_document_symbols({
-					winopts = { fullscreen = false, preview = { hidden = "hidden" } },
-				})
-			else
-				fzf.lgrep_curbuf({ search = '(def |defp |defmacro | +test \")', no_esc = true, previewer = false })
-			end
+		if caps('documentSymbolProvider') then
+			fzf.lsp_document_symbols({
+				winopts = { fullscreen = false, preview = { hidden = "hidden" } },
+			})
+		else
+			fzf.lgrep_curbuf({
+				search = '(def |defp |defmacro | +test \")',
+				no_esc = true,
+				previewer = false
+			})
 		end
 	end, "Outline")
 
