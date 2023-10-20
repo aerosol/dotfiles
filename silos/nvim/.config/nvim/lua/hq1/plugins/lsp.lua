@@ -4,6 +4,13 @@ return {
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
 			require('lsp-progress').setup({})
+
+			vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+			vim.api.nvim_create_autocmd("User", {
+				group = "lualine_augroup",
+				pattern = "LspProgressStatusUpdated",
+				callback = require("lualine").refresh,
+			})
 		end
 	},
 	{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = true },
