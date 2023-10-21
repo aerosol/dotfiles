@@ -14,16 +14,15 @@ set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 set $wallpapers_path $HOME/wallpapers
+
 output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
 
 title_align center
 default_border normal 2
-client.focused #1A7A7D #000111 #36F8FF #000000 #1A7A7D
 
+client.focused #1A7A7D #000111 #36F8FF #000000 #1A7A7D
 client.unfocused #333333 #000000 #555555 #000000 #333333
 client.focused_inactive #000000 #000000 #dddddd #aaaaaa
-# titlebar_padding 8
-# titlebar_border_thickness 1
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
@@ -33,6 +32,7 @@ for_window [class="Signal"] move workspace 5
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
 for_window [class="GStreamer"] floating enable
+for_window [app_id="mpv"] floating enable
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
@@ -60,7 +60,7 @@ bindsym $mod+Alt+v exec $clipboard
 bindsym $mod+Escape exec 'wlrctl window focus $term || $term'
 bindsym $mod+w kill
 bindsym $mod+space exec $menu
-bindsym $mod+Alt+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Alt+q exec sway-exit
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -86,12 +86,12 @@ bindsym $mod+4 workspace number 4
 bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
 # Move focused container to workspace
-bindsym $mod+Alt+1 move container to workspace number 1
-bindsym $mod+Alt+2 move container to workspace number 2
-bindsym $mod+Alt+3 move container to workspace number 3
-bindsym $mod+Alt+4 move container to workspace number 4
-bindsym $mod+Alt+5 move container to workspace number 5
-bindsym $mod+Alt+6 move container to workspace number 6
+bindsym $mod+Alt+1 move container to workspace number 1; workspace number 1
+bindsym $mod+Alt+2 move container to workspace number 2; workspace number 2
+bindsym $mod+Alt+3 move container to workspace number 3; workspace number 3
+bindsym $mod+Alt+4 move container to workspace number 4; workspace number 4
+bindsym $mod+Alt+5 move container to workspace number 5; workspace number 5
+bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6
 
 bindsym $mod+o splith
 bindsym $mod+b splitv
