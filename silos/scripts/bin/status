@@ -10,7 +10,7 @@ date=$(date '+%a %d.%m   %H:%M')
 if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" ]; then
 	bat="🔋 $(cat /sys/class/power_supply/BAT0/capacity)%"
 else
-	bat="💫 $(cat /sys/class/power_supply/BAT0/capacity)%)"
+	bat="💫 $(cat /sys/class/power_supply/BAT0/capacity)%"
 fi
 
 if [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt "25" ]; then
