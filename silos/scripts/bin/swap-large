@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
-current_node=$(swaymsg -t get_tree | jq -r '.. | select(.type?) | select(.type=="con") | select(.focused==true) | .id' | tr -d '[:space]')
+current_node=$(swaymsg -t get_tree | jq -r '.. | select(.focused==true) | .id')
 largest_node=$( swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .id as $id | .rect as $rect | {id: $id, size: ($rect.width * $rect.height)}' | jq -s 'max_by(.size).id')
 
-echo "Current node $current_node END"
-echo "Largest node $largest_node END"
-
-# if current node is largest, notify the user via notify-send
 if [ "$current_node" != "$largest_node" ]; then
     swaymsg "swap container with con_id $largest_node $current_node"
 fi
