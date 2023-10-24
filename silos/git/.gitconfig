@@ -56,6 +56,15 @@
 [delta]
     navigate = true
     side-by-side = true
+    features = decorations
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = white
+    hunk-header-style = file syntax
 
 [merge]
     conflictstyle = diff3
