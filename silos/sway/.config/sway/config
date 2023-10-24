@@ -28,7 +28,7 @@ set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji
 
 for_window [app_id="obsidian"] floating enable, border none, move scratchpad
-for_window [class="Signal"] move workspace 5
+# for_window [app_id="Signal"] move workspace 5
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
 for_window [class="GStreamer"] floating enable
@@ -53,6 +53,7 @@ gaps inner 20
 
 floating_modifier $mod normal
 bindsym $mod+d exec $file_manager
+bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output left, focus output left
 bindsym $meh+v exec $clipboard
