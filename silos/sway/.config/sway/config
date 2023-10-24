@@ -38,6 +38,7 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
 
 bindsym $mod+Tab workspace back_and_forth
+bindsym Ctrl+period exec dunstctl close-all
 
 exec dunst
 exec firefox
