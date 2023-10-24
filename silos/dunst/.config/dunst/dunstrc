@@ -28,7 +28,7 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = center
 
     # Offset from the origin
     offset = 20x50
@@ -160,7 +160,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
@@ -194,12 +194,12 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = Adwaita
+    icon_theme = breeze-darbreeze-dark
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
-    icon_position = left
+    icon_position = top
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
@@ -308,14 +308,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#000000"
     foreground = "#888888"
-    timeout = 10
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
 
 [urgency_normal]
     background = "#000000aa"
     foreground = "#ffffff"
-    timeout = 10
-    default_icon = preferences-system-notifications-symbolic
+    timeout = 5
+    default_icon = computer
 
 [urgency_critical]
     background = "#111111"
