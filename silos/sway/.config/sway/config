@@ -79,20 +79,19 @@ bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioMute exec volume mute
 
-# Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
+bindsym $mod+1 workspace number 1; exec dunstify "Desktop 1" -r 799 -t 500
+bindsym $mod+2 workspace number 2; exec dunstify "Desktop 2" -r 799 -t 500
+bindsym $mod+3 workspace number 3; exec dunstify "Desktop 3" -r 799 -t 500
+bindsym $mod+4 workspace number 4; exec dunstify "Desktop 4" -r 799 -t 500
+bindsym $mod+5 workspace number 5; exec dunstify "Desktop 5" -r 799 -t 500
+bindsym $mod+6 workspace number 6; exec dunstify "Desktop 6" -r 799 -t 500
 # Move focused container to workspace
-bindsym $mod+Alt+1 move container to workspace number 1; workspace number 1
-bindsym $mod+Alt+2 move container to workspace number 2; workspace number 2
-bindsym $mod+Alt+3 move container to workspace number 3; workspace number 3
-bindsym $mod+Alt+4 move container to workspace number 4; workspace number 4
-bindsym $mod+Alt+5 move container to workspace number 5; workspace number 5
-bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6
+bindsym $mod+Alt+1 move container to workspace number 1; workspace number 1; exec dunstify "Desktop 1" -r 799 -t 500
+bindsym $mod+Alt+2 move container to workspace number 2; workspace number 2; exec dunstify "Desktop 2" -r 799 -t 500
+bindsym $mod+Alt+3 move container to workspace number 3; workspace number 3; exec dunstify "Desktop 3" -r 799 -t 500
+bindsym $mod+Alt+4 move container to workspace number 4; workspace number 4; exec dunstify "Desktop 4" -r 799 -t 500
+bindsym $mod+Alt+5 move container to workspace number 5; workspace number 5; exec dunstify "Desktop 5" -r 799 -t 500
+bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6; exec dunstify "Desktop 6" -r 799 -t 500
 
 bindsym $mod+o splith
 bindsym $mod+b splitv
