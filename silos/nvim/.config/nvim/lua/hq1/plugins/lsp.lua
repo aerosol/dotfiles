@@ -1,9 +1,26 @@
 return {
 	{
-		'linrongbin16/lsp-progress.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		"nvimtools/none-ls.nvim",
 		config = function()
-			require('lsp-progress').setup({})
+			local null_ls = require("null-ls")
+
+			null_ls.setup({
+				sources = {
+					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.diagnostics.eslint,
+					null_ls.builtins.diagnostics.jshint,
+					null_ls.builtins.completion.spell,
+					null_ls.builtins.code_actions.shellcheck,
+					null_ls.builtins.diagnostics.write_good,
+				},
+			})
+		end,
+	},
+	{
+		"linrongbin16/lsp-progress.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lsp-progress").setup({})
 
 			vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
 			vim.api.nvim_create_autocmd("User", {
@@ -11,7 +28,7 @@ return {
 				pattern = "LspProgressStatusUpdated",
 				callback = require("lualine").refresh,
 			})
-		end
+		end,
 	},
 	{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = true },
 	"onsails/lspkind.nvim",

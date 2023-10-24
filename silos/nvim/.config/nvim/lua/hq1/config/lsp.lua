@@ -32,28 +32,26 @@ function M.on_attach(_, bufnr)
 	end, "[G]oto [D]efinition")
 
 	nmap("gr", function()
-		if caps('referencesProvider') then
+		if caps("referencesProvider") then
 			fzf.lsp_references({ jump_to_single_result = true })
 		else
-			fzf.grep_cWORD()
+			fzf.grep_cword()
 		end
 	end, "[G]oto [R]eferences")
 
 	nmap("=", function()
-		if caps('documentSymbolProvider') then
+		if caps("documentSymbolProvider") then
 			fzf.lsp_document_symbols({
 				winopts = { fullscreen = false, preview = { hidden = "hidden" } },
 			})
 		else
 			fzf.lgrep_curbuf({
-				search = '(def |defp |defmacro | +test \")',
+				search = '(def |defp |defmacro | +test ")',
 				no_esc = true,
-				previewer = false
+				previewer = false,
 			})
 		end
 	end, "Outline")
-
-
 
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 
@@ -116,8 +114,7 @@ local configs = require("lspconfig.configs")
 local lexical_config = {
 	filetypes = { "elixir", "eelixir", "heex" },
 	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
-	settings = {
-	},
+	settings = {},
 }
 
 if not configs.lexical then
@@ -133,7 +130,6 @@ if not configs.lexical then
 		},
 	}
 end
-
 
 lspconfig.lexical.setup({
 	-- optional config
