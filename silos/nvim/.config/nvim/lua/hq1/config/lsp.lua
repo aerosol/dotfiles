@@ -1,6 +1,7 @@
 M = {}
 
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
+	require("lsp-format").on_attach(client, bufnr)
 	local fzf = require("fzf-lua")
 	local nmap = function(keys, func, desc)
 		if desc then

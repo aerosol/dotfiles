@@ -1,5 +1,11 @@
 return {
 	{
+		'lukas-reineke/lsp-format.nvim',
+		config = function ()
+			require("lsp-format").setup {}
+		end
+	},
+	{
 		"nvimtools/none-ls.nvim",
 		config = function()
 			local null_ls = require("null-ls")
