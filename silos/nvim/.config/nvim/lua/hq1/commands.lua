@@ -1,5 +1,3 @@
--- go to last loc when opening a buffer
-
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "git-rebase-todo",
 	callback = function()
@@ -37,9 +35,3 @@ vim.api.nvim_create_autocmd({ "FocusLost" }, {
 		end
 	end,
 })
-
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	callback = function()
--- 		vim.lsp.buf.format({ async = false })
--- 	end,
--- })
