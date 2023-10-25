@@ -7,6 +7,12 @@ while true; do
 
 date=$(date '+%a %d.%m   %H:%M')
 
+if [ "$(dunstctl is-paused)" = "true" ]; then
+	notifications="🔕"
+else
+	notifications="🔔"
+fi
+
 if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" ]; then
 	bat="🔋 $(cat /sys/class/power_supply/BAT0/capacity)%"
 else
@@ -23,10 +29,10 @@ else
 fi
 
 case $HOSTNAME in
-	carb) echo -n "$bat   $date";;
- 	yharnam) echo -n "$date";;
+	carb) echo -n "$bat   $date $notifications";;
+ 	yharnam) echo -n "$date $notifications";;
 esac
 echo -n '  "}],'
 echo
-sleep 5;
+sleep 2;
 done
