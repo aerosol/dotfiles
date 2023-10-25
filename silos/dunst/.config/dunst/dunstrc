@@ -314,7 +314,7 @@
 [urgency_normal]
     background = "#000000aa"
     foreground = "#ffffff"
-    timeout = 5
+    timeout = 3
     default_icon = computer
 
 [urgency_critical]
