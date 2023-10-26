@@ -40,6 +40,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
 bindsym $mod+m exec dunstctl set-paused toggle
+bindsym $mod+t exec tofi-brotab
 
 exec dunst
 exec firefox
@@ -99,7 +100,7 @@ bindsym $mod+o splith
 bindsym $mod+b splitv
 
 bindsym $mod+e layout toggle splith tabbed stacking splitv
-bindsym $mod+t layout tabbed
+# bindsym $mod+t layout tabbed
 bindsym $mod+g layout toggle split
 bindsym $mod+p sticky toggle
 
