@@ -27,15 +27,9 @@ fi
 
 tabs=$(~/bin/tofi-brotab-cache.py)
 
-if [ "$tabs" = "not indexing tabs" ]; then
-	echo -n "🛑"
-else
-	echo -n "🦊"
-fi
-
 case $HOSTNAME in
-	carb) echo -n "$bat   $date $notifications";;
- 	yharnam) echo -n "$date $notifications";;
+	carb) echo -n "$bat   $date $notifications $tabs";;
+ 	yharnam) echo -n "$date $notifications $tabs";;
 esac
 echo -n '  "}],'
 echo
