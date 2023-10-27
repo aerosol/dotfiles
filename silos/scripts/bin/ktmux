@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+tmux ls | awk 'BEGIN{FS=":"}!/attached/{print $1}' | xargs -n 1 tmux kill-sess -t
