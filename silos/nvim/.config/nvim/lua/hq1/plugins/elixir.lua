@@ -1,1 +1,3 @@
-return { "elixir-editors/vim-elixir" }
+return {
+	"elixir-editors/vim-elixir"
+}

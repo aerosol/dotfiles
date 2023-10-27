@@ -1,8 +1,8 @@
 return {
 	{
 		'lukas-reineke/lsp-format.nvim',
-		config = function ()
-			require("lsp-format").setup {}
+		config = function()
+			require("lsp-format").setup { sync = true }
 		end
 	},
 	{
@@ -12,7 +12,6 @@ return {
 
 			null_ls.setup({
 				sources = {
-					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.diagnostics.eslint,
 					null_ls.builtins.diagnostics.jshint,
 					null_ls.builtins.completion.spell,
@@ -36,7 +35,7 @@ return {
 			})
 		end,
 	},
-	{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = true },
+	-- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = true },
 	"onsails/lspkind.nvim",
 	{
 		"neovim/nvim-lspconfig",
