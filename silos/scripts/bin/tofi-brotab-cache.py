@@ -24,7 +24,9 @@ def active_tabs():
 
 
 def strip_html(string):
-    return ''.join(e for e in string if e.isalnum() or e in [' ', '-', '_', '$'])
+    return ''.join(e for e in string
+                   if e.isalnum()
+                   or e in [' ', '-', '_', '$'])
 
 
 def __main__():
@@ -47,7 +49,8 @@ def __main__():
                     print(
                         f'\r{trim_or_pad("", 56, " ")}'
                         f'{columns[1].strip()} '
-                        f'{strip_html(columns[3][:15000])} {columns[1]}', end='\t')
+                        f'{strip_html(columns[3][:15000])} {columns[1]}',
+                        end='\t')
                     print(f'{columns[0]}')
                     tab_count += 1
         print("🦊", tab_count)
