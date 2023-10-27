@@ -61,7 +61,7 @@ bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output left, focus output left
 bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
-bindsym $mod+Escape exec 'wlrctl window focus $term || $term'
+bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus $term || $term'
 bindsym $mod+w kill
 bindsym $mod+space exec $menu
 bindsym $mod+Alt+q exec sway-exit
