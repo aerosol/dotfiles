@@ -47,10 +47,6 @@ return {
 					highlights.PounceAcceptBest = { bg = "#008800", fg = "#ffffff", underline = true }
 					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
-					highlights.LspDiagnosticsError = { fg = "#910000" }
-					highlights.LspDiagnosticsWarn = { fg = "#eeeeee" }
-					highlights.LspDiagnsticsInfo = { fg = "#cccccc" }
-					highlights.LspDiagnosticsHint = { fg = "#aaaaaa" }
 					-- highlights.diffAdded = { fg = c.green }
 					-- highlights.diffRemoved = { fg = c.red }
 					-- highlights.diffChanged = { fg = c.blue }
