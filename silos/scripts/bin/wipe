@@ -1,0 +1,13 @@
+tmux list-sessions -F "#{?session_attached,(ATT),     } #{session_name} - (active #{t/p:session_activity}) #{pane_title}"
+
+read -r -p "${1:-Wipe? [y/N]} " response
+case "$response" in
+		[yY]) 
+  			tmux ls | awk 'BEGIN{FS=":"}!/attached/{print $1}' | xargs -n 1 tmux kill-sess -t
+				true
+				;;
+		*)
+				echo "Aborting"
+				;;
+esac
+
