@@ -20,6 +20,4 @@ if [[ "$TERM" == "xterm-256color" ]]; then
 	fi
 fi
 
-echo "$(tmux list-sessions | wc -l) sessions running"
-
 export BAT_THEME="Solarized(mine)"
