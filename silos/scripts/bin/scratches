@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo $(swaymsg -r -t get_tree |
+		jq -r 'recurse(.nodes[]) | 
+		first(select(.name=="__i3_scratch")) | 
+		.floating_nodes | length')
