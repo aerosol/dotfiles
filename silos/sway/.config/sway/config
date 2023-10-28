@@ -25,7 +25,7 @@ client.unfocused #333333 #000000 #555555 #000000 #333333
 client.focused_inactive #000000 #000000 #dddddd #aaaaaa
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
-set $emoji BEMOJI_PICKER_CMD=tofi bemoji
+set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
 
 for_window [app_id="obsidian"] floating enable, border none, move scratchpad
 # for_window [app_id="Signal"] move workspace 5
@@ -40,7 +40,6 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
 bindsym $mod+m exec dunstctl set-paused toggle
-bindsym $mod+p exec tofi-brotab
 
 exec dunst
 exec firefox
@@ -120,10 +119,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 40px
+    bindsym $down resize grow height 40px
+    bindsym $up resize shrink height 40px
+    bindsym $right resize grow width 40px
 
     # Return to default mode
     bindsym Return mode "default"
