@@ -16,6 +16,7 @@ set $meh Ctrl+Shift+Alt
 set $wallpapers_path $HOME/wallpapers
 
 output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
+floating_minimum_size 2000 x 1500
 
 title_align center
 default_border normal 2
