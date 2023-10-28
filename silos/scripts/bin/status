@@ -25,12 +25,12 @@ else
 	echo -n '[{"background": "#000000","color":"#36f8ff","full_text":"  '
 fi
 
-# tabs=$(~/bin/tofi-brotab-cache.py)
-tabs=""
+sessions="🖥️ $(tmux ls | wc -l || 0)"
+
 
 case $HOSTNAME in
-	carb) echo -n "$bat   $date $notifications $tabs";;
- 	yharnam) echo -n "$date $notifications $tabs";;
+	carb) echo -n "$bat   $date $notifications $sessions";;
+ 	yharnam) echo -n "$date $notifications $sessions";;
 esac
 echo -n '  "}],'
 echo
