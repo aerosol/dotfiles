@@ -134,7 +134,7 @@ bindsym $mod+r mode "resize"
 mode "quickmode" {
     bindsym r reload
     bindsym o exec "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform", mode "default"
-    bindsym s mode "default", exec "tailscale status | grep tagged | awk '{print $2}' | tofi | xargs -I '{}' foot tailscale ssh adam@'{}'"
+
 
     bindsym $left move left, mode "default"
     bindsym $down move down, mode "default"
