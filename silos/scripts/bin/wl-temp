@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+temp=$(echo -e "5000\n4500\n4000\n3500\n3000" | tofi --prompt "Choose temp")
+busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q $temp
+

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+gamma=$(echo -e "1\n1.1\n1.2\n1.3\n1.4\n1.5\n1.6" | tofi --prompt "Choose temp")
+busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Gamma d $gamma
+
