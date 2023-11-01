@@ -59,5 +59,5 @@ return {
 			})
 			vim.cmd("colorscheme NeoSolarized")
 		end,
-	},
+	}
 }

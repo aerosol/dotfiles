@@ -13,7 +13,7 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.diagnostics.eslint,
-					null_ls.builtins.diagnostics.jshint,
+					-- null_ls.builtins.diagnostics.jshint,
 					null_ls.builtins.completion.spell,
 					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.diagnostics.write_good,
@@ -44,10 +44,6 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"folke/neodev.nvim",
 		},
-	},
-	{
-		"kosayoda/nvim-lightbulb",
-		dependencies = "antoinemadec/FixCursorHold.nvim",
 	},
 	{
 		"hrsh7th/nvim-cmp",
