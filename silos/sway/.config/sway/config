@@ -35,8 +35,8 @@ for_window [class="zoom"] floating enable
 for_window [class="GStreamer"] floating enable
 for_window [app_id="mpv"] floating enable
 
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
@@ -99,10 +99,8 @@ bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6; exe
 bindsym $mod+o splith
 bindsym $mod+b splitv
 
-bindsym $mod+e layout toggle splith tabbed stacking splitv
-# bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle splith splitv
 bindsym $mod+g layout toggle split
-# bindsym $mod+p sticky toggle
 
 bindsym $mod+f fullscreen toggle
 bindsym F11 fullscreen toggle
