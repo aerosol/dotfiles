@@ -46,11 +46,18 @@ function M.on_attach(client, bufnr)
 				winopts = { fullscreen = false, preview = { hidden = "hidden" } },
 			})
 		else
-			fzf.lgrep_curbuf({
-				search = '(def |defp |defmacro | +test ")',
-				no_esc = true,
-				previewer = false,
-			})
+			local cur_buf = vim.api.nvim_get_current_buf()
+			local cur_ft = vim.api.nvim_buf_get_option(cur_buf, "filetype")
+			if cur_ft == 'elixir' then
+				fzf.grep_curbuf({
+					search = '(def |defp |defmacro | +test | +describe")',
+					no_esc = true,
+					previewer = false,
+					prompt = 'Wee'
+				})
+			else
+				print('No references for filetype: ' .. cur_ft)
+			end
 		end
 	end, "Outline")
 

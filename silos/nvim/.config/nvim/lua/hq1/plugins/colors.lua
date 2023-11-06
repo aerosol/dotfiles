@@ -47,6 +47,7 @@ return {
 					highlights.PounceAcceptBest = { bg = "#008800", fg = "#ffffff", underline = true }
 					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
+					highlights.DiagnosticVirtualTextError = { fg = "#6f0000" }
 					-- highlights.diffAdded = { fg = c.green }
 					-- highlights.diffRemoved = { fg = c.red }
 					-- highlights.diffChanged = { fg = c.blue }
