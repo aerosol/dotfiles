@@ -18,6 +18,15 @@ return {
 			},
 		})
 
+		vim.keymap.set("n", "<C-p>", function()
+			fzf.commands({
+				winopts = {
+					fullscreen = false,
+					preview = false
+				}
+			})
+		end, opts)
+
 		vim.keymap.set("n", "go", function()
 			fzf.files({
 				winopts = { preview = { hidden = "hidden" } },
