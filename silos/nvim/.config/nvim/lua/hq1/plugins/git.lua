@@ -20,7 +20,7 @@ return {
 	{
 		"tpope/vim-fugitive",
 		config = function()
-			keymap("n", "gs", ":tab :Git<cr>", opts)
+			keymap("n", "gs", ":tab :Git<cr>:exe 'normal gUzz'<cr>", opts)
 			keymap("n", "gp", ":Git push<cr>", opts)
 			keymap("n", "gl", ":tab :DiffviewFileHistory<cr>", opts)
 			keymap("n", "gL", ":tab :DiffviewFileHistory --follow %<cr>", opts)

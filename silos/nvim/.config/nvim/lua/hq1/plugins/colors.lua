@@ -33,6 +33,12 @@ return {
 					undercurl = true, -- true/false; for global undercurl
 				},
 				on_highlights = function(highlights, _colors)
+					highlights.OilFile = { italic = not neovide }
+					highlights.OilDir = { italic = not neovide }
+					highlights.fugitiveHash = { italic = not neovide }
+					highlights.fugitiveUnstagedSection = { italic = not neovide, fg = "#005200" }
+					highlights.fugitiveUntrackedSection = { italic = not neovide, fg = "#666666" }
+					highlights.fugitiveStagedSection = { italic = not neovide, fg = "#008800" }
 					highlights.Folded.bg = nil
 					highlights.Folded.fg = "blue"
 					highlights.Pmenu = { bg = "#141819" }
