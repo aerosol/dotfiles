@@ -22,7 +22,7 @@ return {
 			fzf.commands({
 				winopts = {
 					fullscreen = false,
-					preview = false
+					preview = { hidden = "hidden"},
 				}
 			})
 		end, opts)
