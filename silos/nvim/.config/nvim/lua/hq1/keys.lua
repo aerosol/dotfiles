@@ -40,3 +40,6 @@ keymap("n", "<leader>fez", "<cmd>:e ~/.zshrc<cr>", opts)
 keymap("n", "<leader>fea", "<cmd>:e ~/.config/alacritty/alacritty.yml<cr>", opts)
 keymap("n", "<leader>fep", "<cmd>:e ~/.config/polybar/config.ini<cr>", opts)
 keymap("n", "<leader>fet", "<cmd>:e ~/.tmux.conf<cr>", opts)
+
+keymap("n", "<C-o>", function() RunIt(vim.fn.expand("%:p")) end, opts)
+keymap("n", "<leader>cx", "<cmd>:!chmod +x %<cr>", opts)
