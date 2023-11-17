@@ -33,6 +33,17 @@ M.run = function(args)
 	vim.cmd("norm G")
 	vim.cmd("file! " .. name)
 
+
+	vim.api.nvim_create_autocmd({ "BufEnter" }, {
+		buffer = 0,
+		command = "let &titlestring = '" .. cmd .. "'"
+	})
+
+	vim.api.nvim_create_autocmd({ "BufLeave" }, {
+		buffer = 0,
+		command = "let &titlestring = '' | set title"
+	})
+
 	if auto_resize then
 		vim.api.nvim_create_autocmd({ "BufEnter" }, {
 			buffer = 0,
