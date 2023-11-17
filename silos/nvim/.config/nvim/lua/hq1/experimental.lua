@@ -22,7 +22,7 @@ M.run = function(args)
 		auto_resize = args.auto_resize
 	end
 
-	local name = "RunIt:" .. id
+	local name = "Runner:" .. id
 	local bnr = vim.fn.bufnr(name)
 	if bnr > 0 then
 		vim.cmd("bdelete! " .. bnr)
