@@ -86,7 +86,7 @@ M.set_keymaps = function()
 	end)
 
 	local current_file = vim.fn.expand("%:p")
-	keymap("n", "<C-o>", function() M.run({ auto_resize = false }) end, opts)
+	keymap("n", "<C-e>", function() M.run({ auto_resize = false }) end, opts)
 	keymap("n", "<leader>cx", "<cmd>:!chmod +x %<cr>", opts)
 end
 
