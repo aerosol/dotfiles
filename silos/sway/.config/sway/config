@@ -16,7 +16,6 @@ set $meh Ctrl+Shift+Alt
 set $wallpapers_path $HOME/wallpapers
 
 output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
-floating_minimum_size 2000 x 1500
 
 title_align center
 default_border normal 2
@@ -32,6 +31,7 @@ for_window [app_id="obsidian"] floating enable, border none, move scratchpad
 # for_window [app_id="Signal"] move workspace 5
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
+for_window [app_id="okular"] floating enable
 for_window [class="GStreamer"] floating enable
 for_window [app_id="mpv"] floating enable
 
