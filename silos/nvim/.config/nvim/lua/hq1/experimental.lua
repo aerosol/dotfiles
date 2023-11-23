@@ -66,7 +66,7 @@ M.set_keymaps = function()
 	local opts = { noremap = true, silent = true }
 
 	keymap("n", "ta", function()
-		M.run({ id = "TestPanel", cmd = "mix test" })
+		M.run({ id = "TestPanel", cmd = "mix test --max-failures=1 --warnings-as-errors" })
 	end, opts)
 
 	keymap("n", "tf", function()
