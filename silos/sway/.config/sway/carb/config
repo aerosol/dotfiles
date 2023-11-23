@@ -1,4 +1,4 @@
-font pango:JetBrainsMono Nerd Font 18
+font pango:JetBrainsMono NF 18
 set $file_manager pcmanfm
 
 output eDP-1 scale 1
