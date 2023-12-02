@@ -25,7 +25,7 @@ bindswitch lid:on exec $lock
 bindsym Ctrl+Shift+L exec $lock
 
 input * {
-    xkb_layout pl,us
+    xkb_layout pl
     xkb_options "altwin:swap_lalt_lwin,ctrl:nocaps,grp:alt_shift_toggle"
 }
 
