@@ -20,6 +20,7 @@ keymap("i", "kj", "<Esc>", opts)
 keymap("c", "<C-a>", "<home>", {})
 keymap("c", "<C-e>", "<end>", {})
 
+keymap("i", "ascii", "ascii", {})
 keymap("i", "ii", "|> IO.inspect(label: :)<Left>", {})
 keymap("i", "%%", "<%= %><esc>F=a<space>", {})
 
