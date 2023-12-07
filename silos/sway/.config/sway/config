@@ -148,9 +148,10 @@ bindsym $mod+q mode "quickmode"
 
 bar {
     position bottom
-    status_padding 18
-    mode hide
-    workspace_min_width 180
+    mode dock
+    height 30
+    gaps 5 20
+    workspace_min_width 100
     binding_mode_indicator no
 
     colors {
@@ -163,12 +164,12 @@ bar {
 }
 
 bar {
-    position top
+    position bottom
         status_command status
-        status_edge_padding 0
-        status_padding 0
+        status_edge_padding 20
+        status_padding 5
+        height 40
         mode overlay
-        workspace_min_width 180
         binding_mode_indicator yes
         workspace_buttons no
 
