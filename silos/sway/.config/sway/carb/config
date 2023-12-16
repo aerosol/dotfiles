@@ -27,12 +27,16 @@ bindsym Ctrl+Shift+L exec $lock
 input * {
     xkb_layout pl
     xkb_options "altwin:swap_lalt_lwin,ctrl:nocaps,grp:alt_shift_toggle"
+		repeat_rate 50
+		repeat_delay 300
 }
 
 input "1739:52620:SYNA8005:00_06CB:CD8C_Touchpad" {
       dwt enabled
       tap enabled
       middle_emulation enabled
+			accel_profile "adaptive"
+			pointer_accel 0.7
 }
 
 workspace 1 output eDP-1

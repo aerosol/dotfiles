@@ -35,6 +35,8 @@ for_window [app_id="okular"] floating enable
 for_window [class="GStreamer"] floating enable
 for_window [app_id="mpv"] floating enable
 
+popup_during_fullscreen smart
+
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
