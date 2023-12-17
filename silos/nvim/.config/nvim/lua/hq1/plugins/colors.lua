@@ -59,6 +59,7 @@ return {
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
 					highlights.DiagnosticVirtualTextError = { fg = "#6f0000" }
 					highlights.CursorLine = { bg = "#111111" }
+					highlights.LineNr = { fg = "#333333" }
 				end,
 			})
 			vim.cmd("colorscheme NeoSolarized")
