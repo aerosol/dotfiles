@@ -11,7 +11,7 @@ return {
 			},
 			winopts = {
 				border     = { " ", " ", " ", " ", " ", " ", " ", " " },
-				fullscreen = true,
+				fullscreen = false,
 				preview    = {
 					layout = "flex",
 					default = "bat_native",
