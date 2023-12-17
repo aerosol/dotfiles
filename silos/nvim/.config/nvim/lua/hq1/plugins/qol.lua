@@ -16,7 +16,8 @@ return {
 		'declancm/cinnamon.nvim',
 		config = function()
 			require('cinnamon').setup({
-				extra_keymaps = true
+				extra_keymaps = true,
+				default_delay = 3
 
 			})
 		end
