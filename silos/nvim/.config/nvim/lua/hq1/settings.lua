@@ -28,4 +28,13 @@ vim.opt.spell = true
 vim.opt.conceallevel = 2
 vim.opt.title = true
 vim.opt.titlestring = "%{pathshorten(expand('%:~:.'))}"
-vim.opt.fillchars = 'eob: '
+vim.opt.fillchars = {
+	horiz = '━',
+	horizup = '┻',
+	horizdown = '┳',
+	vert = '┃',
+	vertleft = '┫',
+	vertright = '┣',
+	verthoriz = '╋',
+	eob = ' '
+}
