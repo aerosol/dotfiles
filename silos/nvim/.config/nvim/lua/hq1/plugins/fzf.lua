@@ -10,8 +10,9 @@ return {
 				["--layout"] = "reverse",
 			},
 			winopts = {
+				border     = { " ", " ", " ", " ", " ", " ", " ", " " },
 				fullscreen = true,
-				preview = {
+				preview    = {
 					layout = "flex",
 					default = "bat_native",
 				},
@@ -22,7 +23,7 @@ return {
 			fzf.commands({
 				winopts = {
 					fullscreen = false,
-					preview = { hidden = "hidden"},
+					preview = { hidden = "hidden" },
 				}
 			})
 		end, opts)
@@ -56,7 +57,7 @@ return {
 		end, opts)
 
 		vim.keymap.set("n", "<leader><space>", function()
-			fzf.buffers()
+			fzf.buffers({ winopts = { preview = { border = "noborder" } } })
 		end, opts)
 	end,
 }
