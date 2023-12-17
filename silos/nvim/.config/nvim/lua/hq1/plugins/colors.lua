@@ -19,6 +19,10 @@ return {
 		"Tsuzat/NeoSolarized.nvim",
 		config = function()
 			local neovide = vim.g.neovide
+			local colors = require("NeoSolarized.colors")
+			colors.dark.bg0 = '#0a0a0a'
+			colors.dark.bg1 = '#303238'
+
 			require("NeoSolarized").setup({
 				transparent = true,
 				enable_italics = not neovide,
@@ -33,8 +37,8 @@ return {
 					undercurl = true, -- true/false; for global undercurl
 				},
 				on_highlights = function(highlights, _colors)
-					highlights.OilFile = { italic = not neovide }
-					highlights.OilDir = { italic = not neovide }
+					highlights.OilFile = { fg = "#657b83", italic = not neovide }
+					highlights.OilDir = { fg = "#b59909", italic = not neovide }
 					highlights.fugitiveHash = { italic = not neovide }
 					highlights.fugitiveUnstagedSection = { italic = not neovide, fg = "#005200" }
 					highlights.fugitiveUntrackedSection = { italic = not neovide, fg = "#666666" }
@@ -54,14 +58,7 @@ return {
 					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
 					highlights.DiagnosticVirtualTextError = { fg = "#6f0000" }
-					-- highlights.diffAdded = { fg = c.green }
-					-- highlights.diffRemoved = { fg = c.red }
-					-- highlights.diffChanged = { fg = c.blue }
-					-- highlights.diffOldFile = { fg = c.yellow }
-					-- highlights.diffNewFile = { fg = c.orange }
-					-- highlights.diffFile = { fg = c.aqua }
-					-- highlights.diffLine = { fg = c.base1 }
-					-- highlights.diffIndexLine = { fg = c.purple }
+					highlights.CursorLine = { bg = "#111111" }
 				end,
 			})
 			vim.cmd("colorscheme NeoSolarized")
