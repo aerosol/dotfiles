@@ -19,6 +19,7 @@
     co = checkout
     recent = for-each-ref --count=16 --sort=-committerdate refs/heads/ --format="%(refname:short)"
     pf = push --force-with-lease
+    branch-name = rev-parse --abbrev-ref HEAD
 
 [github]
     user = aerosol
