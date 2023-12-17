@@ -1,5 +1,5 @@
 vim.g.editorconfig = false
-
+vim.opt.shortmess:append('I')
 vim.opt.cursorline = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
@@ -28,3 +28,4 @@ vim.opt.spell = true
 vim.opt.conceallevel = 2
 vim.opt.title = true
 vim.opt.titlestring = "%{pathshorten(expand('%:~:.'))}"
+vim.opt.fillchars = 'eob: '

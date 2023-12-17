@@ -25,16 +25,9 @@ return {
 				},
 				sections = {
 					lualine_a = {
-						{
-							"mode",
-							fmt = function(str)
-								return str:sub(1, 1)
-							end,
-						},
 					},
 					lualine_b = {
-						{ "filename", path = 3, color = { gui = font_modifier } },
-						"location"
+						{ "filename", path = 4, color = { gui = font_modifier } }
 					},
 					lualine_c = { "diff", "diagnostics" },
 					lualine_x = {
