@@ -1,33 +1,24 @@
 [user]
     email = hq@mtod.org
     name = Adam Rutkowski
-	signingkey = 1AE955DBD48E08A
+    signingkey = 1AE955DBD48E08A
 [color]
     ui = true
 [alias]
     st = status -bs
     last = diff --cached HEAD^
     lg = -c core.pager='less' log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    ll = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-    df = diff --color-words
-    dh = diff --color-words HEAD
-    ds = diff --stat -r
     amend = commit --amend
     unpushed = cherry -v
     f = fetch -p
     fup = commit -a --fixup=$(git log --oneline | fzf | awk '{print $1}
-    branch-name = rev-parse --abbrev-ref HEAD
     pub = !git push -u origin $(git branch-name)
-    standup = !git log --since yesterday --author $(git config user.email) --pretty=short
-    files = diff --oneline --stat origin/develop..HEAD
     br = "!git checkout `git branch | fzf`"
     brr = "!git checkout `git recent | fzf`"
     brv = branch -avv
-    dd = diff origin/develop..HEAD
     co = checkout
     recent = for-each-ref --count=16 --sort=-committerdate refs/heads/ --format="%(refname:short)"
-    clogp = -c core.pager='less -p^commit.*$' log -p
-	pushfwl = push --force-with-lease
+    pf = push --force-with-lease
 
 [github]
     user = aerosol
@@ -44,11 +35,11 @@
     algorithm = patience
     colorMoved = default
 [core]
-	excludesfile = /home/hq1/.gitignore_global
+    excludesfile = /home/hq1/.gitignore_global
     pager = delta
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [interactive]
     diffFilter = delta --color-only
