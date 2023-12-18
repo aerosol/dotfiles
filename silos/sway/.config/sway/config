@@ -45,6 +45,7 @@ bindsym Ctrl+period exec dunstctl close-all
 bindsym $mod+m exec dunstctl set-paused toggle
 
 exec dunst
+exec ydotoold
 exec firefox
 exec $term
 exec sworkstyle &> /tmp/sworkstyle.log
@@ -100,8 +101,9 @@ bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6; exe
 
 bindsym $mod+o splith
 bindsym $mod+b splitv
+bindsym $mod+t exec new-tab.sh
 
-bindsym $mod+e layout toggle splith splitv
+bindsym $mod+e layout toggle splith splitv tabbed
 bindsym $mod+g layout toggle split
 
 bindsym $mod+f fullscreen toggle
