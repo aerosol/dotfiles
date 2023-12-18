@@ -11,6 +11,7 @@ return {
 			},
 			winopts = {
 				fullscreen = true,
+				border = { '', '', '', '', '', '', '', '' },
 				preview = {
 					layout = "flex",
 					default = "bat_native",
@@ -22,7 +23,7 @@ return {
 			fzf.commands({
 				winopts = {
 					fullscreen = false,
-					preview = { hidden = "hidden"},
+					preview = { hidden = "hidden" },
 				}
 			})
 		end, opts)
