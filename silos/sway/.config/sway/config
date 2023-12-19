@@ -53,7 +53,7 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
 focus_on_window_activation focus
-focus_follows_mouse no
+focus_follows_mouse yes
 
 gaps inner 20
 
