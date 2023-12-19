@@ -64,17 +64,18 @@ end
 M.set_keymaps = function()
 	local keymap = vim.keymap.set
 	local opts = { noremap = true, silent = true }
-	local current_file = vim.fn.expand("%:p")
 
 	keymap("n", "ta", function()
 		M.run({ id = "TestPanel", cmd = "mix test --max-failures=1 --warnings-as-errors" })
 	end, opts)
 
 	keymap("n", "tf", function()
+		local current_file = vim.fn.expand("%:p")
 		M.run({ id = "TestPanel", cmd = "mix test " .. current_file })
 	end, opts)
 
 	keymap("n", "tt", function()
+		local current_file = vim.fn.expand("%:p")
 		local current_line = vim.fn.line('.')
 		local file_line = string.format("%s:%d", current_file, current_line)
 		M.run({ id = "TestPanel", cmd = "mix test " .. file_line })
@@ -85,6 +86,7 @@ M.set_keymaps = function()
 	end)
 
 	keymap("n", "<leader>r", function()
+		local current_file = vim.fn.expand("%:p")
 		M.run({ id = current_file, cmd = current_file })
 	end)
 
