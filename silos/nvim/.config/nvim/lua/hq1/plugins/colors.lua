@@ -1,4 +1,5 @@
 return {
+	{ 'rktjmp/lush.nvim' },
 	{
 		"levouh/tint.nvim",
 		config = function()
