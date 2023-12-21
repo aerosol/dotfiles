@@ -28,7 +28,7 @@ set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
 
 for_window [app_id="obsidian"] floating enable, border none, move scratchpad
-# for_window [app_id="Signal"] move workspace 5
+for_window [app_id="Signal"] move workspace 5
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
 for_window [app_id="okular"] floating enable
@@ -44,6 +44,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
 bindsym $mod+m exec dunstctl set-paused toggle
 
+exec waybar
 exec dunst
 exec ydotoold
 exec firefox
@@ -149,36 +150,3 @@ mode "quickmode" {
 }
 
 bindsym $mod+q mode "quickmode"
-
-bar {
-    position bottom
-    mode dock
-    height 30
-    gaps 5 20
-    workspace_min_width 100
-    binding_mode_indicator no
-
-    colors {
-        statusline #000000
-        background #ffffff00
-        inactive_workspace #000000 #000000 #1A7A7D
-        active_workspace #000000 #000000 #ffffff
-        focused_workspace #000000 #1A7A7D #36F8FF
-    }
-}
-
-bar {
-    position bottom
-        status_command status
-        status_edge_padding 20
-        status_padding 5
-        height 40
-        mode overlay
-        binding_mode_indicator yes
-        workspace_buttons no
-
-        colors {
-            statusline #000000
-            background #ffffff00
-        }
-}
