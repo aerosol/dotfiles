@@ -1,8 +1,9 @@
 {
-        "layer": "bottom",
+        "layer": "top",
+				"position": "bottom",
         "modules-left": [
                 "sway/window",
-                "sway/mode",
+                "sway/mode"
         ],
         "modules-center": [
                 "sway/workspaces"

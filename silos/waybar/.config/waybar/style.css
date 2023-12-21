@@ -1,13 +1,13 @@
 * {
-    font-family: Inter, PragmataPro;
+    font-family: JetBrains Mono, PragmataPro;
     font-size: 24px;
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0.3);
+    background-color: black;
     transition-property: background-color;
     transition-duration: .5s;
-    color: #000000;
+    color: #1A7A7D;
 }
 
 window#waybar.hidden {
@@ -84,9 +84,7 @@ tt {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-    text-shadow: #FC0 10px 0 10px;
     padding: 0 10px;
-    color: #ffffff;
 }
 
 #window,
@@ -133,9 +131,8 @@ tt {
 }
 
 #window {
-    color: #ffffff;
+    color: #1A7A7D;
     padding: 0 0 0 40px;
-    text-shadow: #FC0 10px 0 10px;
 }
 
 label:focus {
