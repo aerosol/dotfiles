@@ -148,5 +148,4 @@ mode "quickmode" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
 bindsym $mod+q mode "quickmode"
