@@ -11,6 +11,9 @@ export TERMINAL=foot
 export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.nimble/bin:$PATH
 export EXA_ICON_SPACING=2
 export MOZ_ENABLE_WAYLAND=1
+export GDK_SCALE=2
+export GDK_DPI_SCALE=2
+export QT_SCALE_FACTOR=2
 
 if [[ "$TERM" == "xterm-256color" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
