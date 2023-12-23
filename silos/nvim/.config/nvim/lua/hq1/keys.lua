@@ -35,5 +35,6 @@ keymap("n", "<leader>few", "<cmd>:e ~/.config/waybar/<cr>", opts)
 keymap("n", "<leader>feS", "<cmd>:e ~/.config/sway/config<cr>", opts)
 keymap("n", "<leader>fez", "<cmd>:e ~/.zshrc<cr>", opts)
 keymap("n", "<leader>fet", "<cmd>:e ~/.tmux.conf<cr>", opts)
+keymap("n", "<leader>fef", "<cmd>:e ~/.config/foot/foot.ini<cr>", opts)
 
 require('hq1.experimental').set_keymaps()
