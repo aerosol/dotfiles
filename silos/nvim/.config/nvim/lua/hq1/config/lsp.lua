@@ -13,9 +13,13 @@ function M.on_attach(client, bufnr)
 
 	local caps = function(cap)
 		do
-			local clients = vim.lsp.get_active_clients()
-			for _, client in ipairs(clients) do
-				local caps = client.server_capabilities
+			local clients = vim.lsp.get_clients()
+			for _, c in ipairs(clients) do
+				local caps = c.server_capabilities
+				for key in pairs(caps) do
+					print(key)
+				end
+				print("Requested capability: " .. cap)
 				return caps and caps[cap]
 			end
 		end
@@ -45,7 +49,7 @@ function M.on_attach(client, bufnr)
 			})
 		else
 			local cur_buf = vim.api.nvim_get_current_buf()
-			local cur_ft = vim.api.nvim_buf_get_option(cur_buf, "filetype")
+			local cur_ft = vim.api.nvim_get_option_value("filetype", { buf = cur_buf })
 			if cur_ft == 'elixir' then
 				fzf.grep_curbuf({
 					search = '(def |defp |defmacro | +test | +describe")',
@@ -219,6 +223,7 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = {
+		{ name = 'path' },
 		{ name = "cody",     group_index = 2 },
 		{ name = "codeium",  group_index = 2 },
 		{ name = "copilot",  group_index = 2 },
