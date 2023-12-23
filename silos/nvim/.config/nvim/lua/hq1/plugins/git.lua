@@ -20,6 +20,7 @@ return {
 	{
 		"tpope/vim-fugitive",
 		config = function()
+			vim.api.nvim_create_user_command('Browse', 'silent execute "!xdg-open " . expand("<args>")', { nargs = 1 })
 			keymap("n", "gs", ":tab :Git<cr>:exe 'normal gUzz'<cr>", opts)
 			keymap("n", "gp", ":Git push<cr>", opts)
 			keymap("n", "gl", ":tab :DiffviewFileHistory<cr>", opts)
