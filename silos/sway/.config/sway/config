@@ -34,6 +34,7 @@ for_window [class="zoom"] floating enable
 for_window [app_id="okular"] floating enable
 for_window [class="GStreamer"] floating enable
 for_window [app_id="mpv"] floating enable
+for_window [app_id="scratchpad"] floating enable
 
 popup_during_fullscreen smart
 
@@ -48,7 +49,7 @@ exec waybar
 exec dunst
 exec ydotoold
 exec firefox
-exec $term
+exec $term --server
 exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
@@ -59,6 +60,7 @@ focus_follows_mouse yes
 gaps inner 20
 
 floating_modifier $mod normal
+bindsym $mod+i exec vimcopy && cliptype
 bindsym $mod+d exec $file_manager
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
