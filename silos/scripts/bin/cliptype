@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+clip=$(wl-paste | sed -z 's/\n/ -M Shift -P Return /g')
+echo $clip
+wtype $clip
