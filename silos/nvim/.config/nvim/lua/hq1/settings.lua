@@ -25,7 +25,6 @@ vim.opt.wrap = true
 vim.opt.ttimeoutlen = 10
 vim.opt.timeout = false
 vim.opt.spell = true
-vim.opt.conceallevel = 2
 vim.opt.title = true
 vim.opt.titlestring = "%{pathshorten(expand('%:~:.'))}"
 vim.opt.fillchars = {
