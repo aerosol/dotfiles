@@ -3,7 +3,6 @@ local opts = { noremap = true, silent = true }
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
 keymap("n", "ss", ":update<cr>", opts)
 
 keymap("n", "//", ":nohlsearch<cr>", opts)
@@ -36,5 +35,7 @@ keymap("n", "<leader>feS", "<cmd>:e ~/.config/sway/config<cr>", opts)
 keymap("n", "<leader>fez", "<cmd>:e ~/.zshrc<cr>", opts)
 keymap("n", "<leader>fet", "<cmd>:e ~/.tmux.conf<cr>", opts)
 keymap("n", "<leader>fef", "<cmd>:e ~/.config/foot/foot.ini<cr>", opts)
+
+keymap("n", "<F12>", "<C-w>c", opts)
 
 require('hq1.experimental').set_keymaps()
