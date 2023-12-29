@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-clip=$(wl-paste | sed -z 's/\n/ -M Shift -P Return /g')
-echo $clip
-wtype $clip
+current=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | .app_id')
+if [[ $current == "foot" ]]; then
+	clip=$(wl-paste -n)
+	wtype "$clip"
+else
+	clip=$(wl-paste -n | sed -z 's/\n/ -M Shift -P Return /g')
+	wtype $clip
+fi
+
