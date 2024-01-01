@@ -1,6 +1,8 @@
 font pango:JetBrainsMono NF 18
 set $file_manager pcmanfm
 
+focus_follows_mouse yes
+
 output eDP-1 scale 1
 
 seat seat0 xcursor_theme Adwaita 42

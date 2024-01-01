@@ -5,6 +5,8 @@ output DP-1 mode 3840x2160@60Hz pos 2160 0
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0
 output HDMI-A-1 transform 270
 
+focus_follows_mouse no
+
 seat seat0 xcursor_theme Hackneyed 42
 seat * hide_cursor when-typing enable
 
