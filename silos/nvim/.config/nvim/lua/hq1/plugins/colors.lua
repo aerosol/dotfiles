@@ -59,7 +59,7 @@ return {
 					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
 					highlights.DiagnosticVirtualTextError = { fg = "#6f0000" }
-					highlights.CursorLine = { bg = "#111111" }
+					-- highlights.CursorLine = { bg = "#11113e" }
 					highlights.LineNr = { fg = "#333333" }
 				end,
 			})
