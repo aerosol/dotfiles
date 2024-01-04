@@ -1,38 +1,40 @@
 #!/usr/bin/env bash
 # poor man's i3blocks, it's all I need really
 # see: man swaybar-protocol
+
+set -e
+
 echo '{"version": 1}'
 echo "["
 while true; do
 
-date=$(date '+%A %d.%m.%y, %H:%M')
+wrap() {
+	echo {"\"background\"": "\"#000000\"",\""color\"":"\"#ffffff\"","\"full_text\"":"\"$1\""}
+}
+
+date=$(wrap "$(date '+%A %d.%m.%y, %H:%M')")
 
 if [ "$(dunstctl is-paused)" = "true" ]; then
-	notifications="🔕"
+	notifications=$(wrap "🔕")
 else
-	notifications="🔔"
+	notifications=$(wrap "🔔")
 fi
 
-if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" ]; then
-	bat="🔋 $(cat /sys/class/power_supply/BAT0/capacity)%"
-else
-	bat="💫 $(cat /sys/class/power_supply/BAT0/capacity)%"
-fi
+if [ "$HOSTNAME" = "carb" ]; then
+	if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" ]; then
+		bat="🔋 $(cat /sys/class/power_supply/BAT0/capacity)%"
+	else
+		bat="💫 $(cat /sys/class/power_supply/BAT0/capacity)%"
+	fi
 
-if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" ] && [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt "25" ]; then
-	echo -n '[{"background": "#000000","color":"#ff0000","full_text":"  '
-else
-	echo -n '[{"background": "#000000","color":"#36f8ff","full_text":"  '
+	if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Discharging" ] && [ "$(cat /sys/class/power_supply/BAT0/capacity)" -lt "25" ]; then
+		echo -n '[{"background": "#000000","color":"#ff0000","full_text":"  '
+	else
+		echo -n '[{"background": "#000000","color":"#36f8ff","full_text":"  '
+	fi
 fi
 
 cpu() {
-	read -r cpu a b c previdle rest < /proc/stat
-	prevtotal=$((a+b+c+previdle))
-	sleep 0.5
-	read -r cpu a b c idle rest < /proc/stat
-	total=$((a+b+c+idle))
-	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-	printf "  CPU: %2d%%" $cpu
 }
 
 disk() {
@@ -40,23 +42,22 @@ disk() {
 	echo "Disk use: $used"
 }
 
-
 scratches=$(scratches)
 if [ "$scratches" -gt "0" ]; then
-	scratches="🙈 $scratches"
+	scratches=$(wrap "🙈 $scratches")
 else
-	scratches=""
+	scratches=$(wrap "🙉")
 fi
 
-sessions="🖥️ $(tmux ls | wc -l || 0)"
-cpu=$(cpu)
-disk=$(disk)
+sessions=$(wrap "🖥️ $(tmux ls | wc -l || 0)")
+cpu=$(wrap $(cpu))
+disk=$(wrap $(disk))
 
 case $HOSTNAME in
 	carb) echo -n "$bat   $notifications $sessions $scratches $disk $cpu    $date";;
- 	yharnam) echo -n "$notifications $sessions $scratches $disk $cpu   $date";;
+ 	yharnam) echo -n "$notifications, $sessions, $scratches, $disk, $cpu,   $date";;
 esac
-echo -n '  "}],'
+echo -n '],'
 echo
 sleep 2
 done
