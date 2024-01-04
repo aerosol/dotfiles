@@ -5,7 +5,7 @@ echo '{"version": 1}'
 echo "["
 while true; do
 
-date=$(date '+%a %d.%m   %H:%M')
+date=$(date '+%A %d.%m.%y, %H:%M')
 
 if [ "$(dunstctl is-paused)" = "true" ]; then
 	notifications="🔕"
@@ -25,6 +25,22 @@ else
 	echo -n '[{"background": "#000000","color":"#36f8ff","full_text":"  '
 fi
 
+cpu() {
+	read -r cpu a b c previdle rest < /proc/stat
+	prevtotal=$((a+b+c+previdle))
+	sleep 0.5
+	read -r cpu a b c idle rest < /proc/stat
+	total=$((a+b+c+idle))
+	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+	echo "🧠 $cpu"%
+}
+
+disk() {
+	free=$(df -h | awk '/\/$/ {print $5}')
+	echo "💾 $free"
+}
+
+
 scratches=$(scratches)
 if [ "$scratches" -gt "0" ]; then
 	scratches="🙈 $scratches"
@@ -33,10 +49,12 @@ else
 fi
 
 sessions="🖥️ $(tmux ls | wc -l || 0)"
+cpu=$(cpu)
+disk=$(disk)
 
 case $HOSTNAME in
-	carb) echo -n "$bat   $date $notifications $sessions $scratches";;
- 	yharnam) echo -n "$date $notifications $sessions $scratches";;
+	carb) echo -n "$bat   $notifications $sessions $scratches $disk $cpu    $date";;
+ 	yharnam) echo -n "$notifications $sessions $scratches $disk $cpu   $date";;
 esac
 echo -n '  "}],'
 echo
