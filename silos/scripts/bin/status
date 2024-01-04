@@ -32,12 +32,12 @@ cpu() {
 	read -r cpu a b c idle rest < /proc/stat
 	total=$((a+b+c+idle))
 	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-	echo "🧠 $cpu"%
+	printf "  CPU: %2d%%" $cpu
 }
 
 disk() {
-	free=$(df -h | awk '/\/$/ {print $5}')
-	echo "💾 $free"
+	used=$(df -h | awk '/\/$/ {print $5}')
+	echo "Disk use: $used"
 }
 
 
