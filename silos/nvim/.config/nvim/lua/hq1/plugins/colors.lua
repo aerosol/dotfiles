@@ -1,9 +1,11 @@
 return {
+	{ 'craftzdog/solarized-osaka.nvim' },
 	{ 'rktjmp/lush.nvim' },
 	{
 		"levouh/tint.nvim",
 		config = function()
 			require("tint").setup({
+				saturation = 0.3,                                       -- Saturation to preserve
 				highlight_ignore_patterns = { "WinSeparator", "Status.*" }, -- Highlight group patterns to ignore, see `string.find`
 				window_ignore_function = function(winid)
 					local bufid = vim.api.nvim_win_get_buf(winid)
@@ -59,8 +61,6 @@ return {
 					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
 					highlights.DiagnosticVirtualTextError = { fg = "#6f0000" }
-					-- highlights.CursorLine = { bg = "#11113e" }
-					highlights.LineNr = { fg = "#333333" }
 				end,
 			})
 			vim.cmd("colorscheme NeoSolarized")

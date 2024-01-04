@@ -12,6 +12,18 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("WinLeave", {
+	callback = function()
+		vim.opt.cursorline = false
+	end
+})
+
+vim.api.nvim_create_autocmd("WinEnter", {
+	callback = function()
+		vim.opt.cursorline = true
+	end
+})
+
 vim.api.nvim_create_autocmd("BufReadPre", {
 	pattern = "*",
 	callback = function()
