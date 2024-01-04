@@ -1,0 +1,5 @@
+[battery]
+command=battery.sh
+interval=2
+color=#ffffff
+background=#000000
