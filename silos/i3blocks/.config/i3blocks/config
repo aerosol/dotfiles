@@ -1,3 +1,6 @@
+separator=false
+separator_block_width=70
+
 [weather]
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
@@ -13,14 +16,6 @@ command=echo "Disk use: $(df -h | awk '/\/$/ {print $5}')"
 interval=10
 color=#ffffff
 
-
-
-# Update time every 5 seconds
-[time]
-command=date
-interval=5
-color=#ffffff
-
 [notifs]
 command=if [ "$(dunstctl is-paused)" = "true" ]; then echo "🔕"; else echo "🔔"; fi
 interval=1
@@ -28,3 +23,9 @@ interval=1
 [scratchpads]
 command=if [ "$(scratches)" -gt "0" ]; then echo "🙈 $(scratches)"; fi
 interval=1
+
+# Update time every 5 seconds
+[time]
+command=date
+interval=5
+color=#ffffff
