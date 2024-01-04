@@ -156,7 +156,7 @@ bar {
     position bottom
         mode dock
         workspace_min_width 100
-        binding_mode_indicator no
+        binding_mode_indicator yes
 
         status_command i3blocks
 

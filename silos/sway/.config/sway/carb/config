@@ -47,3 +47,21 @@ workspace 3 output eDP-1
 workspace 4 output eDP-1
 workspace 5 output eDP-1
 workspace 6 output eDP-1
+
+bar {
+		position top
+		mode overlay
+		workspace_min_width 100
+		binding_mode_indicator no
+		workspace_buttons no
+
+		status_command i3blocks -c ~/.config/i3blocks/config-carb
+
+		colors {
+			statusline #000000
+			background #ffffff00
+			inactive_workspace #000000 #000000 #1A7A7D
+			active_workspace #000000 #000000 #ffffff
+			focused_workspace #000000 #1A7A7D #36F8FF
+		}
+}
