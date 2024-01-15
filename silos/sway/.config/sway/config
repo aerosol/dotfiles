@@ -64,7 +64,7 @@ bindsym $mod+i exec vimcopy && cliptype
 bindsym $mod+d exec $file_manager
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
-bindsym $meh+f move window to output left, focus output left
+bindsym $meh+f move window to output up, focus output up
 bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
 bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus $term || $term'

@@ -1,9 +1,8 @@
 font pango:JetBrainsMono NF 12
 set $file_manager dolphin
 
-output DP-1 mode 3840x2160@60Hz pos 2160 0
+output DP-1 mode 3840x2160@60Hz pos 0 2160
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0
-output HDMI-A-1 transform 270
 
 focus_follows_mouse no
 
@@ -21,5 +20,3 @@ workspace 4 output DP-1
 workspace 5 output DP-1
 
 workspace 6 output HDMI-A-1
-
-
