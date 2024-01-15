@@ -2,13 +2,18 @@ separator=false
 separator_block_width=70
 
 [weather]
-command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+command=echo "Weather: $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)"
 interval=3600
 color=#ffffff
 
 [cpu]
 command=echo "CPU: $(cpu.sh)"
 interval=1
+color=#ffffff
+
+[cputemp]
+command=echo "Tdie: $(sensors | grep -i 'Tdie' | awk '{print $2 " "}' | tr -d '\n')"
+interval=10
 color=#ffffff
 
 [disk]
