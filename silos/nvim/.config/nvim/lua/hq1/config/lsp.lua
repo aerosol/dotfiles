@@ -223,12 +223,12 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = {
-		{ name = 'path' },
-		{ name = "nvim_lsp", group_index = 2 },
-		{ name = "cody",     group_index = 2 },
-		{ name = "codeium",  group_index = 2 },
-		{ name = "copilot",  group_index = 2 },
-		{ name = "buffer",   group_index = 2 },
+		{ name = 'path',     priority_weight = 8 },
+		{ name = "nvim_lsp", priority_weight = 10, group_index = 2 },
+		{ name = "cody",     priority_weight = 2,  group_index = 2 },
+		{ name = "codeium",  priority_weight = 1,  group_index = 2 },
+		{ name = "copilot",  priority_weight = 1,  group_index = 2 },
+		{ name = "buffer",   priority_weight = 9,  group_index = 2 },
 	},
 })
 
