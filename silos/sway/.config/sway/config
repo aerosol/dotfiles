@@ -1,4 +1,4 @@
-include /etc/sway/config.d/*
+
 include "`hostnamectl hostname`/*"
 
 set $mod Mod4
@@ -23,6 +23,7 @@ default_border normal 2
 client.focused #1A7A7D #000111 #36F8FF #000000 #1A7A7D
 client.unfocused #333333 #000000 #555555 #000000 #333333
 client.focused_inactive #000000 #000000 #dddddd #aaaaaa
+client.urgent #ff0000 #000111 #ff0000 #000000 #ff0000
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
@@ -39,6 +40,7 @@ for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
 
 popup_during_fullscreen smart
+exec_always autotiling
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
@@ -61,7 +63,7 @@ gaps inner 10
 
 floating_modifier $mod normal
 bindsym $mod+i exec vimcopy && cliptype
-bindsym $mod+d exec $file_manager
+bindsym $mod+d exec $file_manager $(<$ZSH_CACHE/_lastdir) || $HOME
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output up, focus output up
