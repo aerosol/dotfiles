@@ -52,7 +52,7 @@ bindsym $mod+m exec dunstctl set-paused toggle
 exec dunst
 exec ydotoold
 exec firefox
-exec $term --server
+exec $term --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
 exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
@@ -69,8 +69,9 @@ bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output up, focus output up
 bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
-bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus $term || $term'
+bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus foot || footclient'
 bindsym $mod+w kill
+
 bindsym $mod+space exec $menu
 bindsym $mod+Alt+q exec sway-exit
 
