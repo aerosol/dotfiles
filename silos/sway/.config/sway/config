@@ -6,7 +6,6 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
 set $menu tofi-run | xargs swaymsg exec --
 set $screenshot_area wl-screenshot
 set $screencast_area wl-screencast
@@ -17,8 +16,12 @@ set $wallpapers_path $HOME/wallpapers
 
 output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
 
+popup_during_fullscreen smart
+focus_on_window_activation focus
+gaps inner 10
 title_align center
 default_border normal 2
+floating_modifier $mod normal
 
 client.focused #1A7A7D #000111 #36F8FF #000000 #1A7A7D
 client.unfocused #333333 #000000 #555555 #000000 #333333
@@ -39,29 +42,25 @@ for_window [app_id="mpv"] floating enable
 for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
 
-popup_during_fullscreen smart
 exec_always autotiling
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
-bindsym $mod+Tab workspace back_and_forth
-bindsym Ctrl+period exec dunstctl close-all
-bindsym $mod+m exec dunstctl set-paused toggle
-
 exec dunst
 exec ydotoold
 exec firefox
-exec $term --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
 exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
-focus_on_window_activation focus
+exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
+bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus foot || footclient'
 
-gaps inner 10
+bindsym $mod+Tab workspace back_and_forth
+bindsym Ctrl+period exec dunstctl close-all
+bindsym $mod+m exec dunstctl set-paused toggle
 
-floating_modifier $mod normal
 bindsym $mod+i exec vimcopy && cliptype
 bindsym $mod+d exec $file_manager $(<$ZSH_CACHE/_lastdir) || $HOME
 bindsym $mod+Return exec swap-large
@@ -69,7 +68,6 @@ bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output up, focus output up
 bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
-bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus foot || footclient'
 bindsym $mod+w kill
 
 bindsym $mod+space exec $menu
