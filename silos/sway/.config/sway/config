@@ -43,6 +43,7 @@ for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
 
 exec_always autotiling
+exec_always track-prev-terminal
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
@@ -55,7 +56,8 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
 exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
-bindsym $mod+Escape fullscreen off; exec 'wlrctl window focus foot || footclient'
+exec footclient
+bindsym $mod+Escape fullscreen off; [con_mark=_prev] focus;
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
