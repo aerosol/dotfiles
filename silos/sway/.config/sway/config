@@ -48,6 +48,9 @@ exec_always track-prev-terminal
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
+exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
+exec sleep 2 && footclient
+
 exec dunst
 exec ydotoold
 exec firefox
@@ -55,8 +58,6 @@ exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
-exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
-exec footclient
 bindsym $mod+Escape fullscreen off; [con_mark=_prev] focus;
 
 bindsym $mod+Tab workspace back_and_forth
