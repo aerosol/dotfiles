@@ -42,8 +42,8 @@ for_window [app_id="mpv"] floating enable
 for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
 
-exec_always autotiling
-exec_always track-prev-terminal
+exec autotiling
+exec track-prev-terminal
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
@@ -58,7 +58,7 @@ exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
-bindsym $mod+Escape fullscreen off; [con_mark=_prev] focus;
+bindsym $mod+Escape fullscreen off; exec swaymsg "[con_mark=_prev] focus" || exec footclient;
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
