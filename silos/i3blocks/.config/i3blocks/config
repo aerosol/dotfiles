@@ -12,7 +12,7 @@ interval=1
 color=#ffffff
 
 [cputemp]
-command=echo "Tdie: $(sensors | grep -i 'Tdie' | awk '{print $2 " "}' | tr -d '\n')"
+command=echo "$(sensors | grep -i '\(Tdie\|CPU\)' | awk '{print $2 " "}' | tr -d '\n')"
 interval=10
 color=#ffffff
 
