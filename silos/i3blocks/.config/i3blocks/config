@@ -1,25 +1,31 @@
+align=center
 separator=false
-separator_block_width=70
+color=#f8f8f2
+separator_block_width=25
+markup=pango
 
 [weather]
-command=echo "Weather: $(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo)"
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
 color=#ffffff
+label=  
 
 [cpu]
-command=echo "CPU: $(cpu.sh)"
+command=echo $(cpu.sh)
 interval=1
 color=#ffffff
+label= 
 
 [cputemp]
-command=echo "$(sensors | grep -i '\(Tdie\|CPU\)' | awk '{print $2 " "}' | tr -d '\n')"
+command=echo $(sensors | grep -i '\(Tdie\|CPU\)' | awk '{print $2 " "}' | tr -d '\n')
 interval=10
 color=#ffffff
 
 [disk]
-command=echo "Disk use: $(df -h | awk '/\/$/ {print $5}')"
+command=df -h | awk '/\/$/ {print $5}'
 interval=10
 color=#ffffff
+label= 
 
 [notifs]
 command=if [ "$(dunstctl is-paused)" = "true" ]; then echo "🔕"; else echo "🔔"; fi
@@ -31,6 +37,6 @@ interval=1
 
 # Update time every 5 seconds
 [time]
-command=date
+command=date +'  %a %d.%m  %H:%M'
 interval=5
 color=#ffffff
