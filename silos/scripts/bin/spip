@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/i3-pip
+# shellcheck disable=SC2034
+TIME_STAMP="20231204.132852"
+
+# Copyright (C) 2020-2023 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+wm="i3"
+msg="i3-msg"
+[[ "$SWAYSOCK" ]] && {
+	wm="sway"
+		msg="swaymsg"
+}
+
+waitfor=
+case "$1" in
+-h|--help)
+echo "Usage: $PROG [command]"
+echo "Runs [[-w,--waitfor appid|x11 id] command] and sets the resulting window to Program-in_Program mode"
+echo "ie small, bottom right, no borders and sticky"
+exit 0
+;;
+-w|--waitfor)
+shift
+waitfor="--waitfor $1"
+shift
+;;
+esac
+
+[[ "$1" ]] && {
+# shellcheck disable=SC2086
+	i3-toolwait --verbose $waitfor "$@"
+}
+
+# the focus may change during these operations, so tie it down to the current one
+id=$( $msg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .id' )
+
+[[ "$id" ]] && {
+	$msg "[con_id=$id] floating enable"
+		sleep 1 # mpv (at least) needs this
+		size=$( swaymsg -t get_tree | jq -r '..|select(.type?)|select(.focused == true)|.rect|"\(.width)x\(.height)"' )
+		width=${size%x*}
+	height=${size#*x}
+
+	std_height=300
+		calc_width=$(( std_height * width / height ))
+
+		swaymsg -t get_tree | jq -r '..|select(.focused == true)|.rect.x .rect.y'
+		$msg "[con_id=$id] resize set width $calc_width px height $std_height px, border none, sticky enable, focus"
+		i3-move-to --id "$id" bottom-right
+}
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+
