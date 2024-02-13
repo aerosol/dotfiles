@@ -42,13 +42,13 @@ for_window [app_id="mpv"] floating enable
 for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
 
-exec autotiling --sr 1.61
+exec autotiling -sr "1.61"
 exec track-prev-terminal
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
-exec foot --server --config="/home/hq1/.config/foot/$HOST.ini"
+exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
 exec sleep 2 && footclient
 
 exec dunst
