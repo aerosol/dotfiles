@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-current_node=$(swaymsg -t get_tree | jq -r '.. | select(.focused==true) | .id')
-largest_node=$( swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .id as $id | .rect as $rect | {id: $id, size: ($rect.width * $rect.height)}' | jq -s 'max_by(.size).id')
+current_workspace_id=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) |.id')
+largest_node=$( swaymsg -t get_tree | jq --argjson curr_wks "$current_workspace_id" -r '.. | (.nodes? // empty)[] | select(.id == $curr_wks) | .. | (.nodes? // empty)[] | select(.pid and .visible) | .id as $id | .rect as $rect | {id: $id, size: ($rect.width * $rect.height)}' | jq -s 'max_by(.size).id')
 
-if [ "$current_node" != "$largest_node" ]; then
-    swaymsg "swap container with con_id $largest_node $current_node"
-fi
-
+swaymsg "swap container with con_id $largest_node"
