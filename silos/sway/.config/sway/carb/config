@@ -1,4 +1,4 @@
-font pango:JetBrainsMono NF 18
+font pango:Iosevka Aile Semibold 18
 set $file_manager pcmanfm
 
 focus_follows_mouse yes
