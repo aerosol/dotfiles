@@ -4,10 +4,6 @@ color=#f8f8f2
 separator_block_width=25
 markup=pango
 
-[dunst]
-command=dunst-block
-signal=12
-
 [weather]
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
