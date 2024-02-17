@@ -28,7 +28,7 @@ color=#ffffff
 label= 
 
 [notifs]
-command=if [ "$(dunstctl is-paused)" = "true" ]; then echo "🔕"; else echo "🔔"; fi
+command=if [ "$(dunstctl is-paused)" = "true" ]; then echo "🔕 $(dunstctl count waiting)"; else echo "🔔"; fi
 interval=1
 
 [scratchpads]
