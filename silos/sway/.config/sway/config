@@ -64,7 +64,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
 bindsym $mod+m exec dunstctl set-paused toggle
 
-bindsym $mod+i exec vimcopy && cliptype
+bindsym $mod+i exec edit-clipboard
 bindsym $mod+d exec $file_manager $(<$ZSH_CACHE/_lastdir) || $HOME
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
