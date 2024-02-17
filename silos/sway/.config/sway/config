@@ -13,8 +13,9 @@ set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 set $wallpapers_path $HOME/wallpapers
+set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
-output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
+output "*" bg #32394b solid_color
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
@@ -59,6 +60,8 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
 bindsym $mod+Escape fullscreen off; exec swaymsg "[con_mark=_prev] focus" || exec footclient;
+
+bindsym $mod+Shift+C exec $colorpicker
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym Ctrl+period exec dunstctl close-all
