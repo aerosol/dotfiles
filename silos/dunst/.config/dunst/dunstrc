@@ -397,10 +397,6 @@
 #[fullscreen_show_critical]
 #    msg_urgency = critical
 #    fullscreen = show
-#
-[i3blocks]
-summary = "*"
-script = /home/hq1/bin/dunst-block
 
 #[espeak]
 #    summary = "*"
