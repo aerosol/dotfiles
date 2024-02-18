@@ -28,7 +28,7 @@ titlebar_padding 20
 default_border normal 1
 floating_modifier $mod normal
 
-client.focused #777777 #000000 #efc00f #777777 #777777
+client.focused #777777 #000000 #bfa00a #777777 #777777
 client.unfocused #333333 #000000 #444444 #000000 #000000
 client.focused_inactive #000000 #000000 #444444 #000000
 client.urgent #ff0000 #000111 #ff0000 #000000 #ff0000
