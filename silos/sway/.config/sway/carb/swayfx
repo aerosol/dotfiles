@@ -1,4 +1,4 @@
 shadows enable
 default_dim_inactive 0.4
-shadow_blur_radius 20
-shadow_color #000000FF
+shadow_blur_radius 15
+shadow_color #555555
