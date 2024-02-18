@@ -30,7 +30,7 @@
     origin = bottom-left
 
     # Offset from the origin
-    offset = 0x-40
+    offset = 0x-36
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -115,7 +115,7 @@
 
     ### Text ###
 
-    font = JetBrains Mono NF 19
+    font = SF Pro Text 19
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -305,8 +305,8 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#00000000"
-    foreground = "#888888"
+    background = "#00000022"
+    foreground = "#cccccc"
     timeout = 2
     # Icon for notifications with low urgency, uncomment to enable
 
