@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-dunstify "Editing clipboard..."
+dunstify -u low "Editing clipboard..."
 f=$(mktemp)
-wl-paste > "$f" && footclient -o initial-window-size-pixels=1700x800 -a "scratchpad" nvim +startinsert "$f" && wl-copy < "$f"
-dunstify "Clipboard edited: $(wl-paste -t text)"
+wl-paste > "$f"
+footclient -o initial-window-size-pixels=1700x800 -a "scratchpad" nvim +startinsert "$f" && wl-copy < "$f"
+dunstify -a "nvim" -u low "Clipboard edited: $(wl-paste -t text)"
