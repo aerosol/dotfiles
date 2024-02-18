@@ -22,28 +22,27 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (0, 800)
+    width = 4096
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = 62
 
-    # Position the notification in the top right corner
-    origin = bottom-center
+    origin = bottom-left
 
     # Offset from the origin
-    offset = 20x550
+    offset = 0x-40
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 0
+    notification_limit = 1
 
     ### Progress bar ###
 
     # Turn on the progess bar. It appears when a progress hint is passed with
     # for example dunstify -h int:value:12
-    progress_bar = true
+    progress_bar = false
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
@@ -72,10 +71,10 @@
     # notifications.
     # Set to 0 to disable.
     # If gap_size is greater than 0, this setting will be ignored.
-    separator_height = 2
+    separator_height = 0
 
     # Padding between text and separator.
-    padding = 20
+    padding = 4
 
     # Horizontal padding.
     horizontal_padding = 20
@@ -85,7 +84,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#1A7A7D"
@@ -116,7 +115,7 @@
 
     ### Text ###
 
-    font = SF Pro Display 16
+    font = JetBrains Mono NF 19
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -156,7 +155,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "[%a] %b <b>%s</b>"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -164,7 +163,7 @@
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
-    vertical_alignment = center
+    vertical_alignment = bottom
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -176,7 +175,7 @@
     ellipsize = middle
 
     # Ignore newlines '\n' in notifications.
-    ignore_newline = no
+    ignore_newline = true
 
     # Stack together notifications with the same content
     stack_duplicates = true
@@ -199,7 +198,7 @@
     # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
-    icon_position = top
+    icon_position = off
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
@@ -207,7 +206,7 @@
     min_icon_size = 24
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 64
+    max_icon_size = 24
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -306,15 +305,15 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#000000"
+    background = "#00000000"
     foreground = "#888888"
-    timeout = 3
+    timeout = 2
     # Icon for notifications with low urgency, uncomment to enable
 
 [urgency_normal]
-    background = "#000000aa"
+    background = "#00000000"
     foreground = "#ffffff"
-    timeout = 3
+    timeout = 0
     default_icon = computer
 
 [urgency_critical]
@@ -411,10 +410,10 @@
 #    summary = "foobar"
 #    skip_display = true
 
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
+[history-ignore]
+   # This notification will not be saved in history
+   summary = "Desktop*"
+   history_ignore = yes
 
 #[skip-display]
 #    # This notification will not be displayed, but will be included in the history
