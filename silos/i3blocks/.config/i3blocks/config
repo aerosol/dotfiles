@@ -1,30 +1,22 @@
 align=center
 separator=false
-color=#f8f8f2
-separator_block_width=25
+color=#ccccfc
+separator_block_width=55
 markup=pango
 
 [weather]
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
-color=#ffffff
 label=  
 
 [cpu]
 command=echo $(cpu.sh)
-interval=1
-color=#ffffff
+interval=5
 label= 
-
-[cputemp]
-command=echo $(sensors | grep -i '\(Tdie\|CPU\)' | awk '{print $2 " "}' | tr -d '\n')
-interval=10
-color=#ffffff
 
 [disk]
 command=df -h | awk '/\/$/ {print $5}'
 interval=10
-color=#ffffff
 label= 
 
 [notifs]
@@ -35,8 +27,6 @@ interval=1
 command=if [ "$(scratches)" -gt "0" ]; then echo "🙈 $(scratches)"; fi
 interval=1
 
-# Update time every 5 seconds
 [time]
 command=date +'  %a %d.%m  %H:%M'
-interval=5
-color=#ffffff
+interval=60
