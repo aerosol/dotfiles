@@ -66,7 +66,7 @@ bindsym $mod+Escape fullscreen off; exec swaymsg "[con_mark=_prev] focus" || exe
 bindsym $mod+Shift+C exec $colorpicker
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym Ctrl+period exec dunstctl close-all
+bindsym Ctrl+period exec dunstctl close
 bindsym Ctrl+comma exec dunstctl history-pop
 bindsym $mod+m exec dunstctl set-paused toggle
 
