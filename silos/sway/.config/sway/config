@@ -22,11 +22,13 @@ output "*" bg $background solid_color
 popup_during_fullscreen smart
 focus_on_window_activation focus
 gaps inner 10
-title_align center
-default_border normal 2
+title_align left
+titlebar_separator disable
+titlebar_padding 20
+default_border normal 1
 floating_modifier $mod normal
 
-client.focused #000000 #000000 #ffffff #000000 #000000
+client.focused #777777 #000000 #efc00f #777777 #777777
 client.unfocused #333333 #000000 #444444 #000000 #000000
 client.focused_inactive #000000 #000000 #444444 #000000
 client.urgent #ff0000 #000111 #ff0000 #000000 #ff0000
