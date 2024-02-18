@@ -69,7 +69,7 @@ bindsym Ctrl+period exec dunstctl close-all
 bindsym Ctrl+comma exec dunstctl history-pop
 bindsym $mod+m exec dunstctl set-paused toggle
 
-bindsym $mod+i exec edit-clipboard
+bindsym $mod+i fullscreen off; exec edit-clipboard
 bindsym $mod+d exec $file_manager $(<$ZSH_CACHE/_lastdir) || $HOME
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
