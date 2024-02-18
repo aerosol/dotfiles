@@ -1,6 +1,7 @@
 
 include "`hostnamectl hostname`/*"
 
+set $notify exec dunstify -a sway -r 799 -u low
 set $mod Mod4
 set $left h
 set $down j
@@ -13,7 +14,7 @@ set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 set $wallpapers_path $HOME/wallpapers
-set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && dunstify -a sway -u low "Color $(wl-paste -t text) copied"
+set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && $notify "Color $(wl-paste -t text) copied"
 set $background #19232e
 
 output "*" bg $background solid_color
@@ -97,19 +98,19 @@ bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioMute exec volume mute
 
-bindsym $mod+1 workspace number 1; exec dunstify -a sway "Desktop 1" -r 799 -t 500
-bindsym $mod+2 workspace number 2; exec dunstify -a sway "Desktop 2" -r 799 -t 500
-bindsym $mod+3 workspace number 3; exec dunstify -a sway "Desktop 3" -r 799 -t 500
-bindsym $mod+4 workspace number 4; exec dunstify -a sway "Desktop 4" -r 799 -t 500
-bindsym $mod+5 workspace number 5; exec dunstify -a sway "Desktop 5" -r 799 -t 500
-bindsym $mod+6 workspace number 6; exec dunstify -a sway "Desktop 6" -r 799 -t 500
+bindsym $mod+1 workspace number 1; exec $notify "Desktop 1"
+bindsym $mod+2 workspace number 2; exec $notify "Desktop 2"
+bindsym $mod+3 workspace number 3; exec $notify "Desktop 3"
+bindsym $mod+4 workspace number 4; exec $notify "Desktop 4"
+bindsym $mod+5 workspace number 5; exec $notify "Desktop 5"
+bindsym $mod+6 workspace number 6; exec $notify "Desktop 6"
 # Move focused container to workspace
-bindsym $mod+Alt+1 move container to workspace number 1; workspace number 1; exec dunstify -a sway "Desktop 1" -r 799 -t 500
-bindsym $mod+Alt+2 move container to workspace number 2; workspace number 2; exec dunstify -a sway "Desktop 2" -r 799 -t 500
-bindsym $mod+Alt+3 move container to workspace number 3; workspace number 3; exec dunstify -a sway "Desktop 3" -r 799 -t 500
-bindsym $mod+Alt+4 move container to workspace number 4; workspace number 4; exec dunstify -a sway "Desktop 4" -r 799 -t 500
-bindsym $mod+Alt+5 move container to workspace number 5; workspace number 5; exec dunstify -a sway "Desktop 5" -r 799 -t 500
-bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6; exec dunstify -a sway "Desktop 6" -r 799 -t 500
+bindsym $mod+Alt+1 move container to workspace number 1; workspace number 1; exec $notify "Desktop 1"
+bindsym $mod+Alt+2 move container to workspace number 2; workspace number 2; exec $notify "Desktop 2"
+bindsym $mod+Alt+3 move container to workspace number 3; workspace number 3; exec $notify "Desktop 3"
+bindsym $mod+Alt+4 move container to workspace number 4; workspace number 4; exec $notify "Desktop 4"
+bindsym $mod+Alt+5 move container to workspace number 5; workspace number 5; exec $notify "Desktop 5"
+bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6; exec $notify "Desktop 6"
 
 bindsym $mod+o splith
 bindsym $mod+b splitv
@@ -170,7 +171,7 @@ bar {
     workspace_min_width 160
 
     status_command i3blocks
-    gaps 10
+    gaps 0 10
 
     colors {
         background $background
