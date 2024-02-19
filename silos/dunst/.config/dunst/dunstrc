@@ -22,7 +22,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 4096
+    width = 1500
 
     # The maximum height of a single notification, excluding the frame.
     height = 62
@@ -30,7 +30,7 @@
     origin = bottom-left
 
     # Offset from the origin
-    offset = 0x-36
+    offset = 1048x-29
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -311,7 +311,7 @@
     # Icon for notifications with low urgency, uncomment to enable
 
 [urgency_normal]
-    background = "#00000000"
+    background = "#00000022"
     foreground = "#ffffff"
     timeout = 0
     default_icon = computer
