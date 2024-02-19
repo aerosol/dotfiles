@@ -165,7 +165,7 @@ mode "quickmode" {
 bindsym $mod+q mode "quickmode"
 
 bar {
-    font pango:JetBrains Mono NF 19
+    font pango:PragmataPro 16
     position bottom
     mode dock
     workspace_min_width 100
