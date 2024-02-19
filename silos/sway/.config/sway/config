@@ -15,20 +15,20 @@ set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 set $wallpapers_path $HOME/wallpapers
 set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && $notify "Color $(wl-paste -t text) copied"
-set $background #19232e
+set $wallpapers_path $HOME/wallpapers
 
-output "*" bg $background solid_color
+output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
-gaps inner 10
+gaps inner 20
 title_align left
 titlebar_separator disable
 titlebar_padding 20
 default_border normal 1
 floating_modifier $mod normal
 
-client.focused #777777 #000000 #bfa00a #777777 #777777
+client.focused #777777 #000000 #dddddd #777777 #777777
 client.unfocused #333333 #000000 #444444 #000000 #000000
 client.focused_inactive #000000 #000000 #444444 #000000
 client.urgent #ff0000 #000111 #ff0000 #000000 #ff0000
@@ -46,6 +46,7 @@ for_window [title="Picture-in-Picture"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
+for_window [title="."] title_format "  <b>%title</b> [%app_id]"
 
 exec autotiling -sr "1.61"
 exec track-prev-terminal
@@ -176,8 +177,8 @@ bar {
     gaps 0 10
 
     colors {
-        background $background
-        focused_workspace #000000ff #00000099 #aaaaaa
-        inactive_workspace $background $background #aaaaaa
+        background #000000
+        focused_workspace #000000ff #444444 #ffffff
+        inactive_workspace #000000 #000000 #aaaaaa
     }
 }

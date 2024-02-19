@@ -1,8 +1,5 @@
 shadows enable
 default_dim_inactive 0.4
-shadow_blur_radius 20
-shadow_color #000000FF
-blur enable
-blur_radius 2
-blur_passes 1
+shadow_blur_radius 15
+shadow_color #555555
 blur_xray enable
