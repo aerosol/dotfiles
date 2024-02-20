@@ -20,3 +20,25 @@ workspace 4 output DP-1
 workspace 5 output DP-1
 
 workspace 6 output HDMI-A-1
+
+set $wallpapers_path $HOME/wallpapers
+output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
+
+bar {
+  	font pango:JetBrains Mono NF 14
+		position bottom
+		mode dock
+		workspace_min_width 100
+		binding_mode_indicator yes
+		workspace_min_width 160
+
+		status_command i3blocks
+		status_padding 5
+		gaps 10 10
+
+		colors {
+			background #000000
+				focused_workspace #000000ff #444444 #ffffff
+				inactive_workspace #000000 #000000 #aaaaaa
+		}
+}

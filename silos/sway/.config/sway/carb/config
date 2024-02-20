@@ -49,6 +49,25 @@ workspace 5 output eDP-1
 workspace 6 output eDP-1
 
 bar {
+  	font pango:PragmataPro 16
+		position bottom
+		mode dock
+		workspace_min_width 100
+		binding_mode_indicator yes
+		workspace_min_width 160
+
+		status_command i3blocks
+		status_padding 5
+		gaps 10 10
+
+		colors {
+			background #000000
+				focused_workspace #000000ff #444444 #ffffff
+				inactive_workspace #000000 #000000 #aaaaaa
+		}
+}
+
+bar {
 		position top
 		mode overlay
 		workspace_min_width 100
