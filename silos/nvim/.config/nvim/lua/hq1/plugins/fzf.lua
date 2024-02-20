@@ -49,6 +49,10 @@ return {
 			fzf.git_branches()
 		end, opts)
 
+		vim.keymap.set("n", "<leader>ff", function()
+			fzf.filetypes()
+		end, opts)
+
 		vim.keymap.set("n", "<leader>L", function()
 			fzf.live_grep_native({
 				rg_opts =
