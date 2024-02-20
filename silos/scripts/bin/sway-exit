@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-prompt=$(printf "no\nyes" | tofi --prompt "exit?")
+prompt=$(printf "no\nyes" | tofi --prompt "exit? ")
 if [ "$prompt" == "yes" ]; then
 		swaymsg exit
 fi

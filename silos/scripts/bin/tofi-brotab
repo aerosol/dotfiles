@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-cache_file="$HOME/.cache/tofi-brotab"
-
-cat "$cache_file" | tofi -c ~/.config/tofi/config-tabs | awk '{print $NF}' | xargs -I {} brotab activate --focus "{}"
