@@ -53,7 +53,7 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
 exec sleep 2 && footclient
 
-exec dunst
+exec cat ~/.config/dunst/dunstrc ~/.config/dunst/$HOSTNAME | dunst -conf -
 exec ydotoold
 exec firefox
 exec sworkstyle &> /tmp/sworkstyle.log

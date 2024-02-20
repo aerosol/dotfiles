@@ -8,6 +8,9 @@ output eDP-1 scale 1
 seat seat0 xcursor_theme Adwaita 42
 seat * hide_cursor when-typing enable
 
+set $wallpapers_path $HOME/wallpapers
+output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
+
 set $lock swaylock \\
     --screenshots \\
     --clock \\
@@ -49,7 +52,7 @@ workspace 5 output eDP-1
 workspace 6 output eDP-1
 
 bar {
-  	font pango:PragmataPro 16
+  	font pango:PragmataPro 18
 		position bottom
 		mode dock
 		workspace_min_width 100
