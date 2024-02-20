@@ -38,4 +38,6 @@ keymap("n", "<leader>fef", "<cmd>:e ~/.config/foot/foot.ini<cr>", opts)
 
 keymap("n", "<F12>", "<C-w>c", opts)
 
+keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>", opts)
+
 require('hq1.experimental').set_keymaps()
