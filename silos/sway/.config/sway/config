@@ -13,18 +13,14 @@ set $screencast_area wl-screencast
 set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
-set $wallpapers_path $HOME/wallpapers
 set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && $notify "Color $(wl-paste -t text) copied"
-set $wallpapers_path $HOME/wallpapers
-
-output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
 gaps inner 20
 title_align left
 titlebar_separator disable
-titlebar_padding 10
+titlebar_padding 20 10
 default_border normal 1
 floating_modifier $mod normal
 
@@ -164,22 +160,3 @@ mode "quickmode" {
     bindsym Escape mode "default"
 }
 bindsym $mod+q mode "quickmode"
-
-bar {
-    font pango:PragmataPro 16
-    position bottom
-    mode dock
-    workspace_min_width 100
-    binding_mode_indicator yes
-    workspace_min_width 160
-
-    status_command i3blocks
-    status_padding 5
-    gaps 10 10
-
-    colors {
-        background #000000
-        focused_workspace #000000ff #444444 #ffffff
-        inactive_workspace #000000 #000000 #aaaaaa
-    }
-}
