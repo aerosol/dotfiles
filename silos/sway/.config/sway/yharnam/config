@@ -11,6 +11,8 @@ seat * hide_cursor when-typing enable
 
 input * {
     xkb_layout pl
+	  repeat_rate 50
+	  repeat_delay 300
 }
 
 workspace 1 output DP-1
