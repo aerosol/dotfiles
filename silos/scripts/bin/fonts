@@ -1,1 +1,1 @@
-fc-list | cut -f2 -d: | sort -u
+fc-list | cut -f2 -d: | sort -u | tofi | wl-copy
