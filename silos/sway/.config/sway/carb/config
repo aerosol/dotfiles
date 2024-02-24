@@ -1,6 +1,6 @@
 font pango:SF Pro Text Semibold 19
 set $file_manager pcmanfm
-
+exec gammastep -l 52.13:21.0
 focus_follows_mouse yes
 
 output eDP-1 scale 1
