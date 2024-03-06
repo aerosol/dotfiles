@@ -14,6 +14,7 @@ set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && $notify "Color $(wl-paste -t text) copied"
+set $term foot
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
@@ -50,8 +51,7 @@ exec track-prev-terminal
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
-exec foot --server --config="/home/hq1/.config/foot/$HOSTNAME.ini"
-exec sleep 2 && footclient
+exec $term
 
 exec cat ~/.config/dunst/dunstrc ~/.config/dunst/$HOSTNAME | dunst -conf -
 exec ydotoold
@@ -60,7 +60,7 @@ exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
-bindsym $mod+Escape fullscreen off; exec swaymsg "[con_mark=_prev] focus" || exec footclient;
+bindsym $mod+Escape fullscreen off; exec swaymsg "[con_mark=_prev] focus" || exec $term;
 
 bindsym $mod+Shift+C exec $colorpicker
 
@@ -147,8 +147,7 @@ bindsym $mod+r mode "resize"
 
 mode "quickmode" {
     bindsym r reload
-    bindsym o exec "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform", mode "default"
-
+    bindsym o output HDMI-A-1 power toggle, mode "default"
 
     bindsym $left move left, mode "default"
     bindsym $down move down, mode "default"
