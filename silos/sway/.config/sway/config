@@ -145,9 +145,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-mode "quickmode" {
+set $quickmode "quickmode: (r)eload (o)utput (x)lock"
+mode $quickmode {
     bindsym r reload
     bindsym o output HDMI-A-1 power toggle, mode "default"
+    bindsym x mode "default", exec 'swaylock -c 111111 --indicator-idle-visible --indicator-radius 200 --indicator-thickness 100'
 
     bindsym $left move left, mode "default"
     bindsym $down move down, mode "default"
@@ -158,4 +160,4 @@ mode "quickmode" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+q mode "quickmode"
+bindsym $mod+q mode $quickmode
