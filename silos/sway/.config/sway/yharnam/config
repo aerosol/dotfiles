@@ -3,7 +3,9 @@ set $file_manager dolphin
 
 output DP-1 mode 3840x2160@60Hz pos 0 2160
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0
+output HDMI-A-1 power off
 
+exec_always gammastep -l 52.13:21.0
 focus_follows_mouse no
 
 seat seat0 xcursor_theme Hackneyed 42
@@ -24,7 +26,7 @@ workspace 5 output DP-1
 workspace 6 output HDMI-A-1
 
 set $wallpapers_path $HOME/wallpapers
-output "*" bg $(find $wallpapers_path -type f | shuf -n 1) fill
+output HDMI-A-1 bg $(find $wallpapers_path -type f | shuf -n 1) fill
 
 bar {
   	font pango:JetBrains Mono NF 14

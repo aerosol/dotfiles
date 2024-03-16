@@ -16,6 +16,13 @@ set $meh Ctrl+Shift+Alt
 set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && $notify "Color $(wl-paste -t text) copied"
 set $term foot
 
+set $lock_bg ~/wallpapers/lockscreen.jpg
+
+exec swayidle -w \
+         timeout 900 'chayang && swaymsg output * power off && swaylock -f -c 000000 -i $lock_bg' \
+         resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000 -i $lock_bg'
+
 popup_during_fullscreen smart
 focus_on_window_activation focus
 gaps inner 20
@@ -149,7 +156,8 @@ set $quickmode "quickmode: (r)eload (o)utput (x)lock"
 mode $quickmode {
     bindsym r reload
     bindsym o output HDMI-A-1 power toggle, mode "default"
-    bindsym x mode "default", exec 'swaylock -c 111111 --indicator-idle-visible --indicator-radius 200 --indicator-thickness 100'
+    bindsym x mode "default", exec swaylock -i $lock_bg
+
 
     bindsym $left move left, mode "default"
     bindsym $down move down, mode "default"
