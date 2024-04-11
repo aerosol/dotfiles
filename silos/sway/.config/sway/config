@@ -152,12 +152,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $quickmode "quickmode: (r)eload (o)utput (x)lock"
+set $quickmode "quickmode: (r)eload | sidecar (o)utput toggle | (x)lock | (p)lay/pause | (n)ext song"
 mode $quickmode {
     bindsym r reload
     bindsym o output HDMI-A-1 power toggle, mode "default"
     bindsym x mode "default", exec swaylock -i $lock_bg
-
+    bindsym p mode "default", exec playerctl play-pause  
+    bindsym n mode "default", exec playerctl next
 
     bindsym $left move left, mode "default"
     bindsym $down move down, mode "default"
