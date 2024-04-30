@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	commit = 'f7d30237efb3d9a07e4baea518492b5ae5931c25',
 	config = function()
 		local fzf = require("fzf-lua")
 		local opts = { noremap = true, silent = true, desc = "FZF Related Shit" }
