@@ -32,10 +32,10 @@ titlebar_padding 10
 default_border normal 1
 floating_modifier $mod normal
 
-client.focused #777777 #000000 #dddddd #777777 #777777
+client.focused #dddddd #000040 #dddddd #dddddd #dddddd
 client.unfocused #333333 #000000 #444444 #000000 #000000
 client.focused_inactive #000000 #000000 #444444 #000000
-client.urgent #ff0000 #000111 #ff0000 #000000 #ff0000
+client.urgent #dddddd #770000 #dddddd #dddddd #dddddd
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
@@ -50,7 +50,7 @@ for_window [title="Picture-in-Picture"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="scratchpad"] floating enable
 for_window [app_id="scratch"] floating enable
-for_window [title="."] title_format "  %title [%app_id]"
+for_window [title="."] title_format "    %title [%app_id]"
 
 exec autotiling -sr "1.61"
 exec track-prev-terminal
