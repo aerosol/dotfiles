@@ -42,4 +42,6 @@ keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>"
 
 keymap({ "n", "x" }, "<leader>p", [["0p]], opts)
 
+keymap({ 'n', 'x', 'o' }, '<Leader>cc', 'gcc', { remap = true })
+
 require('hq1.experimental').set_keymaps()

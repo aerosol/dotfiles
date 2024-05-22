@@ -25,7 +25,7 @@ return {
 			keymap("n", "gp", ":Git push<cr>", opts)
 			keymap("n", "gl", ":tab :DiffviewFileHistory<cr>", opts)
 			keymap("n", "gL", ":tab :DiffviewFileHistory --follow %<cr>", opts)
-			keymap("n", "gc", ":tab :Git commit<cr>", opts)
+			-- keymap("n", "gc", ":tab :Git commit<cr>", opts)
 			keymap("n", "gI", ":Git rebase -i origin/", opts)
 			keymap("n", "gC", ":Git rebase --continue", opts)
 			keymap("n", "gA", ":Git rebase --abort", opts)

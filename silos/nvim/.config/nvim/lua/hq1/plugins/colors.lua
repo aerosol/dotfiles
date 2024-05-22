@@ -1,6 +1,4 @@
 return {
-	{ 'craftzdog/solarized-osaka.nvim' },
-	{ 'rktjmp/lush.nvim' },
 	{
 		"levouh/tint.nvim",
 		config = function()
