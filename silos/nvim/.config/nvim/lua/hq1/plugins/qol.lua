@@ -1,25 +1,8 @@
 return {
 	{
-		'rlane/pounce.nvim',
+		"karb94/neoscroll.nvim",
 		config = function()
-			local pounce = require('pounce')
-			pounce.setup({})
-			local keymap = vim.keymap.set
-			local opts = { noremap = true, silent = true }
-
-			keymap("n", "s", function() pounce.pounce({}) end, opts)
-			keymap("x", "s", function() pounce.pounce {} end)
-			keymap("o", "gs", function() pounce.pounce {} end)
-		end
-	},
-	{
-		'declancm/cinnamon.nvim',
-		config = function()
-			require('cinnamon').setup({
-				extra_keymaps = true,
-				default_delay = 3
-
-			})
+			require('neoscroll').setup({ hide_cursor = false })
 		end
 	},
 	{

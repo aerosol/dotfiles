@@ -3,7 +3,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			font_modifier = "italic"
+			local font_modifier = "italic"
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,

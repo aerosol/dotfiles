@@ -10,7 +10,7 @@ return {
 				["--layout"] = "reverse",
 			},
 			winopts = {
-				fullscreen = true,
+				-- fullscreen = true,
 				border = { '', '', '', '', '', '', '', '' },
 				preview = {
 					layout = "flex",
