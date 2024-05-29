@@ -27,6 +27,10 @@ function M.on_attach(client, bufnr)
 
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
+	nmap("<leader>s", function()
+		fzf.lsp_live_workspace_symbols()
+	end, "Workspace symbols")
+
 	nmap("gd", function()
 		fzf.lsp_definitions({
 			jump_to_single_result = true,

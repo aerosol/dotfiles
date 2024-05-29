@@ -6,6 +6,7 @@ return {
 		local opts = { noremap = true, silent = true, desc = "FZF Related Shit" }
 
 		fzf.setup({
+			defaults = { formatter = "path.filename_first" },
 			fzf_opts = {
 				["--layout"] = "reverse",
 			},
