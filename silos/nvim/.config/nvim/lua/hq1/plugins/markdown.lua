@@ -8,5 +8,5 @@ return {
 		end,
 		ft = { "markdown" },
 	},
-	{ "dhruvasagar/vim-table-mode" }
+	{ "dhruvasagar/vim-table-mode", ft = { "markdown" } }
 }

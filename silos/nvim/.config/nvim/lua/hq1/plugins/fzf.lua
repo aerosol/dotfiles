@@ -6,12 +6,11 @@ return {
 		local opts = { noremap = true, silent = true, desc = "FZF Related Shit" }
 
 		fzf.setup({
-			defaults = { formatter = "path.filename_first" },
 			fzf_opts = {
 				["--layout"] = "reverse",
 			},
 			winopts = {
-				-- fullscreen = true,
+				fullscreen = true,
 				border = { '', '', '', '', '', '', '', '' },
 				preview = {
 					layout = "flex",
@@ -44,6 +43,10 @@ return {
 
 		vim.keymap.set("n", "<leader>l", function()
 			fzf.live_grep_native()
+		end, opts)
+
+		vim.keymap.set("n", "<leader>j", function()
+			fzf.jumps()
 		end, opts)
 
 		vim.keymap.set("n", "<leader>b", function()
