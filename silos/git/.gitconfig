@@ -17,7 +17,7 @@
     brr = "!git checkout `git recent | fzf`"
     brv = branch -avv
     co = checkout
-    recent = for-each-ref --count=16 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+    recent = for-each-ref --count=26 --sort=-committerdate refs/heads/ --format="%(refname:short)"
     pf = push --force-with-lease
     branch-name = rev-parse --abbrev-ref HEAD
 
