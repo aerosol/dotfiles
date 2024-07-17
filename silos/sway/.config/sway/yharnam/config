@@ -1,5 +1,5 @@
 font pango:Atkinson Hyperlegible Regular 14
-set $file_manager dolphin
+set $file_manager thunar
 
 output DP-1 mode 3840x2160@60Hz pos 0 2160
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0
