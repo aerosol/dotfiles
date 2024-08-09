@@ -37,3 +37,4 @@ vim.opt.fillchars = {
 	verthoriz = '╋',
 	eob = ' '
 }
+vim.opt.guicursor = 'n:blinkon1'
