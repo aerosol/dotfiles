@@ -4,6 +4,11 @@ color=#dddddd
 separator_block_width=55
 markup=pango
 
+[euro]
+command=/home/hq1/bin/euro
+interval=3600
+label=€
+
 [weather]
 command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
 interval=3600
