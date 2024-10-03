@@ -17,3 +17,7 @@ source $HOME/.zsh/window-title.zsh
 [ -f ~/.secrets ] && source ~/.secrets
 
 source $HOME/.zsh/prompt.zsh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh --disable-up-arrow)"
