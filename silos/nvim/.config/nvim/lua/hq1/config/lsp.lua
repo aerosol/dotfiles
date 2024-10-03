@@ -149,9 +149,9 @@ lspconfig.lexical.setup({
 	on_attach = M.on_attach,
 })
 
-require("sg").setup {
-	on_attach = M.on_attach
-}
+-- require("sg").setup {
+-- 	on_attach = M.on_attach
+-- }
 
 -- Setup mason so it can manage external tooling
 require("mason").setup()
