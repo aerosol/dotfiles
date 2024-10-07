@@ -7,8 +7,6 @@ keymap("n", "ss", ":update<cr>", opts)
 
 keymap("n", "//", ":nohlsearch<cr>", opts)
 keymap("n", "#", "*``", opts)
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
 
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
@@ -37,9 +35,6 @@ keymap("n", "<leader>fef", "<cmd>:e ~/.config/foot/foot.ini<cr>", opts)
 keymap("n", "<F12>", "<C-w>c", opts)
 
 keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>", opts)
-
-keymap({ "n", "x" }, "<leader>p", [["0p]], opts)
-
 keymap({ 'n', 'x', 'o' }, '<Leader>cc', 'gcc', { remap = true })
 
 require('hq1.experimental').set_keymaps()
