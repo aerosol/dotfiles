@@ -1,8 +1,3 @@
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  source $HOME/.zsh/mac.zsh
-else
-  source $HOME/.zsh/linux.zsh
-fi
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tweaks.zsh
 source $HOME/.zsh/history.zsh
