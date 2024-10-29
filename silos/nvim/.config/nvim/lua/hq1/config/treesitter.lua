@@ -20,16 +20,12 @@ require("nvim-treesitter.configs").setup({
 		"diff",
 	},
 
-	highlight = { enable = true },
+	highlight = {
+		enable = true,
+	},
 	indent = { enable = false },
 	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = "<cr>",
-			node_incremental = "<cr>",
-			scope_incremental = "<c-s>",
-			node_decremental = "<c-backspace>",
-		},
+		enable = false,
 	},
 	textobjects = {
 		select = {

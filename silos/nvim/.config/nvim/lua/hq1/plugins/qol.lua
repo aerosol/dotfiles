@@ -1,4 +1,5 @@
 return {
+  { 'pteroctopus/faster.nvim' },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
