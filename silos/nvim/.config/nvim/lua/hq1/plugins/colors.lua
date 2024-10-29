@@ -41,9 +41,7 @@ return {
 				lsp_virtual_text_bg = true,
 				hide_eob            = false,
 				colors              = {
-					nephritis = "#0000FF",
-					lightsilver = "#FAF2DF",
-					silver = "#f8e7bf",
+					nephritis = "#0000FF"
 				},
 				colors_advanced     = {},
 				custom_highlights   = {},
