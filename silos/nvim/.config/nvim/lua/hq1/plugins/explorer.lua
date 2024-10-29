@@ -21,7 +21,7 @@ return {
 					"mtime",
 				},
 				win_options = {
-					cursorcolumn = true,
+					cursorcolumn = false,
 				},
 				use_default_keymaps = false,
 				view_options = {

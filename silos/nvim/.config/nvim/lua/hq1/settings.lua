@@ -1,6 +1,7 @@
 vim.g.editorconfig = false
 vim.opt.shortmess:append('I')
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = false
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 2
@@ -35,6 +36,16 @@ vim.opt.fillchars = {
 	vertleft = '┫',
 	vertright = '┣',
 	verthoriz = '╋',
-	eob = ' '
+	eob = ' ',
+	fold = ' '
 }
 vim.opt.guicursor = 'n:blinkon1'
+
+vim.wo.foldmethod = 'expr'
+vim.wo.foldminlines = 3
+vim.wo.foldenable = true
+vim.wo.foldnestmax = 3
+vim.wo.foldlevel = 1
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldtext =
+[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]

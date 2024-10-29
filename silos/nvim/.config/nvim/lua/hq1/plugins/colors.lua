@@ -1,5 +1,60 @@
 return {
 	{
+		"yorik1984/newpaper.nvim",
+		config = function()
+			require("newpaper").setup({
+				style               = "light",
+				lightness           = 0,
+				saturation          = 0,
+				greyscale           = false,
+				editor_better_view  = true,
+				terminal            = "contrast",
+				sidebars_contrast   = {},
+				contrast_float      = true,
+				contrast_telescope  = true,
+				operators_bold      = true,
+				delimiters_bold     = false,
+				brackets_bold       = false,
+				delim_rainbow_bold  = false,
+				booleans            = "bold",
+				keywords            = "bold",
+				doc_keywords        = "bold,italic",
+				regex               = "bold",
+				regex_bg            = true,
+				tags                = "bold",
+				tags_brackets_bold  = true,
+				tex_major           = "bold",
+				tex_operators_bold  = true,
+				tex_brackets_bold   = false,
+				tex_math_delim_bold = false,
+				tex_keywords        = "NONE",
+				tex_zone            = "italic",
+				tex_arg             = "italic",
+				error_highlight     = "undercurl",
+				italic_strings      = true,
+				italic_comments     = true,
+				italic_doc_comments = true,
+				italic_functions    = false,
+				italic_variables    = false,
+				borders             = true,
+				disable_background  = true,
+				lsp_virtual_text_bg = true,
+				hide_eob            = false,
+				colors              = {
+					nephritis = "#0000FF",
+					lightsilver = "#FAF2DF",
+					silver = "#f8e7bf",
+				},
+				colors_advanced     = {},
+				custom_highlights   = {},
+				lualine_bold        = true,
+				lualine_style       = "light",
+				devicons_custom     = {},
+			})
+			vim.cmd.colorscheme("newpaper")
+		end
+	},
+	{
 		"slugbyte/lackluster.nvim",
 		lazy = false,
 		priority = 1000,
@@ -43,14 +98,11 @@ return {
 					},
 				},
 			})
-			vim.cmd.colorscheme("lackluster")
+			-- vim.cmd.colorscheme("lackluster")
 			-- vim.cmd.colorscheme("lackluster-hack") -- my favorite
 			-- vim.cmd.colorscheme("lackluster-mint")
 		end,
 
-	},
-	{
-		"yorumicolors/yorumi.nvim"
 	},
 	-- {
 	-- 	"levouh/tint.nvim",
