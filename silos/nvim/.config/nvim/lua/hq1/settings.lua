@@ -40,12 +40,11 @@ vim.opt.fillchars = {
 	fold = ' '
 }
 vim.opt.guicursor = 'n:blinkon1'
-
 vim.wo.foldmethod = 'expr'
 vim.wo.foldminlines = 3
 vim.wo.foldenable = true
 vim.wo.foldnestmax = 3
-vim.wo.foldlevel = 1
+vim.wo.foldlevel = 99
+vim.o.foldlevelstart = 1
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.wo.foldtext =
-[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.wo.foldtext = ""
