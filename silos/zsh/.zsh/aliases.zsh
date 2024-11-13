@@ -24,3 +24,7 @@ alias zcp='noglob zmv -C'
 alias zln='noglob zmv -L'
 alias zsy='noglob zmv -Ls'
 
+alias o='xdg-open'
+alias open='xdg-open'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'

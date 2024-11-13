@@ -5,13 +5,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*",
-	callback = function()
-		vim.cmd("set showtabline=1")
-	end,
-})
-
 vim.api.nvim_create_autocmd("WinLeave", {
 	callback = function()
 		vim.opt.cursorline = false

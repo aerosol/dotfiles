@@ -26,8 +26,11 @@ return {
 	-- 		require("copilot_cmp").setup()
 	-- 	end,
 	-- },
-	-- {
-	-- 	"sourcegraph/sg.nvim",
-	-- 	dependencies = { "nvim-lua/plenary.nvim" },
-	-- }
+	{
+		"sourcegraph/sg.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("sg").setup()
+		end
+	}
 }

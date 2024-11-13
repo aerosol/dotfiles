@@ -1,11 +1,5 @@
 return {
-  { "sitiom/nvim-numbertoggle" },
-  {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require('neoscroll').setup({ hide_cursor = false })
-    end
-  },
+  { 'pteroctopus/faster.nvim' },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",

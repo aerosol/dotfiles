@@ -1,9 +1,7 @@
 export FZF_DEFAULT_COMMAND='fd --type file 2> /dev/null'
 export FZF_DEFAULT_OPTS='
   --layout=reverse
-  --color=bg+:#03151A,spinner:#719e07,hl:#586e75
-  --color=fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
-  --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
+  --color=light
 '
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
