@@ -1,0 +1,10 @@
+[font]
+normal = ["PragmataPro Mono Liga"]
+size = 14.0
+
+[[font.italic]]
+family = "JetBrainsMonoNL NF"
+style = "Normal"
+
+[font.features]
+"PragmataPro Mono Liga" = ["-aalt"]
