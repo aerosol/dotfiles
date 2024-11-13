@@ -37,14 +37,20 @@ return {
 				italic_functions    = false,
 				italic_variables    = false,
 				borders             = true,
-				disable_background  = true,
+				disable_background  = false,
 				lsp_virtual_text_bg = true,
 				hide_eob            = false,
 				colors              = {
-					nephritis = "#0000FF"
+					nephritis = "#0000FF",
+					lightsilver = "#FAF2DF",
+					silver = "#fcf6e3",
+					aqua = "#E2EEFC",
 				},
 				colors_advanced     = {},
-				custom_highlights   = {},
+				custom_highlights   = {
+					Normal = { bg = "#fcf6e3" }
+
+				},
 				lualine_bold        = true,
 				lualine_style       = "light",
 				devicons_custom     = {},
