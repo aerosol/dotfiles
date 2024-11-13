@@ -67,6 +67,7 @@ exec firefox
 exec sworkstyle &> /tmp/sworkstyle.log
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
+exec signal-wayland
 
 bindsym $mod+Escape fullscreen off; exec swaymsg "[con_mark=_prev] focus" || exec $term;
 
