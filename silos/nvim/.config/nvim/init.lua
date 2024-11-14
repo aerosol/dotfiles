@@ -19,6 +19,17 @@ if vim.g.neovide then
 	vim.keymap.set('i', '<D-v>', '<C-\\><C-n>"+pi')
 	vim.keymap.set('n', '<D-n>', function() vim.fn.jobstart("foot", { detach = true }) end)
 	vim.keymap.set('i', '<D-n>', function() vim.fn.jobstart("foot", { detach = true }) end)
+
+	vim.g.neovide_scale_factor = 1.0
+	local change_scale_factor = function(delta)
+		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+	end
+	vim.keymap.set("n", "<C-=>", function()
+		change_scale_factor(1.25)
+	end)
+	vim.keymap.set("n", "<C-->", function()
+		change_scale_factor(1 / 1.25)
+	end)
 end
 
 require("hq1.lazy")
