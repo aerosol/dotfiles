@@ -25,11 +25,11 @@ interval=10
 label= 
 
 [notifs]
-command=if [ "$(dunstctl is-paused)" = "true" ]; then echo "🔕 $(dunstctl count waiting)"; else echo "🔔"; fi
+command=if [ "$(dunstctl is-paused)" = "true" ]; then echo " $(dunstctl count waiting)"; else echo ""; fi
 interval=1
 
 [scratchpads]
-command=if [ "$(scratches)" -gt "0" ]; then echo "🙈 $(scratches)"; fi
+command=if [ "$(scratches)" -gt "0" ]; then echo " $(scratches)"; fi
 interval=1
 
 [time]
