@@ -1,9 +1,10 @@
-if command -v swayhide >/dev/null && pgrep -x sway >/dev/null && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .floating?' | grep -q 'auto_off' 2>/dev/null; then
-    editor_cmd="swayhide neovide"
-else
-    editor_cmd="nvim"
-fi
+# if command -v swayhide >/dev/null && pgrep -x sway >/dev/null && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .floating?' | grep -q 'auto_off' 2>/dev/null; then
+#     editor_cmd="swayhide neovide"
+# else
+#     editor_cmd="nvim"
+# fi
 
+editor_cmd="nvim"
 if [[ ${1} == *":"* ]]; then
     $editor_cmd ${1/:*/} -c "${1/*:/}"
 else
