@@ -54,7 +54,8 @@ for_window [title="."] title_format "    %title [%app_id]"
 
 exec autotiling -sr "1.61"
 exec track-prev-terminal
-exec sway-inactive-transparent.py
+#exec sway-inactive-transparent.py
+exec flashfocus -t 200
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway

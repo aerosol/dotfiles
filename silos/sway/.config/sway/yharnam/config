@@ -5,7 +5,7 @@ output DP-1 mode 3840x2160@60Hz pos 0 2160
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0
 output HDMI-A-1 power off
 
-exec_always gammastep -l 52.13:21.0
+exec_always gammastep -l 52.13:21.0 -t 5000:5000 -b 0.9:0.9
 focus_follows_mouse no
 
 seat seat0 xcursor_theme Hackneyed 42
