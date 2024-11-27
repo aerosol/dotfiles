@@ -48,6 +48,11 @@ return {
 				},
 				tabline = {
 					lualine_a = {
+						function()
+							return require("nvim-treesitter").statusline()
+						end,
+					},
+					lualine_b = {
 						{
 							"tabs",
 							icons_enabled = true,

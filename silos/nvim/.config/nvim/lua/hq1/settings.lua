@@ -44,6 +44,7 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldminlines = 3
 vim.wo.foldenable = true
 vim.wo.foldnestmax = 3
+vim.o.foldlevel = 99
 vim.wo.foldlevel = 99
 vim.o.foldlevelstart = 1
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
