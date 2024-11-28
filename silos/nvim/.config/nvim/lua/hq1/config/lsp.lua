@@ -3,6 +3,7 @@ M = {}
 function M.on_attach(client, bufnr)
 	require("lsp-format").on_attach(client, bufnr)
 	local fzf = require("fzf-lua")
+
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -95,68 +96,29 @@ function M.on_attach(client, bufnr)
 	nmap("<leader>ds", function()
 		vim.diagnostic.show(nil, 0)
 	end, "Show diagnostics")
-
-	-- Create a command `:Format` local to the LSP buffer
-	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format()
-	end, { desc = "Format current buffer with LSP" })
 end
 
 local servers = {
+	lexical = {},
 	clangd = {},
 	gopls = {},
 	pyright = {},
 	rust_analyzer = {},
-	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-		},
-	},
+	lua_ls = {},
 }
-
-require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
-
-local lexical_config = {
-	filetypes = { "elixir", "eelixir", "heex" },
+require('lspconfig').lexical.setup {
 	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
-	settings = {},
+	filetypes = { "elixir", "eelixir", "heex" },
+	-- optional settings
+	settings = {}
 }
 
-if not configs.lexical then
-	configs.lexical = {
-		default_config = {
-			filetypes = lexical_config.filetypes,
-			cmd = lexical_config.cmd,
-			root_dir = function(fname)
-				return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
-			end,
-			-- optional settings
-			settings = lexical_config.settings,
-		},
-	}
-end
-
-lspconfig.lexical.setup({
-	-- optional config
-	on_attach = M.on_attach,
-})
-
--- require("sg").setup {
--- 	on_attach = M.on_attach
--- }
-
--- Setup mason so it can manage external tooling
 require("mason").setup()
-
--- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup({

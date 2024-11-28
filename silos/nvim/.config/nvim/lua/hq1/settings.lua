@@ -1,6 +1,6 @@
 vim.g.editorconfig = false
 vim.opt.shortmess:append('I')
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.cursorcolumn = false
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
