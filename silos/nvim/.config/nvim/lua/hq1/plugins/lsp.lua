@@ -1,9 +1,23 @@
 return {
 	{
-		'lukas-reineke/lsp-format.nvim',
-		config = function()
-			require("lsp-format").setup { sync = true }
-		end
+		"stevearc/conform.nvim",
+		opts = {
+			format_on_save = {
+				-- These options will be passed to conform.format()
+				timeout_ms = 500,
+				lsp_format = "fallback",
+			},
+			formatters_by_ft = {
+				elixir = { lsp_format = "fallback" },
+				lua = { "stylua" },
+				-- Conform will run multiple formatters sequentially
+				python = { "isort", "black" },
+				-- You can customize some of the format options for the filetype (:help conform.format)
+				rust = { "rustfmt", lsp_format = "fallback" },
+				-- Conform will run the first available formatter
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+			},
+		},
 	},
 	{
 		"linrongbin16/lsp-progress.nvim",
@@ -19,21 +33,11 @@ return {
 			})
 		end,
 	},
-	"onsails/lspkind.nvim",
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-		},
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-path"
 		},
 	},
 }

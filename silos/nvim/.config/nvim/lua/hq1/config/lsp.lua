@@ -1,7 +1,6 @@
 M = {}
 
 function M.on_attach(client, bufnr)
-	require("lsp-format").on_attach(client, bufnr)
 	local fzf = require("fzf-lua")
 
 	local nmap = function(keys, func, desc)
@@ -107,9 +106,7 @@ local servers = {
 	lua_ls = {},
 }
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require('lspconfig').lexical.setup {
 	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
@@ -135,80 +132,6 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
--- nvim-cmp setup
-local cmp = require("cmp")
-local lspkind = require("lspkind")
-
-lspkind.init({
-	symbol_map = {
-		Copilot = "",
-		Codeium = "",
-	},
-})
-
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.api.nvim_set_hl(0, "CmpItemKindCodeium", { fg = "#6CC644" })
-
-cmp.setup({
-	window = {
-		completion = cmp.config.window.bordered({
-			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
-		}),
-		documentation = cmp.config.window.bordered({
-			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
-		}),
-	},
-	experimental = {
-		ghost_text = true,
-	},
-	formatting = {
-		format = lspkind.cmp_format(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-	}),
-	sources = {
-		{ name = "nvim_lsp", priority_weight = 1, group_index = 2 },
-		{ name = 'path',     priority_weight = 8 },
-		{ name = "buffer",   priority_weight = 9, group_index = 2 },
-	},
-})
-
-cmp.setup.cmdline({ "/", "?" }, {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "buffer" },
-	},
-})
-
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-})
 
 vim.fn.sign_define('DiagnosticSignError', { text = '⮾ ', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '⨻ ', texthl = 'DiagnosticSignWarn' })

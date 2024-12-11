@@ -5,7 +5,10 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		config = function()
-			require("diffview").setup({})
+			require("diffview").setup({
+				enhanced_diff_hl = true
+			})
+
 			keymap("n", "gD", ":tab :DiffviewOpen<cr>:WindowsDisableAutowidth<cr>", opts)
 			vim.api.nvim_create_user_command("DiffReviewPR", ":DiffviewOpen origin/master...HEAD --imply-local", {})
 			vim.api.nvim_create_user_command(
