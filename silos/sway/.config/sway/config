@@ -42,6 +42,7 @@ set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
 
 for_window [app_id="obsidian"] floating enable, border none, move scratchpad
 for_window [app_id="Signal"] move workspace 5
+for_window [app_id="gammastep-gui.py"] floating enable, move scratchpad
 for_window [class="Spotify"] move workspace 5
 for_window [class="zoom"] floating enable
 for_window [app_id="okular"] floating enable
@@ -56,6 +57,7 @@ exec autotiling -sr "1.61"
 exec track-prev-terminal
 #exec sway-inactive-transparent.py
 exec flashfocus -t 200
+exec gammastep-gui.py
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
