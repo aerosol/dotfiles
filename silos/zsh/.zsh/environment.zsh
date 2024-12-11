@@ -25,4 +25,4 @@ if [[ "$TERM" == "xterm-256color" ]]; then
 	fi
 fi
 
-export BAT_THEME="Solarized(mine)"
+export BAT_THEME="ansi"
