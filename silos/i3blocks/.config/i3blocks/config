@@ -32,6 +32,10 @@ interval=1
 command=if [ "$(scratches)" -gt "0" ]; then echo " $(scratches)"; fi
 interval=1
 
+[gammastep]
+command=swaymsg -q [app_id=gammastep-gui.py] scratchpad show
+full_text=✹ Gamma
+
 [time]
 command=date +'  %a %d.%m  %H:%M'
 interval=60
