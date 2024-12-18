@@ -29,13 +29,13 @@ gaps inner 20
 title_align left
 # titlebar_separator disable
 titlebar_padding 10
-default_border normal 1
+default_border normal 4
 floating_modifier $mod normal
 
-client.focused #dddddd #000040 #dddddd #dddddd #dddddd
-client.unfocused #333333 #000000 #444444 #000000 #000000
-client.focused_inactive #000000 #000000 #444444 #000000
-client.urgent #dddddd #770000 #dddddd #dddddd #dddddd
+client.focused          #242B2E #242B2E #DADADA #3E4A4F  #242B2E
+client.focused_inactive #202628 #1C1E1F #404040 #3E4A4F  #242B2E
+client.unfocused        #202628 #1C1E1F #404040 #3E4A4F  #242B2E
+client.urgent           #141B1E #E52323 #DADADA #E52323  #E52323
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n

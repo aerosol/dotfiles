@@ -24,8 +24,10 @@ workspace 5 output DP-1
 
 workspace 6 output HDMI-A-1
 
-set $wallpapers_path $HOME/wallpapers
+# set $wallpapers_path $HOME/wallpapers
 # output HDMI-A-1 bg $(find $wallpapers_path -type f | shuf -n 1) fill
+output HDMI-A-1 bg ~/Pictures/zzz.png tile
+output DP-1 bg ~/Pictures/zzz.png tile
 
 bar {
   	font pango:JetBrains Mono NF 14
