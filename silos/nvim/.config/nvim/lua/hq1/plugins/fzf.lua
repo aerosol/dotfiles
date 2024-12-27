@@ -11,22 +11,13 @@ return {
 			},
 			winopts = {
 				fullscreen = true,
-				border = { '', '', '', '', '', '', '', '' },
+				border = { "", "", "", "", "", "", "", "" },
 				preview = {
 					layout = "flex",
 					default = "bat_native",
 				},
 			},
 		})
-
-		vim.keymap.set("n", "<C-p>", function()
-			fzf.commands({
-				winopts = {
-					fullscreen = false,
-					preview = { hidden = "hidden" },
-				}
-			})
-		end, opts)
 
 		vim.keymap.set("n", "go", function()
 			fzf.files({
@@ -59,8 +50,7 @@ return {
 
 		vim.keymap.set("n", "<leader>L", function()
 			fzf.live_grep_native({
-				rg_opts =
-				[[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']],
+				rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=512 --no-ignore -g '!{.git,_build,.elixir_ls}/']],
 			})
 		end, opts)
 
