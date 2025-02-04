@@ -1,5 +1,8 @@
 return {
 	{
+		'tjdevries/colorbuddy.nvim'
+	},
+	{
 		"Tsuzat/NeoSolarized.nvim",
 		config = function()
 			local neovide = vim.g.neovide
@@ -46,22 +49,5 @@ return {
 			})
 			vim.cmd("colorscheme NeoSolarized")
 		end,
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		lazy = false,
-		priority = 1001,
-		opts = {
-			commentStyle = { italic = true },
-			keywordStyle = { italic = true },
-			dimInactive = false,
-			theme = "dragon",
-		},
-	},
-	{
-		"sho-87/kanagawa-paper.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
 	},
 }

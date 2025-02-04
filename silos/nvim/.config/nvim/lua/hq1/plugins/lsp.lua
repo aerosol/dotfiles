@@ -1,3 +1,4 @@
+vim.g.gitblame_enable = 1
 return {
 	{
 		"stevearc/conform.nvim",
@@ -21,7 +22,7 @@ return {
 	},
 	{
 		"linrongbin16/lsp-progress.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lualine/lualine.nvim" },
 		config = function()
 			require("lsp-progress").setup({})
 

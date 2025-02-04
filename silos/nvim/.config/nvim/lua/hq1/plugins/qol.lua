@@ -10,14 +10,30 @@ return {
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
 			scroll = { enabled = true },
+			picker = { enabled = true, 
+			sources = {
+				buffers = {
+					current = false,
+					layout = "vscode"
+				}
+			} },
+		},
+		keys = {
+			{ "<leader><leader>", function() Snacks.picker.buffers() end, desc = "Buffers" },
+			{ "<leader>l", function() Snacks.picker.grep() end, desc = "Grep" },
+			{ "go", function() Snacks.picker.files() end, desc = "Find Files" },
+			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+			{ "=", function() Snacks.picker.lsp_symbols() end, nowait = true, desc = "References" },
 		},
 	},
 	{
 		"chrisgrieser/nvim-origami",
 		event = "VeryLazy",
-		opts = {}, -- needed even when using default config
+		opts = {
+			pauseFoldsOnSearch = false,
+		}, -- needed even when using default config
 	},
-	{ "pteroctopus/faster.nvim" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",

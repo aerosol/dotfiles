@@ -1,7 +1,7 @@
 M = {}
 
 function M.on_attach(client, bufnr)
-	local fzf = require("fzf-lua")
+	-- local fzf = require("fzf-lua")
 
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -27,45 +27,45 @@ function M.on_attach(client, bufnr)
 
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-	nmap("<leader>s", function()
-		fzf.lsp_live_workspace_symbols()
-	end, "Workspace symbols")
+	-- nmap("<leader>s", function()
+	-- 	fzf.lsp_live_workspace_symbols()
+	-- end, "Workspace symbols")
 
-	nmap("gd", function()
-		fzf.lsp_definitions({
-			jump_to_single_result = true,
-			jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
-		})
-	end, "[G]oto [D]efinition")
+	-- nmap("gd", function()
+	-- 	fzf.lsp_definitions({
+	-- 		jump_to_single_result = true,
+	-- 		jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+	-- 	})
+	-- end, "[G]oto [D]efinition")
 
-	nmap("gr", function()
-		if caps("referencesProvider") then
-			fzf.lsp_references({ jump_to_single_result = true })
-		else
-			fzf.grep_cword()
-		end
-	end, "[G]oto [R]eferences")
+	-- nmap("gr", function()
+	-- 	if caps("referencesProvider") then
+	-- 		fzf.lsp_references({ jump_to_single_result = true })
+	-- 	else
+	-- 		fzf.grep_cword()
+	-- 	end
+	-- end, "[G]oto [R]eferences")
 
-	nmap("=", function()
-		if caps("documentSymbolProvider") then
-			fzf.lsp_document_symbols({
-				winopts = { fullscreen = false, preview = { hidden = "hidden" } },
-			})
-		else
-			local cur_buf = vim.api.nvim_get_current_buf()
-			local cur_ft = vim.api.nvim_get_option_value("filetype", { buf = cur_buf })
-			if cur_ft == 'elixir' then
-				fzf.grep_curbuf({
-					search = '(def |defp |defmacro | +test | +describe")',
-					no_esc = true,
-					previewer = false,
-					prompt = 'Wee'
-				})
-			else
-				print('No references for filetype: ' .. cur_ft)
-			end
-		end
-	end, "Outline")
+	-- nmap("=", function()
+	-- 	if caps("documentSymbolProvider") then
+	-- 		fzf.lsp_document_symbols({
+	-- 			winopts = { fullscreen = false, preview = { hidden = "hidden" } },
+	-- 		})
+	-- 	else
+	-- 		local cur_buf = vim.api.nvim_get_current_buf()
+	-- 		local cur_ft = vim.api.nvim_get_option_value("filetype", { buf = cur_buf })
+	-- 		if cur_ft == 'elixir' then
+	-- 			fzf.grep_curbuf({
+	-- 				search = '(def |defp |defmacro | +test | +describe")',
+	-- 				no_esc = true,
+	-- 				previewer = false,
+	-- 				prompt = 'Wee'
+	-- 			})
+	-- 		else
+	-- 			print('No references for filetype: ' .. cur_ft)
+	-- 		end
+	-- 	end
+	-- end, "Outline")
 
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 
@@ -87,7 +87,7 @@ function M.on_attach(client, bufnr)
 
 	nmap("<leader>e", vim.diagnostic.open_float, "Open floating diagnostics")
 
-	nmap("<leader>q", fzf.lsp_document_diagnostics, "List diagnostics")
+	-- nmap("<leader>q", fzf.lsp_document_diagnostics, "List diagnostics")
 
 	nmap("<leader>dh", function()
 		vim.diagnostic.hide(nil, 0)

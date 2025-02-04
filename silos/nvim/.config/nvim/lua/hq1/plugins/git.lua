@@ -3,10 +3,19 @@ local opts = { noremap = true, silent = false }
 
 return {
 	{
+		"f-person/git-blame.nvim",
+		opts = {
+			enabled = true, -- if you want to enable the plugin
+			message_template = " <summary> • <author> (<sha>)", -- template for the blame message, check the Message template section for more options
+			date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
+			virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
+		},
+	},
+	{
 		"sindrets/diffview.nvim",
 		config = function()
 			require("diffview").setup({
-				enhanced_diff_hl = true
+				enhanced_diff_hl = true,
 			})
 
 			keymap("n", "gD", ":tab :DiffviewOpen<cr>:WindowsDisableAutowidth<cr>", opts)
@@ -23,7 +32,7 @@ return {
 	{
 		"tpope/vim-fugitive",
 		config = function()
-			vim.api.nvim_create_user_command('Browse', 'silent execute "!xdg-open " . expand("<args>")', { nargs = 1 })
+			vim.api.nvim_create_user_command("Browse", 'silent execute "!xdg-open " . expand("<args>")', { nargs = 1 })
 			keymap("n", "gs", ":tab :Git<cr>:exe 'normal gUzz'<cr>", opts)
 			keymap("n", "gp", ":Git push<cr>", opts)
 			keymap("n", "gl", ":tab :DiffviewFileHistory<cr>", opts)

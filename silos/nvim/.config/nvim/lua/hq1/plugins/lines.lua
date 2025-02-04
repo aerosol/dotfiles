@@ -24,15 +24,14 @@ return {
 					},
 				},
 				sections = {
-					lualine_a = {
-					},
+					lualine_a = {},
 					lualine_b = {
-						{ "filename", path = 4, color = { gui = font_modifier } }
+						{ "filename", path = 4, color = { gui = font_modifier } },
 					},
 					lualine_c = { "diff", "diagnostics" },
 					lualine_x = {
 						{
-							require('lsp-progress').progress
+							require("lsp-progress").progress,
 						},
 					},
 					lualine_y = {},
@@ -48,9 +47,6 @@ return {
 				},
 				tabline = {
 					lualine_a = {
-						function()
-							return require("nvim-treesitter").statusline()
-						end,
 					},
 					lualine_b = {
 						{
