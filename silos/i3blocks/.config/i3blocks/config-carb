@@ -3,3 +3,8 @@ command=battery.sh
 interval=20
 color=#ffffff
 background=#000000
+
+[perf]
+command=cat /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+color=#ffffff
+interval=60
