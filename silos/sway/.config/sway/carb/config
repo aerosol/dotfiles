@@ -1,11 +1,12 @@
-font pango:SF Pro Text Semibold 19
+font pango:SF Pro Text Semibold 12
 set $file_manager pcmanfm
 exec gammastep -l 52.13:21.0
 focus_follows_mouse yes
 
-output eDP-1 scale 1
+# output eDP-1 scale 1
+output eDP-1 mode 1920x1080 pos 0 0
 
-seat seat0 xcursor_theme Adwaita 42
+seat seat0 xcursor_theme Adwaita 24
 seat * hide_cursor when-typing enable
 
 set $wallpapers_path $HOME/wallpapers
@@ -26,8 +27,8 @@ set $lock swaylock \\
     --separator-color 000000 \\
     --fade-in 0.2
 
-bindswitch lid:on exec $lock
-bindsym Ctrl+Shift+L exec $lock
+#bindswitch lid:on exec $lock
+#bindsym Ctrl+Shift+L exec $lock
 
 input * {
     xkb_layout pl
@@ -52,7 +53,7 @@ workspace 5 output eDP-1
 workspace 6 output eDP-1
 
 bar {
-  	font pango:PragmataPro 18
+  	font pango:PragmataPro 12
 		position bottom
 		mode dock
 		workspace_min_width 100
