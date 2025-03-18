@@ -32,6 +32,9 @@ keymap("n", "<leader>fez", "<cmd>:e ~/.zshrc<cr>", opts)
 keymap("n", "<leader>fet", "<cmd>:e ~/.tmux.conf<cr>", opts)
 keymap("n", "<leader>fef", "<cmd>:e ~/.config/foot/foot.ini<cr>", opts)
 
+keymap("n", "<M-j>", "<cmd>:cnext<cr>", opts)
+keymap("n", "<M-k>", "<cmd>:cprev<cr>", opts)
+
 keymap("n", "<F12>", "<C-w>c", opts)
 
 keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>", opts)

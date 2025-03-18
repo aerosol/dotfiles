@@ -1,7 +1,5 @@
 return {
-	{
-		'tjdevries/colorbuddy.nvim'
-	},
+{ url = 'https://gitlab.com/sxwpb/halfspace.nvim', },
 	{
 		"Tsuzat/NeoSolarized.nvim",
 		config = function()
@@ -45,6 +43,7 @@ return {
 					highlights.PounceAccept = { bg = "#004200", fg = "#ffffff", underline = true }
 					highlights.PounceMatch = { bg = "#002200", fg = "#ffffff" }
 					highlights.DiagnosticVirtualTextError = { fg = "#6f0000" }
+					highlights.Search = { bg = "#223333" }
 				end,
 			})
 			vim.cmd("colorscheme NeoSolarized")

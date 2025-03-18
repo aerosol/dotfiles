@@ -22,6 +22,7 @@ return {
 			{ "<leader><leader>", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>l", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "go", function() Snacks.picker.files() end, desc = "Find Files" },
+			{ "gO", function() Snacks.picker.files({ignored=true}) end, desc = "Find All Files" },
 			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
 			{ "=", function() Snacks.picker.lsp_symbols() end, nowait = true, desc = "References" },
