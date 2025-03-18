@@ -27,5 +27,5 @@ _fzf_compgen_dir() {
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]
 
 export ASDF_DATA_DIR="/home/hq1/.asdf"
-
+export ASDF_DATA_DIR=/home/hq1/.asdf
 export PATH="${ASDF_DATA_DIR}/shims:${PATH}"
