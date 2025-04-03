@@ -98,7 +98,6 @@ function M.on_attach(client, bufnr)
 end
 
 local servers = {
-	lexical = {},
 	clangd = {},
 	gopls = {},
 	pyright = {},
@@ -107,13 +106,6 @@ local servers = {
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-require('lspconfig').lexical.setup {
-	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
-	filetypes = { "elixir", "eelixir", "heex" },
-	-- optional settings
-	settings = {}
-}
 
 require("mason").setup()
 local mason_lspconfig = require("mason-lspconfig")
@@ -132,6 +124,13 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
+
+require('lspconfig').lexical.setup {
+	cmd = { "/home/hq1/workspaces/github/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
+	filetypes = { "elixir", "eelixir", "heex" },
+	-- optional settings
+	settings = {}
+}
 
 vim.fn.sign_define('DiagnosticSignError', { text = '⮾ ', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '⨻ ', texthl = 'DiagnosticSignWarn' })
