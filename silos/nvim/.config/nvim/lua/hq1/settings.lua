@@ -48,4 +48,4 @@ vim.o.foldlevel = 99
 vim.wo.foldlevel = 99
 vim.o.foldlevelstart = 1
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
--- vim.wo.foldtext = ""
+vim.wo.foldtext = ""

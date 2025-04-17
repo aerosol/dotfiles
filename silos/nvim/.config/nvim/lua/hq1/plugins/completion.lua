@@ -15,7 +15,7 @@ return {
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
-  opts = {
+    opts = {
     -- 'default' for mappings similar to built-in completion
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -37,15 +37,19 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-cmp-copilot",
-          score_offset = 100,
-          async = true,
-        },
-    },
+      per_filetype = {
+        codecompanion = { "codecompanion" },
+      },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      -- default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    --   providers = {
+    --     copilot = {
+    --       name = "copilot",
+    --       module = "blink-cmp-copilot",
+    --       score_offset = 100,
+    --       async = true,
+    --     },
+    -- },
   },
 }
   }
