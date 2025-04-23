@@ -9,7 +9,7 @@ return {
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
-			scroll = { enabled = true },
+			-- scroll = { enabled = true },
 			picker = { enabled = true, 
 			sources = {
 				buffers = {
