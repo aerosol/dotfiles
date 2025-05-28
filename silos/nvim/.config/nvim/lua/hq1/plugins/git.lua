@@ -11,34 +11,34 @@ return {
 			virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
 		},
 	},
-	{
-		"sindrets/diffview.nvim",
-		config = function()
-			require("diffview").setup({
-				enhanced_diff_hl = true,
-				hooks = {
-					diff_buf_read = function(bufnr) 
-						vim.opt_local.foldlevel = 99
-						vim.opt_local.foldenable = false
-					end,
-					diff_buf_win_enter = function(bufnr) 
-						vim.opt_local.foldlevel = 99
-						vim.opt_local.foldenable = false
-					end
-				}
-			})
-
-			keymap("n", "gD", ":tab :DiffviewOpen<cr>:WindowsDisableAutowidth<cr>", opts)
-			vim.api.nvim_create_user_command("DiffReviewPR", ":DiffviewOpen origin/master...HEAD --imply-local", {})
-			vim.api.nvim_create_user_command(
-				"DiffReviewIndividualCommits",
-				":DiffviewFileHistory --range=origin/master...HEAD --right-only --no-merges",
-				{}
-			)
-			keymap("v", "dp", ":diffput<cr>", opts)
-			keymap("v", "dg", ":diffget<cr>", opts)
-		end,
-	},
+	-- {
+	-- 	"sindrets/diffview.nvim",
+	-- 	config = function()
+	-- 		require("diffview").setup({
+	-- 			enhanced_diff_hl = true,
+	-- 			hooks = {
+	-- 				diff_buf_read = function(bufnr) 
+	-- 					vim.opt_local.foldlevel = 99
+	-- 					vim.opt_local.foldenable = false
+	-- 				end,
+	-- 				diff_buf_win_enter = function(bufnr) 
+	-- 					vim.opt_local.foldlevel = 99
+	-- 					vim.opt_local.foldenable = false
+	-- 				end
+	-- 			}
+	-- 		})
+	--
+	-- 		keymap("n", "gD", ":tab :DiffviewOpen<cr>:WindowsDisableAutowidth<cr>", opts)
+	-- 		vim.api.nvim_create_user_command("DiffReviewPR", ":DiffviewOpen origin/master...HEAD --imply-local", {})
+	-- 		vim.api.nvim_create_user_command(
+	-- 			"DiffReviewIndividualCommits",
+	-- 			":DiffviewFileHistory --range=origin/master...HEAD --right-only --no-merges",
+	-- 			{}
+	-- 		)
+	-- 		keymap("v", "dp", ":diffput<cr>", opts)
+	-- 		keymap("v", "dg", ":diffget<cr>", opts)
+	-- 	end,
+	-- },
 	{
 		"tpope/vim-fugitive",
 		config = function()

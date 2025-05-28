@@ -36,7 +36,13 @@ keymap("n", "<M-j>", "<cmd>:cnext<cr>", opts)
 keymap("n", "<M-k>", "<cmd>:cprev<cr>", opts)
 
 keymap("n", "<F12>", "<C-w>c", opts)
-keymap("n", "<CR>", "zR", opts)
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "elixir", "markdown", "lua" },
+	callback = function()
+		vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "zR", { noremap = true, silent = true })
+	end,
+})
 
 keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>", opts)
 keymap({ 'n', 'x', 'o' }, '<Leader>cc', 'gcc', { remap = true })
