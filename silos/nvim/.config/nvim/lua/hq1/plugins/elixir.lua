@@ -11,6 +11,6 @@ return {
 					vim.keymap.set("i", "ii", "|> IO.inspect(label: :)<Left>", { noremap = true })
 				end,
 			})
-		end
-	}
+		end,
+	},
 }

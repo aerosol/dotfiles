@@ -2,7 +2,6 @@ return {
 	"anuvyklack/windows.nvim",
 	dependencies = {
 		{ "anuvyklack/middleclass" },
-		{ "anuvyklack/animation.nvim", enabled = false },
 	},
 	event = "WinNew",
 	config = function()

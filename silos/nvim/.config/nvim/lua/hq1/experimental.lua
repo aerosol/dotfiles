@@ -1,5 +1,5 @@
 local M = {
-	last = {}
+	last = {},
 }
 
 M.run_last = function(id)
@@ -33,26 +33,25 @@ M.run = function(args)
 	vim.cmd("norm G")
 	vim.cmd("file! " .. name)
 
-
 	vim.api.nvim_create_autocmd({ "BufEnter" }, {
 		buffer = 0,
-		command = "let &titlestring = '" .. cmd .. "'"
+		command = "let &titlestring = '" .. cmd .. "'",
 	})
 
 	vim.api.nvim_create_autocmd({ "BufLeave" }, {
 		buffer = 0,
-		command = "let &titlestring = '' | set title"
+		command = "let &titlestring = '' | set title",
 	})
 
 	if auto_resize then
 		vim.api.nvim_create_autocmd({ "BufEnter" }, {
 			buffer = 0,
-			command = "wincmd _"
+			command = "wincmd _",
 		})
 
 		vim.api.nvim_create_autocmd({ "BufLeave" }, {
 			buffer = 0,
-			command = "resize 10"
+			command = "resize 10",
 		})
 	end
 
@@ -76,7 +75,7 @@ M.set_keymaps = function()
 
 	keymap("n", "tt", function()
 		local current_file = vim.fn.expand("%:p")
-		local current_line = vim.fn.line('.')
+		local current_line = vim.fn.line(".")
 		local file_line = string.format("%s:%d", current_file, current_line)
 		M.run({ id = "TestPanel", cmd = "mix test " .. file_line })
 	end, opts)
@@ -90,7 +89,9 @@ M.set_keymaps = function()
 		M.run({ id = current_file, cmd = current_file })
 	end)
 
-	keymap("n", "<C-e>", function() M.run({ auto_resize = false }) end, opts)
+	keymap("n", "<C-e>", function()
+		M.run({ auto_resize = false })
+	end, opts)
 	keymap("n", "<leader>cx", "<cmd>:!chmod +x %<cr>", opts)
 end
 

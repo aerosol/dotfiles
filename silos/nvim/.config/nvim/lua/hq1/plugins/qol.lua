@@ -10,24 +10,76 @@ return {
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
 			-- scroll = { enabled = true },
-			picker = { enabled = true, 
-			sources = {
-				buffers = {
-					current = false,
-					file = false,
-					layout = "vscode"
-				}
-			} },
+			picker = {
+				enabled = true,
+				sources = {
+					buffers = {
+						current = false,
+						file = false,
+						layout = "vscode",
+					},
+				},
+			},
 		},
 		keys = {
-			{ "<leader><leader>", function() Snacks.picker.buffers() end, desc = "Buffers" },
-			{ "<leader>l", function() Snacks.picker.grep() end, desc = "Grep" },
-			{ "<leader>L", function() Snacks.picker.grep({ignored=true}) end, desc = "Grep all" },
-			{ "go", function() Snacks.picker.files() end, desc = "Find Files" },
-			{ "gO", function() Snacks.picker.files({ignored=true}) end, desc = "Find All Files" },
-			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-			{ "=", function() Snacks.picker.lsp_symbols() end, nowait = true, desc = "References" },
+			{
+				"<leader><leader>",
+				function()
+					Snacks.picker.buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>l",
+				function()
+					Snacks.picker.grep()
+				end,
+				desc = "Grep",
+			},
+			{
+				"<leader>L",
+				function()
+					Snacks.picker.grep({ ignored = true })
+				end,
+				desc = "Grep all",
+			},
+			{
+				"go",
+				function()
+					Snacks.picker.files()
+				end,
+				desc = "Find Files",
+			},
+			{
+				"gO",
+				function()
+					Snacks.picker.files({ ignored = true })
+				end,
+				desc = "Find All Files",
+			},
+			{
+				"gd",
+				function()
+					Snacks.picker.lsp_definitions()
+				end,
+				desc = "Goto Definition",
+			},
+			{
+				"gr",
+				function()
+					Snacks.picker.lsp_references()
+				end,
+				nowait = true,
+				desc = "References",
+			},
+			{
+				"=",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+				nowait = true,
+				desc = "References",
+			},
 		},
 	},
 	{

@@ -27,8 +27,7 @@ return {
 					lualine_a = {},
 					lualine_b = {},
 					lualine_c = {},
-					lualine_x = {
-					},
+					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {},
 				},
@@ -41,13 +40,14 @@ return {
 					lualine_z = {},
 				},
 				tabline = {
-					lualine_a = {
-					},
+					lualine_a = {},
 					lualine_b = {
 						{
 							"tabs",
 							icons_enabled = true,
-							cond = function() return 2 <= #vim.api.nvim_list_tabpages() end,
+							cond = function()
+								return 2 <= #vim.api.nvim_list_tabpages()
+							end,
 							max_length = 80,
 							mode = 1,
 							tabs_color = {
@@ -66,16 +66,12 @@ return {
 							end,
 						},
 					},
-					lualine_x = {
-					},
+					lualine_x = {},
 				},
 				winbar = {
-					lualine_a = {
-
-
-					},
+					lualine_a = {},
 					lualine_b = {},
-					lualine_c = {'filename'},
+					lualine_c = { "filename" },
 					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {
@@ -83,19 +79,16 @@ return {
 						{
 							require("lsp-progress").progress,
 						},
-
-					}
-
-
+					},
 				},
-    inactive_winbar = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = {'filename'},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {}
-    },
+				inactive_winbar = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {},
+				},
 				extensions = { "quickfix", "fzf", "man" },
 			})
 		end,

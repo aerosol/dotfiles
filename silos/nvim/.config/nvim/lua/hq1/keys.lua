@@ -45,6 +45,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>", opts)
-keymap({ 'n', 'x', 'o' }, '<Leader>cc', 'gcc', { remap = true })
+keymap({ "n", "x", "o" }, "<Leader>cc", "gcc", { remap = true })
 
-require('hq1.experimental').set_keymaps()
+keymap("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+require("hq1.experimental").set_keymaps()
