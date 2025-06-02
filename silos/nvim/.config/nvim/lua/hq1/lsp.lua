@@ -1,5 +1,6 @@
 vim.lsp.enable({
 	"lexical",
+	"lua_ls",
 })
 
 vim.diagnostic.config({

@@ -1,1 +1,0 @@
-/home/hq1/workspaces/aerosol/nuda/nuda/colors/nuda.vim
