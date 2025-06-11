@@ -38,7 +38,7 @@ keymap("n", "<M-k>", "<cmd>:cprev<cr>", opts)
 keymap("n", "<F12>", "<C-w>c", opts)
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "elixir", "markdown", "lua" },
+	pattern = { "elixir", "markdown", "lua", "yaml" },
 	callback = function()
 		vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "zR", { noremap = true, silent = true })
 	end,

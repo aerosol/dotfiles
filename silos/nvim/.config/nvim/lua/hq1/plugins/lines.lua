@@ -6,6 +6,7 @@ return {
 			local font_modifier = "italic"
 			require("lualine").setup({
 				options = {
+					always_show_tabline = false,
 					icons_enabled = true,
 					theme = "auto",
 					component_separators = { left = "", right = "" },
@@ -45,9 +46,6 @@ return {
 						{
 							"tabs",
 							icons_enabled = true,
-							cond = function()
-								return 2 <= #vim.api.nvim_list_tabpages()
-							end,
 							max_length = 80,
 							mode = 1,
 							tabs_color = {
