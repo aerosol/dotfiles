@@ -49,4 +49,28 @@ keymap({ "n", "x", "o" }, "<Leader>cc", "gcc", { remap = true })
 
 keymap("n", "<leader>e", vim.diagnostic.open_float, opts)
 
+keymap("n", "gF", function()
+	local word = vim.fn.expand("<cfile>")
+	local filename, lineno = string.match(word, "([^:]+):(%d+)")
+	if filename and lineno then
+		vim.cmd("tabedit " .. filename)
+		vim.cmd(lineno)
+	else
+		vim.cmd("tabedit " .. word)
+	end
+	vim.opt.cmdheight = 2
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>cf", function()
+	local buf_path = vim.api.nvim_buf_get_name(0)
+	if buf_path == "" then
+		vim.notify("No file associated with current buffer", vim.log.levels.WARN)
+		return
+	end
+	local cwd = vim.fn.getcwd()
+	local rel_path = vim.fn.fnamemodify(buf_path, ":~:.")
+	vim.fn.setreg("+", rel_path)
+	vim.notify("Copied relative path: " .. rel_path)
+end, { desc = "Copy buffer relative path to clipboard" })
+
 require("hq1.experimental").set_keymaps()
