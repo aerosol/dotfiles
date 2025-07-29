@@ -14,7 +14,7 @@ set $screencast_area_morda wl-screencast-morda
 set $hyper Ctrl+Shift+$mod+Alt
 set $meh Ctrl+Shift+Alt
 set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy && $notify "Color $(wl-paste -t text) copied"
-set $term foot
+set $term kitty
 
 set $lock_bg ~/wallpapers/lockscreen.jpg
 
@@ -85,7 +85,7 @@ bindsym $mod+i fullscreen off; exec edit-clipboard
 bindsym $mod+d exec $file_manager $(<$ZSH_CACHE/_lastdir) || $HOME
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
-bindsym $meh+f move window to output up, focus output up
+bindsym $meh+f move window to output left, focus output left
 bindsym $meh+v exec $clipboard
 bindsym $mod+Alt+v exec $clipboard
 bindsym $mod+w kill
