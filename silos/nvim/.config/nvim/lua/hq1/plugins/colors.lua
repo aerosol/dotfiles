@@ -38,14 +38,14 @@ return {
 					undercurl = true, -- true/false; for global undercurl
 				},
 				on_highlights = function(highlights, _colors)
+					highlights.StatusLine = { bg = "#222222" }
+					highlights.StatusLineNC = { bg = "#171717" }
 					highlights.OilFile = { fg = "#657b83", italic = not neovide }
 					highlights.OilDir = { fg = "#b59909", italic = not neovide }
 					highlights.fugitiveHash = { italic = not neovide }
 					highlights.fugitiveUnstagedSection = { italic = not neovide, fg = "#005200" }
 					highlights.fugitiveUntrackedSection = { italic = not neovide, fg = "#666666" }
 					highlights.fugitiveStagedSection = { italic = not neovide, fg = "#008800" }
-					-- highlights.Folded.bg = nil
-					-- highlights.Folded.fg = "blue"
 					highlights.Pmenu = { bg = "#141819" }
 					highlights.NormalFloat = { bg = "#141819" }
 					highlights.WinbarBreadcrumb = { italic = not neovide, fg = "#999999", bg = "#141819" }

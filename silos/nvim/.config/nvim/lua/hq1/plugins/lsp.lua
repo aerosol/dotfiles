@@ -22,7 +22,7 @@ return {
 	},
 	{
 		"linrongbin16/lsp-progress.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lualine/lualine.nvim" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lsp-progress").setup({})
 
@@ -30,7 +30,9 @@ return {
 			vim.api.nvim_create_autocmd("User", {
 				group = "lualine_augroup",
 				pattern = "LspProgressStatusUpdated",
-				callback = require("lualine").refresh,
+				callback = vim.schedule_wrap(function()
+					vim.cmd("redrawstatus")
+				end),
 			})
 		end,
 	},

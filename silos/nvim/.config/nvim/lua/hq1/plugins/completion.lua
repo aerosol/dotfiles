@@ -20,6 +20,10 @@ return {
 		-- See the full "keymap" documentation for information on defining your own keymap.
 		keymap = { preset = "default" },
 
+		completion = {
+			ghost_text = { enabled = true },
+		},
+
 		cmdline = { keymap = { preset = "default" } },
 
 		appearance = {
@@ -35,19 +39,21 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
+			signature = { enabled = true },
 			per_filetype = {
 				codecompanion = { "codecompanion" },
 			},
-			default = { "lsp", "path", "snippets", "buffer" },
-			-- default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
-			--   providers = {
-			--     copilot = {
-			--       name = "copilot",
-			--       module = "blink-cmp-copilot",
-			--       score_offset = 100,
-			--       async = true,
-			--     },
-			-- },
+			-- default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "copilot" },
+			providers = {
+				copilot = {
+					max_items = 5,
+					name = "copilot",
+					module = "blink-cmp-copilot",
+					score_offset = 100,
+					async = true,
+				},
+			},
 		},
 	},
 }
