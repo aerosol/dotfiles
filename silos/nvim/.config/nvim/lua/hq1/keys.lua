@@ -44,7 +44,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-keymap("n", "<leader>cf", "<cmd>:set ft=sql|%!clickhouse-format 2>/dev/null<cr>", opts)
 keymap({ "n", "x", "o" }, "<Leader>cc", "gcc", { remap = true })
 
 keymap("n", "<leader>e", vim.diagnostic.open_float, opts)
@@ -61,7 +60,8 @@ keymap("n", "gF", function()
 	vim.opt.cmdheight = 2
 end, { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>cf", function()
+-- Copy buffer relative path to clipboard
+keymap("n", "<leader>cf", function()
 	local buf_path = vim.api.nvim_buf_get_name(0)
 	if buf_path == "" then
 		vim.notify("No file associated with current buffer", vim.log.levels.WARN)
@@ -73,4 +73,34 @@ vim.keymap.set("n", "<leader>cf", function()
 	vim.notify("Copied relative path: " .. rel_path)
 end, { desc = "Copy buffer relative path to clipboard" })
 
-require("hq1.experimental").set_keymaps()
+-- Test commands (moved from experimental.lua)
+keymap("n", "ta", function()
+	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test --max-failures=1 --warnings-as-errors" })
+end, opts)
+
+keymap("n", "tf", function()
+	local current_file = vim.fn.expand("%:p")
+	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. current_file })
+end, opts)
+
+keymap("n", "tt", function()
+	local current_file = vim.fn.expand("%:p")
+	local current_line = vim.fn.line(".")
+	local file_line = string.format("%s:%d", current_file, current_line)
+	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. file_line })
+end, opts)
+
+keymap("n", "tl", function()
+	require("hq1.runner").run_last("TestPanel")
+end)
+
+keymap("n", "<leader>r", function()
+	local current_file = vim.fn.expand("%:p")
+	require("hq1.runner").run({ id = current_file, cmd = current_file })
+end)
+
+keymap("n", "<C-e>", function()
+	require("hq1.runner").run({ auto_resize = false })
+end, opts)
+
+keymap("n", "<leader>cx", "<cmd>:!chmod +x %<cr>", opts)

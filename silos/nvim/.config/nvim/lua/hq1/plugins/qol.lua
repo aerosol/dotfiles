@@ -95,8 +95,14 @@ return {
 	},
 	{
 		"kylechui/nvim-surround",
+		event = "VeryLazy",
 	},
-
+	{
+		"thinca/vim-qfreplace",
+	},
 	"tpope/vim-sleuth",
-	"andymass/vim-matchup",
+	{
+		"andymass/vim-matchup",
+		event = "BufRead",
+	},
 }

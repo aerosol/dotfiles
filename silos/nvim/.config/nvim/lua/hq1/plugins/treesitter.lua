@@ -15,7 +15,7 @@ return {
 				enable = true,
 			},
 			indent = { enable = true },
-			auto_install = true,
+			auto_install = false,
 			ensure_installed = {
 				"bash",
 				"c",

@@ -1,4 +1,3 @@
-vim.g.gitblame_enable = 1
 return {
 	{
 		"stevearc/conform.nvim",
