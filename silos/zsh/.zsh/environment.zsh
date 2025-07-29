@@ -17,7 +17,7 @@ if [ "$HOST" = "carb" ]; then
 	export QT_SCALE_FACTOR=2
 fi
 
-if [[ "$TERM" == "xterm-256color" ]]; then
+if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm-kitty" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 		echo "ssh connection detected, not starting tmux"
 	elif [[ -z "$TMUX" ]]; then
