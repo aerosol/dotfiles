@@ -52,29 +52,4 @@ vim.o.laststatus = 2
 vim.o.showcmd = false
 vim.opt.showmode = false
 
-function Statusline()
-	local file_path = vim.fn.expand("%") ~= "" and vim.fn.expand("%:.") or "[No Name]"
-	local file_name = vim.fn.expand("%:t") ~= "" and vim.fn.expand("%:t") or "[No Name]"
-	local branch = vim.fn.FugitiveHead()
-	local pos = vim.fn.line(".") .. ":" .. vim.fn.col(".")
-	local progress = require("lsp-progress").progress()
-	local mode = vim.api.nvim_get_mode().mode
-
-	-- Use window width to determine which filename to show
-	local width = vim.fn.winwidth(0)
-	local file = width > 80 and file_path or file_name
-
-	local parts = {
-		"%#File#" .. file .. "%#Normal#",
-		"%=",  -- right-align everything after this
-		"%<",  -- truncation point
-		"%#LineNr#" .. pos .. "%#Normal#",
-		branch ~= "" and " %#Function#[" .. branch .. "]%#Normal#" or "",
-		" %#Visual#" .. mode .. "%#Normal#",
-		" %#Warning#" .. progress .. "%#Normal#",
-	}
-
-	return table.concat(parts, "")
-end
-
-vim.o.statusline = "%!v:lua.Statusline()"
+require("hq1.statusline")

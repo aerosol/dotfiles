@@ -29,7 +29,7 @@ M.run = function(args)
 	end
 	vim.cmd("botright 10 new")
 	print(cmd)
-	vim.fn.termopen(cmd)
+	vim.fn.jobstart(cmd, { term = true })
 	vim.cmd("norm G")
 	vim.cmd("file! " .. name)
 
@@ -61,3 +61,4 @@ M.run = function(args)
 end
 
 return M
+

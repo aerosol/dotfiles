@@ -60,20 +60,17 @@ keymap("n", "gF", function()
 	vim.opt.cmdheight = 2
 end, { noremap = true, silent = true })
 
--- Copy buffer relative path to clipboard
 keymap("n", "<leader>cf", function()
 	local buf_path = vim.api.nvim_buf_get_name(0)
 	if buf_path == "" then
 		vim.notify("No file associated with current buffer", vim.log.levels.WARN)
 		return
 	end
-	local cwd = vim.fn.getcwd()
 	local rel_path = vim.fn.fnamemodify(buf_path, ":~:.")
 	vim.fn.setreg("+", rel_path)
 	vim.notify("Copied relative path: " .. rel_path)
 end, { desc = "Copy buffer relative path to clipboard" })
 
--- Test commands (moved from experimental.lua)
 keymap("n", "ta", function()
 	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test --max-failures=1 --warnings-as-errors" })
 end, opts)
