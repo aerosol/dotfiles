@@ -105,4 +105,24 @@ return {
 		"andymass/vim-matchup",
 		event = "BufRead",
 	},
+	{
+		"dmtrKovalenko/fff.nvim",
+		build = "cargo build --release",
+		opts = {
+			width = 1,
+			height = 1,
+			debug = {
+				show_scores = true,
+			},
+		},
+		keys = {
+			{
+				"ff",
+				function()
+					require("fff").find_files() -- or find_in_git_root() if you only want git files
+				end,
+				desc = "Open file picker",
+			},
+		},
+	},
 }
