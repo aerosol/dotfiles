@@ -5,9 +5,19 @@ function M.get_filename()
 	local file_path = buf_name ~= "" and vim.fn.fnamemodify(buf_name, ":.") or "[No Name]"
 	local file_name = buf_name ~= "" and vim.fn.fnamemodify(buf_name, ":t") or "[No Name]"
 
-	-- Use window width to determine which filename to show
 	local width = vim.fn.winwidth(0)
-	return width > 80 and file_path or file_name
+
+	if width > 80 then
+		if buf_name ~= "" then
+			local parent = vim.fn.fnamemodify(buf_name, ":h:t")
+			local fname = vim.fn.fnamemodify(buf_name, ":t")
+			return parent ~= "" and (parent .. "/" .. fname) or fname
+		else
+			return "[No Name]"
+		end
+	else
+		return file_name
+	end
 end
 
 function M.get_position()
@@ -50,4 +60,3 @@ end
 vim.o.statusline =
 	"%#File#%{%v:lua.Statusline_filename()%}%#Normal#%=%<%#LineNr#%{%v:lua.Statusline_position()%}%#Normal#%{%v:lua.Statusline_branch()%} %#Visual#%{%v:lua.Statusline_mode()%}%#Normal# %#Warning#%{%v:lua.Statusline_progress()%}%#Normal#"
 return M
-
