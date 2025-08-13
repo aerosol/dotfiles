@@ -101,3 +101,34 @@ keymap("n", "<C-e>", function()
 end, opts)
 
 keymap("n", "<leader>cx", "<cmd>:!chmod +x %<cr>", opts)
+
+local function smart_split_move(direction)
+	local win = vim.api.nvim_get_current_win()
+	local wins = vim.api.nvim_tabpage_list_wins(0)
+	local cur_row, cur_col = unpack(vim.api.nvim_win_get_position(win))
+	local target_win = vim.fn.win_getid(vim.fn.winnr(direction))
+
+	if target_win ~= win then
+		vim.cmd("wincmd " .. direction)
+	else
+		if direction == "j" or direction == "k" then
+			vim.cmd("split")
+		elseif direction == "h" or direction == "l" then
+			vim.cmd("vsplit")
+		end
+		vim.cmd("wincmd " .. direction)
+	end
+end
+
+vim.keymap.set("n", "<C-j>", function()
+	smart_split_move("j")
+end, opts)
+vim.keymap.set("n", "<C-k>", function()
+	smart_split_move("k")
+end, opts)
+vim.keymap.set("n", "<C-h>", function()
+	smart_split_move("h")
+end, opts)
+vim.keymap.set("n", "<C-l>", function()
+	smart_split_move("l")
+end, opts)
