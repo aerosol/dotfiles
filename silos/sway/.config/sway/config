@@ -40,7 +40,7 @@ client.urgent           #141B1E #E52323 #DADADA #E52323  #E52323
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
 
-for_window [app_id="obsidian"] floating enable, border none, move scratchpad
+for_window [app_id="pavucontrol-qt"] floating enable
 for_window [app_id="Signal"] move workspace 5
 for_window [app_id="gammastep-gui.py"] floating enable, move scratchpad
 for_window [class="Spotify"] move workspace 5
