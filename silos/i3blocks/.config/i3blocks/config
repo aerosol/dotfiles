@@ -28,6 +28,10 @@ label=
 command=df -h | awk '/\/$/ {print $5}'
 interval=10
 label= 
+format = "{output}"
+format-alt = "<span color='red'>{output}</span>"
+format-alt-click = "none"
+exec-if = "[ $(df -h | awk '/\/$/ {print $5}' | tr -d '%') -gt 90 ]"
 
 [notifs]
 command=if [ "$(dunstctl is-paused)" = "true" ]; then echo " $(dunstctl count waiting)"; else echo ""; fi
