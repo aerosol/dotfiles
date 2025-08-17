@@ -17,11 +17,7 @@ set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0
 set $term kitty
 
 set $lock_bg ~/wallpapers/lockscreen.jpg
-
-exec swayidle -w \
-         timeout 900 'chayang && swaymsg output * power off && swaylock -f -c 000000 -i $lock_bg' \
-         resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000 -i $lock_bg'
+exec swaymsg exec "swayidle -w timeout 90 'swaylock -f -i $lock_bg'"
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
