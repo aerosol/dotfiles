@@ -38,9 +38,10 @@ keymap("n", "<M-k>", "<cmd>:cprev<cr>", opts)
 keymap("n", "<F12>", "<C-w>c", opts)
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "elixir", "markdown", "lua", "yaml", "python" },
 	callback = function()
-		vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "zR", { noremap = true, silent = true })
+		if vim.bo.filetype ~= "oil" and vim.bo.filetype ~= "qf" then
+			vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "zR", { noremap = true, silent = true })
+		end
 	end,
 })
 
@@ -78,6 +79,11 @@ end, opts)
 keymap("n", "tf", function()
 	local current_file = vim.fn.expand("%:p")
 	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. current_file })
+end, opts)
+
+keymap("n", "tF", function()
+	local current_file = vim.fn.expand("%:p")
+	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. current_file .. " --trace" })
 end, opts)
 
 keymap("n", "tt", function()
