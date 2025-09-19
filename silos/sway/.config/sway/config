@@ -17,21 +17,21 @@ set $colorpicker grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0
 set $term kitty
 
 set $lock_bg ~/wallpapers/lockscreen.jpg
-exec swaymsg exec "swayidle -w timeout 90 'swaylock -f -i $lock_bg'"
+exec swaymsg exec "swayidle -w timeout 90 'hyprlock'"
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
-gaps inner 20
+gaps inner 30
 title_align left
 # titlebar_separator disable
-titlebar_padding 10
+titlebar_padding 12
 default_border normal 4
 floating_modifier $mod normal
 
-client.focused          #242B2E #242B2E #DADADA #3E4A4F  #242B2E
+client.focused          #242B2E #242B2E #00ff99 #3E4A4F  #242B2E
 client.focused_inactive #202628 #1C1E1F #404040 #3E4A4F  #242B2E
 client.unfocused        #202628 #1C1E1F #404040 #3E4A4F  #242B2E
-client.urgent           #141B1E #E52323 #DADADA #E52323  #E52323
+client.urgent           #141B1E #E52323 #00ff99 #E52323  #E52323
 
 set $clipboard cliphist list | tofi | cliphist decode | wl-copy
 set $emoji BEMOJI_PICKER_CMD=tofi bemoji -n
@@ -55,6 +55,7 @@ for_window [window_type = "menu"] floating enable
 for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "bubble"] floating enable
 
+exec wl-gammarelay-rs
 exec autotiling -sr "1.61"
 exec track-prev-terminal
 #exec sway-inactive-transparent.py
@@ -159,11 +160,17 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym $mod+ctrl+equal exec ~/bin/gamma/wlbt inc-bri
+bindsym $mod+ctrl+minus exec ~/bin/gamma/wlbt dec-bri
+
+bindsym $hyper+equal exec ~/bin/gamma/wlbt inc-temp
+bindsym $hyper+minus exec ~/bin/gamma/wlbt dec-temp
+
 set $quickmode "quickmode: (r)eload | sidecar (o)utput toggle | (x)lock | (p)lay/pause | (n)ext song"
 mode $quickmode {
     bindsym r reload
     bindsym o output HDMI-A-1 power toggle, mode "default"
-    bindsym x mode "default", exec swaylock -i $lock_bg
+    bindsym x mode "default", exec hyprlock
     bindsym p mode "default", exec playerctl play-pause  
     bindsym n mode "default", exec playerctl next
 
