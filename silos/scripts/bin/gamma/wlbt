@@ -1,0 +1,158 @@
+#!/bin/bash
+# wlbt - Wayland Brightness and Temperature control with wob integration
+
+# Configuration
+TEMP_STEP=200
+BRIGHTNESS_STEP=0.05
+WOB_PIPE="/tmp/wobpipe"
+WOB_CONFIG="$(dirname "$0")/wob.ini"
+
+# Temperature limits (Kelvin)
+MIN_TEMP=1000
+MAX_TEMP=10000
+
+# Brightness limits (0.0-1.0)
+MIN_BRIGHTNESS=0.1
+MAX_BRIGHTNESS=1.0
+
+# Create wob pipe if it doesn't exist
+setup_wob_pipe() {
+    if [[ ! -p "$WOB_PIPE" ]]; then
+        mkfifo "$WOB_PIPE" 2>/dev/null || true
+    fi
+}
+
+# Get current temperature
+get_temperature() {
+    busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Temperature 2>/dev/null | awk '{print $2}'
+}
+
+# Get current brightness (as percentage)
+get_brightness() {
+    busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Brightness 2>/dev/null | awk '{print int($2 * 100)}'
+}
+
+# Send value to wob (non-blocking)
+send_to_wob() {
+    local value=$1
+    local style=$2
+    
+    # Send to wob pipe in background with timeout to avoid blocking
+    if [[ -p "$WOB_PIPE" ]]; then
+        if [[ -n "$style" ]]; then
+            (echo "$value $style" > "$WOB_PIPE" &) 2>/dev/null
+        else
+            (echo "$value" > "$WOB_PIPE" &) 2>/dev/null
+        fi
+    fi
+}
+
+# Clamp value between min and max
+clamp() {
+    local value=$1
+    local min=$2
+    local max=$3
+    if (( $(echo "$value < $min" | bc -l) )); then
+        echo "$min"
+    elif (( $(echo "$value > $max" | bc -l) )); then
+        echo "$max"
+    else
+        echo "$value"
+    fi
+}
+
+# Temperature control
+inc_temp() {
+    local current=$(get_temperature)
+    if [[ -z "$current" ]]; then
+        echo "Error: Cannot get current temperature" >&2
+        exit 1
+    fi
+    
+    local new_temp=$((current + TEMP_STEP))
+    new_temp=$(clamp "$new_temp" "$MIN_TEMP" "$MAX_TEMP")
+    
+    busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q "$new_temp"
+    local percentage=$(((new_temp - MIN_TEMP) * 100 / (MAX_TEMP - MIN_TEMP)))
+    send_to_wob "$percentage" "temperature"
+    echo "Temperature: ${new_temp}K"
+}
+
+dec_temp() {
+    local current=$(get_temperature)
+    if [[ -z "$current" ]]; then
+        echo "Error: Cannot get current temperature" >&2
+        exit 1
+    fi
+    
+    local new_temp=$((current - TEMP_STEP))
+    new_temp=$(clamp "$new_temp" "$MIN_TEMP" "$MAX_TEMP")
+    
+    busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q "$new_temp"
+    local percentage=$(((new_temp - MIN_TEMP) * 100 / (MAX_TEMP - MIN_TEMP)))
+    send_to_wob "$percentage" "temperature"
+    echo "Temperature: ${new_temp}K"
+}
+
+# Brightness control
+inc_bri() {
+    local current=$(busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Brightness 2>/dev/null | awk '{print $2}')
+    if [[ -z "$current" ]]; then
+        echo "Error: Cannot get current brightness" >&2
+        exit 1
+    fi
+    
+    local new_brightness=$(echo "$current + $BRIGHTNESS_STEP" | bc -l)
+    new_brightness=$(clamp "$new_brightness" "$MIN_BRIGHTNESS" "$MAX_BRIGHTNESS")
+    
+    busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d "$new_brightness"
+    local percentage=$(printf "%.0f" $(echo "$new_brightness * 100" | bc -l))
+    send_to_wob "$percentage" "brightness"
+    echo "Brightness: ${percentage}%"
+}
+
+dec_bri() {
+    local current=$(busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Brightness 2>/dev/null | awk '{print $2}')
+    if [[ -z "$current" ]]; then
+        echo "Error: Cannot get current brightness" >&2
+        exit 1
+    fi
+    
+    local new_brightness=$(echo "$current - $BRIGHTNESS_STEP" | bc -l)
+    new_brightness=$(clamp "$new_brightness" "$MIN_BRIGHTNESS" "$MAX_BRIGHTNESS")
+    
+    busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Brightness d "$new_brightness"
+    local percentage=$(printf "%.0f" $(echo "$new_brightness * 100" | bc -l))
+    send_to_wob "$percentage" "brightness"
+    echo "Brightness: ${percentage}%"
+}
+
+# Main script logic
+main() {
+    setup_wob_pipe
+    
+    case "$1" in
+        inc-temp)
+            inc_temp
+            ;;
+        dec-temp)
+            dec_temp
+            ;;
+        inc-bri)
+            inc_bri
+            ;;
+        dec-bri)
+            dec_bri
+            ;;
+        *)
+            echo "Usage: $0 {inc-temp|dec-temp|inc-bri|dec-bri}"
+            echo "  inc-temp  Increase color temperature by ${TEMP_STEP}K"
+            echo "  dec-temp  Decrease color temperature by ${TEMP_STEP}K"
+            echo "  inc-bri   Increase brightness by $(echo "$BRIGHTNESS_STEP * 100" | bc)%"
+            echo "  dec-bri   Decrease brightness by $(echo "$BRIGHTNESS_STEP * 100" | bc)%"
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

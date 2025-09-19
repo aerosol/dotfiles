@@ -1,0 +1,164 @@
+21:52:31.527 [info] Child {LoggerFileBackend, :general_log} of Supervisor Logger.Backends.Supervisor started
+Pid: #PID<0.119.0>
+Start Call: Logger.Backends.Watcher.start_link({{LoggerFileBackend, :general_log}, {LoggerFileBackend, :general_log}})
+Restart: :transient
+Shutdown: 5000
+Type: :worker
+21:52:31.527 [info] Child Logger.Backends.Supervisor of Supervisor Logger.Backends.Internal started
+Pid: #PID<0.118.0>
+Start Call: Logger.Backends.Supervisor.start_link([{LoggerFileBackend, :general_log}])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+21:52:31.527 [info] Child Logger.Backends.Internal of Supervisor Logger.Supervisor started
+Pid: #PID<0.114.0>
+Start Call: Logger.Backends.Internal.start_link([])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+21:52:31.527 [info] Application logger started at :nonode@nohost
+21:52:32.894 [info] Child :ttb_autostart of Supervisor :runtime_tools_sup started
+Pid: #PID<0.1545.0>
+Start Call: :ttb_autostart.start_link()
+Restart: :temporary
+Shutdown: 3000
+Type: :worker
+21:52:32.894 [info] Application runtime_tools started at :nonode@nohost
+21:52:32.897 [info] Application erts started at :nonode@nohost
+21:52:32.897 [info] Application lx_lexical_shared started at :nonode@nohost
+21:52:32.897 [info] Application lx_lexical_test started at :nonode@nohost
+21:52:32.899 [info] Child LXSnowflake.Generator of Supervisor #PID<0.1552.0> (Supervisor.Default) started
+Pid: #PID<0.1553.0>
+Start Call: LXSnowflake.Generator.start_link(1704070800000, 1)
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:32.899 [info] Application lx_snowflake started at :nonode@nohost
+21:52:32.899 [info] Application lx_sourceror started at :nonode@nohost
+21:52:32.899 [info] Application lx_common started at :nonode@nohost
+21:52:32.899 [info] Application lx_elixir_sense started at :nonode@nohost
+21:52:32.912 [info] Application jason started at :nonode@nohost
+21:52:32.912 [info] Application logger_file_backend started at :nonode@nohost
+21:52:32.912 [info] Application lx_path_glob started at :nonode@nohost
+21:52:32.912 [info] Application lx_proto started at :nonode@nohost
+21:52:32.912 [info] Application lx_protocol started at :nonode@nohost
+21:52:32.934 [info] Child LXical.Document.Store of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1566.0>
+Start Call: LXical.Document.Store.start_link([derive: [analysis: &LXical.Ast.analyze/1]])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:32.940 [info] Child LXical.Server of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1567.0>
+Start Call: LXical.Server.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:32.941 [info] Child LXical.Server.ProjectSupervisor of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1568.0>
+Start Call: DynamicSupervisor.start_link([name: LXical.Server.ProjectSupervisor, strategy: :one_for_one])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+21:52:32.941 [info] Child LXical.Server.TaskQueue.State.TaskSupervisor of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1569.0>
+Start Call: Task.Supervisor.start_link([name: LXical.Server.TaskQueue.State.TaskSupervisor])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+21:52:32.941 [info] Child LXical.Server.TaskQueue of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1570.0>
+Start Call: LXical.Server.TaskQueue.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:32.941 [info] Child LXical.Server.Transport.StdIO of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1571.0>
+Start Call: LXical.Server.Transport.StdIO.start_link(:standard_io, &LXical.Server.protocol_message/1)
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:32.941 [info] Application lx_server started at :nonode@nohost
+21:52:32.976 [info] Starting project at uri file:///home/hq1/workspaces/plausible/analytics
+21:52:33.004 [info] Child {LXical.Server.Project.Progress, "analytics"} of Supervisor :"analytics::supervisor" started
+Pid: #PID<0.1573.0>
+Start Call: LXical.Server.Project.Progress.start_link(%LXical.Project{root_uri: "file:///home/hq1/workspaces/plausible/analytics", mix_exs_uri: "file:///home/hq1/workspaces/plausible/analytics/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 28603})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:33.013 [info] Child {LXical.RemoteControl.ProjectNodeSupervisor, "analytics"} of Supervisor :"analytics::supervisor" started
+Pid: #PID<0.1574.0>
+Start Call: LXical.RemoteControl.ProjectNodeSupervisor.start_link(%LXical.Project{root_uri: "file:///home/hq1/workspaces/plausible/analytics", mix_exs_uri: "file:///home/hq1/workspaces/plausible/analytics/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 28603})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:33.033 [info] Child :erl_epmd of Supervisor :net_sup started
+Pid: #PID<0.1577.0>
+Start Call: :erl_epmd.start_link()
+Restart: :permanent
+Shutdown: 2000
+Type: :worker
+21:52:33.037 [info] Child :auth of Supervisor :net_sup started
+Pid: #PID<0.1578.0>
+Start Call: :auth.start_link()
+Restart: :permanent
+Shutdown: 2000
+Type: :worker
+21:52:33.042 [info] Child :net_kernel of Supervisor :net_sup started
+Pid: #PID<0.1579.0>
+Start Call: :net_kernel.start_link(%{name: :"manager-analytics-28603@127.0.0.1", supervisor: :net_sup_dynamic, name_domain: :longnames, clean_halt: false})
+Restart: :permanent
+Shutdown: 2000
+Type: :worker
+21:52:33.042 [info] Child :net_sup_dynamic of Supervisor :kernel_sup started
+Pid: #PID<0.1576.0>
+Start Call: :erl_distribution.start_link(%{name: :"manager-analytics-28603@127.0.0.1", supervisor: :net_sup_dynamic, name_domain: :longnames, clean_halt: false})
+Restart: :permanent
+Shutdown: 1000
+Type: :supervisor
+21:52:34.683 [error] Process #PID<0.1575.0> terminating
+** (exit) {:badrpc, :nodedown}
+    (stdlib 5.1.1) gen_server.erl:943: :gen_server.init_it/6
+    (stdlib 5.1.1) proc_lib.erl:241: :proc_lib.init_p_do_apply/3
+Initial Call: LXical.Server.Project.Node.init/1
+Ancestors: [:"analytics::supervisor", LXical.Server.ProjectSupervisor, LXical.Server.Supervisor, #PID<0.1564.0>]
+Message Queue Length: 0
+Messages: []
+Links: [#PID<0.1572.0>]
+Dictionary: []
+Trapping Exits: false
+Status: :running
+Heap Size: 4185
+Stack Size: 28
+Reductions: 229710
+21:52:34.683 [error] Child {LXical.Server.Project.Node, "analytics"} of Supervisor :"analytics::supervisor" failed to start
+** (exit) {:badrpc, :nodedown}
+Start Call: LXical.Server.Project.Node.start_link(%LXical.Project{root_uri: "file:///home/hq1/workspaces/plausible/analytics", mix_exs_uri: "file:///home/hq1/workspaces/plausible/analytics/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 28603})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:52:34.685 [info] Lexical Initialized
+21:52:34.685 [info] opened file:///home/hq1/workspaces/plausible/analytics/lib/workers/clean_user_sessions.ex
+21:52:37.808 [info] opened file:///home/hq1/workspaces/plausible/analytics/lib/workers/purge_cdn_cache.ex
+21:53:29.649 [error] Shutting down
+21:53:29.649 [warning] Received an Exit notification. Halting the server in 150ms
+21:53:29.650 [info] Child :timer_server of Supervisor :kernel_sup started
+Pid: #PID<0.1586.0>
+Start Call: :timer.start_link()
+Restart: :permanent
+Shutdown: 1000
+Type: :worker
+21:53:29.684 [error] stdio received :eof, server will stop.
+21:53:29.684 [error] Child LXical.Server.Transport.StdIO of Supervisor LXical.Server.Supervisor terminated
+** (exit) normal
+Pid: #PID<0.1571.0>
+Start Call: LXical.Server.Transport.StdIO.start_link(:standard_io, &LXical.Server.protocol_message/1)
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+21:53:29.684 [info] Child LXical.Server.Transport.StdIO of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.1587.0>
+Start Call: LXical.Server.Transport.StdIO.start_link(:standard_io, &LXical.Server.protocol_message/1)
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
