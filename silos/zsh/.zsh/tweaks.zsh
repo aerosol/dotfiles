@@ -8,6 +8,7 @@ setopt EXTENDED_GLOB
 setopt PROMPT_SUBST
 setopt RC_QUOTES
 setopt PROMPT_SUBST
+setopt CORRECT
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
