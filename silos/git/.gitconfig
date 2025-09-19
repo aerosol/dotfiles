@@ -51,12 +51,12 @@
     features = decorations
 
 [delta "decorations"]
-    commit-decoration-style = blue ol
+    commit-decoration-style = blue
     commit-style = raw
     file-style = omit
-    hunk-header-decoration-style = blue box
+    hunk-header-decoration-style = blue ul
     hunk-header-file-style = white
     hunk-header-style = file syntax
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
