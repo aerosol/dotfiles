@@ -22,15 +22,15 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 1500
+    width = (0, 1000)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 32
+    height = (0, 30)
 
-    origin = bottom-left
+    origin = bottom-center
 
     # Offset from the origin
-    offset = 1048x-31
+    offset = (0, -34)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -74,10 +74,10 @@
     separator_height = 0
 
     # Padding between text and separator.
-    padding = 4
+    padding = 0
 
     # Horizontal padding.
-    horizontal_padding = 20
+    horizontal_padding = 0
 
     # Padding between text and icon.
     text_icon_padding = 0
@@ -118,6 +118,7 @@
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
+    font = PragmataPro Liga 14
     line_height = 0
 
     # Possible values are:
@@ -304,14 +305,14 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#00000022"
-    foreground = "#cccccc"
+    background = "#00000000"
+    foreground = "#00cc99"
     timeout = 2
     # Icon for notifications with low urgency, uncomment to enable
 
 [urgency_normal]
-    background = "#00000022"
-    foreground = "#ffffff"
+    background = "#00000000"
+    foreground = "#00ff99"
     timeout = 0
     default_icon = computer
 
