@@ -305,13 +305,13 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#00000000"
+    background = "#000000"
     foreground = "#00cc99"
     timeout = 2
     # Icon for notifications with low urgency, uncomment to enable
 
 [urgency_normal]
-    background = "#00000000"
+    background = "#000000"
     foreground = "#00ff99"
     timeout = 0
     default_icon = computer
