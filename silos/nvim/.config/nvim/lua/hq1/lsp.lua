@@ -1,5 +1,11 @@
+vim.lsp.config("expert", {
+	cmd = { "/home/hq1/workspaces/expert/expert_linux_amd64", "--stdio" },
+	root_markers = { "mix.exs", ".git" },
+	filetypes = { "elixir", "eelixir", "heex" },
+})
+
 vim.lsp.enable({
-	"lexical",
+	"expert",
 	"lua-ls",
 })
 

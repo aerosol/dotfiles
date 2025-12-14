@@ -8,7 +8,7 @@ return {
 				pattern = "elixir",
 				callback = function()
 					local opts = { noremap = true, silent = true }
-					vim.keymap.set("i", "ii", "|> IO.inspect(label: :)<Left>", { noremap = true })
+					vim.keymap.set("i", "ii", "|> dbg()", { noremap = true })
 				end,
 			})
 		end,
