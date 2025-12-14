@@ -1,6 +1,33 @@
 local M = {
 	last = {},
+	current_job = nil,
+	last_status = nil,
 }
+
+function M.status()
+	if M.current_job and M.current_job.running then
+		return {
+			running = true,
+			exit_code = nil,
+			cmd = M.current_job.cmd,
+			id = M.current_job.id,
+		}
+	elseif M.last_status then
+		return {
+			running = false,
+			exit_code = M.last_status.code,
+			cmd = M.last_status.cmd,
+			id = M.last_status.id,
+		}
+	else
+		return {
+			running = false,
+			exit_code = nil,
+			cmd = nil,
+			id = nil,
+		}
+	end
+end
 
 M.run_last = function(id)
 	if M.last[id] then
@@ -15,47 +42,48 @@ M.run = function(args)
 	local current_file = vim.fn.expand("%:p")
 	local cmd = args.cmd or current_file
 	local id = args.id or current_file
-	local auto_resize = true
-	if args.auto_resize == nil then
-		auto_resize = true
-	else
-		auto_resize = args.auto_resize
-	end
 
 	local name = "Runner:" .. id
 	local bnr = vim.fn.bufnr(name)
 	if bnr > 0 then
+		for _, tabnr in ipairs(vim.api.nvim_list_tabpages()) do
+			local wins = vim.api.nvim_tabpage_list_wins(tabnr)
+			for _, win in ipairs(wins) do
+				if vim.api.nvim_win_get_buf(win) == bnr then
+					vim.api.nvim_set_current_tabpage(tabnr)
+					vim.api.nvim_set_current_win(win)
+					vim.cmd("tabclose")
+					break
+				end
+			end
+		end
 		vim.cmd("bdelete! " .. bnr)
 	end
-	vim.cmd("botright 10 new")
+	vim.cmd("tabnew")
+
 	print(cmd)
-	vim.fn.jobstart(cmd, { term = true })
-	vim.cmd("norm G")
-	vim.cmd("file! " .. name)
 
-	vim.api.nvim_create_autocmd({ "BufEnter" }, {
-		buffer = 0,
-		command = "let &titlestring = '" .. cmd .. "'",
-	})
+	M.current_job = {
+		running = true,
+		cmd = cmd,
+		id = id,
+	}
 
-	vim.api.nvim_create_autocmd({ "BufLeave" }, {
-		buffer = 0,
-		command = "let &titlestring = '' | set title",
-	})
-
-	if auto_resize then
-		vim.api.nvim_create_autocmd({ "BufEnter" }, {
-			buffer = 0,
-			command = "wincmd _",
-		})
-
-		vim.api.nvim_create_autocmd({ "BufLeave" }, {
-			buffer = 0,
-			command = "resize 10",
-		})
+	local function on_exit(_, code, _)
+		M.current_job.running = false
+		M.last_status = {
+			code = code,
+			cmd = cmd,
+			id = id,
+		}
+		vim.notify(string.format("Job exited with: %d", code), vim.log.levels.INFO)
 	end
 
-	vim.cmd("wincmd p")
+	vim.notify(cmd, vim.log.levels.INFO)
+	vim.fn.jobstart(cmd, { term = true, on_exit = on_exit })
+	vim.cmd("file! " .. name)
+
+	vim.cmd("tabprev")
 
 	M.last[id] = args
 end

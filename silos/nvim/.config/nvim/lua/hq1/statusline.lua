@@ -26,7 +26,7 @@ end
 
 function M.get_branch()
 	local branch = vim.fn.FugitiveHead()
-	return branch ~= "" and " %#Function#[" .. branch .. "]%#Normal#" or ""
+	return branch ~= "" and "[" .. branch .. "]" or ""
 end
 
 function M.get_mode()
@@ -57,6 +57,26 @@ function Statusline_progress()
 	return require("hq1.statusline").get_progress()
 end
 
+local running_icons = { "🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘" } -- Moon phase animation
+local running_index = 1
+
+function Statusline_runner()
+	local runner = require("hq1.runner")
+	local status = runner.status()
+	if status.running then
+		running_index = running_index % #running_icons + 1
+		return "[Runner " .. running_icons[running_index] .. "]"
+	elseif status.exit_code ~= nil then
+		if status.exit_code == 0 then
+			return "[Runner ✅ ]"
+		else
+			return "[Runner ❌ exit:" .. status.exit_code .. "]"
+		end
+	else
+		return ""
+	end
+end
+
 vim.o.statusline =
-	"%#File#%{%v:lua.Statusline_filename()%}%#Normal#%=%<%#LineNr#%{%v:lua.Statusline_position()%}%#Normal#%{%v:lua.Statusline_branch()%} %#Visual#%{%v:lua.Statusline_mode()%}%#Normal# %#Warning#%{%v:lua.Statusline_progress()%}%#Normal#"
+	"%{%v:lua.Statusline_filename()%}%=%<%{%v:lua.Statusline_position()%}%{%v:lua.Statusline_branch()%} %{%v:lua.Statusline_mode()%}%{%v:lua.Statusline_progress()%} %{%v:lua.Statusline_runner()%}"
 return M

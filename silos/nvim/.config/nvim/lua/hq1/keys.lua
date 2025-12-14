@@ -73,29 +73,40 @@ keymap("n", "<leader>cf", function()
 end, { desc = "Copy buffer relative path to clipboard" })
 
 keymap("n", "ta", function()
-	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test --max-failures=1 --warnings-as-errors" })
+	require("hq1.runner").run({ id = "mixtest", cmd = "mix test --max-failures=1 --warnings-as-errors" })
 end, opts)
 
 keymap("n", "tf", function()
 	local current_file = vim.fn.expand("%:p")
-	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. current_file })
+	require("hq1.runner").run({ id = "mixtest", cmd = "mix test " .. current_file })
 end, opts)
 
 keymap("n", "tF", function()
 	local current_file = vim.fn.expand("%:p")
-	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. current_file .. " --trace" })
+	require("hq1.runner").run({ id = "mixtest", cmd = "mix test " .. current_file .. " --trace" })
 end, opts)
 
 keymap("n", "tt", function()
 	local current_file = vim.fn.expand("%:p")
 	local current_line = vim.fn.line(".")
 	local file_line = string.format("%s:%d", current_file, current_line)
-	require("hq1.runner").run({ id = "TestPanel", cmd = "mix test " .. file_line })
+	require("hq1.runner").run({ id = "mixtest", cmd = "mix test " .. file_line })
 end, opts)
 
 keymap("n", "tl", function()
-	require("hq1.runner").run_last("TestPanel")
+	require("hq1.runner").run_last("mixtest")
 end)
+
+vim.keymap.set("n", "<C-t>", function()
+	for i = 1, vim.fn.tabpagenr("$") do
+		local tabname = vim.t[i] and vim.t[i].tab_name or nil
+		if tabname == "Runner:mixtest" then
+			vim.cmd("tabnext " .. i)
+			return
+		end
+	end
+	vim.notify('Tab "Runner:mixtest" not found', vim.log.levels.WARN)
+end, { desc = "Go to tab named Runner:mixtest" })
 
 keymap("n", "<leader>r", function()
 	local current_file = vim.fn.expand("%:p")
@@ -103,38 +114,12 @@ keymap("n", "<leader>r", function()
 end)
 
 keymap("n", "<C-e>", function()
-	require("hq1.runner").run({ auto_resize = false })
+	require("hq1.runner").run()
 end, opts)
 
 keymap("n", "<leader>cx", "<cmd>:!chmod +x %<cr>", opts)
 
-local function smart_split_move(direction)
-	local win = vim.api.nvim_get_current_win()
-	local wins = vim.api.nvim_tabpage_list_wins(0)
-	local cur_row, cur_col = unpack(vim.api.nvim_win_get_position(win))
-	local target_win = vim.fn.win_getid(vim.fn.winnr(direction))
-
-	if target_win ~= win then
-		vim.cmd("wincmd " .. direction)
-	else
-		if direction == "j" or direction == "k" then
-			vim.cmd("split")
-		elseif direction == "h" or direction == "l" then
-			vim.cmd("vsplit")
-		end
-		vim.cmd("wincmd " .. direction)
-	end
-end
-
-vim.keymap.set("n", "<C-j>", function()
-	smart_split_move("j")
-end, opts)
-vim.keymap.set("n", "<C-k>", function()
-	smart_split_move("k")
-end, opts)
-vim.keymap.set("n", "<C-h>", function()
-	smart_split_move("h")
-end, opts)
-vim.keymap.set("n", "<C-l>", function()
-	smart_split_move("l")
-end, opts)
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
