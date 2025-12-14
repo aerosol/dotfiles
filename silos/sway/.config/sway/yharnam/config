@@ -39,7 +39,7 @@ bar {
   
   status_command i3blocks
   status_padding 12
-  gaps 10 30
+  gaps 0 0
   
   colors {
     background #00000099

@@ -21,10 +21,9 @@ exec swaymsg exec "swayidle -w timeout 90 'hyprlock'"
 
 popup_during_fullscreen smart
 focus_on_window_activation focus
-gaps inner 30
-title_align left
-# titlebar_separator disable
-titlebar_padding 12
+gaps inner 6
+title_align center
+titlebar_padding 6
 default_border normal 4
 floating_modifier $mod normal
 
@@ -126,8 +125,9 @@ bindsym $mod+Alt+4 move container to workspace number 4; workspace number 4; exe
 bindsym $mod+Alt+5 move container to workspace number 5; workspace number 5; exec $notify "Desktop 5"
 bindsym $mod+Alt+6 move container to workspace number 6; workspace number 6; exec $notify "Desktop 6"
 
-bindsym $mod+o splith
-bindsym $mod+b splitv
+# bindsym $mod+o splith
+# bindsym $mod+b splitv
+
 bindsym $mod+t exec new-tab.sh
 
 bindsym $mod+e layout toggle splith splitv tabbed
