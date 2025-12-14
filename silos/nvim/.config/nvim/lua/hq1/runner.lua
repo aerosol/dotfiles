@@ -76,7 +76,11 @@ M.run = function(args)
 			cmd = cmd,
 			id = id,
 		}
-		vim.notify(string.format("Job exited with: %d", code), vim.log.levels.INFO)
+		if code == 0 then
+			vim.notify("✅ " .. cmd, vim.log.levels.INFO)
+		else
+			vim.notify("❌ " .. cmd, vim.log.levels.ERROR)
+		end
 	end
 
 	vim.notify(cmd, vim.log.levels.INFO)

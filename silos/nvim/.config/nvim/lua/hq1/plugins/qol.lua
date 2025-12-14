@@ -43,7 +43,7 @@ return {
 			{
 				"<leader>L",
 				function()
-					Snacks.picker.grep({ ignored = true })
+					Snacks.picker.grep({ ignored = true, hidden = true })
 				end,
 				desc = "Grep all",
 			},
@@ -57,7 +57,7 @@ return {
 			{
 				"gO",
 				function()
-					Snacks.picker.files({ ignored = true })
+					Snacks.picker.files({ ignored = true, hidden = true })
 				end,
 				desc = "Find All Files",
 			},

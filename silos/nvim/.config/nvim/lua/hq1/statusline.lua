@@ -78,5 +78,5 @@ function Statusline_runner()
 end
 
 vim.o.statusline =
-	"%{%v:lua.Statusline_filename()%}%=%<%{%v:lua.Statusline_position()%}%{%v:lua.Statusline_branch()%} %{%v:lua.Statusline_mode()%}%{%v:lua.Statusline_progress()%} %{%v:lua.Statusline_runner()%}"
+	"%{%v:lua.Statusline_filename()%}%=%<%{%v:lua.Statusline_position()%}%{%v:lua.Statusline_branch()%} %{%v:lua.Statusline_mode()%} %{%v:lua.Statusline_progress()%} %{%v:lua.Statusline_runner()%}"
 return M
