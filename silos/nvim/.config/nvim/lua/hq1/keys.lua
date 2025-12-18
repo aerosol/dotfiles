@@ -72,42 +72,6 @@ keymap("n", "<leader>cf", function()
 	vim.notify("Copied relative path: " .. rel_path)
 end, { desc = "Copy buffer relative path to clipboard" })
 
-keymap("n", "ta", function()
-	require("hq1.runner").run({ id = "mixtest", cmd = "mix test --max-failures=1 --warnings-as-errors" })
-end, opts)
-
-keymap("n", "tf", function()
-	local current_file = vim.fn.expand("%:p")
-	require("hq1.runner").run({ id = "mixtest", cmd = "mix test " .. current_file })
-end, opts)
-
-keymap("n", "tF", function()
-	local current_file = vim.fn.expand("%:p")
-	require("hq1.runner").run({ id = "mixtest", cmd = "mix test " .. current_file .. " --trace" })
-end, opts)
-
-keymap("n", "tt", function()
-	local current_file = vim.fn.expand("%:p")
-	local current_line = vim.fn.line(".")
-	local file_line = string.format("%s:%d", current_file, current_line)
-	require("hq1.runner").run({ id = "mixtest", cmd = "mix test " .. file_line })
-end, opts)
-
-keymap("n", "tl", function()
-	require("hq1.runner").run_last("mixtest")
-end)
-
-vim.keymap.set("n", "<C-t>", function()
-	for i = 1, vim.fn.tabpagenr("$") do
-		local tabname = vim.t[i] and vim.t[i].tab_name or nil
-		if tabname == "Runner:mixtest" then
-			vim.cmd("tabnext " .. i)
-			return
-		end
-	end
-	vim.notify('Tab "Runner:mixtest" not found', vim.log.levels.WARN)
-end, { desc = "Go to tab named Runner:mixtest" })
-
 keymap("n", "<leader>r", function()
 	local current_file = vim.fn.expand("%:p")
 	require("hq1.runner").run({ id = current_file, cmd = current_file })

@@ -13,4 +13,12 @@ return {
 			})
 		end,
 	},
+	{
+		"aerosol/nvim-exunit",
+		dir = "/home/hq1/workspaces/exunit-nvim",
+		config = true,
+		-- config = function()
+		-- 	require("exunit").setup()
+		-- end,
+	},
 }

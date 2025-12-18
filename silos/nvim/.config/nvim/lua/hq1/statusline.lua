@@ -57,26 +57,6 @@ function Statusline_progress()
 	return require("hq1.statusline").get_progress()
 end
 
-local running_icons = { "🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘" } -- Moon phase animation
-local running_index = 1
-
-function Statusline_runner()
-	local runner = require("hq1.runner")
-	local status = runner.status()
-	if status.running then
-		running_index = running_index % #running_icons + 1
-		return "[Runner " .. running_icons[running_index] .. "]"
-	elseif status.exit_code ~= nil then
-		if status.exit_code == 0 then
-			return "[Runner ✅ ]"
-		else
-			return "[Runner ❌ exit:" .. status.exit_code .. "]"
-		end
-	else
-		return ""
-	end
-end
-
 vim.o.statusline =
-	"%{%v:lua.Statusline_filename()%}%=%<%{%v:lua.Statusline_position()%}%{%v:lua.Statusline_branch()%} %{%v:lua.Statusline_mode()%} %{%v:lua.Statusline_progress()%} %{%v:lua.Statusline_runner()%}"
+	"%{%v:lua.Statusline_filename()%}%=%<%{%v:lua.Statusline_position()%}%{%v:lua.Statusline_branch()%} %{%v:lua.Statusline_mode()%} %{%v:lua.Statusline_progress()%} %{%v:lua.require'exunit'.statusline()%}"
 return M
