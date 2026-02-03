@@ -1,1 +1,1 @@
-signal-desktop --ozone-platform=wayland --use-tray-icon
+signal-desktop --ozone-platform=wayland --use-tray-icon --start-in-tray
