@@ -9,8 +9,7 @@ workspace 5 output DP-1
 
 workspace 6 output HDMI-A-1
 
-output HDMI-A-1 bg ~/wallpapers/sidecar.jpg fill
-output DP-1 bg ~/wallpapers/main.jpg fill
+output * bg #001933 solid_color
 
 output DP-1 mode 3840x2160@60Hz pos 2160 0
 output HDMI-A-1 mode 3840x2160@59Hz pos 0 0

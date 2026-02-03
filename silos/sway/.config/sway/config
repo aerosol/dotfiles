@@ -88,7 +88,9 @@ bindsym $mod+d exec $file_manager $(<$ZSH_CACHE/_lastdir) || $HOME
 bindsym $mod+Return exec swap-large
 bindsym $mod+period exec $emoji
 bindsym $meh+f move window to output left, focus output left
+bindsym $meh+q fullscreen toggle
 bindsym $meh+v exec $clipboard
+
 bindsym $mod+Alt+v exec $clipboard
 bindsym $mod+w kill
 
