@@ -17,6 +17,7 @@ alias grim='git fetch && git checkout main && git pull origin main && git checko
 alias grima='git fetch && git checkout master && git pull origin master && git checkout - && git rebase -i origin/master'
 alias grc='git rebase --continue'
 alias vim='nvim'
+alias v='nvim'
 
 autoload zmv
 alias zmv='noglob zmv'
