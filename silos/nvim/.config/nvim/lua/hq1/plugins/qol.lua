@@ -1,5 +1,27 @@
 return {
 	{
+		"serhez/bento.nvim",
+		opts = {
+			ui = {
+				mode = "floating", -- "floating" | "tabline"
+				floating = {
+					position = "top-left", -- See position options below
+					offset_x = 0, -- Horizontal offset from position
+					offset_y = 0, -- Vertical offset from position
+					dash_char = "─", -- Character for collapsed dashes
+					label_padding = 1, -- Padding around labels
+					minimal_menu = nil, -- nil | "dashed" | "filename" | "full"
+					max_rendered_buffers = nil, -- nil (no limit) or number for pagination
+				},
+				tabline = {
+					left_page_symbol = "❮", -- Symbol shown when previous buffers exist
+					right_page_symbol = "❯", -- Symbol shown when more buffers exist
+					separator_symbol = "│", -- Separator between buffer components
+				},
+			},
+		},
+	},
+	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,

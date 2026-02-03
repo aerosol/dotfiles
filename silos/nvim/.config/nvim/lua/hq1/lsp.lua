@@ -5,7 +5,7 @@ vim.lsp.config("expert", {
 })
 
 vim.lsp.enable({
-	-- "expert",
+	"expert",
 	"lua-ls",
 })
 

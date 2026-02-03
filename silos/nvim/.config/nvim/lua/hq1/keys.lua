@@ -31,6 +31,7 @@ keymap("n", "<leader>feS", "<cmd>:e ~/.config/sway/config<cr>", opts)
 keymap("n", "<leader>fez", "<cmd>:e ~/.zshrc<cr>", opts)
 keymap("n", "<leader>fet", "<cmd>:e ~/.tmux.conf<cr>", opts)
 keymap("n", "<leader>fef", "<cmd>:e ~/.config/foot/foot.ini<cr>", opts)
+keymap("n", "<leader>fen", "<cmd>:e ~/.config/niri/config.kdl<cr>", opts)
 
 keymap("n", "<M-j>", "<cmd>:cnext<cr>", opts)
 keymap("n", "<M-k>", "<cmd>:cprev<cr>", opts)
