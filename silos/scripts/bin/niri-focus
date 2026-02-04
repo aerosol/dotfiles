@@ -1,0 +1,11 @@
+#!/bin/bash
+# Focus window by app_id or title
+search_term="$1"
+window_id=$(niri msg --json windows | jq -r ".[] | select((.app_id == \"$search_term\") or (.title | contains(\"$search_term\"))) | .id" | head -1)
+
+if [ -n "$window_id" ]; then
+    niri msg action focus-window --id "$window_id"
+else
+    echo "No window found matching: $search_term"
+fi
+

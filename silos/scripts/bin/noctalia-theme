@@ -1,8 +1,5 @@
 #!/bin/sh
-
-NOCTALIA_DARK=$(jq -r '.colorSchemes.darkMode' ~/.config/noctalia/settings.json)
-
-if [ "$NOCTALIA_DARK" = "true" ]; then
+if [ "$1" = "true" ]; then
 	INIT=1
 else
 	INIT=2
@@ -11,3 +8,5 @@ fi
 cat > ~/.config/foot/theme.ini <<EOF
 initial-color-theme=$INIT
 EOF
+
+pkill -USR${INIT} foot
