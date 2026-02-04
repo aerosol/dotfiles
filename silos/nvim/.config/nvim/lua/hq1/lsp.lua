@@ -1,5 +1,5 @@
 vim.lsp.config("expert", {
-	cmd = { "/home/hq1/workspaces/expert/expert_linux_amd64", "--stdio" },
+	cmd = { "/home/hq1/bin/expert", "--stdio" },
 	root_markers = { "mix.exs", ".git" },
 	filetypes = { "elixir", "eelixir", "heex" },
 })
