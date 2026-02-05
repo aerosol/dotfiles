@@ -19,3 +19,14 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 		})
 	end,
 })
+
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "background",
+	callback = function()
+		if vim.o.background == "dark" then
+			vim.cmd("colorscheme NeoSolarized")
+		else
+			vim.cmd("colorscheme default") -- or any other light colorscheme you prefer
+		end
+	end,
+})
