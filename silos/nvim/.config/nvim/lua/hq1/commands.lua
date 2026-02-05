@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("OptionSet", {
 		if vim.o.background == "dark" then
 			vim.cmd("colorscheme NeoSolarized")
 		else
-			vim.cmd("colorscheme default") -- or any other light colorscheme you prefer
+			vim.cmd("colorscheme modus_operandi")
 		end
 	end,
 })
