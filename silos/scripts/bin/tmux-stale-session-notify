@@ -1,0 +1,94 @@
+#!/bin/bash
+# WARNING. This script is entirely vibe coded so it will most likely take over at some point and destroy shit.
+# List tmux sessions, check last accessed time, and show what each session is running. Allow to kill older than 2 hours or refresh them via notification buttons.
+TTL=7200
+
+declare -i notified=0
+declare -i candidates_to_kill=0
+current_time=$(date +%s)
+tmux list-sessions -F '#S #{session_last_attached}' | while read line; do
+  session=$(echo "$line" | awk '{print $1}')
+  last_access=$(echo "$line" | awk '{print $2}')
+  if [ "$last_access" != "-" ]; then
+    # Convert epoch to human-readable time
+    last_access_human=$(date -d @$last_access)
+    # Calculate time difference in seconds
+    diff=$((current_time - last_access))
+    # Calculate relative time string
+    if [ $diff -lt 60 ]; then
+      rel_time="$diff seconds ago"
+    elif [ $diff -lt 3600 ]; then
+      mins=$((diff / 60))
+      rel_time="$mins minute(s) ago"
+    elif [ $diff -lt 86400 ]; then
+      hours=$((diff / 3600))
+      mins=$(((diff % 3600) / 60))
+      if [ $mins -gt 0 ]; then
+        rel_time="$hours hour(s) $mins min(s) ago"
+      else
+        rel_time="$hours hour(s) ago"
+      fi
+    else
+      days=$((diff / 86400))
+      hours=$(((diff % 86400) / 3600))
+      rel_time="$days day(s) $hours hour(s) ago"
+    fi
+    if [ $diff -gt $TTL ]; then
+      status="[CANDIDATE TO KILL]"
+      candidate_to_kill=1
+      candidates_to_kill+=1
+    else
+      status=""
+      candidate_to_kill=0
+    fi
+  else
+    last_access_human="Never attached"
+    rel_time="Never attached"
+    status=""
+    candidate_to_kill=0
+  fi
+
+  # Get the command running in the first window/pane of the session
+  running_cmd=$(tmux list-panes -t "$session:0" -F '#{pane_current_command}' 2>/dev/null | head -n 1)
+  if [ -z "$running_cmd" ]; then
+    running_cmd="N/A"
+  fi
+
+  if [ "$last_access" != "-" ]; then
+    if [ $candidate_to_kill -eq 1 ]; then
+      # Send notification with buttons to kill or inspect the session
+      # notify-send returns the action string to stdout if an action is clicked
+      action=$(notify-send -u normal -a "tmux-cleanup" \
+        -c "tmux-session" \
+        "Tmux session candidate to kill: $session" \
+        "Last Accessed: $rel_time\nRunning: $running_cmd" \
+        --action="kill=Kill Session" \
+        --action="inspect=Inspect Session (refresh)" \
+        --expire-time=10000 2>/dev/null)
+      notified=1
+      if [ "$action" = "kill" ]; then
+        tmux kill-session -t "$session"
+        notify-send "Session $session killed."
+      elif [ "$action" = "inspect" ]; then
+        # Spawn a new foot terminal and attach to the session
+        foot -e tmux attach -t "$session" &
+        notify-send "Spawned foot terminal to inspect session $session."
+      fi
+    fi
+  fi
+
+done
+
+count=$(tmux list-sessions | wc -l)
+
+# If no notifications were sent, exit immediately
+if [ $notified -eq 0 ]; then
+  echo "$count (0)"
+  exit 0
+fi
+
+# Otherwise, script will exit after notifications are handled (no blocking)
+count=$(tmux list-sessions | wc -l)
+echo "$count ($count)"
+echo "Total candidates to kill: $candidates_to_kill"
+
