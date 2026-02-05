@@ -376,6 +376,10 @@ binds {
         spawn-sh "vicinae deeplink vicinae://extensions/vicinae/core/search-emojis"
     }
 
+    Mod+M {
+        spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"
+    }
+    
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -653,4 +657,7 @@ recent-windows {
 // include "dms/layout.kdl"
 // include "dms/alttab.kdl"
 // include "dms/binds.kdl"
+
+
+include "./noctalia.kdl"
 
