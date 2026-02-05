@@ -90,5 +90,3 @@ fi
 # Otherwise, script will exit after notifications are handled (no blocking)
 count=$(tmux list-sessions | wc -l)
 echo "$count ($count)"
-echo "Total candidates to kill: $candidates_to_kill"
-
