@@ -367,7 +367,7 @@ binds {
     Mod+Ctrl+Shift+Alt+Escape { spawn "wl-screenshot"; }
     Mod+Shift+4 { spawn "wl-screenshot"; }
 
-    Mod+S { spawn-sh "signal-desktop && niri-focus Signal"; }
+    Mod+S { focus-workspace "chat"; }
 
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
