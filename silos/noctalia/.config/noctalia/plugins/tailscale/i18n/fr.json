@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "title": "Paramètres Tailscale",
+    "description": "Configurer l'affichage et le comportement du statut Tailscale",
+    "refresh-interval": "Intervalle de rafraîchissement",
+    "refresh-interval-desc": "Fréquence de vérification du statut Tailscale",
+    "display-options": "Options d'affichage",
+    "compact-mode": "Mode compact",
+    "compact-mode-desc": "Afficher uniquement l'icône dans la barre",
+    "show-ip": "Afficher l'adresse IP",
+    "show-ip-desc": "Afficher l'IP Tailscale dans le widget de la barre",
+    "show-peers": "Afficher le nombre de pairs",
+    "show-peers-desc": "Afficher le nombre d'appareils connectés dans la barre",
+    "hide-disconnected": "Masquer les pairs déconnectés",
+    "hide-disconnected-desc": "Afficher uniquement les pairs en ligne dans le panneau",
+    "terminal": "Configuration du terminal",
+    "terminal-command": "Commande du terminal",
+    "terminal-command-desc": "Commande pour lancer le terminal pour SSH/ping (ex : 'ghostty', 'alacritty', 'kitty')",
+    "ping-count": "Nombre de pings",
+    "ping-count-desc": "Nombre de paquets ping à envoyer lors du test de connectivité",
+    "peer-action": "Action au clic sur un pair",
+    "default-peer-action": "Action par défaut",
+    "default-peer-action-desc": "Action lors du clic sur un pair dans le panneau"
+  },
+  "actions": {
+    "widget-settings": "Paramètres du widget"
+  },
+  "context": {
+    "connect": "Connecter",
+    "disconnect": "Déconnecter",
+    "refresh": "Actualiser le statut",
+    "not-installed": "Tailscale n'est pas installé",
+    "settings": "Paramètres",
+    "copy-ip": "Copier l'IP",
+    "ssh": "SSH vers l'hôte",
+    "ping": "Ping l'hôte"
+  },
+  "toast": {
+    "title": "Tailscale",
+    "connected": "Tailscale connecté",
+    "disconnected": "Tailscale déconnecté",
+    "ip-copied": {
+      "title": "IP copiée"
+    },
+    "terminal-not-configured": {
+      "title": "Terminal non configuré",
+      "message": "Veuillez définir une commande de terminal dans les paramètres du plugin"
+    }
+  },
+  "panel": {
+    "title": "Réseau Tailscale",
+    "peers": "pairs",
+    "not-connected": "Non connecté",
+    "online": "En ligne",
+    "offline": "Hors ligne",
+    "no-peers": "Aucun pair connecté",
+    "admin-console": "Console d'administration",
+    "terminal-warning": {
+      "title": "Terminal non configuré",
+      "message": "Définissez une commande de terminal dans les paramètres pour activer SSH et ping"
+    },
+    "exit-node": {
+      "active": "Nœud de sortie actif",
+      "online": "En ligne",
+      "offline": "Hors ligne"
+    }
+  }
+}

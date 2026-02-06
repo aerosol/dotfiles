@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "title": "Tailscale-inställningar",
+    "description": "Konfigurera Tailscale-statusvisning och beteende",
+    "refresh-interval": "Uppdateringsintervall",
+    "refresh-interval-desc": "Hur ofta Tailscale-status ska kontrolleras",
+    "display-options": "Visningsalternativ",
+    "compact-mode": "Kompakt läge",
+    "compact-mode-desc": "Visa endast ikon i fältet",
+    "show-ip": "Visa IP-adress",
+    "show-ip-desc": "Visa Tailscale IP i fältwidgeten",
+    "show-peers": "Visa antal peers",
+    "show-peers-desc": "Visa antal anslutna enheter i fältet",
+    "hide-disconnected": "Dölj frånkopplade peers",
+    "hide-disconnected-desc": "Visa endast online peers i panelen",
+    "terminal": "Terminalkonfiguration",
+    "terminal-command": "Terminalkommando",
+    "terminal-command-desc": "Kommando för att starta terminal för SSH/ping (t.ex. 'ghostty', 'alacritty', 'kitty')",
+    "ping-count": "Antal pingar",
+    "ping-count-desc": "Antal ping-paket att skicka vid anslutningstest",
+    "peer-action": "Peer-klickåtgärd",
+    "default-peer-action": "Standardåtgärd",
+    "default-peer-action-desc": "Åtgärd vid klick på en peer i panelen"
+  },
+  "actions": {
+    "widget-settings": "Widgetinställningar"
+  },
+  "context": {
+    "connect": "Anslut",
+    "disconnect": "Koppla från",
+    "refresh": "Uppdatera status",
+    "not-installed": "Tailscale är inte installerad",
+    "settings": "Inställningar",
+    "copy-ip": "Kopiera IP",
+    "ssh": "SSH till värd",
+    "ping": "Pinga värd"
+  },
+  "toast": {
+    "title": "Tailscale",
+    "connected": "Tailscale ansluten",
+    "disconnected": "Tailscale frånkopplad",
+    "ip-copied": {
+      "title": "IP kopierad"
+    },
+    "terminal-not-configured": {
+      "title": "Terminal ej konfigurerad",
+      "message": "Ange ett terminalkommando i plugin-inställningarna"
+    }
+  },
+  "panel": {
+    "title": "Tailscale-nätverk",
+    "peers": "peers",
+    "not-connected": "Ej ansluten",
+    "online": "Online",
+    "offline": "Offline",
+    "no-peers": "Inga anslutna peers",
+    "admin-console": "Administrationskonsol",
+    "terminal-warning": {
+      "title": "Terminal ej konfigurerad",
+      "message": "Ange ett terminalkommando i inställningarna för att aktivera SSH och ping"
+    },
+    "exit-node": {
+      "active": "Utgångsnod aktiv",
+      "online": "Online",
+      "offline": "Offline"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "title": "Tailscale Settings",
+    "description": "Configure Tailscale status display and behavior",
+    "refresh-interval": "Refresh Interval",
+    "refresh-interval-desc": "How often to check Tailscale status",
+    "display-options": "Display Options",
+    "compact-mode": "Compact Mode",
+    "compact-mode-desc": "Show only icon in the bar",
+    "show-ip": "Show IP Address",
+    "show-ip-desc": "Display Tailscale IP in the bar widget",
+    "show-peers": "Show Peer Count",
+    "show-peers-desc": "Display connected device count in the bar",
+    "hide-disconnected": "Hide Disconnected Peers",
+    "hide-disconnected-desc": "Only show online peers in the panel",
+    "terminal": "Terminal Configuration",
+    "terminal-command": "Terminal Command",
+    "terminal-command-desc": "Command to launch terminal for SSH/ping (e.g., 'ghostty', 'alacritty', 'kitty')",
+    "ping-count": "Ping Count",
+    "ping-count-desc": "Number of ping packets to send when testing connectivity",
+    "peer-action": "Peer Click Action",
+    "default-peer-action": "Default Action",
+    "default-peer-action-desc": "Action when clicking on a peer in the panel"
+  },
+  "actions": {
+    "widget-settings": "Widget Settings"
+  },
+  "context": {
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "refresh": "Refresh Status",
+    "not-installed": "Tailscale not installed",
+    "settings": "Settings",
+    "copy-ip": "Copy IP",
+    "ssh": "SSH to host",
+    "ping": "Ping host"
+  },
+  "toast": {
+    "title": "Tailscale",
+    "connected": "Tailscale connected",
+    "disconnected": "Tailscale disconnected",
+    "ip-copied": {
+      "title": "IP Copied"
+    },
+    "terminal-not-configured": {
+      "title": "Terminal Not Configured",
+      "message": "Please set a terminal command in plugin settings"
+    }
+  },
+  "panel": {
+    "title": "Tailscale Network",
+    "peers": "peers",
+    "not-connected": "Not connected",
+    "online": "Online",
+    "offline": "Offline",
+    "no-peers": "No connected peers",
+    "admin-console": "Admin Console",
+    "terminal-warning": {
+      "title": "Terminal Not Configured",
+      "message": "Set a terminal command in settings to enable SSH and ping"
+    },
+    "exit-node": {
+      "active": "Exit Node Active",
+      "online": "Online",
+      "offline": "Offline"
+    }
+  }
+}
