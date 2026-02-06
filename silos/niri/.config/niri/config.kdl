@@ -265,7 +265,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "/home/hq1/bin/noctalia-theme"
-spawn-at-startup "signal-wayland"
+spawn-at-startup "signal-desktop"
 spawn-at-startup "firefox"
 spawn-at-startup "foot"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
@@ -341,7 +341,8 @@ window-rule {
 
 window-rule {
     match app-id="signal"
-    open-focused false
+    open-on-workspace "chat"
+    match at-startup=true app-id="signal"
 }
 
 binds {
@@ -670,11 +671,11 @@ overview {
     backdrop-color "#555555"
 }
 
-workspace "scratch"
+workspace "start"
 workspace "work"
 workspace "task 1"
 workspace "task 2"
 workspace "task 3"
+workspace "chat"
 
 include "./noctalia.kdl"
-
