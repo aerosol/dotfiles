@@ -1,3 +1,3 @@
 if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-	# exec sway
+	#exec niri-session
 fi
