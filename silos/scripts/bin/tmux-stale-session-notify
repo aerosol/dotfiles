@@ -68,11 +68,9 @@ tmux list-sessions -F '#S #{session_last_attached}' | while read line; do
       notified=1
       if [ "$action" = "kill" ]; then
         tmux kill-session -t "$session"
-        notify-send "Session $session killed."
       elif [ "$action" = "inspect" ]; then
         # Spawn a new foot terminal and attach to the session
         foot -e tmux attach -t "$session" &
-        notify-send "Spawned foot terminal to inspect session $session."
       fi
     fi
   fi

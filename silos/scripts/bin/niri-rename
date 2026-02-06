@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function get_name() {
+	echo "" | vicinae dmenu -p 0
+}
+
+function main() {
+		niri msg action set-workspace-name $(get_name)
+}
+
+main
