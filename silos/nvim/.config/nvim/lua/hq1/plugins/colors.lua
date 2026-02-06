@@ -1,7 +1,7 @@
 return {
 	{ "miikanissi/modus-themes.nvim", priority = 1000 },
 	{
-		"nyoom-engineering/oxocarbon.nvim",
+		"projekt0n/github-nvim-theme",
 	},
 	{
 		"Tsuzat/NeoSolarized.nvim",
