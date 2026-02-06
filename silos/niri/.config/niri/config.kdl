@@ -156,7 +156,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 1.5
+        width 3.5
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -269,10 +269,8 @@ spawn-at-startup "signal-wayland"
 spawn-at-startup "firefox"
 spawn-at-startup "foot"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
-spawn-sh-at-startup "swayidle -w timeout 90 'hyprlock'"
-spawn-sh-at-startup "vicinae server"
 spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-at-startup "swayidle" "-w" "before-sleep" "qs -c noctalia-shell ipc call lockScreen lock"
+spawn-sh-at-startup "swayidle -w before-sleep qs -c noctalia-shell ipc call lockScreen lock"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -332,6 +330,16 @@ window-rule {
 }
 
 window-rule {
+    match app-id="org.gnome.Showtime"
+    open-floating true
+}
+
+window-rule {
+    match app-id="vlc"
+    open-floating true
+}
+
+window-rule {
     match app-id="signal"
     open-focused false
 }
@@ -361,23 +369,27 @@ binds {
     Mod+S { spawn-sh "signal-desktop && niri-focus Signal"; }
 
     Mod+Space hotkey-overlay-title="Application Launcher" {
-        spawn "vicinae" "toggle";
+        spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
     }
 
     Mod+Alt+V {
-        spawn-sh "vicinae deeplink vicinae://extensions/vicinae/clipboard/history"
+        spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"
     }
     
     Mod+B {
-        spawn-sh "vicinae deeplink vicinae://extensions/vicinae/wm/switch-windows"
+        spawn-sh "qs -c noctalia-shell ipc call launcher windows"
     }
 
     Mod+E {
-        spawn-sh "vicinae deeplink vicinae://extensions/vicinae/core/search-emojis"
+        spawn-sh "qs -c noctalia-shell ipc call launcher emoji"
     }
 
     Mod+M {
         spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"
+    }
+
+    Mod+G {
+        spawn "niri-rename"
     }
     
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
@@ -653,11 +665,16 @@ recent-windows {
     }
 }
 
-// include "dms/colors.kdl"
-// include "dms/layout.kdl"
-// include "dms/alttab.kdl"
-// include "dms/binds.kdl"
+overview {
+    zoom 0.4
+    backdrop-color "#555555"
+}
 
+workspace "scratch"
+workspace "work"
+workspace "task 1"
+workspace "task 2"
+workspace "task 3"
 
 include "./noctalia.kdl"
 
