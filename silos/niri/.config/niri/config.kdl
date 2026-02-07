@@ -270,7 +270,7 @@ spawn-at-startup "firefox"
 spawn-at-startup "foot"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-sh-at-startup "swayidle -w before-sleep qs -c noctalia-shell ipc call lockScreen lock"
+spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -359,6 +359,8 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Backspace { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Escape hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
@@ -648,7 +650,19 @@ recent-windows {
 
 overview {
     zoom 0.4
-    backdrop-color "#555555"
+    backdrop-color "#262626"
+
+    workspace-shadow {
+        softness 40
+        spread 10
+        offset x=0 y=10
+        color "#00000050"
+    }
+}
+
+cursor {
+    hide-when-typing
+    hide-after-inactive-ms 5000
 }
 
 workspace "start"
