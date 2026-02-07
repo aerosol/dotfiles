@@ -28,6 +28,9 @@ return {
 			)
 			keymap("v", "dp", ":diffput<cr>", opts)
 			keymap("v", "dg", ":diffget<cr>", opts)
+			keymap("n", "<C-b>", function()
+				Snacks.picker.git_branches()
+			end, opts)
 		end,
 	},
 	{
