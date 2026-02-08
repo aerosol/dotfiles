@@ -99,37 +99,6 @@
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
                     "hideMode": "alwaysExpanded",
-                    "icon": "terminal-2",
-                    "id": "CustomButton",
-                    "ipcIdentifier": "",
-                    "leftClickExec": "tmux-stale-session-notify",
-                    "leftClickUpdateText": true,
-                    "maxTextLength": {
-                        "horizontal": 0,
-                        "vertical": 10
-                    },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
-                    "parseJson": false,
-                    "rightClickExec": "",
-                    "rightClickUpdateText": false,
-                    "showIcon": true,
-                    "textCollapse": "",
-                    "textCommand": "tmux-stale-session-notify",
-                    "textIntervalMs": 5000,
-                    "textStream": false,
-                    "wheelDownExec": "",
-                    "wheelDownUpdateText": false,
-                    "wheelExec": "",
-                    "wheelMode": "unified",
-                    "wheelUpExec": "",
-                    "wheelUpUpdateText": false,
-                    "wheelUpdateText": false
-                },
-                {
-                    "colorizeSystemIcon": "none",
-                    "enableColorization": false,
-                    "hideMode": "alwaysExpanded",
                     "icon": "currency-euro",
                     "id": "CustomButton",
                     "ipcIdentifier": "",
@@ -207,7 +176,7 @@
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "icon-always",
+                    "displayMode": "graphic",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
@@ -226,20 +195,35 @@
                     ]
                 },
                 {
-                    "id": "plugin:weekly-calendar"
-                },
-                {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultPeerAction": "copy-ip",
-                        "hideDisconnected": false,
-                        "pingCount": 5,
-                        "refreshInterval": 5000,
-                        "showIpAddress": true,
-                        "showPeerCount": true,
-                        "terminalCommand": ""
+                    "colorizeSystemIcon": "none",
+                    "enableColorization": false,
+                    "hideMode": "alwaysExpanded",
+                    "icon": "align-box-left-bottom-filled",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "",
+                    "leftClickExec": "",
+                    "leftClickUpdateText": false,
+                    "maxTextLength": {
+                        "horizontal": 10,
+                        "vertical": 10
                     },
-                    "id": "plugin:tailscale"
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "showIcon": true,
+                    "textCollapse": "",
+                    "textCommand": "tmux-stale-session-notify",
+                    "textIntervalMs": 60000,
+                    "textStream": false,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
                 }
             ]
         }
@@ -384,7 +368,7 @@
         "lockOnSuspend": true,
         "lockScreenCountdownDuration": 1000,
         "radiusRatio": 0.14,
-        "scaleRatio": 0.8500000000000001,
+        "scaleRatio": 0.9500000000000001,
         "screenRadiusRatio": 0.05,
         "shadowDirection": "bottom_right",
         "shadowOffsetX": 2,
