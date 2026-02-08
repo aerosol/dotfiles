@@ -1,90 +1,58 @@
 #!/bin/bash
-# WARNING. This script is entirely vibe coded so it will most likely take over at some point and destroy shit.
-# List tmux sessions, check last accessed time, and show what each session is running. Allow to kill older than 2 hours or refresh them via notification buttons.
-TTL=7200
+# Automatically kill tmux sessions running zsh that don't have a corresponding foot terminal window
 
-declare -i notified=0
-declare -i candidates_to_kill=0
-current_time=$(date +%s)
-tmux list-sessions -F '#S #{session_last_attached}' | while read line; do
-  session=$(echo "$line" | awk '{print $1}')
-  last_access=$(echo "$line" | awk '{print $2}')
-  if [ "$last_access" != "-" ]; then
-    # Convert epoch to human-readable time
-    last_access_human=$(date -d @$last_access)
-    # Calculate time difference in seconds
-    diff=$((current_time - last_access))
-    # Calculate relative time string
-    if [ $diff -lt 60 ]; then
-      rel_time="$diff seconds ago"
-    elif [ $diff -lt 3600 ]; then
-      mins=$((diff / 60))
-      rel_time="$mins minute(s) ago"
-    elif [ $diff -lt 86400 ]; then
-      hours=$((diff / 3600))
-      mins=$(((diff % 3600) / 60))
-      if [ $mins -gt 0 ]; then
-        rel_time="$hours hour(s) $mins min(s) ago"
-      else
-        rel_time="$hours hour(s) ago"
-      fi
-    else
-      days=$((diff / 86400))
-      hours=$(((diff % 86400) / 3600))
-      rel_time="$days day(s) $hours hour(s) ago"
-    fi
-    if [ $diff -gt $TTL ]; then
-      status="[CANDIDATE TO KILL]"
-      candidate_to_kill=1
-      candidates_to_kill+=1
-    else
-      status=""
-      candidate_to_kill=0
-    fi
+declare -i killed=0
+
+# Get list of foot terminal titles from niri windows
+# Try different JSON structures that niri might use
+foot_titles=$(niri msg -j windows 2>/dev/null | jq -r '
+  if type == "array" then
+    .[] | select(.app_id == "foot" or .app_id == "footclient" or .app_id == "org.codeberg.dnkl.foot") | .title // .name // empty
+  elif type == "object" then
+    .windows[]? | select(.app_id == "foot" or .app_id == "footclient" or .app_id == "org.codeberg.dnkl.foot") | .title // .name // empty
   else
-    last_access_human="Never attached"
-    rel_time="Never attached"
-    status=""
-    candidate_to_kill=0
-  fi
+    empty
+  end
+' 2>/dev/null)
 
+# Get all tmux sessions
+tmux list-sessions -F '#S' 2>/dev/null | while read session; do
   # Get the command running in the first window/pane of the session
   running_cmd=$(tmux list-panes -t "$session:0" -F '#{pane_current_command}' 2>/dev/null | head -n 1)
-  if [ -z "$running_cmd" ]; then
-    running_cmd="N/A"
+  
+  # Only process sessions running zsh
+  if [ "$running_cmd" != "zsh" ]; then
+    continue
   fi
-
-  if [ "$last_access" != "-" ]; then
-    if [ $candidate_to_kill -eq 1 ]; then
-      # Send notification with buttons to kill or inspect the session
-      # notify-send returns the action string to stdout if an action is clicked
-      action=$(notify-send -u normal -a "tmux-cleanup" \
+  
+  # Check if this session has a corresponding foot terminal window
+  # Foot terminal titles typically contain the session name or show "tmux: session_name"
+  session_has_window=0
+  while IFS= read -r title; do
+    if echo "$title" | grep -q "$session"; then
+      session_has_window=1
+      break
+    fi
+  done <<< "$foot_titles"
+  
+  # Kill the session if it doesn't have a window
+  if [ $session_has_window -eq 0 ]; then
+    tmux kill-session -t "$session" 2>/dev/null
+    if [ $? -eq 0 ]; then
+      killed+=1
+      notify-send -u normal -a "tmux-cleanup" \
         -c "tmux-session" \
-        "Tmux session candidate to kill: $session" \
-        "Last Accessed: $rel_time\nRunning: $running_cmd" \
-        --action="kill=Kill Session" \
-        --action="inspect=Inspect Session (refresh)" \
-        --expire-time=10000 2>/dev/null)
-      notified=1
-      if [ "$action" = "kill" ]; then
-        tmux kill-session -t "$session"
-      elif [ "$action" = "inspect" ]; then
-        # Spawn a new foot terminal and attach to the session
-        foot -e tmux attach -t "$session" &
-      fi
+        "Killed stale tmux session: $session" \
+        "Session was running zsh with no active terminal window" \
+        --expire-time=5000 2>/dev/null
     fi
   fi
-
 done
 
-count=$(tmux list-sessions | wc -l)
-
-# If no notifications were sent, exit immediately
-if [ $notified -eq 0 ]; then
-  echo "$count (0)"
-  exit 0
+# Output session count (for status bar or logging)
+count=$(tmux list-sessions 2>/dev/null | wc -l)
+if [ $killed -gt 0 ]; then
+  echo "$count (-$killed)"
+else
+  echo "$count"
 fi
-
-# Otherwise, script will exit after notifications are handled (no blocking)
-count=$(tmux list-sessions | wc -l)
-echo "$count ($count)"
