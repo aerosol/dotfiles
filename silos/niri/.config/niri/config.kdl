@@ -264,13 +264,13 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
+spawn-sh-at-startup "foot --server; footclient"
 spawn-at-startup "/home/hq1/bin/noctalia-theme"
 spawn-at-startup "signal-desktop"
 spawn-at-startup "firefox"
-spawn-at-startup "foot"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock' -w timeout 60 'qs -c noctalia-shell ipc call lockScreen lock'"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -363,7 +363,7 @@ binds {
     Mod+Backspace { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Escape hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+Escape hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
     Mod+D hotkey-overlay-title="fileman" { spawn-sh "nautilus $(<$ZSH_CACHE/_lastdir) || $HOME"; }
 
     Mod+Ctrl+Shift+Alt+Escape { spawn "wl-screenshot"; }
