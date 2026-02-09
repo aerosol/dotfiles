@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function get_name() {
-	echo "" | vicinae dmenu -p 0
+	echo "" | tofi --prompt "rename: "
 }
 
 function main() {
