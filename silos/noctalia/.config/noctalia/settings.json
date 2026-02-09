@@ -9,16 +9,14 @@
         "enableClipPreview": true,
         "enableClipboardHistory": true,
         "enableSettingsSearch": true,
-        "enableWindowsSearch": true,
+        "enableWindowsSearch": false,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
         "pinnedApps": [
-            "firefox",
-            "org.gnome.Logs"
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
-        "showCategories": false,
+        "showCategories": true,
         "showIconBackground": false,
         "sortByMostUsed": true,
         "terminalCommand": "foot -e",
@@ -263,7 +261,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -429,7 +427,7 @@
         "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": true,
-        "forced": true,
+        "forced": false,
         "manualSunrise": "07:00",
         "manualSunset": "17:00",
         "nightTemp": "3954"
