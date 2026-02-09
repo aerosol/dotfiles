@@ -10,3 +10,4 @@ num-results = 8
 font = PragmataPro
 background-color = #000D
 text-cursor = true
+require-match = false
