@@ -224,6 +224,19 @@
                     "wheelUpExec": "",
                     "wheelUpUpdateText": false,
                     "wheelUpdateText": false
+                },
+                {
+                    "defaultSettings": {
+                        "compactMode": false,
+                        "defaultPeerAction": "copy-ip",
+                        "hideDisconnected": false,
+                        "pingCount": 5,
+                        "refreshInterval": 5000,
+                        "showIpAddress": true,
+                        "showPeerCount": true,
+                        "terminalCommand": ""
+                    },
+                    "id": "plugin:tailscale"
                 }
             ]
         }
