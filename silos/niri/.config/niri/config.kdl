@@ -76,54 +76,6 @@ output "HDMI-A-1" {
     // position x=1280 y=0
 }
 
-layout {
-    gaps 8
-
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
-    center-focused-column "on-overflow"
-    always-center-single-column
-
-    preset-column-widths {
-        proportion 0.5
-        proportion 0.66667
-        proportion 1.0
-    }
-
-    default-column-width { proportion 0.5; }
-
-    focus-ring {
-        width 3.5
-    }
-
-    border {
-        off
-    }
-
-    shadow {
-        on
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
-    }
-
-    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
-    // You can think of them as a kind of outer gaps. They are set in logical pixels.
-    // Left and right struts will cause the next window to the side to always be visible.
-    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
-    // layer-shell panels and regular gaps.
-    struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
-    }
-}
 
 spawn-at-startup "signal-desktop"
 spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
@@ -131,7 +83,9 @@ spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_4f88e41b082813bae1a415
 spawn-at-startup "firefox --no-remote"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-sh-at-startup "swayidle -w timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+
+spawn-sh-at-startup "swayidle -w timeout 180 'brightnessctl -s set 10%' resume 'brightnessctl -r' timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' timeout 419 'niri msg action power-off-monitors' resume 'niri msg acton power-on-monitors' timeout 540 'systemctl suspend' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+
 spawn-at-startup "/home/hq1/bin/noctalia-theme"
 
 hotkey-overlay {
@@ -423,3 +377,53 @@ workspace "chat"
 workspace "mail"
 
 include "./noctalia.kdl"
+
+layout {
+    gaps 8
+
+    // When to center a column when changing focus, options are:
+    // - "never", default behavior, focusing an off-screen column will keep at the left
+    //   or right edge of the screen.
+    // - "always", the focused column will always be centered.
+    // - "on-overflow", focusing a column will center it if it doesn't fit
+    //   together with the previously focused column.
+    center-focused-column "on-overflow"
+    always-center-single-column
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        active-gradient from="#FFEA77" to="#bbddff" angle=180
+        width 3.5
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
+    // You can think of them as a kind of outer gaps. They are set in logical pixels.
+    // Left and right struts will cause the next window to the side to always be visible.
+    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
+    // layer-shell panels and regular gaps.
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
