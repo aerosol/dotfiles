@@ -1,3 +1,4 @@
+source $HOME/.zsh/atuin-init.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tweaks.zsh
 source $HOME/.zsh/history.zsh
@@ -12,7 +13,3 @@ source $HOME/.zsh/window-title.zsh
 [ -f ~/.secrets ] && source ~/.secrets
 
 source $HOME/.zsh/prompt.zsh
-
-# . "$HOME/.atuin/bin/env"
-
-eval "$(atuin init zsh --disable-up-arrow)"

@@ -8,7 +8,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PAGER=less
 export TERMINAL=foot
-export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.nimble/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.nimble/bin:$HOME/.$PATH
 export EXA_ICON_SPACING=2
 
 if [ "$HOST" = "carb" ]; then
