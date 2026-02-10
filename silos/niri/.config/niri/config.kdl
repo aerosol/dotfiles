@@ -23,7 +23,7 @@ input {
         dwt
         // dwtp
         drag true
-        // drag-lock
+        //drag-lock
         //natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
@@ -264,14 +264,12 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-sh-at-startup "noctalia-theme"
-spawn-sh-at-startup "foot --server; footclient"
-spawn-at-startup "/home/hq1/bin/noctalia-theme"
 spawn-at-startup "signal-desktop"
 spawn-at-startup "firefox --no-remote"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock' -w timeout 60 'qs -c noctalia-shell ipc call lockScreen lock'"
+spawn-sh-at-startup "swayidle -w timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+spawn-at-startup "/home/hq1/bin/noctalia-theme"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -335,10 +333,10 @@ window-rule {
     open-floating true
 }
 
-window-rule {
-    match app-id="firefox"
-    open-maximized true
-}
+// window-rule {
+//     match app-id="firefox"
+//     open-maximized true
+// }
 
 window-rule {
     match app-id="vlc"
@@ -349,6 +347,11 @@ window-rule {
     match app-id="signal"
     open-on-workspace "chat"
     match at-startup=true app-id="signal"
+}
+
+window-rule {
+    match app-id="org.gnome.Epiphany.WebApp_4f88e41b082813bae1a41559c087e0d9609733f6"
+    open-on-workspace "chat"
 }
 
 binds {
@@ -411,6 +414,10 @@ binds {
 
     Mod+M {
         spawn "niri-move-to-workspace"
+    }
+
+    Ctrl+Period {
+        spawn-sh "qs -c noctalia-shell ipc call notifications dismissAll"
     }
     
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
