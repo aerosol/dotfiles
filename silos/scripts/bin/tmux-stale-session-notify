@@ -40,11 +40,6 @@ tmux list-sessions -F '#S' 2>/dev/null | while read session; do
     tmux kill-session -t "$session" 2>/dev/null
     if [ $? -eq 0 ]; then
       killed+=1
-      notify-send -u normal -a "tmux-cleanup" \
-        -c "tmux-session" \
-        "Killed stale tmux session: $session" \
-        "Session was running zsh with no active terminal window" \
-        --expire-time=5000 2>/dev/null
     fi
   fi
 done
@@ -52,7 +47,7 @@ done
 # Output session count (for status bar or logging)
 count=$(tmux list-sessions 2>/dev/null | wc -l)
 if [ $killed -gt 0 ]; then
-  echo "$count (-$killed)"
+  echo "$((count - killed))"
 else
   echo "$count"
 fi
