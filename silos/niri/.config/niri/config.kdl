@@ -336,6 +336,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="firefox"
+    open-maximized true
+}
+
+window-rule {
     match app-id="vlc"
     open-floating true
 }
