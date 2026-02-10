@@ -261,7 +261,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": true,
+        "darkMode": false,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -391,7 +391,7 @@
         "telemetryEnabled": false
     },
     "hooks": {
-        "darkModeChange": "noctalia-theme $1",
+        "darkModeChange": "~/bin/noctalia-theme $1",
         "enabled": true,
         "performanceModeDisabled": "",
         "performanceModeEnabled": "",
@@ -425,12 +425,12 @@
     },
     "nightLight": {
         "autoSchedule": false,
-        "dayTemp": "6500",
+        "dayTemp": "5632",
         "enabled": true,
         "forced": false,
         "manualSunrise": "07:00",
         "manualSunset": "17:00",
-        "nightTemp": "3954"
+        "nightTemp": "3209"
     },
     "notifications": {
         "backgroundOpacity": 1,
@@ -602,7 +602,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "wallpaper": {
-        "automationEnabled": false,
+        "automationEnabled": true,
         "directory": "/home/hq1/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
@@ -613,7 +613,7 @@
         ],
         "overviewEnabled": false,
         "panelPosition": "follow_bar",
-        "randomIntervalSec": 300,
+        "randomIntervalSec": 600,
         "setWallpaperOnAllMonitors": true,
         "showHiddenFiles": false,
         "solidColor": "#1a1a2e",
