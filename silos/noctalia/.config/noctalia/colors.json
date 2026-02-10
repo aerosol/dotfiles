@@ -1,25 +1,25 @@
 {
-  "mPrimary": "#2d5da7",
-  "mOnPrimary": "#ffffff",
+  "mPrimary": "#abc7ff",
+  "mOnPrimary": "#002f66",
 
-  "mSecondary": "#565e71",
-  "mOnSecondary": "#ffffff",
+  "mSecondary": "#bec6dc",
+  "mOnSecondary": "#283041",
 
-  "mTertiary": "#705574",
-  "mOnTertiary": "#ffffff",
+  "mTertiary": "#ddbce0",
+  "mOnTertiary": "#3f2844",
 
-  "mError": "#ba1a1a",
-  "mOnError": "#ffffff",
+  "mError": "#ffb4ab",
+  "mOnError": "#690005",
 
-  "mSurface": "#faf9fd",
-  "mOnSurface": "#1a1b1f",
+  "mSurface": "#121316",
+  "mOnSurface": "#e3e2e6",
 
-  "mSurfaceVariant": "#efedf1",
-  "mOnSurfaceVariant": "#44474e",
+  "mSurfaceVariant": "#1f1f23",
+  "mOnSurfaceVariant": "#c4c6d0",
   
-  "mOutline": "#c4c6d0",
+  "mOutline": "#44474e",
   "mShadow": "#000000",
 
-  "mHover": "#705574",
-  "mOnHover": "#ffffff"
+  "mHover": "#ddbce0",
+  "mOnHover": "#3f2844"
 } 
