@@ -264,6 +264,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
+spawn-sh-at-startup "noctalia-theme"
 spawn-sh-at-startup "foot --server; footclient"
 spawn-at-startup "/home/hq1/bin/noctalia-theme"
 spawn-at-startup "signal-desktop"
