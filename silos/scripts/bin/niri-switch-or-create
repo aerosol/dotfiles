@@ -1,0 +1,57 @@
+#!/bin/bash
+
+function get_name() {
+	# Get list of existing workspace names
+	local workspaces
+	workspaces=$(niri msg -j workspaces | jq -r '.[] | select(.name != null) | .name')
+	
+	# Show existing workspaces as options, or allow typing new name
+	echo "$workspaces" | tofi --prompt "workspace: "
+}
+
+function workspace_exists() {
+	local name="$1"
+	niri msg -j workspaces | jq -e ".[] | select(.name == \"$name\")" > /dev/null 2>&1
+}
+
+function get_unnamed_workspace_idx() {
+	# Find first unnamed workspace, or return next available index
+	local unnamed_idx
+	unnamed_idx=$(niri msg -j workspaces | jq -r '.[] | select(.name == null) | .idx' | head -1)
+	
+	if [ -n "$unnamed_idx" ]; then
+		echo "$unnamed_idx"
+	else
+		# No unnamed workspace, get highest index and add 1
+		local max_idx
+		max_idx=$(niri msg -j workspaces | jq -r '.[].idx' | sort -n | tail -1)
+		echo $((max_idx + 1))
+	fi
+}
+
+function main() {
+	local workspace_name
+	workspace_name=$(get_name)
+	
+	# Exit if no name provided
+	if [ -z "$workspace_name" ]; then
+		exit 0
+	fi
+	
+	if workspace_exists "$workspace_name"; then
+		# Workspace exists, just switch to it
+		niri msg action focus-workspace "$workspace_name"
+	else
+		# Workspace doesn't exist, create it
+		# First, switch to an unnamed workspace (or create new one)
+		local target_idx
+		target_idx=$(get_unnamed_workspace_idx)
+		niri msg action focus-workspace "$target_idx"
+		# Then rename it
+		niri msg action set-workspace-name "$workspace_name"
+		# Spawn a new Firefox window on the newly created workspace
+		niri msg action spawn -- firefox --no-remote
+	fi
+}
+
+main

@@ -1,0 +1,27 @@
+#!/bin/bash
+# Focus window by app_id on current workspace or spawn command if it doesn't exist
+# Usage: focus-or-spawn <app_id> <command> [args...]
+
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <app_id> <command> [args...]"
+    echo "Example: $0 firefox firefox --no-remote"
+    exit 1
+fi
+
+app_id="$1"
+shift
+command="$@"
+
+# Get current workspace ID
+current_workspace_id=$(niri msg --json workspaces | jq -r '.[] | select(.is_focused == true) | .id')
+
+# Check if window with app_id exists on current workspace
+window_id=$(niri msg --json windows | jq -r ".[] | select(.app_id == \"$app_id\" and .workspace_id == $current_workspace_id) | .id" | head -1)
+
+if [ -n "$window_id" ]; then
+    # Window exists on current workspace, focus it
+    niri msg action focus-window --id "$window_id"
+else
+    # Window doesn't exist on current workspace, spawn command
+    eval "$command" &
+fi
