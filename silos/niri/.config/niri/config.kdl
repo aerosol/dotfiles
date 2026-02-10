@@ -267,8 +267,8 @@ layout {
 spawn-sh-at-startup "foot --server; footclient"
 spawn-at-startup "/home/hq1/bin/noctalia-theme"
 spawn-at-startup "signal-desktop"
-spawn-at-startup "firefox"
-spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-at-startup "firefox --no-remote"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
 spawn-sh-at-startup "swayidle -w before-sleep 'qs -c noctalia-shell ipc call lockScreen lock' -w timeout 60 'qs -c noctalia-shell ipc call lockScreen lock'"
 
@@ -363,7 +363,7 @@ binds {
     Mod+Backspace { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Escape hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
+    Mod+Escape hotkey-overlay-title="Open a Terminal: foot" { spawn-sh "niri-focus-or-spawn footclient footclient"; }
     Mod+D hotkey-overlay-title="fileman" { spawn-sh "nautilus $(<$ZSH_CACHE/_lastdir) || $HOME"; }
 
     Mod+Ctrl+Shift+Alt+Escape { spawn "wl-screenshot"; }
@@ -387,12 +387,24 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call launcher emoji"
     }
 
-    Mod+M {
+    F10 {
         spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"
     }
 
     Mod+G {
         spawn "niri-rename"
+    }
+
+    Mod+T {
+        spawn "niri-switch-or-create"
+    }
+
+    Mod+Q {
+        spawn "niri-kill-workspace"
+    }
+
+    Mod+M {
+        spawn "niri-move-to-workspace"
     }
     
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
@@ -566,7 +578,7 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+Q { center-column; }
+    // Mod+Q { center-column; }
 
     // Center all fully visible columns on screen.
     // Mod+Ctrl+C { center-visible-columns; }
@@ -593,7 +605,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+T { toggle-column-tabbed-display; }
+    // Mod+T { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
@@ -646,6 +658,11 @@ recent-windows {
         padding 20
         corner-radius 8
     }
+    binds {
+        Mod+Tab         { next-window     scope="output"; }
+        Mod+Shift+Tab   { previous-window scope="output"; }
+        Mod+grave       { next-window     scope="workspace" filter="app-id"; }
+    }
 }
 
 overview {
@@ -665,11 +682,7 @@ cursor {
     hide-after-inactive-ms 5000
 }
 
-workspace "start"
-workspace "work"
-workspace "task 1"
-workspace "task 2"
-workspace "task 3"
+workspace "main"
 workspace "chat"
 
 include "./noctalia.kdl"
