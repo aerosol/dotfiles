@@ -1,5 +1,10 @@
 #!/bin/sh
-if [ "$1" = "true" ]; then
+DARK_MODE=$(jq -r '.colorSchemes.darkMode' ~/.config/noctalia/settings.json)
+
+echo $DARK_MODE
+echo $1
+
+if [ "$1" = "true" ] || [ "$DARK_MODE" = "true" ]; then
 	INIT=1
 else
 	INIT=2

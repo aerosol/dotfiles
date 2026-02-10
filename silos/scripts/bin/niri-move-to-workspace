@@ -1,7 +1,9 @@
 #!/bin/bash
 
 function get_name() {
-	echo "" | tofi --prompt "move to workspace: "
+	local workspaces
+	workspaces=$(niri msg -j workspaces | jq -r '.[] | select(.name != null) | .name')
+	echo "$workspaces" | tofi --prompt "move to workspace: "
 }
 
 function workspace_exists() {
