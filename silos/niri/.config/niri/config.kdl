@@ -354,6 +354,12 @@ window-rule {
     open-on-workspace "chat"
 }
 
+window-rule {
+    match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
+    open-on-workspace "mail"
+    open-maximized true
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -379,6 +385,7 @@ binds {
     Mod+Shift+4 { spawn "wl-screenshot"; }
 
     Mod+S { focus-workspace "chat"; }
+    Mod+M { focus-workspace "mail";  }
 
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
@@ -400,7 +407,7 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"
     }
 
-    Mod+G {
+    Mod+R {
         spawn "niri-rename"
     }
 
@@ -412,7 +419,7 @@ binds {
         spawn "niri-kill-workspace"
     }
 
-    Mod+M {
+    Mod+G {
         spawn "niri-move-to-workspace"
     }
 
@@ -579,7 +586,7 @@ binds {
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    Mod+R { switch-preset-column-width; }
+    Mod+X { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
     // Mod+R { switch-preset-column-width-back; }
     // Mod+Shift+R { switch-preset-window-height; }
@@ -612,7 +619,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+X       { toggle-window-floating; }
+    // Mod+X       { toggle-window-floating; }
     // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -697,5 +704,6 @@ cursor {
 
 workspace "main"
 workspace "chat"
+workspace "mail"
 
 include "./noctalia.kdl"
