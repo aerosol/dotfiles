@@ -1,0 +1,14 @@
+[Unit]
+Description=Foot Terminal Server
+Documentation=man:foot(1)
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/foot --server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
