@@ -6,12 +6,14 @@
         "clipboardWrapText": true,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
+        "density": "default",
         "enableClipPreview": true,
         "enableClipboardHistory": true,
         "enableSettingsSearch": true,
         "enableWindowsSearch": false,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
+        "overviewLayer": false,
         "pinnedApps": [
         ],
         "position": "center",
@@ -146,7 +148,7 @@
                     "textColor": "none"
                 },
                 {
-                    "iconColor": "none",
+                    "iconColor": "tertiary",
                     "id": "NightLight"
                 },
                 {
@@ -261,7 +263,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -375,9 +377,34 @@
         "enableShadows": true,
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 0.27,
+        "keybinds": {
+            "keyDown": [
+                "Down"
+            ],
+            "keyEnter": [
+                "Return"
+            ],
+            "keyEscape": [
+                "Esc"
+            ],
+            "keyLeft": [
+                "Left"
+            ],
+            "keyRight": [
+                "Right"
+            ],
+            "keyUp": [
+                "Up"
+            ]
+        },
         "language": "",
         "lockOnSuspend": true,
+        "lockScreenAnimations": false,
+        "lockScreenBlur": 1,
         "lockScreenCountdownDuration": 1000,
+        "lockScreenMonitors": [
+        ],
+        "lockScreenTint": 0.12,
         "radiusRatio": 0.14,
         "scaleRatio": 0.9500000000000001,
         "screenRadiusRatio": 0.05,
@@ -531,7 +558,7 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 49,
+    "settingsVersion": 51,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -611,7 +638,9 @@
         "hideWallpaperFilenames": false,
         "monitorDirectories": [
         ],
+        "overviewBlur": 0.4,
         "overviewEnabled": false,
+        "overviewTint": 0.6,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 600,
         "setWallpaperOnAllMonitors": true,
