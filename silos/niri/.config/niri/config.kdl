@@ -84,7 +84,7 @@ spawn-at-startup "firefox --no-remote"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
 
-spawn-sh-at-startup "swayidle -w timeout 180 'brightnessctl -s set 10%' resume 'brightnessctl -r' timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' timeout 419 'niri msg action power-off-monitors' resume 'niri msg acton power-on-monitors' timeout 540 'systemctl suspend' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+spawn-sh-at-startup "swayidle -w timeout 180 'brightnessctl -s set 10%' resume 'brightnessctl -r' timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' timeout 419 'niri msg action power-off-monitors' resume 'niri msg acton power-on-monitors' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
 spawn-at-startup "/home/hq1/bin/noctalia-theme"
 
