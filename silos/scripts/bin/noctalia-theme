@@ -1,9 +1,11 @@
 #!/bin/bash
-DARK_MODE=$(jq -r '.colorSchemes.darkMode' ~/.config/noctalia/settings.json)
+# DARK_MODE=$(jq -r '.colorSchemes.darkMode' ~/.config/noctalia/settings.json)
 
-if [ "$DARK_MODE" = "true" ]; then
+if [ "$1" = "true" ]; then
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 	INIT=1
 else
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
 	INIT=2
 fi
 

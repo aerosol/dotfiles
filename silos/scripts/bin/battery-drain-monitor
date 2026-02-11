@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+# Battery drain monitor - tracks time and battery drain when unplugged
+# State file to store battery session data
+STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/battery-drain-state"
+BATTERY_PATH="/sys/class/power_supply/BAT1"
+
+# Function to get current battery status
+get_battery_status() {
+    cat "$BATTERY_PATH/status" 2>/dev/null || echo "Unknown"
+}
+
+# Function to get current battery capacity
+get_battery_capacity() {
+    cat "$BATTERY_PATH/capacity" 2>/dev/null || echo "0"
+}
+
+# Function to get current timestamp
+get_timestamp() {
+    date +%s
+}
+
+# Function to format duration
+format_duration() {
+    local seconds=$1
+    local hours=$((seconds / 3600))
+    local minutes=$(((seconds % 3600) / 60))
+    local secs=$((seconds % 60))
+    
+    if [ $hours -gt 0 ]; then
+        printf "%dh %dm %ds" $hours $minutes $secs
+    elif [ $minutes -gt 0 ]; then
+        printf "%dm %ds" $minutes $secs
+    else
+        printf "%ds" $secs
+    fi
+}
+
+# Main monitoring logic
+current_status=$(get_battery_status)
+current_capacity=$(get_battery_capacity)
+current_time=$(get_timestamp)
+
+if [ "$current_status" = "Discharging" ]; then
+    # Power unplugged
+    if [ ! -f "$STATE_FILE" ]; then
+        # Start new session
+        echo "start_time=$current_time" > "$STATE_FILE"
+        echo "start_capacity=$current_capacity" >> "$STATE_FILE"
+        echo "status=unplugged" >> "$STATE_FILE"
+    fi
+else
+    # Power plugged in (Charging or Full)
+    if [ -f "$STATE_FILE" ]; then
+        # Read previous state
+        source "$STATE_FILE"
+        
+        if [ "$status" = "unplugged" ]; then
+            # Calculate drain stats
+            duration=$((current_time - start_time))
+            drain=$((start_capacity - current_capacity))
+            
+            # Only show notification if there was meaningful drain (at least 1 minute unplugged)
+            if [ $duration -ge 60 ]; then
+                duration_str=$(format_duration $duration)
+                
+                # Calculate drain rate per hour
+                if [ $duration -gt 0 ] && [ $drain -gt 0 ]; then
+                    # Using bash arithmetic (drain * 3600 / duration) with one decimal
+                    drain_rate=$(awk "BEGIN {printf \"%.1f\", $drain * 3600 / $duration}")
+                    
+                    notify-send -a "Battery Monitor" \
+                        -i "battery-full-charged" \
+                        -u normal \
+                        -t 10000 \
+                        "Battery Plugged In" \
+                        "Time unplugged: $duration_str
+Battery drained: $drain%
+Drain rate: ${drain_rate}%/hour
+Current: ${current_capacity}%"
+                else
+                    notify-send -a "Battery Monitor" \
+                        -i "battery-full-charged" \
+                        -u normal \
+                        -t 10000 \
+                        "Battery Plugged In" \
+                        "Time unplugged: $duration_str
+Battery: ${current_capacity}%"
+                fi
+            fi
+            
+            # Clear state file
+            rm -f "$STATE_FILE"
+        fi
+    fi
+fi
