@@ -29,3 +29,12 @@ alias o='xdg-open'
 alias open='xdg-open'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+
+pacman() 
+{
+    case $1 in
+        -S | -D | -S[^sih]* | -R* | -U*)
+            /usr/bin/sudo /usr/bin/pacman "$@" ;;
+    *)      /usr/bin/pacman "$@" ;;
+    esac
+}
