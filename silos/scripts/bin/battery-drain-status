@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+
+# Battery drain status - shows current battery drain statistics on demand
+
+STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/battery-drain-state"
+BATTERY_PATH="/sys/class/power_supply/BAT1"
+
+# Function to get current battery status
+get_battery_status() {
+    cat "$BATTERY_PATH/status" 2>/dev/null || echo "Unknown"
+}
+
+# Function to get current battery capacity
+get_battery_capacity() {
+    cat "$BATTERY_PATH/capacity" 2>/dev/null || echo "0"
+}
+
+# Function to get current timestamp
+get_timestamp() {
+    date +%s
+}
+
+# Function to format duration
+format_duration() {
+    local seconds=$1
+    local hours=$((seconds / 3600))
+    local minutes=$(((seconds % 3600) / 60))
+    local secs=$((seconds % 60))
+    
+    if [ $hours -gt 0 ]; then
+        printf "%dh %dm %ds" $hours $minutes $secs
+    elif [ $minutes -gt 0 ]; then
+        printf "%dm %ds" $minutes $secs
+    else
+        printf "%ds" $secs
+    fi
+}
+
+# Function to ensure state file has all required fields
+ensure_state_fields() {
+    if [ -f "$STATE_FILE" ]; then
+        grep -q "^suspend_start_time=" "$STATE_FILE" || echo "suspend_start_time=0" >> "$STATE_FILE"
+        grep -q "^total_suspend_time=" "$STATE_FILE" || echo "total_suspend_time=0" >> "$STATE_FILE"
+        grep -q "^capacity_before_suspend=" "$STATE_FILE" || echo "capacity_before_suspend=0" >> "$STATE_FILE"
+        grep -q "^total_suspend_drain=" "$STATE_FILE" || echo "total_suspend_drain=0" >> "$STATE_FILE"
+    fi
+}
+
+# Main logic
+current_status=$(get_battery_status)
+current_capacity=$(get_battery_capacity)
+current_time=$(get_timestamp)
+
+if [ "$current_status" = "Discharging" ]; then
+    # Currently unplugged
+    if [ -f "$STATE_FILE" ]; then
+        ensure_state_fields
+        source "$STATE_FILE"
+        
+        # Calculate current stats
+        duration=$((current_time - start_time))
+        drain=$((start_capacity - current_capacity))
+        
+        # Calculate active vs suspend stats
+        active_duration=$((duration - ${total_suspend_time:-0}))
+        active_drain=$((drain - ${total_suspend_drain:-0}))
+        suspend_time=${total_suspend_time:-0}
+        suspend_drain_val=${total_suspend_drain:-0}
+        
+        duration_str=$(format_duration $duration)
+        active_duration_str=$(format_duration $active_duration)
+        suspend_duration_str=$(format_duration $suspend_time)
+        
+        # Build notification message
+        notification_msg="Currently: ${current_capacity}% (${current_status})
+
+Time unplugged: $duration_str"
+        
+        # Add breakdown if there was suspend time
+        if [ $suspend_time -gt 0 ]; then
+            notification_msg="$notification_msg
+Active: $active_duration_str | Suspended: $suspend_duration_str"
+        fi
+        
+        notification_msg="$notification_msg
+
+Battery drained: ${drain}% total"
+        
+        # Calculate and show active drain rate
+        if [ $active_duration -gt 0 ] && [ $active_drain -gt 0 ]; then
+            active_drain_rate=$(awk "BEGIN {printf \"%.1f\", $active_drain * 3600 / $active_duration}")
+            notification_msg="$notification_msg
+Active drain: ${active_drain}% (${active_drain_rate}%/h)"
+        elif [ $active_duration -gt 0 ]; then
+            notification_msg="$notification_msg
+Active drain: ${active_drain}%"
+        fi
+        
+        # Calculate and show suspend drain rate if applicable
+        if [ $suspend_time -gt 0 ]; then
+            if [ $suspend_drain_val -gt 0 ]; then
+                suspend_drain_rate=$(awk "BEGIN {printf \"%.1f\", $suspend_drain_val * 3600 / $suspend_time}")
+                notification_msg="$notification_msg
+Suspend drain: ${suspend_drain_val}% (${suspend_drain_rate}%/h)"
+            else
+                notification_msg="$notification_msg
+Suspend drain: ${suspend_drain_val}%"
+            fi
+        fi
+        
+        # Show estimated time remaining based on active drain rate
+        if [ $active_duration -gt 60 ] && [ $active_drain -gt 0 ]; then
+            # Calculate hours remaining at current active drain rate
+            hours_remaining=$(awk "BEGIN {printf \"%.1f\", $current_capacity / ($active_drain * 3600 / $active_duration)}")
+            notification_msg="$notification_msg
+
+Est. remaining: ${hours_remaining}h at current rate"
+        fi
+        
+        notify-send -a "Battery Monitor" \
+            -i "battery-good" \
+            -u normal \
+            -t 15000 \
+            "Battery Drain Status" \
+            "$notification_msg"
+    else
+        # No tracking session active
+        notify-send -a "Battery Monitor" \
+            -i "battery-good" \
+            -u normal \
+            -t 5000 \
+            "Battery Status" \
+            "Currently: ${current_capacity}% (${current_status})
+
+No tracking session active.
+Battery monitoring starts when unplugged."
+    fi
+else
+    # Currently plugged in
+    notify-send -a "Battery Monitor" \
+        -i "battery-full-charged" \
+        -u normal \
+        -t 5000 \
+        "Battery Status" \
+        "Currently: ${current_capacity}% (${current_status})
+
+Power is plugged in.
+Battery monitoring starts when unplugged."
+fi

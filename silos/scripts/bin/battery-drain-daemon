@@ -5,6 +5,7 @@
 
 STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/battery-drain-state"
 BATTERY_PATH="/sys/class/power_supply/BAT1"
+SLEEP_EVENTS_PIPE="${XDG_RUNTIME_DIR:-/tmp}/battery-drain-sleep-events"
 
 # Function to get current battery status
 get_battery_status() {
@@ -37,6 +38,92 @@ format_duration() {
     fi
 }
 
+# Function to initialize state file with default suspend fields
+init_state_file() {
+    local current_time=$(get_timestamp)
+    local current_capacity=$(get_battery_capacity)
+    
+    echo "start_time=$current_time" > "$STATE_FILE"
+    echo "start_capacity=$current_capacity" >> "$STATE_FILE"
+    echo "status=unplugged" >> "$STATE_FILE"
+    echo "suspend_start_time=0" >> "$STATE_FILE"
+    echo "total_suspend_time=0" >> "$STATE_FILE"
+    echo "capacity_before_suspend=0" >> "$STATE_FILE"
+    echo "total_suspend_drain=0" >> "$STATE_FILE"
+}
+
+# Function to ensure state file has all required fields
+ensure_state_fields() {
+    if [ -f "$STATE_FILE" ]; then
+        # Add missing fields with defaults if they don't exist
+        grep -q "^suspend_start_time=" "$STATE_FILE" || echo "suspend_start_time=0" >> "$STATE_FILE"
+        grep -q "^total_suspend_time=" "$STATE_FILE" || echo "total_suspend_time=0" >> "$STATE_FILE"
+        grep -q "^capacity_before_suspend=" "$STATE_FILE" || echo "capacity_before_suspend=0" >> "$STATE_FILE"
+        grep -q "^total_suspend_drain=" "$STATE_FILE" || echo "total_suspend_drain=0" >> "$STATE_FILE"
+    fi
+}
+
+# Function to handle suspend start (PrepareForSleep true)
+handle_suspend_start() {
+    if [ -f "$STATE_FILE" ]; then
+        ensure_state_fields
+        source "$STATE_FILE"
+        
+        # Only track suspend if currently unplugged and not already suspended
+        if [ "$status" = "unplugged" ] && [ "${suspend_start_time:-0}" = "0" ]; then
+            local current_time=$(get_timestamp)
+            local current_capacity=$(get_battery_capacity)
+            
+            # Log suspend event (for debugging)
+            echo "Suspend detected: ${current_capacity}% battery" >&2
+            
+            # Update state file with suspend start info
+            sed -i "s/^suspend_start_time=.*/suspend_start_time=$current_time/" "$STATE_FILE"
+            sed -i "s/^capacity_before_suspend=.*/capacity_before_suspend=$current_capacity/" "$STATE_FILE"
+        fi
+    fi
+}
+
+# Function to handle suspend end (PrepareForSleep false)
+handle_suspend_end() {
+    if [ -f "$STATE_FILE" ]; then
+        ensure_state_fields
+        source "$STATE_FILE"
+        
+        # Only calculate suspend stats if we were tracking a suspend session
+        if [ "$status" = "unplugged" ] && [ "${suspend_start_time:-0}" != "0" ]; then
+            local current_time=$(get_timestamp)
+            local current_capacity=$(get_battery_capacity)
+            
+            # Calculate this suspend session
+            local suspend_duration=$((current_time - suspend_start_time))
+            local suspend_drain=$((capacity_before_suspend - current_capacity))
+            
+            # Ensure non-negative values
+            [ $suspend_drain -lt 0 ] && suspend_drain=0
+            
+            # Add to totals
+            local new_total_suspend_time=$((total_suspend_time + suspend_duration))
+            local new_total_suspend_drain=$((total_suspend_drain + suspend_drain))
+            
+            # Log resume event (for debugging)
+            echo "Resume detected: ${suspend_duration}s suspended, ${suspend_drain}% drained" >&2
+            
+            # Update state file
+            sed -i "s/^total_suspend_time=.*/total_suspend_time=$new_total_suspend_time/" "$STATE_FILE"
+            sed -i "s/^total_suspend_drain=.*/total_suspend_drain=$new_total_suspend_drain/" "$STATE_FILE"
+            sed -i "s/^suspend_start_time=.*/suspend_start_time=0/" "$STATE_FILE"
+            sed -i "s/^capacity_before_suspend=.*/capacity_before_suspend=0/" "$STATE_FILE"
+        elif [ "${suspend_start_time:-0}" != "0" ]; then
+            # Resume detected but we're now plugged in or no state file
+            # Still reset the suspend_start_time to avoid stale state
+            echo "Resume detected: resetting stale suspend state" >&2
+            sed -i "s/^suspend_start_time=.*/suspend_start_time=0/" "$STATE_FILE"
+            sed -i "s/^capacity_before_suspend=.*/capacity_before_suspend=0/" "$STATE_FILE"
+        fi
+    fi
+}
+
 # Function to handle battery state change
 handle_battery_event() {
     local current_status=$(get_battery_status)
@@ -46,10 +133,8 @@ handle_battery_event() {
     if [ "$current_status" = "Discharging" ]; then
         # Power unplugged
         if [ ! -f "$STATE_FILE" ]; then
-            # Start new session
-            echo "start_time=$current_time" > "$STATE_FILE"
-            echo "start_capacity=$current_capacity" >> "$STATE_FILE"
-            echo "status=unplugged" >> "$STATE_FILE"
+            # Start new session with all fields
+            init_state_file
             
             notify-send -a "Battery Monitor" \
                 -i "battery-low" \
@@ -62,6 +147,7 @@ handle_battery_event() {
         # Power plugged in (Charging, Full, or Not charging)
         if [ -f "$STATE_FILE" ]; then
             # Read previous state
+            ensure_state_fields
             source "$STATE_FILE"
             
             if [ "$status" = "unplugged" ]; then
@@ -69,33 +155,63 @@ handle_battery_event() {
                 duration=$((current_time - start_time))
                 drain=$((start_capacity - current_capacity))
                 
+                # Calculate active vs suspend stats
+                active_duration=$((duration - ${total_suspend_time:-0}))
+                active_drain=$((drain - ${total_suspend_drain:-0}))
+                suspend_time=${total_suspend_time:-0}
+                suspend_drain_val=${total_suspend_drain:-0}
+                
                 # Only show notification if there was meaningful drain (at least 1 minute unplugged)
                 if [ $duration -ge 60 ]; then
                     duration_str=$(format_duration $duration)
+                    active_duration_str=$(format_duration $active_duration)
+                    suspend_duration_str=$(format_duration $suspend_time)
                     
-                    # Calculate drain rate per hour
-                    if [ $duration -gt 0 ] && [ $drain -gt 0 ]; then
-                        # Using bash arithmetic (drain * 3600 / duration) with one decimal
-                        drain_rate=$(awk "BEGIN {printf \"%.1f\", $drain * 3600 / $duration}")
-                        
-                        notify-send -a "Battery Monitor" \
-                            -i "battery-full-charged" \
-                            -u normal \
-                            -t 10000 \
-                            "Power Plugged In" \
-                            "Time unplugged: $duration_str
-Battery drained: $drain%
-Drain rate: ${drain_rate}%/hour
-Current: ${current_capacity}%"
-                    else
-                        notify-send -a "Battery Monitor" \
-                            -i "battery-full-charged" \
-                            -u normal \
-                            -t 10000 \
-                            "Power Plugged In" \
-                            "Time unplugged: $duration_str
-Battery: ${current_capacity}%"
+                    # Build notification message
+                    notification_msg="Time unplugged: $duration_str"
+                    
+                    # Add breakdown if there was suspend time
+                    if [ $suspend_time -gt 0 ]; then
+                        notification_msg="$notification_msg
+Active: $active_duration_str | Suspended: $suspend_duration_str"
                     fi
+                    
+                    notification_msg="$notification_msg
+
+Battery drained: ${drain}% total"
+                    
+                    # Calculate and show active drain rate
+                    if [ $active_duration -gt 0 ] && [ $active_drain -gt 0 ]; then
+                        active_drain_rate=$(awk "BEGIN {printf \"%.1f\", $active_drain * 3600 / $active_duration}")
+                        notification_msg="$notification_msg
+Active drain: ${active_drain}% (${active_drain_rate}%/h)"
+                    elif [ $active_duration -gt 0 ]; then
+                        notification_msg="$notification_msg
+Active drain: ${active_drain}%"
+                    fi
+                    
+                    # Calculate and show suspend drain rate if applicable
+                    if [ $suspend_time -gt 0 ]; then
+                        if [ $suspend_drain_val -gt 0 ]; then
+                            suspend_drain_rate=$(awk "BEGIN {printf \"%.1f\", $suspend_drain_val * 3600 / $suspend_time}")
+                            notification_msg="$notification_msg
+Suspend drain: ${suspend_drain_val}% (${suspend_drain_rate}%/h)"
+                        else
+                            notification_msg="$notification_msg
+Suspend drain: ${suspend_drain_val}%"
+                        fi
+                    fi
+                    
+                    notification_msg="$notification_msg
+
+Current: ${current_capacity}%"
+                    
+                    notify-send -a "Battery Monitor" \
+                        -i "battery-full-charged" \
+                        -u normal \
+                        -t 10000 \
+                        "Power Plugged In" \
+                        "$notification_msg"
                 else
                     # Short unplug, just notify
                     notify-send -a "Battery Monitor" \
@@ -113,16 +229,78 @@ Battery: ${current_capacity}%"
     fi
 }
 
+# Cleanup function
+cleanup() {
+    # Clean up named pipe
+    [ -p "$SLEEP_EVENTS_PIPE" ] && rm -f "$SLEEP_EVENTS_PIPE"
+    
+    # Clean up background jobs
+    jobs -p | xargs -r kill 2>/dev/null
+    
+    exit 0
+}
+
+trap cleanup EXIT INT TERM
+
+# Clean up stale suspend state on startup (in case of crash during suspend)
+if [ -f "$STATE_FILE" ]; then
+    ensure_state_fields
+    source "$STATE_FILE"
+    if [ "${suspend_start_time:-0}" != "0" ]; then
+        # We have a stale suspend_start_time from a previous crash/restart
+        # Reset it since we're clearly awake now
+        sed -i "s/^suspend_start_time=.*/suspend_start_time=0/" "$STATE_FILE"
+    fi
+fi
+
 # Initial check on startup
 handle_battery_event
 
-# Listen to ACPI events
-echo "Battery drain daemon started. Listening for power events..."
+# Create named pipe for sleep events if it doesn't exist
+[ -p "$SLEEP_EVENTS_PIPE" ] || mkfifo "$SLEEP_EVENTS_PIPE"
 
-acpi_listen | while read -r event; do
-    # Check for AC adapter or battery events
-    if [[ "$event" =~ ac_adapter|battery ]]; then
-        # Small delay to let the system update the battery status
+# Start monitoring systemd PrepareForSleep signals in background
+(
+    gdbus monitor --system \
+        --dest org.freedesktop.login1 \
+        --object-path /org/freedesktop/login1 2>/dev/null \
+    | while read -r line; do
+        # Parse PrepareForSleep signal
+        # Example: /org/freedesktop/login1: org.freedesktop.login1.Manager.PrepareForSleep (true,)
+        # Example: /org/freedesktop/login1: org.freedesktop.login1.Manager.PrepareForSleep (false,)
+        if [[ "$line" =~ PrepareForSleep ]]; then
+            if [[ "$line" =~ "true" ]]; then
+                echo "suspend" > "$SLEEP_EVENTS_PIPE"
+            elif [[ "$line" =~ "false" ]]; then
+                echo "resume" > "$SLEEP_EVENTS_PIPE"
+            fi
+        fi
+    done
+) &
+
+GDBUS_PID=$!
+
+# Listen to both ACPI events and sleep events
+echo "Battery drain daemon started. Listening for power and suspend events..."
+
+{
+    acpi_listen &
+    ACPI_PID=$!
+    
+    cat "$SLEEP_EVENTS_PIPE" | sed 's/^/SLEEP: /' &
+    PIPE_PID=$!
+    
+    wait
+} | while read -r event; do
+    if [[ "$event" =~ ^SLEEP:\ suspend$ ]]; then
+        # Suspend starting
+        handle_suspend_start
+    elif [[ "$event" =~ ^SLEEP:\ resume$ ]]; then
+        # Suspend ended
+        sleep 0.5  # Give system time to update battery status
+        handle_suspend_end
+    elif [[ "$event" =~ ac_adapter|battery ]]; then
+        # AC adapter or battery event
         sleep 0.5
         handle_battery_event
     fi
