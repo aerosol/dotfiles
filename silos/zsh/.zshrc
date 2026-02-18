@@ -1,4 +1,3 @@
-source $HOME/.zsh/environment.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tweaks.zsh
 source $HOME/.zsh/history.zsh
@@ -13,4 +12,4 @@ source $HOME/.zsh/window-title.zsh
 [ -f ~/.secrets ] && source ~/.secrets
 
 source $HOME/.zsh/prompt.zsh
-source $HOME/.zsh/atuin-init.zsh
+eval "$(atuin init zsh)"

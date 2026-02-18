@@ -7,18 +7,12 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PAGER=less
-export TERMINAL=foot
-# Only add to PATH if not already present (prevents duplication)
+export TERMINAL=footclient
+
 if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
   export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 fi
 export EXA_ICON_SPACING=2
-
-if [ "$HOST" = "carb" ]; then
-	export GDK_SCALE=2
-	export GDK_DPI_SCALE=2
-	export QT_SCALE_FACTOR=2
-fi
 
 if [[ "$TERM" == "xterm-256color" || "$TERM" == "xterm-kitty" ]]; then
 	if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
