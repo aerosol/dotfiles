@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "title": "Tailscale Einstellungen",
+    "description": "Konfiguriere Tailscale Statusanzeige und Verhalten",
+    "refresh-interval": "Aktualisierungsintervall",
+    "refresh-interval-desc": "Häufigkeit der Überprüfung des Tailscale-Status",
+    "display-options": "Anzeigeoptionen",
+    "compact-mode": "Kompaktmodus",
+    "compact-mode-desc": "Nur Symbol in der Leiste anzeigen",
+    "show-ip": "IP-Adresse anzeigen",
+    "show-ip-desc": "Tailscale-IP im Bar-Widget anzeigen",
+    "show-peers": "Peer-Anzahl anzeigen",
+    "show-peers-desc": "Anzahl der verbundenen Geräte in der Leiste anzeigen",
+    "hide-disconnected": "Getrennte Peers ausblenden",
+    "hide-disconnected-desc": "Nur Online Peers im Panel anzeigen",
+    "terminal": "Terminal Konfiguration",
+    "terminal-command": "Terminal Befehl",
+    "terminal-command-desc": "Befehl zum Starten eines Terminals für SSH/Ping (z.B. „ghostty“, „alacritty“, „kitty“)",
+    "ping-count": "Ping Anzahl",
+    "ping-count-desc": "Anzahl der Ping-Pakete, die beim Testen der Konnektivität gesendet werden sollen",
+    "peer-action": "Peer Klick Aktion",
+    "default-peer-action": "Standard Aktionen",
+    "default-peer-action-desc": "Aktion beim Klicken auf einen Peer im Panel"
+  },
+  "actions": {
+    "widget-settings": "Widget Einstellungen"
+  },
+  "context": {
+    "connect": "Verbinden",
+    "disconnect": "Trennen",
+    "refresh": "Status aktualisieren",
+    "not-installed": "Tailscale nicht installiert",
+    "settings": "Einstellungen",
+    "copy-ip": "IP kopieren",
+    "ssh": "SSH zum Host",
+    "ping": "Host anpingen"
+  },
+  "toast": {
+    "title": "Tailscale",
+    "connected": "Tailscale verbunden",
+    "disconnected": "Tailscale getrennt",
+    "ip-copied": {
+      "title": "IP kopiert"
+    },
+    "terminal-not-configured": {
+      "title": "Terminal nicht konfiguriert",
+      "message": "Bitte leg einen Terminalbefehl in den Plugin Einstellungen fest"
+    }
+  },
+  "panel": {
+    "title": "Tailscale Netzwerk",
+    "peers": "Peers",
+    "not-connected": "Nicht verbunden",
+    "online": "Online",
+    "offline": "Offline",
+    "no-peers": "Keine verbundenen Peers",
+    "admin-console": "Admin Konsole",
+    "terminal-warning": {
+      "title": "Terminal nicht konfiguriert",
+      "message": "Leg in den Einstellungen einen Terminalbefehl fest, um SSH und Ping zu aktivieren."
+    },
+    "exit-node": {
+      "active": "Ausgangsknoten aktiv",
+      "online": "Online",
+      "offline": "Offline"
+    }
+  }
+}
