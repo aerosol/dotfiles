@@ -6,6 +6,9 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
+// debug {
+//     disable-direct-scanout
+// }
 input {
     keyboard {
         xkb {
@@ -44,6 +47,13 @@ input {
 
     focus-follows-mouse max-scroll-amount="0%"
 }
+
+output "BOE NE135A1M-NY1 Unknown" {
+    mode "2880x1920@120.000"
+    scale 2
+    // variable-refresh-rate
+}
+
 
 output "HDMI-A-1" {
     // Uncomment this line to disable this output.
@@ -125,6 +135,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="org.gnome.Loupe"
+    open-floating true
+}
+
+window-rule {
     match app-id="vlc"
     open-floating true
 }
@@ -180,6 +195,10 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"
     }
 
+    F9 {
+        toggle-window-floating
+    }
+
     Mod+R {
         spawn "niri-rename"
     }
@@ -198,6 +217,10 @@ binds {
 
     Ctrl+Period {
         spawn-sh "qs -c noctalia-shell ipc call notifications dismissAll"
+    }
+
+    Mod+I {
+        spawn "edit-clipboard"
     }
     
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
@@ -314,6 +337,7 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
+
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
     // so they may, for example, forward the key presses as-is to a remote machine.
@@ -426,4 +450,5 @@ layout {
         // top 64
         // bottom 64
     }
+
 }
