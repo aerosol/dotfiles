@@ -2,5 +2,5 @@
 notify-send -u low "Editing clipboard..."
 f=~/.cache/clipboard
 wl-paste > "$f"
-foot -o initial-window-size-pixels=1700x800 -a "scratchpad" nvim +startinsert "$f" && wl-copy < "$f"
+footclient nvim +startinsert "$f" && wl-copy < "$f"
 notify-send -a "nvim" -u low "Clipboard edited: $(wl-paste -t text)"
