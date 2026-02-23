@@ -12,4 +12,4 @@ source $HOME/.zsh/window-title.zsh
 [ -f ~/.secrets ] && source ~/.secrets
 
 source $HOME/.zsh/prompt.zsh
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
