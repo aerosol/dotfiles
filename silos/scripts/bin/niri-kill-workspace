@@ -19,6 +19,30 @@ function get_windows_in_workspace() {
 	niri msg -j windows | jq -r ".[] | select(.workspace_id == $workspace_id) | .id"
 }
 
+function get_tmux_sessions_in_workspace() {
+	local workspace_id="$1"
+	# foot/footclient windows running tmux have titles like "session:index:name ..."
+	niri msg -j windows | jq -r "
+		.[] |
+		select(.workspace_id == $workspace_id) |
+		select(.app_id == \"foot\" or .app_id == \"footclient\") |
+		.title |
+		capture(\"^(?<session>[^:]+):[0-9]+:\") |
+		.session
+	"
+}
+
+function kill_tmux_sessions_in_workspace() {
+	local workspace_id="$1"
+	local sessions
+	sessions=$(get_tmux_sessions_in_workspace "$workspace_id" | sort -u)
+	for session in $sessions; do
+		if tmux has-session -t "$session" 2>/dev/null; then
+			tmux kill-session -t "$session"
+		fi
+	done
+}
+
 function main() {
 	local workspace_name
 	workspace_name=$(get_current_workspace_name)
@@ -48,6 +72,9 @@ function main() {
 	# Switch to previous workspace before killing
 	niri msg action focus-workspace-previous
 	
+	# Kill any tmux sessions running in foot windows in this workspace
+	kill_tmux_sessions_in_workspace "$workspace_id"
+
 	# Get all windows in the workspace
 	local window_ids
 	window_ids=$(get_windows_in_workspace "$workspace_id")
