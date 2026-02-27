@@ -1,9 +1,6 @@
 return {
 	{ "miikanissi/modus-themes.nvim", priority = 1000 },
 	{
-		"projekt0n/github-nvim-theme",
-	},
-	{
 		"Tsuzat/NeoSolarized.nvim",
 		priority = 1000,
 		config = function()
