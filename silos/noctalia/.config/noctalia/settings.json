@@ -63,14 +63,13 @@
         "widgets": {
             "center": [
                 {
-                    "colorizeIcons": false,
-                    "hideMode": "hidden",
-                    "id": "ActiveWindow",
-                    "maxWidth": 260,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "textColor": "none",
-                    "useFixedWidth": false
+                    "clockColor": "none",
+                    "customFont": "",
+                    "formatHorizontal": "HH:mm ddd, MMM dd",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": false
                 }
             ],
             "left": [
@@ -88,17 +87,27 @@
                     "labelMode": "index+name",
                     "occupiedColor": "secondary",
                     "pillSize": 0.8,
-                    "reverseScroll": false,
                     "showApplications": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": false,
                     "unfocusedIconsOpacity": 1
+                },
+                {
+                    "colorizeIcons": false,
+                    "hideMode": "hidden",
+                    "id": "ActiveWindow",
+                    "maxWidth": 260,
+                    "scrollingMode": "hover",
+                    "showIcon": true,
+                    "textColor": "none",
+                    "useFixedWidth": false
                 }
             ],
             "right": [
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "",
                     "hideMode": "alwaysExpanded",
                     "icon": "currency-euro",
                     "id": "CustomButton",
@@ -114,7 +123,9 @@
                     "parseJson": false,
                     "rightClickExec": "",
                     "rightClickUpdateText": false,
+                    "showExecTooltip": true,
                     "showIcon": true,
+                    "showTextTooltip": true,
                     "textCollapse": "",
                     "textCommand": "euro",
                     "textIntervalMs": 60000,
@@ -143,6 +154,7 @@
                     "textColor": "none"
                 },
                 {
+                    "applyToAllMonitors": false,
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Brightness",
@@ -167,15 +179,6 @@
                     "textColor": "none"
                 },
                 {
-                    "clockColor": "none",
-                    "customFont": "",
-                    "formatHorizontal": "HH:mm ddd, MMM dd",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false
-                },
-                {
                     "deviceNativePath": "__default__",
                     "displayMode": "graphic",
                     "hideIfIdle": false,
@@ -198,6 +201,7 @@
                 {
                     "colorizeSystemIcon": "none",
                     "enableColorization": false,
+                    "generalTooltipText": "",
                     "hideMode": "alwaysExpanded",
                     "icon": "align-box-left-bottom-filled",
                     "id": "CustomButton",
@@ -213,7 +217,9 @@
                     "parseJson": false,
                     "rightClickExec": "",
                     "rightClickUpdateText": false,
+                    "showExecTooltip": true,
                     "showIcon": true,
+                    "showTextTooltip": true,
                     "textCollapse": "",
                     "textCommand": "tmux-stale-session-notify",
                     "textIntervalMs": 60000,
@@ -241,13 +247,38 @@
                 },
                 {
                     "id": "plugin:weekly-calendar"
+                },
+                {
+                    "defaultSettings": {
+                        "completedCount": 0,
+                        "count": 0,
+                        "current_page_id": 0,
+                        "isExpanded": false,
+                        "pages": [
+                            {
+                                "id": 0,
+                                "name": "General"
+                            }
+                        ],
+                        "priorityColors": {
+                            "high": "#f44336",
+                            "low": "#9e9e9e",
+                            "medium": "#2196f3"
+                        },
+                        "showBackground": true,
+                        "showCompleted": true,
+                        "todos": [
+                        ],
+                        "useCustomColors": false
+                    },
+                    "id": "plugin:todo"
                 }
             ]
         }
     },
     "brightness": {
         "brightnessStep": 5,
-        "enableDdcSupport": false,
+        "enableDdcSupport": true,
         "enforceMinimum": true
     },
     "calendar": {
@@ -267,7 +298,7 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": false,
+        "darkMode": true,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -353,6 +384,7 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
+        "dockType": "floating",
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
@@ -363,6 +395,8 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
+        "showFrameIndicator": true,
+        "sitOnFrame": false,
         "size": 1
     },
     "general": {
@@ -394,6 +428,9 @@
             "keyLeft": [
                 "Left"
             ],
+            "keyRemove": [
+                "Del"
+            ],
             "keyRight": [
                 "Right"
             ],
@@ -410,6 +447,7 @@
         ],
         "lockScreenTint": 0.12,
         "radiusRatio": 0.14,
+        "reverseScroll": false,
         "scaleRatio": 0.9500000000000001,
         "screenRadiusRatio": 0.05,
         "shadowDirection": "bottom_right",
@@ -447,16 +485,18 @@
         "weatherShowEffects": true
     },
     "network": {
+        "airplaneModeEnabled": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": false,
+        "disableDiscoverability": false,
         "wifiDetailsViewMode": "grid",
         "wifiEnabled": true
     },
     "nightLight": {
         "autoSchedule": false,
-        "dayTemp": "5632",
+        "dayTemp": "4082",
         "enabled": true,
         "forced": false,
         "manualSunrise": "07:00",
@@ -465,9 +505,12 @@
     },
     "notifications": {
         "backgroundOpacity": 1,
+        "clearDismissed": true,
         "criticalUrgencyDuration": 15,
+        "density": "default",
         "enableBatteryToast": true,
         "enableKeyboardLayoutToast": true,
+        "enableMarkdown": false,
         "enableMediaToast": false,
         "enabled": true,
         "location": "top_right",
@@ -559,31 +602,26 @@
                 "keybind": "6"
             }
         ],
-        "showHeader": true
+        "showHeader": true,
+        "showKeybinds": true
     },
     "settingsVersion": 53,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
         "cpuCriticalThreshold": 90,
-        "cpuPollingInterval": 1000,
         "cpuWarningThreshold": 80,
         "criticalColor": "",
         "diskAvailCriticalThreshold": 10,
         "diskAvailWarningThreshold": 20,
         "diskCriticalThreshold": 90,
-        "diskPollingInterval": 30000,
         "diskWarningThreshold": 80,
         "enableDgpuMonitoring": false,
         "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor",
         "gpuCriticalThreshold": 90,
-        "gpuPollingInterval": 3000,
         "gpuWarningThreshold": 80,
-        "loadAvgPollingInterval": 3000,
         "memCriticalThreshold": 90,
-        "memPollingInterval": 1000,
         "memWarningThreshold": 80,
-        "networkPollingInterval": 1000,
         "swapCriticalThreshold": 90,
         "swapWarningThreshold": 80,
         "tempCriticalThreshold": 90,
@@ -634,7 +672,7 @@
     "wallpaper": {
         "automationEnabled": true,
         "directory": "/home/hq1/Pictures/Wallpapers",
-        "enableMultiMonitorDirectories": false,
+        "enableMultiMonitorDirectories": true,
         "enabled": true,
         "favorites": [
         ],
@@ -648,7 +686,7 @@
         "overviewTint": 0.6,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 600,
-        "setWallpaperOnAllMonitors": true,
+        "setWallpaperOnAllMonitors": false,
         "showHiddenFiles": false,
         "skipStartupTransition": false,
         "solidColor": "#1a1a2e",

@@ -1,0 +1,94 @@
+{
+  "pages": [
+    {
+      "id": 0,
+      "name": "General"
+    }
+  ],
+  "current_page_id": 0,
+  "todos": [
+    {
+      "id": 1771829752745,
+      "text": "tapo",
+      "completed": false,
+      "createdAt": "2026-02-23T06:55:52.745Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1771829730709,
+      "text": "laptop dock",
+      "completed": false,
+      "createdAt": "2026-02-23T06:55:30.709Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1771826489640,
+      "text": "klajster",
+      "completed": false,
+      "createdAt": "2026-02-23T06:01:29.640Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1771826443769,
+      "text": "volvo",
+      "completed": false,
+      "createdAt": "2026-02-23T06:00:43.769Z",
+      "pageId": 0,
+      "priority": "high",
+      "details": ""
+    },
+    {
+      "id": 1771826465748,
+      "text": "mail do jurka",
+      "completed": true,
+      "createdAt": "2026-02-23T06:01:05.748Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1771833037067,
+      "text": "okulary",
+      "completed": true,
+      "createdAt": "2026-02-23T07:50:37.067Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1771830136447,
+      "text": "hydraulik",
+      "completed": true,
+      "createdAt": "2026-02-23T07:02:16.447Z",
+      "pageId": 0,
+      "priority": "high",
+      "details": ""
+    },
+    {
+      "id": 1771826479856,
+      "text": "DYI: kapcie, podkładka",
+      "completed": true,
+      "createdAt": "2026-02-23T06:01:19.856Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    }
+  ],
+  "count": 8,
+  "completedCount": 4,
+  "isExpanded": false,
+  "useCustomColors": false,
+  "priorityColors": {
+    "high": "#ba1a1a",
+    "medium": "#215fa6",
+    "low": "#43474e"
+  },
+  "showCompleted": true,
+  "showBackground": true
+}
