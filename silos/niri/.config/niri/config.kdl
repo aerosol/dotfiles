@@ -48,12 +48,19 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+output "PNP(AOC) U2777B 0x00000023" {
+    mode "3840x2160@60"
+    scale 1.5
+    position x=1920 y=0
+}
+
 output "BOE NE135A1M-NY1 Unknown" {
     mode "2880x1920@120.000"
     scale 2
+    position x=0 y=0
+    // position x=0 y=960
     // variable-refresh-rate
 }
-
 
 output "HDMI-A-1" {
     // Uncomment this line to disable this output.
@@ -67,6 +74,7 @@ output "HDMI-A-1" {
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
     mode "3840x2160@60.000"
 
+
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     // scale 1
 
@@ -74,22 +82,14 @@ output "HDMI-A-1" {
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
     // position x=1280 y=0
 }
 
 
 spawn-at-startup "signal-desktop"
-spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
-spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_4f88e41b082813bae1a41559c087e0d9609733f6"
+spawn-at-startup "bitwarden-desktop"
+spawn-sh-at-startup "gio launch ~/Desktop/Basecamp-chromium.desktop"
+spawn-sh-at-startup "gio launch ~/Desktop/Fastmail-chromium.desktop"
 spawn-at-startup "firefox --no-remote"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
@@ -125,6 +125,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="Bitwarden"
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -151,12 +156,17 @@ window-rule {
 }
 
 window-rule {
-    match app-id="org.gnome.Epiphany.WebApp_4f88e41b082813bae1a41559c087e0d9609733f6"
+    match title="^Plausible Analytics - Basecamp.*"
     open-on-workspace "chat"
 }
 
 window-rule {
-    match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
+    match title="^WhatsApp Web$"
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match title="^Fastmail.*"
     open-on-workspace "mail"
     open-maximized true
 }
@@ -172,10 +182,15 @@ binds {
     Mod+Ctrl+Shift+Alt+Escape { spawn "wl-screenshot"; }
     Mod+Shift+4 { spawn "wl-screenshot"; }
 
-    Mod+S { focus-workspace "chat"; }
+    Mod+S {
+        spawn-sh "niri msg action focus-workspace chat; niri-focus-or-spawn signal signal-desktop"; 
+    }
     Mod+M { focus-workspace "mail";  }
-
     Mod+Space hotkey-overlay-title="Application Launcher" {
+        spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
+    }
+
+    F11 hotkey-overlay-title="Application Launcher" {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
     }
 
@@ -238,16 +253,18 @@ binds {
     Mod+O repeat=false { toggle-overview; }
     Mod+W repeat=false { close-window; }
 
-    Mod+H     { focus-column-left; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+L     { focus-column-or-monitor-right; }
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
-    Mod+L     { focus-column-right; }
 
-    Mod+Ctrl+Left  { move-column-left; }
     Mod+Alt+J      { move-window-to-workspace-down; }
     Mod+Alt+K      { move-window-to-workspace-up; }
-    Mod+Alt+L      { move-column-right; }
-    Mod+Alt+H      { move-column-left; }
+    Mod+Alt+L      { move-column-right-or-to-monitor-right; }
+    Mod+Alt+H      { move-column-left-or-to-monitor-left; }
+
+    Ctrl+Shift+Alt+1 { focus-monitor-left; }
+    Ctrl+Shift+Alt+2 { focus-monitor-right; }
 
     // Mod+Shift+Left  { focus-monitor-left; }
     // Mod+Shift+Down  { focus-monitor-down; }
