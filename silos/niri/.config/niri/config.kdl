@@ -24,7 +24,7 @@ input {
         // off
         tap
         dwt
-        // dwtp
+        dwtp
         drag true
         //drag-lock
         //natural-scroll
@@ -88,8 +88,6 @@ output "HDMI-A-1" {
 
 spawn-at-startup "signal-desktop"
 spawn-at-startup "bitwarden-desktop"
-spawn-sh-at-startup "gio launch ~/Desktop/Basecamp-chromium.desktop"
-spawn-sh-at-startup "gio launch ~/Desktop/Fastmail-chromium.desktop"
 spawn-at-startup "firefox --no-remote"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "qs -c noctalia-shell"
@@ -153,11 +151,13 @@ window-rule {
     match app-id="signal"
     open-on-workspace "chat"
     match at-startup=true app-id="signal"
+    open-focused false
 }
 
 window-rule {
     match title="^Plausible Analytics - Basecamp.*"
     open-on-workspace "chat"
+    open-focused false
 }
 
 window-rule {
@@ -169,6 +169,7 @@ window-rule {
     match title="^Fastmail.*"
     open-on-workspace "mail"
     open-maximized true
+    open-focused false
 }
 
 binds {
@@ -432,12 +433,12 @@ layout {
     always-center-single-column
 
     preset-column-widths {
-        proportion 0.5
         proportion 0.66667
+        proportion 0.5
         proportion 1.0
     }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.66667; }
 
     focus-ring {
         active-gradient from="#FFEA77" to="#bbddff" angle=180
