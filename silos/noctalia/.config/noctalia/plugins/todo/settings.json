@@ -1,21 +1,5 @@
 {
-  "pages": [
-    {
-      "id": 0,
-      "name": "General"
-    }
-  ],
-  "current_page_id": 0,
   "todos": [
-    {
-      "id": 1771829752745,
-      "text": "tapo",
-      "completed": false,
-      "createdAt": "2026-02-23T06:55:52.745Z",
-      "pageId": 0,
-      "priority": "medium",
-      "details": ""
-    },
     {
       "id": 1771829730709,
       "text": "laptop dock",
@@ -32,15 +16,6 @@
       "createdAt": "2026-02-23T06:01:29.640Z",
       "pageId": 0,
       "priority": "medium",
-      "details": ""
-    },
-    {
-      "id": 1771826443769,
-      "text": "volvo",
-      "completed": false,
-      "createdAt": "2026-02-23T06:00:43.769Z",
-      "pageId": 0,
-      "priority": "high",
       "details": ""
     },
     {
@@ -62,15 +37,6 @@
       "details": ""
     },
     {
-      "id": 1771830136447,
-      "text": "hydraulik",
-      "completed": true,
-      "createdAt": "2026-02-23T07:02:16.447Z",
-      "pageId": 0,
-      "priority": "high",
-      "details": ""
-    },
-    {
       "id": 1771826479856,
       "text": "DYI: kapcie, podkładka",
       "completed": true,
@@ -78,17 +44,63 @@
       "pageId": 0,
       "priority": "medium",
       "details": ""
+    },
+    {
+      "id": 1771829752745,
+      "text": "tapo",
+      "completed": true,
+      "createdAt": "2026-02-23T06:55:52.745Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1773004027624,
+      "text": "hpv",
+      "completed": true,
+      "createdAt": "2026-03-08T21:07:07.624Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1771826443769,
+      "text": "volvo",
+      "completed": true,
+      "createdAt": "2026-02-23T06:00:43.769Z",
+      "pageId": 0,
+      "priority": "high",
+      "details": ""
+    },
+    {
+      "id": 1771830136447,
+      "text": "hydraulik",
+      "completed": true,
+      "createdAt": "2026-02-23T07:02:16.447Z",
+      "pageId": 0,
+      "priority": "high",
+      "details": ""
     }
   ],
-  "count": 8,
-  "completedCount": 4,
-  "isExpanded": false,
+  "pages": [
+    {
+      "id": 0,
+      "name": "General"
+    }
+  ],
+  "current_page_id": 0,
+  "count": 9,
+  "completedCount": 7,
+  "showCompleted": true,
+  "showBackground": true,
+  "isExpanded": true,
   "useCustomColors": false,
   "priorityColors": {
     "high": "#ba1a1a",
     "medium": "#215fa6",
     "low": "#43474e"
   },
-  "showCompleted": true,
-  "showBackground": true
+  "exportPath": "~/Documents",
+  "exportFormat": "markdown",
+  "exportEmptySections": false
 }
