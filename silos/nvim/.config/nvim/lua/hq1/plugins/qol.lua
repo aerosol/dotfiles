@@ -32,7 +32,7 @@ return {
 			statuscolumn = { enabled = true },
 			-- indent = { enabled = true },
 			input = { enabled = true },
-			scroll = { enabled = true },
+			-- scroll = { enabled = true },
 			picker = {
 				enabled = true,
 				matcher = {
@@ -163,4 +163,5 @@ return {
 			smear_insert_mode = false,
 		},
 	},
+	{ "nvim-mini/mini.cursorword", version = false, config = true },
 }

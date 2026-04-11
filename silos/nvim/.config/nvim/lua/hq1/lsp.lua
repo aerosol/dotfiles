@@ -1,7 +1,12 @@
 vim.lsp.config("expert", {
-	cmd = { "/home/hq1/bin/expert", "--stdio" },
+	cmd = { "dexter", "lsp" },
 	root_markers = { "mix.exs", ".git" },
 	filetypes = { "elixir", "eelixir", "heex" },
+	init_options = {
+		followDelegates = true, -- jump through defdelegate to the target function
+		-- stdlibPath = "",      -- override Elixir stdlib path (auto-detected)
+		-- debug = false,        -- verbose logging to stderr (view with :LspLog)
+	},
 })
 
 vim.lsp.enable({

@@ -1,5 +1,30 @@
 return {
-	{ "miikanissi/modus-themes.nvim", priority = 1000 },
+	-- lazy.nvim
+	{
+		"kungfusheep/mfd.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd("colorscheme mfd-stealth")
+		end,
+	},
+	{
+		"misaelvillaverde/acme.nvim",
+		dependencies = "rktjmp/lush.nvim",
+		priority = 1000,
+	},
+	{
+		"miikanissi/modus-themes.nvim",
+		priority = 1000,
+		config = function()
+			require("modus-themes").setup({
+				on_highlights = function(highlights, colors)
+					highlights.MiniCursorword = { underline = true, bg = "#ffffdd" }
+					highlights.MiniCursorwordCurrent = { underline = true, bg = "#ffffdd" }
+				end,
+			})
+		end,
+	},
 	{
 		"Tsuzat/NeoSolarized.nvim",
 		priority = 1000,
@@ -24,6 +49,8 @@ return {
 					undercurl = true, -- true/false; for global undercurl
 				},
 				on_highlights = function(highlights, _colors)
+					highlights.MiniCursorword = { underline = true }
+					highlights.MiniCursorwordCurrent = { underline = true }
 					highlights.StatusLine = { bg = "#222222" }
 					highlights.StatusLineNC = { bg = "#171717" }
 					highlights.OilFile = { fg = "#657b83", italic = not neovide }
