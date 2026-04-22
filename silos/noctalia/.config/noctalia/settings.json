@@ -129,10 +129,11 @@
             "right": [
                 {
                     "colorizeSystemIcon": "none",
-                    "enableColorization": false,
+                    "colorizeSystemText": "none",
                     "generalTooltipText": "",
                     "hideMode": "alwaysExpanded",
                     "icon": "currency-euro",
+                    "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "",
                     "leftClickExec": "xdg-open https://kantor.aliorbank.pl/forex.html",
@@ -200,10 +201,11 @@
                 },
                 {
                     "colorizeSystemIcon": "none",
-                    "enableColorization": false,
+                    "colorizeSystemText": "none",
                     "generalTooltipText": "",
                     "hideMode": "alwaysExpanded",
                     "icon": "align-box-left-bottom-filled",
+                    "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "",
                     "leftClickExec": "",
@@ -551,8 +553,8 @@
     },
     "nightLight": {
         "autoSchedule": false,
-        "dayTemp": "4082",
-        "enabled": false,
+        "dayTemp": "4023",
+        "enabled": true,
         "forced": false,
         "manualSunrise": "07:00",
         "manualSunset": "17:00",
