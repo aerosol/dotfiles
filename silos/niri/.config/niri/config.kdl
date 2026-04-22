@@ -149,25 +149,25 @@ window-rule {
 
 window-rule {
     match app-id="signal"
-    open-on-workspace "chat"
+    open-on-workspace "msg"
     match at-startup=true app-id="signal"
     open-focused false
 }
 
 window-rule {
     match title="^Plausible Analytics - Basecamp.*"
-    open-on-workspace "chat"
+    open-on-workspace "msg"
     open-focused false
 }
 
 window-rule {
     match title="^WhatsApp Web$"
-    open-on-workspace "chat"
+    open-on-workspace "msg"
 }
 
 window-rule {
     match title="^Fastmail.*"
-    open-on-workspace "mail"
+    open-on-workspace "msg"
     open-maximized true
     open-focused false
 }
@@ -184,9 +184,9 @@ binds {
     Mod+Shift+4 { spawn "wl-screenshot"; }
 
     Mod+S {
-        spawn-sh "niri msg action focus-workspace chat; niri-focus-or-spawn signal signal-desktop"; 
+        spawn-sh "niri msg action focus-workspace msg; niri-focus-or-spawn signal signal-desktop"; 
     }
-    Mod+M { focus-workspace "mail";  }
+    // Mod+G { }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
     }
@@ -227,7 +227,7 @@ binds {
         spawn "niri-kill-workspace"
     }
 
-    Mod+G {
+    Mod+M {
         spawn "niri-move-to-workspace"
     }
 
@@ -415,8 +415,7 @@ cursor {
 }
 
 workspace "main"
-workspace "chat"
-workspace "mail"
+workspace "msg"
 
 include "./noctalia.kdl"
 
