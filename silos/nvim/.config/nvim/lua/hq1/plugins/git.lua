@@ -61,6 +61,17 @@ return {
 					topdelete = { text = "‾" },
 					changedelete = { text = "✘" },
 				},
+				on_attach = function(bufnr)
+					local gs = package.loaded.gitsigns
+
+					keymap("n", "]]", function()
+						gs.next_hunk()
+					end, { buffer = bufnr, noremap = true, silent = true, desc = "Next git hunk" })
+
+					keymap("n", "[[", function()
+						gs.prev_hunk()
+					end, { buffer = bufnr, noremap = true, silent = true, desc = "Previous git hunk" })
+				end,
 			})
 		end,
 	},
