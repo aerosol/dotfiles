@@ -3,14 +3,16 @@
 
 if [ "$1" = "true" ]; then
   gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-	INIT=1
+	INIT='dark'
+	KILL=1
 else
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-	INIT=2
+	INIT='light'
+	KILL=2
 fi
 
 cat > ~/.config/foot/theme.ini <<EOF
 initial-color-theme=$INIT
 EOF
 
-pkill -USR${INIT} foot
+pkill -USR${KILL} foot
