@@ -1,5 +1,5 @@
 #!/bin/bash
-# Automatically kill tmux sessions running zsh that don't have a corresponding foot terminal window
+# Automatically kill tmux sessions that don't have a corresponding foot terminal window and have been idle for more than 2 hours
 
 declare -i killed=0
 
@@ -17,14 +17,15 @@ foot_titles=$(niri msg -j windows 2>/dev/null | jq -r '
 
 # Get all tmux sessions
 tmux list-sessions -F '#S' 2>/dev/null | while read session; do
-  # Get the command running in the first window/pane of the session
-  running_cmd=$(tmux list-panes -t "$session:0" -F '#{pane_current_command}' 2>/dev/null | head -n 1)
-  
-  # Only process sessions running zsh
-  if [ "$running_cmd" != "zsh" ]; then
+  # Check if the session has been idle for more than 2 hours
+  # Use the session's last activity time (seconds since epoch)
+  last_activity=$(tmux display-message -t "$session" -p '#{session_activity}' 2>/dev/null)
+  now=$(date +%s)
+  idle_seconds=$(( now - last_activity ))
+  if [ "$idle_seconds" -lt 7200 ]; then
     continue
   fi
-  
+
   # Check if this session has a corresponding foot terminal window
   # Foot terminal titles typically contain the session name or show "tmux: session_name"
   session_has_window=0
