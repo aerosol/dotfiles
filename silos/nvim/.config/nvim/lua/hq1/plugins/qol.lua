@@ -1,5 +1,9 @@
 return {
 	{
+		"error311/wayfinder.nvim",
+		opts = {},
+	},
+	{
 		"serhez/bento.nvim",
 		opts = {
 			ui = {

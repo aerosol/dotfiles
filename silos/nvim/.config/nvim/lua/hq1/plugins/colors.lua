@@ -18,6 +18,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("modus-themes").setup({
+				transparent = true,
 				on_highlights = function(highlights, colors)
 					highlights.MiniCursorword = { underline = true, bg = "#ffffdd" }
 					highlights.MiniCursorwordCurrent = { underline = true, bg = "#ffffdd" }

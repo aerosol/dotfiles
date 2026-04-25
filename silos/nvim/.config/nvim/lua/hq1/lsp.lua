@@ -1,4 +1,4 @@
-vim.lsp.config("expert", {
+vim.lsp.config("dexter", {
 	cmd = { "dexter", "lsp" },
 	root_markers = { "mix.exs", ".git" },
 	filetypes = { "elixir", "eelixir", "heex" },
@@ -10,7 +10,7 @@ vim.lsp.config("expert", {
 })
 
 vim.lsp.enable({
-	"expert",
+	"dexter",
 	"lua-ls",
 })
 
