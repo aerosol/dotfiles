@@ -1,14 +1,5 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
+prefer-no-csd
 
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
-// debug {
-//     disable-direct-scanout
-// }
 input {
     keyboard {
         xkb {
@@ -17,9 +8,6 @@ input {
         }
     }
 
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
     touchpad {
         // off
         tap
@@ -100,8 +88,6 @@ hotkey-overlay {
     skip-at-startup
 }
 
-prefer-no-csd
-
 screenshot-path null
 
 animations {
@@ -115,6 +101,16 @@ animations {
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+    opacity 0.85
+    draw-border-with-background false
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="firefox"
+    opacity 1.0
 }
 
 window-rule {
@@ -384,12 +380,6 @@ gestures {
 }
 
 recent-windows {
-    highlight {
-        active-color "#00b0ac88"
-        urgent-color "#ff9999ff"
-        padding 20
-        corner-radius 8
-    }
     binds {
         Mod+Tab         { next-window     scope="output"; }
         Mod+Shift+Tab   { previous-window scope="output"; }
@@ -398,14 +388,11 @@ recent-windows {
 }
 
 overview {
-    zoom 0.4
-    backdrop-color "#262626"
+    zoom 0.25
+    backdrop-color "#333333"
 
     workspace-shadow {
-        softness 40
-        spread 10
-        offset x=0 y=10
-        color "#00000050"
+        off
     }
 }
 
@@ -420,7 +407,8 @@ workspace "msg"
 include "./noctalia.kdl"
 
 layout {
-    gaps 8
+    background-color "transparent"
+    gaps 16
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -428,7 +416,7 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "on-overflow"
+    center-focused-column "never"
     always-center-single-column
 
     preset-column-widths {
@@ -440,8 +428,7 @@ layout {
     default-column-width { proportion 0.66667; }
 
     focus-ring {
-        active-gradient from="#FFEA77" to="#bbddff" angle=180
-        width 3.5
+        width 4
     }
 
     border {
@@ -449,11 +436,7 @@ layout {
     }
 
     shadow {
-        on
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
+        off
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -462,10 +445,10 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
+        left 0
+        right 0
+        top 0
+        bottom 0
     }
 
 }
