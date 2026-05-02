@@ -42,8 +42,8 @@
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 0.65,
-        "barType": "floating",
+        "backgroundOpacity": 0.84,
+        "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
         "contentPadding": 2,
@@ -54,8 +54,8 @@
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": false,
-        "marginHorizontal": 6,
-        "marginVertical": 2,
+        "marginHorizontal": 0,
+        "marginVertical": 0,
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
@@ -74,22 +74,20 @@
         "showCapsule": false,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
-        "useSeparateOpacity": false,
-        "widgetSpacing": 6,
+        "useSeparateOpacity": true,
+        "widgetSpacing": 1,
         "widgets": {
             "center": [
                 {
                     "colorizeIcons": false,
                     "hideMode": "hidden",
-                    "iconScale": 0.73,
-                    "id": "Taskbar",
-                    "maxTaskbarWidth": 40,
-                    "onlyActiveWorkspaces": true,
-                    "onlySameOutput": true,
-                    "showPinnedApps": false,
-                    "showTitle": false,
-                    "smartWidth": true,
-                    "titleWidth": 120
+                    "id": "ActiveWindow",
+                    "maxWidth": 400,
+                    "scrollingMode": "hover",
+                    "showIcon": true,
+                    "showText": true,
+                    "textColor": "none",
+                    "useFixedWidth": false
                 }
             ],
             "left": [
@@ -113,17 +111,6 @@
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": false,
                     "unfocusedIconsOpacity": 1
-                },
-                {
-                    "colorizeIcons": false,
-                    "hideMode": "hidden",
-                    "id": "ActiveWindow",
-                    "maxWidth": 260,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "showText": true,
-                    "textColor": "none",
-                    "useFixedWidth": false
                 }
             ],
             "right": [
@@ -200,15 +187,15 @@
                     ]
                 },
                 {
-                    "colorizeSystemIcon": "none",
+                    "colorizeSystemIcon": "secondary",
                     "colorizeSystemText": "none",
-                    "generalTooltipText": "",
+                    "generalTooltipText": "tmux sessions alive",
                     "hideMode": "alwaysExpanded",
                     "icon": "align-box-left-bottom-filled",
                     "iconPosition": "left",
                     "id": "CustomButton",
                     "ipcIdentifier": "",
-                    "leftClickExec": "",
+                    "leftClickExec": "tmux-stale-session-notify",
                     "leftClickUpdateText": false,
                     "maxTextLength": {
                         "horizontal": 10,
@@ -219,9 +206,9 @@
                     "parseJson": false,
                     "rightClickExec": "",
                     "rightClickUpdateText": false,
-                    "showExecTooltip": true,
+                    "showExecTooltip": false,
                     "showIcon": true,
-                    "showTextTooltip": true,
+                    "showTextTooltip": false,
                     "textCollapse": "",
                     "textCommand": "tmux-stale-session-notify",
                     "textIntervalMs": 60000,
@@ -342,7 +329,7 @@
                 "id": "audio-card"
             },
             {
-                "enabled": false,
+                "enabled": true,
                 "id": "brightness-card"
             },
             {
@@ -365,10 +352,10 @@
                     "id": "Bluetooth"
                 },
                 {
-                    "id": "WallpaperSelector"
+                    "id": "NoctaliaPerformance"
                 },
                 {
-                    "id": "NoctaliaPerformance"
+                    "id": "WallpaperSelector"
                 }
             ],
             "right": [
@@ -395,6 +382,19 @@
             {
                 "name": "eDP-1",
                 "widgets": [
+                    {
+                        "defaultSettings": {
+                        },
+                        "id": "plugin:custom-sticker",
+                        "image": "/home/hq1/Pictures/avatar.png",
+                        "mirror": false,
+                        "opacity": 0.96,
+                        "roundedCorners": true,
+                        "showBackground": false,
+                        "verticalMirror": false,
+                        "x": 150,
+                        "y": 150
+                    }
                 ]
             }
         ],
@@ -406,7 +406,7 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
-        "dockType": "floating",
+        "dockType": "attached",
         "enabled": false,
         "floatingRatio": 1,
         "groupApps": false,
@@ -429,7 +429,7 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
-        "showDockIndicator": false,
+        "showDockIndicator": true,
         "showLauncherIcon": false,
         "sitOnFrame": false,
         "size": 1
@@ -451,7 +451,7 @@
         "enableLockScreenMediaControls": false,
         "enableShadows": true,
         "forceBlackScreenCorners": false,
-        "iRadiusRatio": 0.27,
+        "iRadiusRatio": 1,
         "keybinds": {
             "keyDown": [
                 "Down"
@@ -554,7 +554,7 @@
     "nightLight": {
         "autoSchedule": false,
         "dayTemp": "4023",
-        "enabled": true,
+        "enabled": false,
         "forced": false,
         "manualSunrise": "07:00",
         "manualSunset": "17:00",
@@ -565,20 +565,20 @@
         "disableWallpaper": true
     },
     "notifications": {
-        "backgroundOpacity": 1,
+        "backgroundOpacity": 0.62,
         "clearDismissed": true,
         "criticalUrgencyDuration": 15,
-        "density": "default",
+        "density": "compact",
         "enableBatteryToast": true,
         "enableKeyboardLayoutToast": true,
         "enableMarkdown": false,
-        "enableMediaToast": false,
+        "enableMediaToast": true,
         "enabled": true,
         "location": "top_right",
-        "lowUrgencyDuration": 3,
+        "lowUrgencyDuration": 1,
         "monitors": [
         ],
-        "normalUrgencyDuration": 8,
+        "normalUrgencyDuration": 2,
         "overlayLayer": true,
         "respectExpireTimeout": true,
         "saveToHistory": {
@@ -662,6 +662,20 @@
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "6"
+            },
+            {
+                "action": "userspaceReboot",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": false,
+                "keybind": ""
+            },
+            {
+                "action": "rebootToUefi",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": true,
+                "keybind": "7"
             }
         ],
         "showHeader": true,
@@ -719,7 +733,7 @@
     "ui": {
         "boxBorderEnabled": false,
         "fontDefault": "SF Pro Display",
-        "fontDefaultScale": 1.05,
+        "fontDefaultScale": 1,
         "fontFixed": "PragmataPro Mono Liga",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,

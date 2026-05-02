@@ -10,15 +10,6 @@
       "details": ""
     },
     {
-      "id": 1771826489640,
-      "text": "klajster",
-      "completed": false,
-      "createdAt": "2026-02-23T06:01:29.640Z",
-      "pageId": 0,
-      "priority": "medium",
-      "details": ""
-    },
-    {
       "id": 1771826465748,
       "text": "mail do jurka",
       "completed": true,
@@ -80,6 +71,15 @@
       "pageId": 0,
       "priority": "high",
       "details": ""
+    },
+    {
+      "id": 1771826489640,
+      "text": "klajster",
+      "completed": true,
+      "createdAt": "2026-02-23T06:01:29.640Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
     }
   ],
   "pages": [
@@ -90,7 +90,7 @@
   ],
   "current_page_id": 0,
   "count": 9,
-  "completedCount": 7,
+  "completedCount": 8,
   "showCompleted": true,
   "showBackground": true,
   "isExpanded": true,
