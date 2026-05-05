@@ -73,12 +73,18 @@ output "HDMI-A-1" {
     // position x=1280 y=0
 }
 
+spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 spawn-at-startup "signal-desktop"
-spawn-at-startup "bitwarden-desktop"
+// spawn-at-startup "bitwarden-desktop"
 spawn-at-startup "firefox --no-remote"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-sh-at-startup "qs -c noctalia-shell"
+
+// basecamp
+spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6"
+// fastmail
+spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
+
 
 spawn-sh-at-startup "swayidle -w timeout 180 'brightnessctl -s set 10%' resume 'brightnessctl -r' timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' timeout 419 'niri msg action power-off-monitors' resume 'niri msg acton power-on-monitors' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
@@ -95,13 +101,13 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 1.2
 }
 
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
-    opacity 0.85
+    opacity 0.87
     draw-border-with-background false
     background-effect {
         blur true
@@ -114,13 +120,31 @@ window-rule {
 }
 
 window-rule {
-    match app-id="swappy"
-    open-focused true
+    // basecamp
+    match app-id="org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6" is-active=true
+    opacity 1.0
 }
 
 window-rule {
-    match app-id="Bitwarden"
-    open-floating true
+    // fastmail
+    match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419" is-active=true
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="mpv"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="vlc"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="swappy"
+    open-focused true
+    opacity 1.0
 }
 
 window-rule {
@@ -151,7 +175,8 @@ window-rule {
 }
 
 window-rule {
-    match title="^Plausible Analytics - Basecamp.*"
+    // basecamp
+    match app-id="org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6"
     open-on-workspace "msg"
     open-focused false
 }
@@ -162,7 +187,8 @@ window-rule {
 }
 
 window-rule {
-    match title="^Fastmail.*"
+    // fastmail
+    match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
     open-on-workspace "msg"
     open-maximized true
     open-focused false
@@ -249,6 +275,9 @@ binds {
 
     Mod+O repeat=false { toggle-overview; }
     Mod+W repeat=false { close-window; }
+
+    // Mod+P { maximize-window-to-edges; }
+    // Mod+Alt+P { toggle-window-rule-opacity; }
 
     Mod+H     { focus-column-or-monitor-left; }
     Mod+L     { focus-column-or-monitor-right; }
@@ -338,8 +367,9 @@ binds {
     Mod+Period { expel-window-from-column; }
 
     Mod+X { switch-preset-column-width; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+F { maximize-window-to-edges; }
+    // Mod+F { maximize-column; }
+    // Mod+Shift+F { fullscreen-window; }
 
     Mod+Ctrl+F { expand-column-to-available-width; }
 
@@ -389,11 +419,15 @@ recent-windows {
 
 overview {
     zoom 0.25
-    backdrop-color "#333333"
 
     workspace-shadow {
         off
     }
+}
+
+layer-rule {
+    match namespace=r#"^noctalia-wallpaper"#
+    place-within-backdrop true
 }
 
 cursor {
