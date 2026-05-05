@@ -74,6 +74,7 @@ output "HDMI-A-1" {
 }
 
 spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-at-startup "/home/hq1/bin/noctalia-theme"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 spawn-at-startup "signal-desktop"
@@ -85,10 +86,7 @@ spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e56
 // fastmail
 spawn-sh-at-startup "gtk-launch org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"
 
-
 spawn-sh-at-startup "swayidle -w timeout 180 'brightnessctl -s set 10%' resume 'brightnessctl -r' timeout 300 'qs -c noctalia-shell ipc call lockScreen lock' timeout 419 'niri msg action power-off-monitors' resume 'niri msg acton power-on-monitors' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
-
-spawn-at-startup "/home/hq1/bin/noctalia-theme"
 
 hotkey-overlay {
     skip-at-startup
@@ -120,16 +118,21 @@ window-rule {
 }
 
 window-rule {
-    // basecamp
-    match app-id="org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6" is-active=true
+    match app-id=".*" is-active=true
     opacity 1.0
 }
 
-window-rule {
-    // fastmail
-    match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419" is-active=true
-    opacity 1.0
-}
+// window-rule {
+//     // basecamp
+//     match app-id="org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6" is-active=true
+//     opacity 1.0
+// }
+//
+// window-rule {
+//     // fastmail
+//     match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419" is-active=true
+//     opacity 1.0
+// }
 
 window-rule {
     match app-id="mpv"
@@ -208,7 +211,13 @@ binds {
     Mod+S {
         spawn-sh "niri msg action focus-workspace msg; niri-focus-or-spawn signal signal-desktop"; 
     }
+    Mod+B {
+        // basecamp
+        spawn-sh "niri msg action focus-workspace msg; niri-focus-or-spawn org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6 gtk-launch org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6"; 
+    }
     // Mod+G { }
+    // Mod+Y { }
+    // Mod+U { }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
     }
@@ -221,7 +230,7 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"
     }
     
-    Mod+B {
+    Mod+P {
         spawn-sh "qs -c noctalia-shell ipc call launcher windows"
     }
 
