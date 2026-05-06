@@ -215,8 +215,13 @@ binds {
         // basecamp
         spawn-sh "niri msg action focus-workspace msg; niri-focus-or-spawn org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6 gtk-launch org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6"; 
     }
-    // Mod+G { }
-    // Mod+Y { }
+    Mod+Y { 
+        // fastmail
+        spawn-sh "niri msg action focus-workspace msg; niri-focus-or-spawn org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419 gtk-launch org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419"; 
+    }
+    Mod+G { 
+        spawn-sh "niri-focus-or-spawn firefox firefox"
+    }
     // Mod+U { }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle"
