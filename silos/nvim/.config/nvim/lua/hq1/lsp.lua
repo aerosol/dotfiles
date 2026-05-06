@@ -9,9 +9,16 @@ vim.lsp.config("dexter", {
 	},
 })
 
+vim.lsp.config("tsserver", {
+	cmd = { "typescript-language-server", "--stdio" },
+	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+	root_markers = { "package.json" },
+})
+
 vim.lsp.enable({
 	"dexter",
 	"lua-ls",
+	"tsserver",
 })
 
 vim.diagnostic.config({
