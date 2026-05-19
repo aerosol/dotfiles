@@ -24,6 +24,22 @@ Item {
   // Shared state for context menu
   property var selectedPeer: null
   property var selectedPeerDelegate: null
+  property var sendTargetPeer: null
+  property string searchQuery: ""
+
+  NFilePicker {
+    id: sendFilePicker
+    title: pluginApi?.tr("file-picker.title")
+    selectionMode: "files"
+    initialPath: Quickshell.env("HOME") ?? ""
+    onAccepted: function(paths) {
+      if (!mainInstance || !root.sendTargetPeer || paths.length === 0) return
+      // Use Tailscale DNS name (not system HostName) to avoid LAN DNS resolution
+      var tsName = mainInstance.tailscaleName(root.sendTargetPeer.DNSName)
+      var target = (tsName || root.sendTargetPeer.TailscaleIPs[0]) + ":"
+      mainInstance.sendFilesViaTaildrop(paths, target)
+    }
+  }
 
   function openPeerContextMenu(peer, delegate, mouseX, mouseY) {
     selectedPeer = peer
@@ -33,6 +49,35 @@ Item {
 
   function filterIPv4(ips) {
     return mainInstance?.filterIPv4(ips) || []
+  }
+
+  function normalizeFqdn(fqdn) {
+    if (!fqdn) return ""
+    return fqdn.endsWith(".") ? fqdn.slice(0, -1) : fqdn
+  }
+
+  function peerMatchesSearch(peer, query) {
+    var trimmedQuery = (query || "").trim().toLowerCase()
+    if (trimmedQuery === "") return true
+
+    var ipv4s = filterIPv4(peer?.TailscaleIPs || []).join(" ")
+    var fqdn = normalizeFqdn(peer?.DNSName)
+    var tsName = mainInstance ? mainInstance.tailscaleName(peer?.DNSName) : ""
+    var searchableText = [
+      peer?.HostName || "",
+      fqdn,
+      tsName,
+      ipv4s,
+      peer?.OS || ""
+    ].join(" ").toLowerCase()
+
+    var tokens = trimmedQuery.split(/\s+/)
+    for (var i = 0; i < tokens.length; i++) {
+      if (searchableText.indexOf(tokens[i]) === -1) {
+        return false
+      }
+    }
+    return true
   }
 
   function getOSIcon(os) {
@@ -58,8 +103,8 @@ Item {
   function requireTerminal() {
     if (!isTerminalConfigured) {
       ToastService.showError(
-        pluginApi?.tr("toast.terminal-not-configured.title") || "Terminal Not Configured",
-        pluginApi?.tr("toast.terminal-not-configured.message") || "Please set a terminal command in plugin settings",
+        pluginApi?.tr("toast.terminal-not-configured.title"),
+        pluginApi?.tr("toast.terminal-not-configured.message"),
         "alert-circle"
       )
       return false
@@ -73,8 +118,22 @@ Item {
       if (ips.length > 0) {
         copyToClipboard(ips[0])
         ToastService.showNotice(
-          pluginApi?.tr("toast.ip-copied.title") || "IP Copied",
+          pluginApi?.tr("toast.ip-copied.title"),
           ips[0],
+          "clipboard"
+        )
+      }
+    }
+  }
+
+  function copySelectedPeerFqdn() {
+    if (selectedPeer) {
+      var fqdn = normalizeFqdn(selectedPeer.DNSName)
+      if (fqdn) {
+        copyToClipboard(fqdn)
+        ToastService.showNotice(
+          pluginApi?.tr("toast.fqdn-copied.title"),
+          fqdn,
           "clipboard"
         )
       }
@@ -86,7 +145,8 @@ Item {
     if (selectedPeer) {
       var ips = filterIPv4(selectedPeer.TailscaleIPs)
       if (ips.length > 0) {
-        Quickshell.execDetached([root.terminalCommand, "-e", "ssh", ips[0]])
+        var target = root.sshUsername.trim() !== "" ? root.sshUsername.trim() + "@" + ips[0] : ips[0]
+        Quickshell.execDetached([root.terminalCommand, "-e", "ssh", target])
       }
     }
   }
@@ -101,17 +161,36 @@ Item {
     }
   }
 
+  function useExitNode(peer) {
+    var ips = filterIPv4(peer.TailscaleIPs)
+    if (ips.length > 0 && mainInstance) {
+      mainInstance.setExitNode(ips[0])
+    }
+  }
+
+  function clearExitNode() {
+    if (mainInstance) {
+      mainInstance.clearExitNode()
+    }
+  }
+
   function executePeerAction(action, peer) {
     selectedPeer = peer
     switch (action) {
       case "copy-ip":
         copySelectedPeerIp()
         break
+      case "copy-fqdn":
+        copySelectedPeerFqdn()
+        break
       case "ssh":
         sshToSelectedPeer()
         break
       case "ping":
         pingSelectedPeer()
+        break
+      case "use-exit-node":
+        useExitNode(peer)
         break
     }
   }
@@ -120,21 +199,40 @@ Item {
     id: peerContextMenu
     model: [
       { 
-        label: pluginApi?.tr("context.copy-ip") || "Copy IP", 
+        label: pluginApi?.tr("context.copy-ip"), 
         action: "copy-ip", 
         icon: "clipboard" 
       },
+      {
+        label: pluginApi?.tr("context.copy-fqdn"),
+        action: "copy-fqdn",
+        icon: "world",
+        enabled: root.normalizeFqdn(root.selectedPeer?.DNSName) !== ""
+      },
       { 
-        label: pluginApi?.tr("context.ssh") || "SSH to host", 
+        label: pluginApi?.tr("context.ssh"), 
         action: "ssh", 
         icon: "terminal",
         enabled: (root.selectedPeer?.Online || false) && root.isTerminalConfigured
       },
       { 
-        label: pluginApi?.tr("context.ping") || "Ping host", 
+        label: pluginApi?.tr("context.ping"), 
         action: "ping", 
         icon: "activity",
         enabled: root.isTerminalConfigured
+      },
+      {
+        label: pluginApi?.tr("context.use-exit-node"),
+        action: "use-exit-node",
+        icon: "globe",
+        visible: (root.selectedPeer?.ExitNodeOption || false) && !(root.selectedPeer?.ExitNode || false) && (root.selectedPeer?.Online || false)
+      },
+      {
+        label: pluginApi?.tr("context.send-file"),
+        action: "send-file",
+        icon: "file-upload",
+        visible: mainInstance?.taildropEnabled ?? true,
+        enabled: root.selectedPeer?.Online || false
       }
     ]
     onTriggered: function(action) {
@@ -142,11 +240,21 @@ Item {
         case "copy-ip":
           root.copySelectedPeerIp()
           break
+        case "copy-fqdn":
+          root.copySelectedPeerFqdn()
+          break
         case "ssh":
           root.sshToSelectedPeer()
           break
         case "ping":
           root.pingSelectedPeer()
+          break
+        case "use-exit-node":
+          root.useExitNode(root.selectedPeer)
+          break
+        case "send-file":
+          root.sendTargetPeer = root.selectedPeer
+          sendFilePicker.openFilePicker()
           break
       }
     }
@@ -165,9 +273,24 @@ Item {
     pluginApi?.manifest?.metadata?.defaultSettings?.hideDisconnected ??
     false
 
+  readonly property bool hideMullvadExitNodes:
+    pluginApi?.pluginSettings?.hideMullvadExitNodes ??
+    pluginApi?.manifest?.metadata?.defaultSettings?.hideMullvadExitNodes ??
+    true
+
+  readonly property bool showSearchBar:
+    pluginApi?.pluginSettings?.showSearchBar ??
+    pluginApi?.manifest?.metadata?.defaultSettings?.showSearchBar ??
+    false
+
   readonly property string terminalCommand:
     pluginApi?.pluginSettings?.terminalCommand ||
     pluginApi?.manifest?.metadata?.defaultSettings?.terminalCommand ||
+    ""
+
+  readonly property string sshUsername:
+    pluginApi?.pluginSettings?.sshUsername ||
+    pluginApi?.manifest?.metadata?.defaultSettings?.sshUsername ||
     ""
 
   readonly property int pingCount:
@@ -192,21 +315,43 @@ Item {
         return peer.Online === true
       })
     }
+
+    // Filter out Mullvad exit nodes if setting is enabled
+    if (hideMullvadExitNodes) {
+      peers = peers.filter(function(peer) {
+        return !(peer.DNSName || "").endsWith(".mullvad.ts.net.")
+      })
+    }
     
     peers.sort(function(a, b) {
       // Online peers first
       if (a.Online && !b.Online) return -1
       if (!a.Online && b.Online) return 1
       // Then alphabetically by hostname
-      var nameA = (a.HostName || a.DNSName || "").toLowerCase()
-      var nameB = (b.HostName || b.DNSName || "").toLowerCase()
+      var nameA = (a.HostName || normalizeFqdn(a.DNSName) || "").toLowerCase()
+      var nameB = (b.HostName || normalizeFqdn(b.DNSName) || "").toLowerCase()
       return nameA.localeCompare(nameB)
     })
     return peers
   }
 
+  readonly property var filteredPeerList: {
+    var query = searchQuery.trim()
+    if (!showSearchBar || query === "") return sortedPeerList
+    return sortedPeerList.filter(function(peer) {
+      return peerMatchesSearch(peer, query)
+    })
+  }
+
+  readonly property bool searchActive: showSearchBar && searchQuery.trim() !== ""
+  readonly property bool searchHasNoResults:
+    searchActive &&
+    (mainInstance?.tailscaleRunning ?? false) &&
+    sortedPeerList.length > 0 &&
+    filteredPeerList.length === 0
+
   property real contentPreferredWidth: panelReady ? 400 * Style.uiScaleRatio : 0
-  property real contentPreferredHeight: panelReady ? Math.min(500, 100 + (mainInstance?.peerList?.length || 0) * 60) * Style.uiScaleRatio : 0
+  property real contentPreferredHeight: panelReady ? Math.min(620, 310 + sortedPeerList.length * 48) * Style.uiScaleRatio : 0
 
   anchors.fill: parent
 
@@ -217,6 +362,7 @@ Item {
     visible: panelReady
 
     ColumnLayout {
+      id: mainContainer
       anchors {
         fill: parent
         margins: Style.marginM
@@ -244,7 +390,7 @@ Item {
             }
 
             NText {
-              text: pluginApi?.tr("panel.title") || "Tailscale Network"
+              text: pluginApi?.tr("panel.title")
               pointSize: Style.fontSizeL
               font.weight: Style.fontWeightBold
               color: Color.mOnSurface
@@ -253,8 +399,8 @@ Item {
 
             NText {
               text: mainInstance?.tailscaleRunning
-                ? (mainInstance?.peerList?.length || 0) + " " + (pluginApi?.tr("panel.peers") || "peers")
-                : (pluginApi?.tr("panel.not-connected") || "Not connected")
+                ? (mainInstance?.peerList?.length || 0) + " " + (pluginApi?.tr("panel.peers"))
+                : (mainInstance?.needsLogin ? pluginApi?.tr("panel.not-authenticated") : pluginApi?.tr("panel.not-connected"))
               pointSize: Style.fontSizeS
               color: Color.mOnSurfaceVariant
             }
@@ -277,7 +423,7 @@ Item {
                 if (mainInstance?.tailscaleIp) {
                   root.copyToClipboard(mainInstance.tailscaleIp)
                   ToastService.showNotice(
-                    pluginApi?.tr("toast.ip-copied.title") || "IP Copied",
+                    pluginApi?.tr("toast.ip-copied.title"),
                     mainInstance.tailscaleIp,
                     "clipboard"
                   )
@@ -313,7 +459,7 @@ Item {
                 spacing: 2
 
                 NText {
-                  text: pluginApi?.tr("panel.exit-node.active") || "Exit Node Active"
+                  text: pluginApi?.tr("panel.exit-node.active")
                   pointSize: Style.fontSizeXS
                   font.weight: Style.fontWeightMedium
                   color: Color.mPrimary
@@ -324,7 +470,7 @@ Item {
                   text: {
                     if (!mainInstance?.exitNodeStatus) return ""
                     var ipv4 = filterIPv4(mainInstance.exitNodeStatus.TailscaleIPs)[0]
-                    var status = mainInstance.exitNodeStatus.Online ? (pluginApi?.tr("panel.exit-node.online") || "Online") : (pluginApi?.tr("panel.exit-node.offline") || "Offline")
+                    var status = mainInstance.exitNodeStatus.Online ? pluginApi?.tr("panel.exit-node.online") : pluginApi?.tr("panel.exit-node.offline")
                     return ipv4 ? ipv4 + " • " + status : status
                   }
                   pointSize: Style.fontSizeXS
@@ -363,7 +509,7 @@ Item {
                 spacing: Style.marginXS
 
                 NText {
-                  text: pluginApi?.tr("panel.terminal-warning.title") || "Terminal Not Configured"
+                  text: pluginApi?.tr("panel.terminal-warning.title")
                   pointSize: Style.fontSizeS
                   font.weight: Style.fontWeightMedium
                   color: Color.mError
@@ -371,7 +517,7 @@ Item {
 
                 NText {
                   Layout.fillWidth: true
-                  text: pluginApi?.tr("panel.terminal-warning.message") || "Set a terminal command in settings to enable SSH and ping"
+                  text: pluginApi?.tr("panel.terminal-warning.message")
                   pointSize: Style.fontSizeXS
                   color: Color.mOnSurfaceVariant
                   wrapMode: Text.Wrap
@@ -380,11 +526,27 @@ Item {
             }
           }
 
+          NTextInput {
+            id: searchInput
+            Layout.fillWidth: true
+            visible: root.showSearchBar && (root.mainInstance?.tailscaleRunning ?? false) && root.sortedPeerList.length > 0
+            placeholderText: root.pluginApi?.tr("panel.search-placeholder")
+            inputIconName: "search"
+            text: root.searchQuery
+            onTextChanged: root.searchQuery = searchInput.text
+
+            Keys.onEscapePressed: {
+              if (searchInput.text !== "") {
+                searchInput.text = ""
+              }
+            }
+          }
+
           Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: 1
             color: Qt.alpha(Color.mOnSurface, 0.1)
-            visible: (mainInstance?.tailscaleRunning ?? false) && (mainInstance?.peerList?.length ?? 0) > 0
+            visible: (root.mainInstance?.tailscaleRunning ?? false) && root.sortedPeerList.length > 0
           }
 
           Flickable {
@@ -393,7 +555,7 @@ Item {
             Layout.fillHeight: true
             clip: true
             contentWidth: width
-            contentHeight: peerListColumn.height
+            contentHeight: peerListColumn.implicitHeight
             interactive: contentHeight > height
             boundsBehavior: Flickable.StopAtBounds
             pressDelay: 0
@@ -404,14 +566,14 @@ Item {
               spacing: Style.marginS
 
               Repeater {
-                model: sortedPeerList
+                model: root.filteredPeerList
 
                 delegate: ItemDelegate {
                   id: peerDelegate
                   Layout.fillWidth: true
                   Layout.preferredWidth: peerFlickable.width
                   implicitWidth: peerFlickable.width
-                  height: 48
+                  implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
                   topPadding: Style.marginS
                   bottomPadding: Style.marginS
                   leftPadding: Style.marginL
@@ -419,7 +581,8 @@ Item {
 
                   readonly property var peerData: modelData
                   readonly property string peerIp: filterIPv4(peerData.TailscaleIPs)[0] || ""
-                  readonly property string peerHostname: peerData.HostName || peerData.DNSName || "Unknown"
+                  readonly property string peerHostname: peerData.HostName || normalizeFqdn(peerData.DNSName) || "Unknown"
+                  readonly property string peerTsName: mainInstance ? mainInstance.tailscaleName(peerData.DNSName) : ""
                   readonly property bool peerOnline: peerData.Online || false
 
                   background: Rectangle {
@@ -439,12 +602,34 @@ Item {
                       color: peerDelegate.peerOnline ? Color.mPrimary : Color.mOnSurfaceVariant
                     }
 
-                    NText {
-                      text: peerDelegate.peerHostname
-                      color: Color.mOnSurface
-                      font.weight: Style.fontWeightMedium
-                      elide: Text.ElideRight
+                    ColumnLayout {
+                      spacing: 0
                       Layout.fillWidth: true
+
+                      NText {
+                        text: peerDelegate.peerHostname
+                        color: Color.mOnSurface
+                        font.weight: Style.fontWeightMedium
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                      }
+
+                      NText {
+                        text: peerDelegate.peerTsName
+                        pointSize: Style.fontSizeXS
+                        color: Color.mOnSurfaceVariant
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                        visible: peerDelegate.peerTsName !== "" && peerDelegate.peerTsName !== peerDelegate.peerHostname
+                      }
+                    }
+
+                    NIcon {
+                      icon: "globe"
+                      pointSize: Style.fontSizeS
+                      color: peerDelegate.peerData.ExitNode ? Color.mPrimary : Qt.alpha(Color.mOnSurfaceVariant, 0.4)
+                      visible: peerDelegate.peerData.ExitNode || peerDelegate.peerData.ExitNodeOption
+                      Layout.alignment: Qt.AlignRight
                     }
 
                     NText {
@@ -474,8 +659,8 @@ Item {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
                 Layout.topMargin: Style.marginL
-                text: pluginApi?.tr("panel.no-peers") || "No connected peers"
-                visible: !(mainInstance?.tailscaleRunning ?? false) || (mainInstance?.peerList?.length ?? 0) === 0
+                text: root.searchHasNoResults ? root.pluginApi?.tr("panel.no-search-results") : root.pluginApi?.tr("panel.no-peers")
+                visible: !(root.mainInstance?.tailscaleRunning ?? false) || root.sortedPeerList.length === 0 || root.searchHasNoResults
                 pointSize: Style.fontSizeM
                 color: Color.mOnSurfaceVariant
                 horizontalAlignment: Text.AlignHCenter
@@ -485,10 +670,23 @@ Item {
         }
       }
 
+      // Taildrop receive button
+      NButton {
+        Layout.fillWidth: true
+        visible: (mainInstance?.tailscaleRunning ?? false) && (mainInstance?.taildropEnabled ?? true)
+        text: pluginApi?.tr("panel.taildrop.receive")
+        icon: "file-download"
+        onClicked: {
+          if (!mainInstance) return
+          mainInstance.startTaildropReceive()
+          if (pluginApi) pluginApi.closePanel(pluginApi.panelOpenScreen)
+        }
+      }
+
       NButton {
         Layout.fillWidth: true
         visible: mainInstance?.tailscaleRunning ?? false
-        text: pluginApi?.tr("panel.admin-console") || "Admin Console"
+        text: pluginApi?.tr("panel.admin-console")
         icon: "external-link"
         onClicked: {
           Qt.openUrlExternally("https://login.tailscale.com/admin")
@@ -497,9 +695,33 @@ Item {
 
       NButton {
         Layout.fillWidth: true
-        text: mainInstance?.tailscaleRunning 
-          ? (pluginApi?.tr("context.disconnect") || "Disconnect")
-          : (pluginApi?.tr("context.connect") || "Connect")
+        visible: mainInstance?.exitNodeStatus !== null && mainInstance?.exitNodeStatus !== undefined
+        text: pluginApi?.tr("panel.exit-node.disable")
+        icon: "globe-off"
+        onClicked: root.clearExitNode()
+      }
+
+      NButton {
+        Layout.fillWidth: true
+        visible: mainInstance?.needsLogin ?? false
+        text: pluginApi?.tr("context.login")
+        icon: "login"
+        backgroundColor: Color.mPrimary
+        textColor: Color.mOnPrimary
+        enabled: mainInstance?.tailscaleInstalled ?? false
+        onClicked: {
+          if (mainInstance) {
+            mainInstance.loginTailscale()
+          }
+        }
+      }
+
+      NButton {
+        Layout.fillWidth: true
+        visible: !(mainInstance?.needsLogin ?? false)
+        text: mainInstance?.tailscaleRunning
+          ? pluginApi?.tr("context.disconnect")
+          : pluginApi?.tr("context.connect")
         icon: mainInstance?.tailscaleRunning ? "plug-x" : "plug"
         backgroundColor: mainInstance?.tailscaleRunning ? Color.mError : Color.mPrimary
         textColor: mainInstance?.tailscaleRunning ? Color.mOnError : Color.mOnPrimary

@@ -33,7 +33,7 @@
         "preferredPlayer": "",
         "spectrumFrameRate": 30,
         "spectrumMirrored": true,
-        "visualizerType": "linear",
+        "visualizerType": "mirrored",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
@@ -88,6 +88,12 @@
                     "showText": true,
                     "textColor": "none",
                     "useFixedWidth": false
+                },
+                {
+                    "colorName": "primary",
+                    "hideWhenIdle": false,
+                    "id": "AudioVisualizer",
+                    "width": 50
                 }
             ],
             "left": [
@@ -163,10 +169,6 @@
                 },
                 {
                     "iconColor": "none",
-                    "id": "PowerProfile"
-                },
-                {
-                    "iconColor": "none",
                     "id": "DarkMode"
                 },
                 {
@@ -178,7 +180,7 @@
                 {
                     "blacklist": [
                     ],
-                    "chevronColor": "none",
+                    "chevronColor": "error",
                     "colorizeIcons": false,
                     "drawerEnabled": false,
                     "hidePassive": false,
@@ -235,31 +237,6 @@
                     "id": "plugin:tailscale"
                 },
                 {
-                    "defaultSettings": {
-                        "completedCount": 0,
-                        "count": 0,
-                        "current_page_id": 0,
-                        "isExpanded": false,
-                        "pages": [
-                            {
-                                "id": 0,
-                                "name": "General"
-                            }
-                        ],
-                        "priorityColors": {
-                            "high": "#f44336",
-                            "low": "#9e9e9e",
-                            "medium": "#2196f3"
-                        },
-                        "showBackground": true,
-                        "showCompleted": true,
-                        "todos": [
-                        ],
-                        "useCustomColors": false
-                    },
-                    "id": "plugin:todo"
-                },
-                {
                     "deviceNativePath": "__default__",
                     "displayMode": "graphic",
                     "hideIfIdle": false,
@@ -276,6 +253,48 @@
                     "id": "Clock",
                     "tooltipFormat": "HH:mm ddd, MMM dd",
                     "useCustomFont": false
+                },
+                {
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Volume",
+                    "middleClickCommand": "pwvucontrol || pavucontrol",
+                    "textColor": "none"
+                },
+                {
+                    "colorizeSystemIcon": "primary",
+                    "colorizeSystemText": "none",
+                    "generalTooltipText": "",
+                    "hideMode": "alwaysExpanded",
+                    "icon": "microphone-2",
+                    "iconPosition": "left",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "",
+                    "leftClickExec": "~/bin/mic-switch.sh",
+                    "leftClickUpdateText": false,
+                    "maxTextLength": {
+                        "horizontal": 10,
+                        "vertical": 10
+                    },
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "showExecTooltip": false,
+                    "showIcon": true,
+                    "showTextTooltip": false,
+                    "textCollapse": "",
+                    "textCommand": "",
+                    "textIntervalMs": 3000,
+                    "textStream": false,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
                 }
             ]
         }
@@ -305,7 +324,7 @@
     },
     "colorSchemes": {
         "darkMode": false,
-        "generationMethod": "tonal-spot",
+        "generationMethod": "content",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
@@ -554,7 +573,7 @@
     "nightLight": {
         "autoSchedule": false,
         "dayTemp": "4023",
-        "enabled": false,
+        "enabled": true,
         "forced": false,
         "manualSunrise": "07:00",
         "manualSunset": "17:00",
@@ -754,7 +773,7 @@
         "fillColor": "#ffe4b5",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
-        "linkLightAndDarkWallpapers": true,
+        "linkLightAndDarkWallpapers": false,
         "monitorDirectories": [
         ],
         "overviewBlur": 0.4,
@@ -762,19 +781,14 @@
         "overviewTint": 0.6,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 600,
-        "setWallpaperOnAllMonitors": false,
+        "setWallpaperOnAllMonitors": true,
         "showHiddenFiles": false,
         "skipStartupTransition": false,
         "solidColor": "#1a1a2e",
         "sortOrder": "name",
-        "transitionDuration": 1500,
-        "transitionEdgeSmoothness": 0.05,
+        "transitionDuration": 4100,
+        "transitionEdgeSmoothness": 0.2,
         "transitionType": [
-            "fade",
-            "disc",
-            "stripes",
-            "wipe",
-            "pixelate",
             "honeycomb"
         ],
         "useOriginalImages": false,

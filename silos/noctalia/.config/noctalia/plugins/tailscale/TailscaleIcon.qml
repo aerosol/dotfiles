@@ -6,6 +6,7 @@ import qs.Widgets
 
 Item {
   id: root
+  property var pluginApi: null
 
   property real pointSize: Style.fontSizeL
   property bool applyUiScale: true

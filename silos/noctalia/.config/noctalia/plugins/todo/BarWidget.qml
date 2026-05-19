@@ -13,6 +13,8 @@ Item {
   property ShellScreen screen
   property string widgetId: ""
   property string section: ""
+  property int sectionWidgetIndex: -1
+  property int sectionWidgetsCount: 0
 
   // Bar positioning properties
   readonly property string screenName: screen ? screen.name : ""
@@ -137,12 +139,12 @@ Item {
     ]
 
     onTriggered: action => {
-      contextMenu.close();
-      PanelService.closeContextMenu(screen);
+                   contextMenu.close();
+                   PanelService.closeContextMenu(screen);
 
-      if (action === "widget-settings") {
-        BarService.openPluginSettings(screen, pluginApi.manifest);
-      }
-    }
+                   if (action === "widget-settings") {
+                     BarService.openPluginSettings(screen, pluginApi.manifest);
+                   }
+                 }
   }
 }
