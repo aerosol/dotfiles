@@ -36,41 +36,22 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-output "PNP(AOC) U2777B 0x00000023" {
-    mode "3840x2160@60"
-    scale 1.5
-    position x=1920 y=0
-}
+output "PNP(BNQ) BenQ RD280UG EMC3T00068087" {
+    mode "3840x2560@119.991"
+    scale 1.6
+    focus-at-startup
 
-output "BOE NE135A1M-NY1 Unknown" {
-    mode "2880x1920@120.000"
-    scale 2
-    position x=0 y=0
-    // position x=0 y=960
-    // variable-refresh-rate
-}
+    layout {
 
-output "HDMI-A-1" {
-    // Uncomment this line to disable this output.
-    // off
+        preset-column-widths {
+            proportion 0.5
+            proportion 0.66667
+            proportion 1.0
+        }
 
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "3840x2160@60.000"
+        default-column-width { proportion 0.5; }
+    }
 
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    // scale 1
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // position x=1280 y=0
 }
 
 spawn-sh-at-startup "qs -c noctalia-shell"
@@ -122,17 +103,10 @@ window-rule {
     opacity 1.0
 }
 
-// window-rule {
-//     // basecamp
-//     match app-id="org.gnome.Epiphany.WebApp_43d62322126fb6ca1c3e5623444b3d40c01685b6" is-active=true
-//     opacity 1.0
-// }
-//
-// window-rule {
-//     // fastmail
-//     match app-id="org.gnome.Epiphany.WebApp_df6fd2a55af059d3ac4956ef0b60153d14840419" is-active=true
-//     opacity 1.0
-// }
+window-rule {
+    match app-id="footclient"
+    // default-column-display "tabbed"
+}
 
 window-rule {
     match app-id="mpv"
@@ -152,6 +126,13 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+    max-width 200
+    max-height 200
+}
+
+window-rule {
+    match app-id="GStreamer"
     open-floating true
 }
 
@@ -185,7 +166,8 @@ window-rule {
 }
 
 window-rule {
-    match title="^WhatsApp Web$"
+    // whatsapp
+    match app-id="org.gnome.Epiphany.WebApp_b336fc558722224b7ffe98607055d55f0fe52450"
     open-on-workspace "msg"
 }
 
@@ -206,7 +188,9 @@ binds {
     Mod+D hotkey-overlay-title="fileman" { spawn-sh "nautilus $(<$ZSH_CACHE/_lastdir) || $HOME"; }
 
     Mod+Ctrl+Shift+Alt+Escape { spawn "wl-screenshot"; }
+    Ctrl+Escape { spawn "wl-screenshot"; }
     Mod+Shift+4 { spawn "wl-screenshot"; }
+    Mod+Shift+5 { spawn "wl-screencast"; }
 
     Mod+S {
         spawn-sh "niri msg action focus-workspace msg; niri-focus-or-spawn signal signal-desktop"; 
@@ -221,6 +205,10 @@ binds {
     }
     Mod+G { 
         spawn-sh "niri-focus-or-spawn firefox firefox"
+    }
+
+    Mod+Z {
+        toggle-column-tabbed-display; 
     }
     // Mod+U { }
     Mod+Space hotkey-overlay-title="Application Launcher" {
@@ -449,7 +437,10 @@ cursor {
     hide-after-inactive-ms 5000
 }
 
-workspace "main"
+workspace "main" {
+    open-on-output "PNP(BNQ) BenQ RD280UG EMC3T00068087"
+}
+
 workspace "msg"
 
 include "./noctalia.kdl"
@@ -497,6 +488,14 @@ layout {
         right 0
         top 0
         bottom 0
+    }
+
+    tab-indicator {
+        width 16
+        gap 4
+        length total-proportion=0.8
+        // position "top"
+        place-within-column
     }
 
 }
