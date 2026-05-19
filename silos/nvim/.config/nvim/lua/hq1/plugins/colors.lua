@@ -1,5 +1,14 @@
 return {
-	-- lazy.nvim
+	{
+		-- lazy.nvim
+		"danhat1020/silence.nvim",
+		config = function()
+			-- require("silence").setup({
+			-- 	-- options here (see configuration)
+			-- })
+			-- vim.cmd("colorscheme silence")
+		end,
+	},
 	{
 		"kungfusheep/mfd.nvim",
 		lazy = false,
