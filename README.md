@@ -1,5 +1,7 @@
 # dotfiles (silos) :factory: 
 
+<img width="2880" height="1920" alt="image" src="https://github.com/user-attachments/assets/89a3ee60-80e2-4981-a121-1a8e8c07959e" />
+
 ## Synopsis
 
 Every silo is make-driven stow package, contains deployable set of dotfiles per program (zsh, vim, etc.)
