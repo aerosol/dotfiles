@@ -1,6 +1,6 @@
 return {
 	{
-		"stevearc/oil.nvim",
+		"barrettruth/canola.nvim",
 		config = function()
 			vim.g.loaded_fzf_file_explorer = 1
 			vim.g.loaded_netrw = 1

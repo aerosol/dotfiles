@@ -4,7 +4,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		vim.cmd([[:silent %!git-rb]])
 	end,
 })
-
 vim.api.nvim_create_autocmd("BufReadPre", {
 	pattern = "*",
 	callback = function()

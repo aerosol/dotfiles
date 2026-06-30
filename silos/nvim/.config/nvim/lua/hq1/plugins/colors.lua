@@ -1,28 +1,5 @@
 return {
 	{
-		-- lazy.nvim
-		"danhat1020/silence.nvim",
-		config = function()
-			-- require("silence").setup({
-			-- 	-- options here (see configuration)
-			-- })
-			-- vim.cmd("colorscheme silence")
-		end,
-	},
-	{
-		"kungfusheep/mfd.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd("colorscheme mfd-stealth")
-		end,
-	},
-	{
-		"misaelvillaverde/acme.nvim",
-		dependencies = "rktjmp/lush.nvim",
-		priority = 1000,
-	},
-	{
 		"miikanissi/modus-themes.nvim",
 		priority = 1000,
 		config = function()
@@ -32,6 +9,7 @@ return {
 					highlights.MiniCursorword = { underline = true, bg = "#ffffdd" }
 					highlights.MiniCursorwordCurrent = { underline = true, bg = "#ffffdd" }
 				end,
+				vim.cmd("colorscheme modus_operandi"),
 			})
 		end,
 	},
