@@ -6,14 +6,14 @@
         "clipboardWrapText": true,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
-        "density": "default",
+        "density": "comfortable",
         "enableClipPreview": true,
         "enableClipboardChips": true,
         "enableClipboardHistory": true,
         "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
-        "enableWindowsSearch": false,
+        "enableWindowsSearch": true,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
         "overviewLayer": false,
@@ -25,7 +25,7 @@
         "showIconBackground": false,
         "sortByMostUsed": true,
         "terminalCommand": "foot -e",
-        "viewMode": "list"
+        "viewMode": "grid"
     },
     "audio": {
         "mprisBlacklist": [
@@ -33,7 +33,7 @@
         "preferredPlayer": "",
         "spectrumFrameRate": 30,
         "spectrumMirrored": true,
-        "visualizerType": "mirrored",
+        "visualizerType": "wave",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
@@ -224,19 +224,6 @@
                     "wheelUpdateText": false
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultPeerAction": "copy-ip",
-                        "hideDisconnected": false,
-                        "pingCount": 5,
-                        "refreshInterval": 5000,
-                        "showIpAddress": true,
-                        "showPeerCount": true,
-                        "terminalCommand": ""
-                    },
-                    "id": "plugin:tailscale"
-                },
-                {
                     "deviceNativePath": "__default__",
                     "displayMode": "graphic",
                     "hideIfIdle": false,
@@ -295,6 +282,34 @@
                     "wheelUpExec": "",
                     "wheelUpUpdateText": false,
                     "wheelUpdateText": false
+                },
+                {
+                    "defaultSettings": {
+                        "completedCount": 0,
+                        "count": 0,
+                        "current_page_id": 0,
+                        "exportEmptySections": false,
+                        "exportFormat": "markdown",
+                        "exportPath": "~/Documents",
+                        "isExpanded": false,
+                        "pages": [
+                            {
+                                "id": 0,
+                                "name": "General"
+                            }
+                        ],
+                        "priorityColors": {
+                            "high": "#f44336",
+                            "low": "#9e9e9e",
+                            "medium": "#2196f3"
+                        },
+                        "showBackground": true,
+                        "showCompleted": true,
+                        "todos": [
+                        ],
+                        "useCustomColors": false
+                    },
+                    "id": "plugin:todo"
                 }
             ]
         }
@@ -395,25 +410,17 @@
     },
     "desktopWidgets": {
         "enabled": false,
-        "gridSnap": false,
+        "gridSnap": true,
         "gridSnapScale": false,
         "monitorWidgets": [
             {
                 "name": "eDP-1",
                 "widgets": [
-                    {
-                        "defaultSettings": {
-                        },
-                        "id": "plugin:custom-sticker",
-                        "image": "/home/hq1/Pictures/avatar.png",
-                        "mirror": false,
-                        "opacity": 0.96,
-                        "roundedCorners": true,
-                        "showBackground": false,
-                        "verticalMirror": false,
-                        "x": 150,
-                        "y": 150
-                    }
+                ]
+            },
+            {
+                "name": "DP-1",
+                "widgets": [
                 ]
             }
         ],
@@ -573,7 +580,7 @@
     "nightLight": {
         "autoSchedule": false,
         "dayTemp": "4023",
-        "enabled": true,
+        "enabled": false,
         "forced": false,
         "manualSunrise": "07:00",
         "manualSunset": "17:00",
@@ -752,7 +759,7 @@
     "ui": {
         "boxBorderEnabled": false,
         "fontDefault": "SF Pro Display",
-        "fontDefaultScale": 1,
+        "fontDefaultScale": 0.86,
         "fontFixed": "PragmataPro Mono Liga",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
@@ -789,7 +796,9 @@
         "transitionDuration": 4100,
         "transitionEdgeSmoothness": 0.2,
         "transitionType": [
-            "honeycomb"
+            "honeycomb",
+            "fade",
+            "stripes"
         ],
         "useOriginalImages": false,
         "useSolidColor": false,

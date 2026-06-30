@@ -1,10 +1,10 @@
 {
   "todos": [
     {
-      "id": 1771829730709,
-      "text": "laptop dock",
+      "id": 1781158180010,
+      "text": "erste",
       "completed": false,
-      "createdAt": "2026-02-23T06:55:30.709Z",
+      "createdAt": "2026-06-11T06:09:40.010Z",
       "pageId": 0,
       "priority": "medium",
       "details": ""
@@ -80,6 +80,51 @@
       "pageId": 0,
       "priority": "medium",
       "details": ""
+    },
+    {
+      "id": 1771829730709,
+      "text": "laptop dock",
+      "completed": true,
+      "createdAt": "2026-02-23T06:55:30.709Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1780901502562,
+      "text": "wymiana walut",
+      "completed": true,
+      "createdAt": "2026-06-08T06:51:42.562Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1781157364596,
+      "text": "podatek garaz",
+      "completed": true,
+      "createdAt": "2026-06-11T05:56:04.596Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1780901506727,
+      "text": "przelew do rsm",
+      "completed": true,
+      "createdAt": "2026-06-08T06:51:46.727Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1780901497404,
+      "text": "wypowiedzenie netia",
+      "completed": true,
+      "createdAt": "2026-06-08T06:51:37.404Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
     }
   ],
   "pages": [
@@ -89,16 +134,16 @@
     }
   ],
   "current_page_id": 0,
-  "count": 9,
-  "completedCount": 8,
-  "showCompleted": true,
+  "count": 14,
+  "completedCount": 13,
+  "showCompleted": false,
   "showBackground": true,
   "isExpanded": true,
   "useCustomColors": false,
   "priorityColors": {
     "high": "#ba1a1a",
-    "medium": "#215fa6",
-    "low": "#43474e"
+    "medium": "#56605f",
+    "low": "#434847"
   },
   "exportPath": "~/Documents",
   "exportFormat": "markdown",
