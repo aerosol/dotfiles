@@ -38,7 +38,7 @@ input {
 
 output "PNP(BNQ) BenQ RD280UG EMC3T00068087" {
     mode "3840x2560@119.991"
-    scale 1.6
+    scale 1.7
     focus-at-startup
 
     layout {
@@ -59,7 +59,7 @@ spawn-at-startup "/home/hq1/bin/noctalia-theme"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 spawn-at-startup "signal-desktop"
-// spawn-at-startup "bitwarden-desktop"
+spawn-at-startup "joplin-desktop"
 spawn-at-startup "firefox --no-remote"
 
 // basecamp
@@ -235,7 +235,7 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"
     }
 
-    F9 {
+    Mod+U {
         toggle-window-floating
     }
 
@@ -420,7 +420,7 @@ recent-windows {
 }
 
 overview {
-    zoom 0.25
+    zoom 0.4
 
     workspace-shadow {
         off
@@ -441,7 +441,9 @@ workspace "main" {
     open-on-output "PNP(BNQ) BenQ RD280UG EMC3T00068087"
 }
 
-workspace "msg"
+workspace "msg" {
+    open-on-output "PNP(BNQ) BenQ RD280UG EMC3T00068087"
+}
 
 include "./noctalia.kdl"
 
@@ -467,7 +469,8 @@ layout {
     default-column-width { proportion 0.66667; }
 
     focus-ring {
-        width 4
+        width 5
+        active-color   "#ff4400"
     }
 
     border {
